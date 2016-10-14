@@ -1,0 +1,56 @@
+{
+	"mapwidth":"640",
+	"mapheight":"600",
+	"levels":[
+		{
+			"id":"canada",
+			"title":"Canada",
+			"map":"maps/canada.svg",
+			"locations":[
+				{
+					"id": "ca-ab",
+					"title": "Alberta",
+					"description": "<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+					"pin": "hidden",
+					"fill":"#AFC144",
+					"x": "0.2356",
+					"y": "0.6801"
+				},
+				{
+					"id": "ca-nt",
+					"title": "Northern Territories",
+					"description": "Northern Territories.",
+					"pin": "hidden",
+					"fill":"#AFC144",
+					"x": "0.2531",
+					"y": "0.5007"
+				},
+				{
+					"id": "ca-qc",
+					"title": "Quebec",
+					"description": "Quebec.",
+					"pin": "hidden",
+					"fill":"#AFC144",
+					"x": "0.6874",
+					"y": "0.7325"
+				},
+				{
+					"id": "toronto",
+					"title": "Toronto",
+					"description": "Toronto.",
+					"pin": "circular",
+					"x": "0.6381",
+					"y": "0.9200"
+				},
+				{
+					"id": "calgary",
+					"title": "Calgary",
+					"description": "Calgary.",
+					"pin": "circular",
+					"x": "0.2273",
+					"y": "0.7425"
+				}
+			]
+		}
+	]
+}

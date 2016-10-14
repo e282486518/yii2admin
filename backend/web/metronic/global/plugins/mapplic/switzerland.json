@@ -1,0 +1,41 @@
+{
+	"mapwidth":"640",
+	"mapheight":"420",
+	"categories":[],
+	"levels":[
+		{
+			"id":"switzerland",
+			"title":"Switzerland",
+			"map":"maps/switzerland.svg",
+			"minimap": "maps/switzerland-mini.jpg",
+			"locations":[
+				{
+					"id": "zurich",
+					"title": "Zurich",
+					"description": "<p>Donec et pretium justo, sodales finibus risus.</p>",
+					"pin": "circular",
+					"x": "0.5771",
+					"y": "0.1869"
+				},
+				{
+					"id": "BE",
+					"title": "Canton of Bern",
+					"description": "<p>Canton of Bern</p>",
+					"fill": "#4d5e6d",
+					"pin": "hidden",
+					"x": "0.3695",
+					"y": "0.4881"
+				},
+				{
+					"id": "SZ",
+					"title": "Schwyz",
+					"description": "<p>Canton of Schwyz</p>",
+					"fill": "#4d5e6d",
+					"pin": "hidden",
+					"x": "0.6089",
+					"y": "0.3897"
+				}
+			]
+		}
+	]
+}

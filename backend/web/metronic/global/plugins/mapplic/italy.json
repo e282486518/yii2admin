@@ -1,0 +1,43 @@
+{
+	"mapwidth":"800",
+	"mapheight":"1000",
+	"categories":[
+
+	],
+	"levels":[
+		{
+			"id":"italy",
+			"title":"Italy",
+			"map":"maps/italy.svg",
+			"minimap": "maps/italy-mini.jpg",
+			"locations":[
+				{
+					"id": "rome",
+					"title": "Rome",
+					"description": "<p>Donec et pretium justo, sodales finibus risus.</p>",
+					"pin": "circular",
+					"x": "0.5054",
+					"y": "0.4586"
+				},
+				{
+					"id": "tuscany",
+					"title": "Tuscany",
+					"description": "<p>Donec et pretium justo, sodales finibus risus.</p>",
+					"pin": "hidden",
+					"fill": "#4d5e6d",
+					"x": "0.3965",
+					"y": "0.3424"
+				},
+				{
+					"id": "campania",
+					"title": "Campania",
+					"description": "<p>Donec et pretium justo, sodales finibus risus.</p>",
+					"fill": "#4d5e6d",
+					"pin": "hidden",
+					"x": "0.6797",
+					"y": "0.5378"
+				}
+			]
+		}
+	]
+}

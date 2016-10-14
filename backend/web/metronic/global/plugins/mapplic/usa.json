@@ -1,0 +1,170 @@
+{
+	"mapwidth":"960",
+	"mapheight":"600",
+	"levels":[
+		{
+			"id":"usa",
+			"title":"United States",
+			"map":"maps/usa.svg",
+			"minimap":"maps/usa-mini.jpg",
+			"locations":[
+				{
+					"id":"ca",
+					"title":"California",
+					"description":"</p><iframe width=\"240\" height=\"135\" src=\"http://www.youtube.com/embed/ebXbLfLACGM\" frameborder=\"0\" allowfullscreen></iframe>",
+					"link": "http://en.wikipedia.org/wiki/California",
+					"pin":"hidden",
+					"fill": "#4d5e6d",
+					"x":"0.0718",
+					"y":"0.4551"
+				},
+				{
+					"id":"wa",
+					"title":"Washington",
+					"description":"<p>Washington is the 18th most extensive and the 13th most populous state. Approximately 60 percent of Washington's residents live in the Seattle metropolitan area.</p>",
+					"link": "http://en.wikipedia.org/wiki/Washington_(state)",
+					"pin":"hidden",
+					"fill": "#4d5e6d",
+					"x":"0.1331",
+					"y":"0.0971"
+				},
+				{
+					"id":"nv",
+					"title":"Nevada",
+					"description":"Nevada is officially known as the \"Silver State\" due to the importance of silver to its history and economy",
+					"link": "http://en.wikipedia.org/wiki/Nevada",
+					"pin":"hidden",
+					"fill": "#4d5e6d",
+					"x":"0.1484",
+					"y":"0.3981"
+				},
+				{
+					"id":"il",
+					"title":"Illinois",
+					"description":"<p>Three U.S. presidents have been elected while living in Illinois</p><img src=\"images/logo.png\" alt=\"Mapplic\">",
+					"about": "Illinois state",
+					"link": "http://en.wikipedia.org/wiki/Illinois",
+					"pin":"hidden",
+					"fill": "#4d5e6d",
+					"x":"0.6207",
+					"y":"0.4324"
+				},
+				{
+					"id":"ny",
+					"title":"New York",
+					"description":"New York is a state in the Northeastern and Mid-Atlantic regions of the United States.",
+					"link": "http://en.wikipedia.org/wiki/NewYork",
+					"pin":"hidden",
+					"fill": "#4d5e6d",
+					"x":"0.8469",
+					"y":"0.2684"
+				},
+				{
+					"id":"ma",
+					"title":"Massachusetts",
+					"description":"Officially the Commonwealth of Massachusetts, is a state in the New England region of the northeastern United States.",
+					"link": "http://en.wikipedia.org/wiki/Massachusetts",
+					"pin":"hidden",
+					"fill": "#4d5e6d",
+					"x":"0.9046",
+					"y":"0.2627"
+				},
+				{
+					"id":"ga",
+					"title":"Georgia",
+					"description":"Georgia is known as the Peach State and the Empire State of the South.",
+					"link": "http://en.wikipedia.org/wiki/Georgia_(U.S._state)",
+					"pin":"hidden",
+					"fill": "#4d5e6d",
+					"x":"0.7515",
+					"y":"0.6893"
+				},
+				{
+					"id":"fl",
+					"title":"Florida",
+					"description":"The state capital is Tallahassee, the largest city is Jacksonville, and the largest metropolitan area is the Miami metropolitan area.",
+					"link": "http://en.wikipedia.org/wiki/Florida",
+					"pin":"hidden",
+					"fill": "#4d5e6d",
+					"x":"0.7998",
+					"y":"0.8496"
+				},
+				{
+					"id":"tx",
+					"title":"Texas",
+					"description":"<p>The Lone Star State <a href=\"http://www.codecanyon.net\">Canyon</a></p><img src=\"images/logo.png\" alt=\"Mapplic\">",
+					"link": "http://en.wikipedia.org/wiki/Texas",
+					"pin":"hidden",
+					"fill": "#4d5e6d",
+					"x":"0.4511",
+					"y":"0.7710",
+					"zoom": "2"
+				},
+				{
+					"id":"dc",
+					"title":"Washington DC",
+					"description":"<p>Washington, D.C., formally the District of Columbia is the capital of the United States.</p><img src=\"http://upload.wikimedia.org/wikipedia/commons/thumb/a/af/WhiteHouseSouthFacade.JPG/600px-WhiteHouseSouthFacade.JPG\">",
+					"link": "http://en.wikipedia.org/wiki/Washington,_D.C.",
+					"pin":"iconpin fa fa-institution",
+					"x":"0.8388",
+					"y":"0.4120"
+				},
+				{
+					"id":"losangeles",
+					"title":"Los Angeles",
+					"description":"<p>The city of Angels</p>",
+					"pin": "yellow iconpin fa fa-trophy",
+					"x":"0.0892",
+					"y":"0.5748",
+					"zoom": "2"
+				},
+				{
+					"id":"vegas",
+					"title":"Las Vegas",
+					"description":"<p>Las Vegas is an internationally renowned major resort city known primarily for gambling, shopping, fine dining and nightlife.</p>",
+					"pin": "yellow",
+					"x":"0.1528",
+					"y":"0.5162",
+					"zoom": "2"
+				},
+				{
+					"id":"houston",
+					"title":"Houston",
+					"description":"<p>Space City</p>",
+					"pin": "iconpin purple fa fa-rocket",
+					"x":"0.4950",
+					"y":"0.8427",
+					"zoom": "2"
+				},
+				{
+					"id":"miami",
+					"title":"Miami",
+					"description":"<p>Miami's metro area is the eighth most populous and fourth-largest urban area in the United States.</p><img src=\"http://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Downtown_Miami_Panorama_from_the_Rusty_Pelican_photo_D_Ramey_Logan.jpg/400px-Downtown_Miami_Panorama_from_the_Rusty_Pelican_photo_D_Ramey_Logan.jpg\">",
+					"x":"0.8333",
+					"y":"0.8997",
+					"zoom": "2"
+				},
+				{
+					"id":"chicago",
+					"title":"Chicago",
+					"description":"<p>Let's take a photo in Chicago! <i class=\"fa fa-camera-retro\"></i></p>",
+					"pin": "purple",
+					"x":"0.6410",
+					"y":"0.3497",
+					"zoom": "2"
+				},
+				{
+					"id":"newyork",
+					"title":"New York",
+					"description":"<p>The big apple</p>",
+					"x":"0.8821",
+					"y":"0.3326",
+					"zoom": "2"
+				}
+			]
+		}
+	],
+	"minimap":"true",
+	"sidebar":"true",
+	"zoomlimit":"4"
+}

@@ -1,0 +1,141 @@
+{
+	"mapwidth": "2000",
+	"mapheight": "2000",
+	"categories": [
+		{
+			"id": "furniture",
+			"title": "Furniture",
+			"color": "#4cd3b8",
+			"show": "false"
+		},
+		{
+			"id": "rooms",
+			"title": "Rooms",
+			"color": "#63aa9c",
+			"show": "true"
+		}
+	],
+	"levels": [
+		{
+			"id": "lower",
+			"title": "Lower floor",
+			"map": "images/apartment/lower.jpg",
+			"minimap": "images/apartment/lower-small.jpg",
+			"locations": [
+				{
+					"id": "coffeetable",
+					"title": "Coffee Table",
+					"about": "The best place to spend the afternoon",
+					"description": "<p>This is an awesome coffee table.<p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean viverra laoreet imperdiet. Praesent viverra, enim at malesuada dignissim, ante purus vestibulum turpis, nec molestie ipsum mauris non risus. In hac habitasse platea dictumst. Integer porta dignissim magna, at sollicitudin neque aliquam eget. Pellentesque dapibus, augue eu ornare mattis, est mauris volutpat ligula, ac ornare turpis turpis sit amet elit.</p>",
+					"category": "furniture",
+					"link": "http://codecanyon.net/user/sekler?ref=sekler",
+					"x": "0.2050",
+					"y": "0.4660",
+					"zoom": "3"
+				},
+				{
+					"id": "stairstop",
+					"title": "Stairs",
+					"about": "Stairs to the top floor",
+					"description": "Let's go upstairs!",
+					"category": "furniture",
+					"x": "0.5137",
+					"y": "0.6136",
+					"zoom": "3"
+				},
+				{
+					"id": "diningtable",
+					"title": "Dining Table",
+					"about": "An eight-person dining table",
+					"description": "<img src=\"images/logo.png\" alt=\"Mapplic\"><p>An eight-person dining table with an image.<p>",
+					"category": "furniture",
+					"x": "0.4746",
+					"y": "0.2883",
+					"zoom": "3"
+				},
+				{
+					"id": "coffeemachine",
+					"title": "Coffee Machine",
+					"about": "For the perfect coffee",
+					"description": "Coffee Machine",
+					"category": "furniture",
+					"x": "0.6792",
+					"y": "0.3459",
+					"zoom": "3"
+				},
+				{
+					"id": "workingtable",
+					"title": "Working Table",
+					"about": "This is where the magic happens",
+					"description": "It's the perfect home workspace you've always dreamed about.",
+					"category": "furniture",
+					"x": "0.6285",
+					"y": "0.1480",
+					"zoom": "3"
+				},
+				{
+					"id": "kitchen",
+					"title": "Kitchen",
+					"about": "Well equipped kitchen",
+					"description": "<p>Welcome to the kitchen.</p>",
+					"category": "rooms",
+					"link": "http://codecanyon.net/user/sekler?ref=sekler",
+					"pin": "hidden",
+					"x": "0.665",
+					"y": "0.46",
+					"zoom": "3"
+				},
+				{
+					"id": "dining",
+					"title": "Dining room",
+					"about": "Could be a motto",
+					"description": "The main living room <!--<iframe width=\"320\" height=\"180\" src=\"//www.youtube.com/embed/HGy9i8vvCxk\" frameborder=\"0\" allowfullscreen></iframe>-->",
+					"category": "rooms",
+					"pin": "hidden",
+					"x": "0.3",
+					"y": "0.4",
+					"zoom": "3"
+				}
+			]
+		},
+		{
+			"id": "upper",
+			"title": "Upper Floor",
+			"map": "images/apartment/upper.jpg",
+			"minimap": "images/apartment/upper-small.jpg",
+			"locations": [
+				{
+					"id": "livingup",
+					"title": "Living room",
+					"about": "Upper level living",
+					"description": "<img src=\"images/logo.png\" alt=\"Mapplic\"><p>I could spend the whole day here!</p>",
+					"category": "rooms",
+					"x": "0.49",
+					"y": "0.36",
+					"zoom": "2"
+				},
+				{
+					"id": "kingbed",
+					"title": "King bed",
+					"about": "Very comfortable king size bed",
+					"description": "A king size bed situated in the main bedroom on the first floor.",
+					"category": "furniture",
+					"x": "0.6564",
+					"y": "0.2782",
+					"zoom": "3"
+				},
+				{
+					"id": "bathroom",
+					"title": "Bathroom",
+					"about": "Or anything you want to show in the list",
+					"description": "Take a bath",
+					"category": "rooms",
+					"pin": "hidden",
+					"x": "0.7843",
+					"y": "0.4035",
+					"zoom": "3"
+				}
+			]
+		}
+	]
+}

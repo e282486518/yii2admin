@@ -1,0 +1,52 @@
+{
+	"mapwidth":"600",
+	"mapheight":"800",
+	"categories":[
+
+	],
+	"levels":[
+		{
+			"id":"germany",
+			"title":"Germany",
+			"map":"maps/germany.svg",
+			"minimap": "maps/germany-mini.jpg",
+			"locations":[
+				{
+					"id": "leipzig",
+					"title": "Leipzig",
+					"description": "<p>Leipzig.</p>",
+					"pin": "circular",
+					"x": "0.7016",
+					"y": "0.4714"
+				},
+				{
+					"id": "de-by",
+					"title": "Bayern",
+					"description": "<p>Donec et pretium justo, sodales finibus risus.</p>",
+					"pin": "hidden",
+					"fill": "#4d5e6d",
+					"x": "0.6444",
+					"y": "0.7786"
+				},
+				{
+					"id": "de-hb",
+					"title": "Hamburg",
+					"description": "<p>Donec et pretium justo, sodales finibus risus.</p>",
+					"pin": "hidden",
+					"fill": "#4d5e6d",
+					"x": "0.3266",
+					"y": "0.2502"
+				},
+				{
+					"id": "de-ni",
+					"title": "Niedersachsen",
+					"description": "<p>Donec et pretium justo, sodales finibus risus.</p>",
+					"pin": "hidden",
+					"fill": "#4d5e6d",
+					"x": "0.4049",
+					"y": "0.2675"
+				}
+			]
+		}
+	]
+}

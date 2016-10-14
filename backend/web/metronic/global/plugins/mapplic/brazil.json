@@ -1,0 +1,41 @@
+{
+	"mapwidth":"800",
+	"mapheight":"800",
+	"categories":[],
+	"levels":[
+		{
+			"id":"brazil",
+			"title":"Brazil",
+			"map":"maps/brazil.svg",
+			"minimap": "maps/brazil-mini.jpg",
+			"locations":[
+				{
+					"id": "br-ba",
+					"title": "Bahia",
+					"description": "<p>Bahia's capital is the city of Salvador.</p>",
+					"pin": "hidden",
+					"fill": "#4d5e6d",
+					"x": "0.8089",
+					"y": "0.4517"
+				},
+				{
+					"id": "br-rs",
+					"title": "Rio Grande do Sul",
+					"description": "<p>The capital and largest city is Porto Alegre.</p>",
+					"pin": "hidden",
+					"fill": "#4d5e6d",
+					"x": "0.5316",
+					"y": "0.8693"
+				},
+				{
+					"id": "sao-paulo",
+					"title": "São Paulo",
+					"description": "It is the major industrial and economic powerhouse of the Brazilian economy.",
+					"pin": "circular",
+					"x": "0.6883",
+					"y": "0.7236"
+				}
+			]
+		}
+	]
+}
