@@ -1,0 +1,6 @@
+本文件夹组要用于存储前后台上传的图片
+图片存储到这里主要运用了“Glide ”，这个组件可以针对图片进行裁切、旋转等很多操作。
+例如可以使用/storage/web/index.php?path=201610/1256586580.jpg&w=100&h=100&fit=crop裁切图片
+参考：
+1、http://glide.thephpleague.com/
+2、https://github.com/trntv/yii2-glide
