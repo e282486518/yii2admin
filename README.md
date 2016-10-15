@@ -6,8 +6,7 @@
 5、
 
 ##服务器配置
-···
-
+```
 <VirtualHost *:80>
     ServerName www.yii2.cn
 
@@ -68,4 +67,4 @@
         Require all denied
     </FilesMatch>
 </VirtualHost>
-···
+```
