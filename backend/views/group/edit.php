@@ -41,7 +41,23 @@ use backend\models\Shop;
         <?=$form->field($model, 'title')->textInput()->label('商品标题');?>
 
         <?=$form->field($model, 'description')->textarea(['rows'=>4])->label('商品描述'); ?>
-
+        
+        <!-- 单图 -->
+        <?=$this->renderFile('@app/views/public/_image.php',[
+            'data'=>$model->cover,
+            'field'=>'ShopGroup[cover]',
+            'title'=>'封面图片',
+            'tishi'=>'单图图片尺寸为：300*300'
+        ])?>
+        
+        <!-- 多图 -->
+        <?=$this->renderFile('@app/views/public/_images.php',[
+            'data'=>$model->images,
+            'field'=>'ShopGroup[images]',
+            'title'=>'商品图集',
+            'tishi'=>'图组图片尺寸为：300*300'
+        ])?>
+        
         <div class="form-group">
             <label>套餐【酒店】</label>
             <?php foreach (Shop::lists(1) as $list1) :?>

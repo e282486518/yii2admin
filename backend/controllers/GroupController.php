@@ -69,7 +69,7 @@ class GroupController extends BaseController
             $data['totel']  = $totel;
 
             /* 将图组转化为字符串 */
-            if ($data['images'] && is_array($data['images'])) {
+            if (isset($data['images']) && is_array($data['images'])) {
                 $data['images'] = trim(implode ( ",", $data['images']),',');
             }
 
@@ -124,7 +124,7 @@ class GroupController extends BaseController
             $data['total']  = $total;
 
             /* 将图组转化为字符串 */
-            if ($data['images'] && is_array($data['images'])) {
+            if (isset($data['images']) && is_array($data['images'])) {
                 $data['images'] = trim(implode ( ",", $data['images']),',');
             }//var_dump($data);exit();
 

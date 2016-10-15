@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-10-14 15:03:35
+-- Generation Time: 2016-10-15 11:13:43
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -110,7 +110,7 @@ INSERT INTO `yii2_article` (`id`, `category_id`, `name`, `title`, `cover`, `desc
 (7, 1, 'hezuo', '合作伙伴', '', '合作伙伴', '<p>合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴</p>', '', 2, 0, '', 0, 1473606940, 0, 1),
 (8, 3, '', '活动内容1111111', '', '活动内容1111111', '<p>活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111</p>', '', 2, 0, '', 0, 1473607011, 1473608688, 1),
 (9, 3, '', '活动内容222222', '', '活动内容222222', '<p>活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222</p>', '', 2, 0, '', 0, 1473607032, 1473608697, 1),
-(10, 3, '', '活动内容333333', '', '活动内容333333', '<p>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>', '', 2, 0, '', 0, 1473607048, 1473608706, 1);
+(10, 3, '', '活动内容333333', '201610/1476520935829.jpg', '活动内容333333', '<p>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>', '', 2, 0, '', 0, 1473607048, 1476520939, 1);
 
 -- --------------------------------------------------------
 
@@ -325,9 +325,6 @@ INSERT INTO `yii2_auth_item_child` (`parent`, `child`) VALUES
 ('editor', 'ad/edit'),
 ('administrator', 'ad/index'),
 ('editor', 'ad/index'),
-('administrator', 'admin/add'),
-('administrator', 'admin/auth'),
-('administrator', 'admin/edit'),
 ('administrator', 'admin/index'),
 ('administrator', 'article/add'),
 ('editor', 'article/add'),
@@ -354,13 +351,7 @@ INSERT INTO `yii2_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'attribute/index1'),
 ('administrator', 'attribute/setStatus'),
 ('administrator', 'attribute/update'),
-('administrator', 'auth/access'),
-('administrator', 'auth/add'),
-('administrator', 'auth/auth'),
-('administrator', 'auth/delete'),
-('administrator', 'auth/edit'),
 ('administrator', 'auth/index'),
-('administrator', 'auth/user'),
 ('administrator', 'category/add'),
 ('editor', 'category/add'),
 ('administrator', 'category/edit'),
@@ -761,7 +752,7 @@ CREATE TABLE IF NOT EXISTS `yii2_menu` (
   `hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏',
   `group` varchar(50) DEFAULT '' COMMENT '分组',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态'
-) ENGINE=MyISAM AUTO_INCREMENT=169 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=170 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `yii2_menu`
@@ -782,8 +773,8 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (14, '还原', 13, 0, 'article/permit', 0, '', 1),
 (15, '清空', 13, 0, 'article/clear', 0, '', 1),
 (16, '用户', 0, 4, 'admin/index', 0, '', 1),
-(17, '用户信息', 16, 1, 'admin/index', 0, '后台用户|icon-user', 1),
-(18, '新增用户', 17, 0, 'admin/add', 0, '', 1),
+(17, '管理员管理', 16, 1, 'admin/index', 0, '后台用户|icon-user', 1),
+(18, '新增管理员', 17, 0, 'admin/add', 0, '', 1),
 (137, '更新', 17, 0, 'admin/edit', 0, '', 1),
 (144, '商城套餐', 2, 29, 'group/index', 0, '商城管理|icon-basket', 1),
 (155, '删除', 144, 0, 'group/delete', 0, '', 1),
@@ -850,7 +841,7 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (138, '酒店管理', 2, 20, 'shop/index?type=1', 0, '商城管理|icon-basket', 1),
 (119, '排序', 70, 0, 'Config/sort', 1, '', 1),
 (120, '排序', 75, 0, 'Menu/sort', 1, '', 1),
-(129, '用户授权', 17, 0, 'admin/auth', 0, '', 0),
+(129, '管理员授权', 17, 0, 'admin/auth', 0, '', 0),
 (131, '待完成任务', 1, 0, 'index/index', 0, '任务列表|icon-speech', 0),
 (158, '删除培训', 2, 0, 'train/delete', 1, '', 1),
 (159, '广告管理', 2, 0, 'ad/index', 0, '广告管理|icon-target', 1),
@@ -862,7 +853,8 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (165, '删除证书', 163, 0, 'certificate/delete', 0, '', 1),
 (166, '培训类型', 2, 0, 'traintype/index', 0, '培训管理|fa fa-certificate', 1),
 (167, '添加/修改类型', 166, 0, 'traintype/edit', 0, '', 1),
-(168, '删除类型', 166, 0, 'traintype/delete', 0, '', 1);
+(168, '删除类型', 166, 0, 'traintype/delete', 0, '', 1),
+(169, '商城管理', 2, 0, 'shop/index', 1, '', 1);
 
 -- --------------------------------------------------------
 
@@ -963,6 +955,9 @@ CREATE TABLE IF NOT EXISTS `yii2_shop_group` (
   `title` varchar(50) NOT NULL COMMENT '套餐标题',
   `description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
   `groups` text NOT NULL COMMENT '商品组合，数字逗号分隔',
+  `cover` varchar(255) NOT NULL COMMENT '封面图',
+  `images` text NOT NULL COMMENT '图组',
+  `total` decimal(8,2) NOT NULL COMMENT '总价',
   `price` decimal(8,2) NOT NULL COMMENT '套餐价格',
   `sort` int(4) NOT NULL DEFAULT '0' COMMENT '排序值',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态'
@@ -972,9 +967,9 @@ CREATE TABLE IF NOT EXISTS `yii2_shop_group` (
 -- 转存表中的数据 `yii2_shop_group`
 --
 
-INSERT INTO `yii2_shop_group` (`id`, `title`, `description`, `groups`, `price`, `sort`, `status`) VALUES
-(2, '阿斯顿发顺丰', '沙发沙发啊 沙发阿斯顿发是放大师傅', 'a:1:{i:1;a:1:{i:3;a:3:{s:4:"days";s:1:"6";s:3:"num";s:1:"6";s:2:"id";s:1:"3";}}}', '600.00', 0, 1),
-(4, '房1天2人潜水1天2人', '房1天2人潜水1天2人', 'a:2:{i:1;a:1:{i:1;a:3:{s:4:"days";s:1:"1";s:3:"num";s:1:"2";s:2:"id";s:1:"1";}}i:3;a:1:{i:5;a:3:{s:4:"days";s:1:"1";s:3:"num";s:1:"2";s:2:"id";s:1:"5";}}}', '998.00', 0, 1);
+INSERT INTO `yii2_shop_group` (`id`, `title`, `description`, `groups`, `cover`, `images`, `total`, `price`, `sort`, `status`) VALUES
+(2, '阿斯顿发顺丰', '沙发沙发啊 沙发阿斯顿发是放大师傅', 'a:1:{i:1;a:1:{i:3;a:3:{s:4:"days";s:1:"6";s:3:"num";s:1:"6";s:2:"id";s:1:"3";}}}', '', '', '0.00', '600.00', 0, 1),
+(4, '房1天2人潜水1天2人', '房1天2人潜水1天2人', 'a:2:{i:1;a:1:{i:1;a:3:{s:4:"days";s:1:"1";s:3:"num";s:1:"2";s:2:"id";s:1:"1";}}i:3;a:1:{i:5;a:3:{s:4:"days";s:1:"1";s:3:"num";s:1:"2";s:2:"id";s:1:"5";}}}', '201610/1476522207185.jpg', '201610/1476522209446.jpg', '2840.24', '998.00', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1399,7 +1394,7 @@ ALTER TABLE `yii2_log`
 -- AUTO_INCREMENT for table `yii2_menu`
 --
 ALTER TABLE `yii2_menu`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=169;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=170;
 --
 -- AUTO_INCREMENT for table `yii2_order`
 --

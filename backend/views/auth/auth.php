@@ -65,7 +65,7 @@ use common\helpers\ArrayHelper;
                                     <label class="mt-checkbox mt-checkbox-outline" style="margin-bottom:5px;">
                                         <input type="checkbox" name="rules[]" value="<?php echo $op['url'] ?>" <?php echo in_array($op['url'],$auth_rules) ?'checked':''; ?> />
                                         <span></span>
-                                        <?=$child['title']?>
+                                        <?=$op['title']?>
                                     </label>
                                     <?php endforeach ?>
                                 </div>

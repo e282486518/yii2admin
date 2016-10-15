@@ -13,7 +13,7 @@ if (!empty($data)) {
 </style>
 <div class="form-group">
     <div>
-        <label>商品图集</label>
+        <label><?=isset($title)?$title:'商品图集'?></label>
         <span class="help-inline"><?=isset($tishi)?'（'.$tishi.'）':''?></span>
     </div>
 
@@ -80,7 +80,7 @@ $(function() {
                                 html += '<div class="fileupload-item thumbnail">';
                                 html += '    <img src="<?=Yii::$app->params['upload']['url']?>'+ json.data +'" />';
                                 html += '    <span class="fileupload-del">删除</span>';
-                                html += '    <input type="hidden" name="Shop[images][]" value="'+json.data+'" />';
+                                html += '    <input type="hidden" name="<?=$field?>[]" value="'+json.data+'" />';
                                 html += '</div>';
                             $('.fileupload-list').append(html);
                             $('.fileupload-text').html('上传成功');

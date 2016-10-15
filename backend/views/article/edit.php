@@ -64,42 +64,6 @@ $this->registerCssFile('@web/metronic/global/plugins/bootstrap-fileinput/bootstr
 $(function() {
     /* 子导航高亮 */
     highlight_subnav('article/index');
-    
-    /* 上传单图 */
-    $("#file_but").on("change", function(){
-        var files = !!this.files ? this.files : [];
-        if (!files.length || !window.FileReader) return;
-        if (/^image/.test( files[0].type)){
-            var reader = new FileReader();
-            reader.readAsDataURL(files[0]);
-            reader.onloadend = function(){
-                $.ajax({
-                    type: 'post',
-                    url: '<?=Url::to(["upload/image"])?>',
-                    data: {imgbase64:this.result},
-                    dataType: 'json',
-                    beforeSend: function(){
-                        
-                    },
-                    success: function(json){
-                        if(json.boo){
-                            $('#file_img').attr('src',json.data);
-                            $('#file_ipt').val(json.data);
-                        } else {
-                            alert(json.msg);
-                        }
-                    },
-                    error: function(xhr, type){
-                        alert('服务器错误')
-                    }
-                });
-            }
-        }
-    });
-    
-    
-    
-    
 });
 
 <?php $this->endBlock() ?>
