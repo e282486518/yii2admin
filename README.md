@@ -1,4 +1,4 @@
-##开发基础说明
+##一、开发基础说明
 1、gii生成的模型统一放在 common\models下，模型统一继承 common\core\BaseActiveRecord  方便扩展yii核心。  
 
 2、所有表单模型都继承 common\core\BaseModel。  
@@ -10,7 +10,8 @@
 5、公共别名在common/config/bootstarp.php中定义，使用Yii::getAlias()访问。  
 
 
-##服务器配置
+##二、服务器配置
+###1、单域名配置
 ```
 <VirtualHost *:80>
     ServerName www.yii2.cn
@@ -73,3 +74,5 @@
     </FilesMatch>
 </VirtualHost>
 ```
+
+###2、二级域名配置
