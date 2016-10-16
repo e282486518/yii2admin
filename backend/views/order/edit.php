@@ -58,24 +58,24 @@ use backend\models\Shop;
             'language' => 'zh-CN',
             'type' => \kartik\widgets\DateTimePicker::TYPE_INPUT,
             'value' => '2016-07-15',
-            'options' => ['class' => 'form-control c-md-2'],
+            'options' => ['class' => 'form-control'],
             'pluginOptions' => [
                 'autoclose'=>true,
                 'format' => 'yyyy-mm-dd hh:ii',
             ]
-        ])->label('开始时间')->hint('租赁开始时间，或订购时间')?>
+        ],['class' => 'c-md-2'])->label('开始时间')->hint('租赁开始时间，或订购时间')?>
         
         <?=$form->field($model, 'end_time')->Widget(\kartik\widgets\DateTimePicker::classname(),[
             'language' => 'zh-CN',
             'type' => \kartik\widgets\DateTimePicker::TYPE_INPUT,
             //'convertFormat' => 'yyyy-mm-dd',
             'value' => '2016-07-15',
-            'options' => ['class' => 'form-control c-md-2'],
+            'options' => ['class' => 'form-control'],
             'pluginOptions' => [
                 'autoclose'=>true,
                 'format' => 'yyyy-mm-dd hh:ii'
             ]
-        ])->label('结束时间')->hint('租赁结束时间')?>
+        ],['class' => 'c-md-2'])->label('结束时间')->hint('租赁结束时间')?>
         
         <?=$form->field($model, 'num')->textInput(['class' => 'form-control c-md-1'])->label('数量')->hint('订购数量')?>
         
