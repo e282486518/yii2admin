@@ -58,23 +58,8 @@ return [
                 //
             ],
         ],
-        
 
-        /* 覆盖布局文件layout默认的jQuery/bootstrap/js/css解决其不兼容问题 */
-        'assetManager'=>[
-            'bundles'=>[
-                'yii\bootstrap\BootstrapAsset' => [
-                    'css' => []
-                ],
-                'yii\web\JqueryAsset' => [
-                    'sourcePath' => null,
-                    'js' => []
-                ],
-            ],
-
-        ],
     ],
-
 
     'params' => $params,
 ];

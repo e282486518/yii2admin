@@ -26,6 +26,29 @@ return [
         'path' => Yii::getAlias('@storage') . '/web/image/',
     ],
 
+    /* UEditor编辑器配置 */
+    'ueditorConfig' => [
+        /* 图片上传配置 */
+        'imageRoot'            => Yii::getAlias("@storage").'/web', //图片path前缀
+        'imageUrlPrefix'       => Yii::getAlias('@storageUrl'), //图片url前缀
+        'imagePathFormat'      => '/image/{yyyy}{mm}/{time}{rand:6}',
+
+        /* 文件上传配置 */
+        'fileRoot'             => Yii::getAlias("@storage").'/web', //文件path前缀
+        'fileUrlPrefix'        => Yii::getAlias('@storageUrl'), //文件url前缀
+        'filePathFormat'       => '/file/{yyyy}{mm}/{rand:4}_{filename}',
+
+        /* 上传视频配置 */
+        'videoRoot'            => Yii::getAlias("@storage").'/web',
+        "videoUrlPrefix"       => Yii::getAlias('@storageUrl'),
+        'videoPathFormat'      => '/video/{yyyy}{mm}/{time}{rand:6}',
+
+        /* 涂鸦图片上传配置项 */
+        'scrawlRoot'           => Yii::getAlias("@storage").'/web',
+        "scrawlUrlPrefix"      => Yii::getAlias('@storageUrl'),
+        'scrawlPathFormat'     => '/image/{yyyy}{mm}/{time}{rand:6}',
+    ],
+
     /* 支付状态 */
     'pay_status' => [
         0 => '未支付',
