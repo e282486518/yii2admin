@@ -40,7 +40,7 @@ use yii\grid\GridView;
                         <th class="hidden-480">卷数</th>
                         <th style="width:140px;">压缩</th>
                         <th style="width:140px;">数据大小</th>
-                        <th style="width:140px;">备份时间</th>
+                        <th style="width:170px;">备份时间</th>
                         <th style="width:140px;">备份状态</th>
                         <th class="hidden-480">操作</th>
                     </tr>

@@ -141,8 +141,34 @@ class Backup{
             //备份数据记录
             $result = $db->createCommand("SELECT * FROM `{$table}` LIMIT {$start}, 1000")->queryAll();
             foreach ($result as $row) {
-                $row = array_map('addslashes', $row);
-                $sql = "INSERT INTO `{$table}` VALUES ('" . implode("', '", $row) . "');\n";
+                /* null数据单独处理，addslashes会将null处理成'' */
+                $row = array_map(function($f){
+                    if ($f !== null) {
+                        return addslashes($f);
+                    }
+                }, $row);
+                /* 不能使用implode，因为null会被转化为'' */
+                $field = '';
+                $len = count($row);
+                $i = 0;
+                foreach ($row as $value) {
+                    if($value === null){
+                        $field .= "',  NULL";
+                    } else {
+                        if($i == 0){
+                            $field .= "', ''".$value;
+                        } else if($i + 1 == $len){
+                            $field .= "', '".$value."'";
+                        } else {
+                            $field .= "', '".$value;
+                        }
+                    }
+                    $i ++;
+                }
+                $field = substr($field,4);
+                $field = str_replace("NULL'","NULL",$field);
+
+                $sql = "INSERT INTO `{$table}` VALUES (" . $field . ");\n";
                 if(false === $this->write($sql)){
                     return false;
                 }
