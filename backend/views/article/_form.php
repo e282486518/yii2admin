@@ -34,12 +34,16 @@ use yii\helpers\Url;
 
 <?=$form->field($model, 'description')->textarea(['class'=>'form-control c-md-4', 'rows'=>3])->label('文章描述')->hint('文章描述') ?>
 
-<?=$form->field($model, 'content')->widget(\crazydb\ueditor\UEditor::className(),[
-    'config' => [
-        'serverUrl' => ['/ueditor/index'],//确保serverUrl正确指向后端地址
-        'lang' => 'zh-cn',
-    ],
-],['class'=>'c-md-7'])->label('文章内容')?>
+<?=$form->field($model, 'content')->widget('\kucha\ueditor\UEditor',[
+    'clientOptions' => [
+        'serverUrl' => Url::to(['/ueditor/upload']),//确保serverUrl正确指向后端地址
+        'lang' =>'zh-cn', //中文为 zh-cn
+        'initialFrameWidth' => '100%',
+        'initialFrameHeight' => '400',
+    ]
+],['class'=>'c-md-7'])->label('文章内容');?>
+
+
 
 <?=$form->field($model, 'link')->textInput(['class'=>'form-control c-md-5'])->label('外链')->hint('外链地址必须带http')?>
 

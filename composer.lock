@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f0b9d075a7fcfbf0688fa489df0adccd",
-    "content-hash": "afec6e2759899380313808fa61271f25",
+    "hash": "7e20c3447e7f6503ac0d4c5e8ee9c12c",
+    "content-hash": "fd51d085fa5563234b533e6e3a4fc5b6",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -1182,7 +1182,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/e3fa29869a1430a98f4fa54f959f478a1d55f88b",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/6fc8922716bf0b3638c67ff0895a9ff688b6c027",
                 "reference": "6fc8922716bf0b3638c67ff0895a9ff688b6c027",
                 "shasum": ""
             },
@@ -1789,6 +1789,39 @@
                 "yii2"
             ],
             "time": "2014-11-09 19:54:17"
+        },
+        {
+            "name": "kucha/ueditor",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BigKuCha/yii2-ueditor-widget.git",
+                "reference": "b41439ee0c69efc800a53087c20d8bfcea0f9507"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BigKuCha/yii2-ueditor-widget/zipball/b41439ee0c69efc800a53087c20d8bfcea0f9507",
+                "reference": "b41439ee0c69efc800a53087c20d8bfcea0f9507",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "kucha\\ueditor\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "null"
+            ],
+            "authors": [
+                {
+                    "name": "BigKuCha",
+                    "email": "nevermore1989@vip.qq.com"
+                }
+            ],
+            "description": "desc",
+            "time": "2015-02-06 02:01:30"
         },
         {
             "name": "league/flysystem",

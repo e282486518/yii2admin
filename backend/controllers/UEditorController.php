@@ -12,23 +12,36 @@ use Yii;
  * 作者 ：longfei
  * Email ：phphome@qq.com
  */
-class UEditorController extends \crazydb\ueditor\UEditorController
+class UeditorController extends \common\core\Controller
 {
-    public function init(){
-        parent::init();
-        //do something
-        //这里可以对扩展的访问权限进行控制
-    }
-
-    /**
-     * 显示配置信息
-     */
-    public function actionConfig()
+    public function actions()
     {
-        return $this->show($this->config);
+        return [
+            'upload' => [
+                'class' => 'common\actions\UEditorAction',
+                'config' => [
+                    /* path路径前缀 */
+                    'imageRoot'  => Yii::getAlias("@storage").'/web',
+                    'scrawlRoot' => Yii::getAlias("@storage").'/web',
+                    'videoRoot'  => Yii::getAlias("@storage").'/web',
+                    'fileRoot'   => Yii::getAlias("@storage").'/web',
+
+                    /* url图片访问路径前缀 */
+                    'imageUrlPrefix'       => Yii::getAlias('@storageUrl'),
+
+                    /* 上传图片路径 */
+                    'imagePathFormat'      => '/image/{yyyy}{mm}/{time}{rand:6}',
+                    'scrawlPathFormat'     => '/image/{yyyy}{mm}/{time}{rand:6}',
+                    'snapscreenPathFormat' => '/image/{yyyy}{mm}/{time}{rand:6}',
+                    'catcherPathFormat'    => '/image/{yyyy}{mm}/{time}{rand:6}',
+                    'videoPathFormat'      => '/video/{yyyy}{mm}/{time}{rand:6}',
+                    'filePathFormat'       => '/file/{yyyy}{mm}/{rand:4}_{filename}',
+                    'imageManagerListPath' => '/image/',
+                    'fileManagerListPath'  => '/file/',
+                ],
+            ],
+
+        ];
     }
-    
-    // more modify ...
-    // 更多的修改
     
 }

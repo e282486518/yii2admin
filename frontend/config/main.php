@@ -23,7 +23,7 @@ return [
         /* 修改默认的request组件 */
         'request' => [
             'class' => 'common\core\Request',
-            'baseUrl' => '',
+            'baseUrl' => Yii::getAlias('@frontendUrl'),
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

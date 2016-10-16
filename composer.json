@@ -19,11 +19,11 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yiisoft/yii2-redis": "^2.0",
-        "crazydb/yii2-ueditor": "*",
         "kartik-v/yii2-widget-fileinput": "@dev",
         "kartik-v/yii2-widgets": "*",
         "trntv/yii2-glide": "*",
-        "kartik-v/yii2-field-range": "*"
+        "kartik-v/yii2-field-range": "*",
+        "kucha/ueditor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

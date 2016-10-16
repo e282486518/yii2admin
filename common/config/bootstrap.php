@@ -11,4 +11,4 @@ Yii::setAlias('@storage', dirname(dirname(__DIR__)) . '/storage');
 /* 设置 url 别名 */
 Yii::setAlias('@backendUrl', '/admin');
 Yii::setAlias('@frontendUrl', '');
-Yii::setAlias('@storageUrl', '/storage/web');
+Yii::setAlias('@storageUrl', 'http://www.yii2.cn/storage/web');

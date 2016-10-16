@@ -75,30 +75,6 @@ return [
         ],
     ],
 
-    /* 控制器映射 */
-    'controllerMap' => [
-        /* 编辑器映射 */
-        'ueditor' => [
-            'class' => 'backend\controllers\UEditorController',
-            'thumbnail' => false,//如果将'thumbnail'设置为空，将不生成缩略图。
-            'watermark' => [    //默认不生存水印
-                'path' => '', //水印图片路径
-                'position' => 9 //position in [1, 9]，表示从左上到右下的 9 个位置，即如1表示左上，5表示中间，9表示右下。
-            ],
-            'zoom' => ['height' => 500, 'width' => 500], //缩放，默认不缩放
-            'config' => [
-                //server config @see http://fex-team.github.io/ueditor/#server-config
-                'imageUrlPrefix'       => Yii::getAlias('@storageUrl'),
-                'imagePathFormat'      => '/image/{yyyy}{mm}/{time}{rand:6}',
-                'scrawlPathFormat'     => '/image/{yyyy}{mm}/{time}{rand:6}',
-                'snapscreenPathFormat' => '/image/{yyyy}{mm}/{time}{rand:6}',
-                'catcherPathFormat'    => '/image/{yyyy}{mm}/{time}{rand:6}',
-                'videoPathFormat'      => '/video/{yyyy}{mm}/{time}{rand:6}',
-                'filePathFormat'       => '/file/{yyyy}{mm}/{rand:4}_{filename}',
-                'imageManagerListPath' => '/image/',
-                'fileManagerListPath'  => '/file/',
-            ]
-        ]
-    ],
+
     'params' => $params,
 ];
