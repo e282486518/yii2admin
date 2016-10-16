@@ -28,7 +28,7 @@ return [
         /* 修改默认的request组件 */
         'request' => [
             'class' => 'common\core\Request',
-            'baseUrl' => '/admin', //等于 Yii::getAlias('@web')
+            'baseUrl' => Yii::getAlias('@backendUrl'), //等于 Yii::getAlias('@web')
         ],
         /* 数据库RBAC权限控制 */
         'authManager' => [
@@ -88,15 +88,15 @@ return [
             'zoom' => ['height' => 500, 'width' => 500], //缩放，默认不缩放
             'config' => [
                 //server config @see http://fex-team.github.io/ueditor/#server-config
-                //'imageUrlPrefix'       => '',
-                'imagePathFormat'      => '/storage/web/image/{yyyy}{mm}/{time}{rand:6}',
-                'scrawlPathFormat'     => '/storage/web/image/{yyyy}{mm}/{time}{rand:6}',
-                'snapscreenPathFormat' => '/storage/web/image/{yyyy}{mm}/{time}{rand:6}',
-                'catcherPathFormat'    => '/storage/web/image/{yyyy}{mm}/{time}{rand:6}',
-                'videoPathFormat'      => '/storage/web/video/{yyyy}{mm}/{time}{rand:6}',
-                'filePathFormat'       => '/storage/web/file/{yyyy}{mm}/{rand:4}_{filename}',
-                'imageManagerListPath' => '/storage/web/image/',
-                'fileManagerListPath'  => '/storage/web/file/',
+                'imageUrlPrefix'       => Yii::getAlias('@storageUrl'),
+                'imagePathFormat'      => '/image/{yyyy}{mm}/{time}{rand:6}',
+                'scrawlPathFormat'     => '/image/{yyyy}{mm}/{time}{rand:6}',
+                'snapscreenPathFormat' => '/image/{yyyy}{mm}/{time}{rand:6}',
+                'catcherPathFormat'    => '/image/{yyyy}{mm}/{time}{rand:6}',
+                'videoPathFormat'      => '/video/{yyyy}{mm}/{time}{rand:6}',
+                'filePathFormat'       => '/file/{yyyy}{mm}/{rand:4}_{filename}',
+                'imageManagerListPath' => '/image/',
+                'fileManagerListPath'  => '/file/',
             ]
         ]
     ],

@@ -22,8 +22,8 @@ return [
 
     /* 上传文件 */
     'upload' => [
-        'url'  => '/storage/web/image/',
-        'path' => realpath(__DIR__ . '/../../storage/web/image/').'/',
+        'url'  => Yii::getAlias('@storageUrl').'/image/',
+        'path' => Yii::getAlias('@storage') . '/web/image/',
     ],
 
     /* 支付状态 */

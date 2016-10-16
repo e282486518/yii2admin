@@ -37,6 +37,9 @@
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <script language="JavaScript">
+            var BaseUrl = '<?=Yii::getAlias('@web')?>';
+        </script>
     <!-- END HEAD -->
 
     <body class=" login">

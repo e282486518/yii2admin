@@ -27,7 +27,7 @@ $columns = [
         'header' => '图片',
         'options' => ['width' => '100px;'],
         'content' => function($model){
-            return '<img src="'.$model['cover'].'" width="100" />';
+            return '<img src="'.\common\helpers\Html::src($model['cover']).'" width="100" />';
         }
     ],
     [
