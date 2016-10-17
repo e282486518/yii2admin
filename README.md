@@ -19,13 +19,13 @@ Yii::$app->params['web'] = Config::lists();
 
 ##二、上传图片说明
 ####1、上传单图和多图
-图片存储在storage/web/image目录下面。  
-图片上传配置文件在/common/config/params的upload配置项中  
-后台图片上传使用的是backend/controllers/UploadController控制器，上传成功后返回“201610/123456789123.jpg”。结合Yii::$app->params['upload']就可以生成图片路径。  
-同时也可以使用\common\helpers\Html::src()方法生成图片路径。这个函数还可以生成类似“URL/index.php?path=201910/123456789123.jpg&w=100&h=100&fit=crop”的裁剪后的图片。其中URL可以是完整的路径，包含http，其配置在common/config/bootstarp.php的“@storageUrl”中配置。  
+* 图片存储在storage/web/image目录下面。
+* 图片上传配置文件在/common/config/params的upload配置项中
+* 后台图片上传使用的是backend/controllers/UploadController控制器，上传成功后返回“201610/123456789123.jpg”。结合Yii::$app->params['upload']就可以生成图片路径。
+* 同时也可以使用\common\helpers\Html::src()方法生成图片路径。这个函数还可以生成类似“URL/index.php?path=201910/123456789123.jpg&w=100&h=100&fit=crop”的裁剪后的图片。其中URL可以是完整的路径，包含http，其配置在common/config/bootstarp.php的“@storageUrl”中配置。
 
 ####2、编辑器使用UEditer(百度的编辑器)  
-百度编辑器的上传路径配置在\backend\comfig\main.php的controllerMap中配置  
+* 百度编辑器的上传路径配置在\common\comfig\params.php的ueditorConfig配置项
 
 
 ##三、服务器配置
