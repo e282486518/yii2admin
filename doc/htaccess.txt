@@ -3,36 +3,36 @@
 
 #    <VirtualHost *:80>
 #        ServerAdmin webmaster@dummy-host2.example.com
-#        DocumentRoot "E:\yii2-starter-kit\backend\web"
+#        DocumentRoot "E:\yii2admin\backend\web"
 #        ServerName admin.yii2.cn
-#        ErrorLog "logs/yii2.imhaigui.com-error.log"
-#        CustomLog "logs/yii2.imhaigui.com-access.log" common
+#        ErrorLog "logs/yii2.cn-error.log"
+#        CustomLog "logs/yii2.cn-access.log" common
 #    </VirtualHost>
-#    <Directory "E:\yii2-starter-kit\backend\web">
+#    <Directory "E:\yii2admin\backend\web">
 #        AllowOverride all
 #        Require all granted
 #    </Directory>
 
 #    <VirtualHost *:80>
 #        ServerAdmin webmaster@dummy-host2.example.com
-#        DocumentRoot "E:\yii2-starter-kit\frontend\web"
+#        DocumentRoot "E:\yii2admin\frontend\web"
 #        ServerName  www.yii2.cn
-#        ErrorLog "logs/yii2.imhaigui.com-error.log"
-#        CustomLog "logs/yii2.imhaigui.com-access.log" common
+#        ErrorLog "logs/yii2.cn-error.log"
+#        CustomLog "logs/yii2.cn-access.log" common
 #    </VirtualHost>
-#    <Directory "E:\yii2-starter-kit\frontend\web">
+#    <Directory "E:\yii2admin\frontend\web">
 #        AllowOverride all
 #        Require all granted
 #    </Directory>
 
 #    <VirtualHost *:80>
 #        ServerAdmin webmaster@dummy-host2.example.com
-#        DocumentRoot "E:\yii2-starter-kit\storage\web"
+#        DocumentRoot "E:\yii2admin\storage\web"
 #        ServerName  storage.yii2.cn
-#        ErrorLog "logs/yii2.imhaigui.com-error.log"
-#        CustomLog "logs/yii2.imhaigui.com-access.log" common
+#        ErrorLog "logs/yii2.cn-error.log"
+#        CustomLog "logs/yii2.cn-access.log" common
 #    </VirtualHost>
-#    <Directory "E:\yii2-starter-kit\storage\web">
+#    <Directory "E:\yii2admin\storage\web">
 #        AllowOverride all
 #        Require all granted
 #    </Directory>
