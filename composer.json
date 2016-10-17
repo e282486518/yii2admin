@@ -23,7 +23,8 @@
         "kartik-v/yii2-widgets": "*",
         "trntv/yii2-glide": "*",
         "kartik-v/yii2-field-range": "*",
-        "kucha/ueditor": "*"
+        "kucha/ueditor": "*",
+        "yiisoft/yii2-httpclient": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
