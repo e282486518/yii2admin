@@ -1,0 +1,271 @@
+
+# ======================= Apache Yii2通用后台  二级域名配置 =================================
+
+#    <VirtualHost *:80>
+#        ServerAdmin webmaster@dummy-host2.example.com
+#        DocumentRoot "E:\yii2-starter-kit\backend\web"
+#        ServerName admin.yii2.cn
+#        ErrorLog "logs/yii2.imhaigui.com-error.log"
+#        CustomLog "logs/yii2.imhaigui.com-access.log" common
+#    </VirtualHost>
+#    <Directory "E:\yii2-starter-kit\backend\web">
+#        AllowOverride all
+#        Require all granted
+#    </Directory>
+
+#    <VirtualHost *:80>
+#        ServerAdmin webmaster@dummy-host2.example.com
+#        DocumentRoot "E:\yii2-starter-kit\frontend\web"
+#        ServerName  www.yii2.cn
+#        ErrorLog "logs/yii2.imhaigui.com-error.log"
+#        CustomLog "logs/yii2.imhaigui.com-access.log" common
+#    </VirtualHost>
+#    <Directory "E:\yii2-starter-kit\frontend\web">
+#        AllowOverride all
+#        Require all granted
+#    </Directory>
+
+#    <VirtualHost *:80>
+#        ServerAdmin webmaster@dummy-host2.example.com
+#        DocumentRoot "E:\yii2-starter-kit\storage\web"
+#        ServerName  storage.yii2.cn
+#        ErrorLog "logs/yii2.imhaigui.com-error.log"
+#        CustomLog "logs/yii2.imhaigui.com-access.log" common
+#    </VirtualHost>
+#    <Directory "E:\yii2-starter-kit\storage\web">
+#        AllowOverride all
+#        Require all granted
+#    </Directory>
+
+# ======================= Apache Yii2通用后台 单域名配置=================================
+<VirtualHost *:80>
+    ServerName www.yii2.cn
+
+    RewriteEngine on
+    DocumentRoot E:\yii2admin
+    
+    # 应用前端主要重写规则
+    RewriteCond %{HTTP_HOST} ^www.yii2.cn$ [NC] 
+    RewriteCond %{REQUEST_URI} !^/(backend/web|admin|storage/web)
+    RewriteRule !^/frontend/web /frontend/web%{REQUEST_URI} [L]
+
+    # 重定向的网页没有一个斜线（注释，如果必要的话）
+    #RewriteCond %{REQUEST_URI} ^/admin/$
+    #RewriteRule ^(/admin)/ $1 [L,R=301]
+    # 禁止斜线重定向
+    RewriteCond %{REQUEST_URI} ^/admin$
+    RewriteRule ^/admin /backend/web/index.php [L]
+    # 后端应用程序的主要重写规则
+    RewriteCond %{REQUEST_URI} ^/admin
+    RewriteRule ^/admin(.*) /backend/web$1 [L]
+    
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+        AddDefaultCharset utf-8
+    </Directory>
+    <Directory "E:\yii2admin/frontend/web">
+        RewriteEngine on
+        # 如果一个目录或一个文件存在，请直接使用请求
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        # 否则去请求 index.php
+        RewriteRule . index.php
+
+        Require all granted
+    </Directory>
+    <Directory "E:\yii2admin/backend/web">
+        RewriteEngine on
+        # 如果一个目录或一个文件存在，请直接使用请求
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        # 否则去请求 index.php
+        RewriteRule . index.php
+
+        Require all granted
+    </Directory>
+    <Directory "E:\yii2admin/storage/web">
+        RewriteEngine on
+        # 如果一个目录或一个文件存在，请直接使用请求
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        # 否则去请求 index.php
+        RewriteRule . index.php
+
+        Require all granted
+    </Directory>
+    <FilesMatch \.(htaccess|htpasswd|svn|git)>
+        Require all denied
+    </FilesMatch>
+</VirtualHost>
+
+# ======================= Nginx Yii2通用后台 二级名配置=================================
+# 前台
+server {
+    listen 80;
+
+    root /var/www/frontend/web;
+    index index.php index.html;
+
+    server_name www.yii2.cn;
+
+    charset utf-8;
+
+    # location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|pdf|ppt|txt|bmp|rtf|js)$ {
+    #    access_log off;
+    #    expires max;
+    # }
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    client_max_body_size 32m;
+
+    # There is a VirtualBox bug related to sendfile that can lead to
+    # corrupted files, if not turned-off
+    # sendfile off;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass php-fpm;
+        fastcgi_index index.php;
+        include fastcgi_params;
+
+        ## Cache
+        # fastcgi_pass_header Cookie; # fill cookie valiables, $cookie_phpsessid for exmaple
+        # fastcgi_ignore_headers Cache-Control Expires Set-Cookie; # Use it with caution because it is cause SEO problems
+        # fastcgi_cache_key "$request_method|$server_addr:$server_port$request_uri|$cookie_phpsessid"; # generating unique key
+        # fastcgi_cache fastcgi_cache; # use fastcgi_cache keys_zone
+        # fastcgi_cache_path /tmp/nginx/ levels=1:2 keys_zone=fastcgi_cache:16m max_size=256m inactive=1d;
+        # fastcgi_temp_path  /tmp/nginx/temp 1 2; # temp files folder
+        # fastcgi_cache_use_stale updating error timeout invalid_header http_500; # show cached page if error (even if it is outdated)
+        # fastcgi_cache_valid 200 404 10s; # cache lifetime for 200 404;
+        # or fastcgi_cache_valid any 10s; # use it if you want to cache any responses
+    }
+}
+
+## 后台 ##
+server {
+    listen 80;
+
+    root /var/www/backend/web;
+    index index.php index.html;
+
+    server_name backend.yii2.cn;
+
+    charset utf-8;
+
+    client_max_body_size 16m;
+
+    # There is a VirtualBox bug related to sendfile that can lead to
+    # corrupted files, if not turned-off on Vagrant based setup
+    # sendfile off;
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    # location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|pdf|ppt|txt|bmp|rtf|js)$ {
+    #     access_log off;
+    #    expires max;
+    # }
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass php-fpm;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+
+}
+
+## 存储 ##
+server {
+    listen 80;
+    server_name storage.yii2.cn;
+
+    root /var/www/storage/web;
+    index index.html;
+    # expires max;
+
+    # There is a VirtualBox bug related to sendfile that can lead to
+    # corrupted files, if not turned-off
+    # sendfile off;
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass php-fpm;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+}
+
+## PHP-FPM Servers ##
+upstream php-fpm {
+    server unix:/var/run/php/php7.0-fpm.sock;
+}
+
+# ======================= Nginx Yii2通用后台 单域名配置=================================
+server {
+    listen 80;
+
+    root /var/www;
+    index index.php index.html;
+
+    server_name www.yii.cn;
+
+    charset utf-8;
+
+    # location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|pdf|ppt|txt|bmp|rtf|js)$ {
+    #   access_log off;
+    #   expires max;
+    # }
+
+    location / {
+        root /var/www/frontend/web;
+        try_files $uri /frontend/web/index.php?$args;
+    }
+
+    location /admin {
+        try_files  $uri /admin/index.php?$args;
+    }
+
+    # storage access
+    location /storage {
+        try_files  $uri /storage/web/index.php?$args;
+    }
+
+    client_max_body_size 32m;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass php-fpm;
+        fastcgi_index index.php;
+        include fastcgi_params;
+
+        ## Cache
+        # fastcgi_pass_header Cookie; # fill cookie valiables, $cookie_phpsessid for exmaple
+        # fastcgi_ignore_headers Cache-Control Expires Set-Cookie; # Use it with caution because it is cause SEO problems
+        # fastcgi_cache_key "$request_method|$server_addr:$server_port$request_uri|$cookie_phpsessid"; # generating unique key
+        # fastcgi_cache fastcgi_cache; # use fastcgi_cache keys_zone
+        # fastcgi_cache_path /tmp/nginx/ levels=1:2 keys_zone=fastcgi_cache:16m max_size=256m inactive=1d;
+        # fastcgi_temp_path  /tmp/nginx/temp 1 2; # temp files folder
+        # fastcgi_cache_use_stale updating error timeout invalid_header http_500; # show cached page if error (even if it is outdated)
+        # fastcgi_cache_valid 200 404 10s; # cache lifetime for 200 404;
+        # or fastcgi_cache_valid any 10s; # use it if you want to cache any responses
+    }
+}
+
+## PHP-FPM Servers ##
+upstream php-fpm {
+    server unix:/var/run/php/php7.0-fpm.sock;
+}
