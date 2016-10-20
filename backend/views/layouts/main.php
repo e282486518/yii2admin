@@ -45,7 +45,7 @@ AppAsset::register($this);
         <link href="<?=Yii::getAlias('@web')?>/metronic/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="<?=Yii::getAlias('@web')?>/metronic/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="<?=Yii::getAlias('@web')?>/images/favicon.ico" />
         <script language="JavaScript">
             var BaseUrl = '<?=Yii::getAlias('@web')?>';
         </script>
