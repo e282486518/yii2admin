@@ -50,7 +50,7 @@ class UEditorAction extends \kucha\ueditor\UEditorAction
                 break;
         }
         /* 输出结果 */
-
+        //var_dump($result);
         return $result;
 
     }
