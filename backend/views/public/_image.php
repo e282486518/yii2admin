@@ -1,3 +1,15 @@
+<?php
+/* 判断是否保存到数据库 */
+$saveDB = isset($saveDB)?$saveDB:0;
+if ($saveDB) {
+    $picture = \backend\models\Picture::getPic($data);
+} else {
+    $picture['id']   = $data;
+    $picture['path'] = $data;
+}
+
+?>
+
 <!-- image表图集 -->
 <div class="form-group">
     <div>
@@ -9,13 +21,13 @@
             <span class="btn red btn-outline btn-file">
                 <span class="fileinput-new"> 选择图片 </span>
                 <span class="fileinput-exists"> 修改 </span>
-                <input type="hidden" name="<?=$field?>" id="file_ipt" value="<?=$data?>">
+                <input type="hidden" name="<?=$field?>" id="file_ipt" value="<?=$picture['id']?>">
                 <input type="file" name="..." id="file_but"> 
             </span>
             <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 移除 </a>
         </div>
         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-            <img id="file_img" src="<?= !empty($data) ? \common\helpers\Html::src($data) : \yii\helpers\Url::to('@web/images/no.png'); ?>">
+            <img id="file_img" src="<?= !empty($picture['path']) ? \common\helpers\Html::src($picture['path']) : \yii\helpers\Url::to('@web/images/no.png'); ?>">
         </div>
         
     </div>
@@ -41,15 +53,15 @@ $(function() {
                 $.ajax({
                     type: 'post',
                     url: '<?=\yii\helpers\Url::to(["upload/image"])?>',
-                    data: {imgbase64:this.result},
+                    data: {imgbase64:this.result,saveDB:<?=$saveDB?>},
                     dataType: 'json',
                     beforeSend: function(){
                         
                     },
                     success: function(json){
                         if(json.boo){
-                            $('#file_img').attr('src','<?=Yii::$app->params['upload']['url']?>'+json.data);
-                            $('#file_ipt').val(json.data);
+                            $('#file_img').attr('src','<?=Yii::$app->params['upload']['url']?>'+json.data.url);
+                            $('#file_ipt').val(<?=$saveDB?'json.data.id':'json.data.url'?>);
                         } else {
                             alert(json.msg);
                         }

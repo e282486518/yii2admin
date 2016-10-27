@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-10-15 11:13:43
--- 服务器版本： 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: 2016-10-27 19:19:05
+-- 服务器版本： 5.5.48-log
+-- PHP Version: 5.6.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -903,12 +903,20 @@ INSERT INTO `yii2_order` (`order_id`, `order_sn`, `uid`, `name`, `tel`, `sfz`, `
 CREATE TABLE IF NOT EXISTS `yii2_picture` (
   `id` int(10) unsigned NOT NULL COMMENT '主键id自增',
   `path` varchar(255) NOT NULL DEFAULT '' COMMENT '路径',
-  `url` varchar(255) NOT NULL DEFAULT '' COMMENT '图片链接',
   `md5` char(32) NOT NULL DEFAULT '' COMMENT '文件md5',
-  `sha1` char(40) NOT NULL DEFAULT '' COMMENT '文件 sha1编码',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `yii2_picture`
+--
+
+INSERT INTO `yii2_picture` (`id`, `path`, `md5`, `create_time`, `status`) VALUES
+(1, '201610/1477562926256.png', 'f1510ddb99606c5aa75fdf9c9e245136', 1477562926, 1),
+(2, '201610/1477564226300.png', '86375d934477a20aaf0f446b12a17cfb', 1477564226, 1),
+(3, '201610/1477564287836.png', '19315ff439f902b8ede0bf639e652f75', 1477564287, 1),
+(4, '201610/1477567061651.png', 'db09e4d570a5d46bda6782cff9ead020', 1477567061, 1);
 
 -- --------------------------------------------------------
 
@@ -939,7 +947,7 @@ CREATE TABLE IF NOT EXISTS `yii2_shop` (
 INSERT INTO `yii2_shop` (`id`, `type`, `title`, `description`, `cover`, `images`, `num`, `price`, `extend`, `sort`, `create_time`, `update_time`, `status`) VALUES
 (1, 1, '大床双人房特价', '111111', '/upload/image/201609/1473947300137.jpg', '/upload/image/201608/1472638058196.jpg,/upload/image/201608/1472638060470.jpg', 111, '520.12', 'a:3:{i:111;s:3:"111";i:222;s:3:"222";i:333;s:3:"333";}', 1, 1472638475, 1473947302, 1),
 (2, 4, '海钓管理测试测试测试', '测试测试测试', '', '/upload/image/201608/1472639208479.jpg,/upload/image/201608/1472639210113.jpg', 133, '421.00', 'a:3:{i:11;s:2:"11";i:22;s:2:"22";i:33;s:2:"33";}', 3, 1472639234, NULL, 1),
-(3, 1, '测试酒店1', '测试酒店1', '201610/1476449933440.jpg', '201610/147645012347.jpg,201610/1476450125874.jpg,201610/1476450127892.jpg', 4, '420.23', 'a:1:{s:3:"sss";s:5:"sadfa";}', 0, 1473835350, 1476450135, 1),
+(3, 1, '测试酒店1', '测试酒店1', '1', '1,2,3', 4, '420.23', 'a:1:{s:3:"sss";s:5:"sadfa";}', 0, 1473835350, 1477564290, 1),
 (4, 2, '测试帆船标题', '测试商品描述测试商品描述测试商品描述测试商品描述测试商品描述', '/storage/web/image/201610/147642695750.jpg', '/upload/image/201609/1474176211761.jpg,/upload/image/201609/1474176213249.jpg,/upload/image/201609/1474176215379.jpg', 111, '333.00', 'a:1:{i:0;s:0:"";}', 0, 1474176248, 1476426960, 1),
 (5, 3, '测试潜水标题', '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述', '/upload/image/201609/1474176263443.jpg', '/upload/image/201609/1474176285287.jpg,/upload/image/201609/1474176289221.jpg,/upload/image/201609/1474176293497.jpg,/upload/image/201609/1474176299382.jpg', 200, '900.00', 'a:1:{i:0;s:0:"";}', 0, 1474176308, NULL, 1),
 (6, 1, '666666', '666666666666', '/upload/image/201609/1474213186190.png', '/upload/image/201609/1474213195722.jpg', 6, '2288.00', 'a:1:{i:0;s:15:"dssdfsfsdfdsfsa";}', 1, 1474213219, 1474213264, 0);
@@ -1056,7 +1064,7 @@ CREATE TABLE IF NOT EXISTS `yii2_train_certificate` (
 --
 
 INSERT INTO `yii2_train_certificate` (`id`, `title`, `cover`, `description`, `ctime`) VALUES
-(1, 'AAA认证证书', '/storage/web/image/201610/1476425843601.jpg', '证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明', 0),
+(1, 'AAA认证证书', '201610/1477564613753.png', '证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明', 0),
 (2, 'BBB认证证书', '/upload/image/201609/147451603391.jpg', '证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明', 0),
 (3, 'CCC认证证书', '/upload/image/201609/1474516376670.jpg', '证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明 ', 0);
 
@@ -1126,7 +1134,7 @@ CREATE TABLE IF NOT EXISTS `yii2_user` (
 --
 
 INSERT INTO `yii2_user` (`uid`, `username`, `password`, `salt`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `tuid`, `image`, `score`, `score_all`, `status`) VALUES
-(6, 'e282486518', '$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG', 'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN', 'phphome@qq.com', '13656568989', 1456568652, 13654444444, 1456568652, 13556464888, 1473605683, 7, '/upload/image/201609/1473605673521.png', 10, 0, 1),
+(6, 'e282486518', '$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG', 'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN', 'phphome@qq.com', '13656568989', 1456568652, 13654444444, 1456568652, 13556464888, 1477564915, 7, '1', 10, 0, 1),
 (7, '282486518', '$2y$13$KIAenVWuR2Tgi1VCKiPegeVsQAHXyDcp9rUmzhqK6TNjL4Cqc3YPa', 'n9uguceYCqn_jQNd8F6-JRHOj21yltUo', 'phphome@qq.coms', '13645685421', 1472626509, 2130706433, 0, 2130706433, 1472626719, 0, '/upload/image/201608/1472626502486.jpg', 1, 1, 0),
 (8, '135232323232', '$2y$13$UVA5264Qic4g8BDl940x1e0ZefVI3QqpH8tH6bttL/cF8GcU1C7Rm', 'Dg36PS0QshZ-Y2zhQJa559RSKJULGO_8', NULL, '', 1474112224, 2130706433, 0, 2130706433, 0, 0, '', 0, 0, 0),
 (13, 'aabbcc', '$2y$13$46n16kagedYUXx6WXZ2QkuSGJKm3FDr6iI.KPNzAkHYRHmplqgAiC', 'OblZ1QuXGGGiXZWTPqfDrCoF_qXVIN3b', NULL, '13421839870', 1474114459, 2130706433, 0, 2130706433, 0, 0, '', 0, 0, 1),
@@ -1404,7 +1412,7 @@ ALTER TABLE `yii2_order`
 -- AUTO_INCREMENT for table `yii2_picture`
 --
 ALTER TABLE `yii2_picture`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id自增';
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id自增',AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `yii2_shop`
 --

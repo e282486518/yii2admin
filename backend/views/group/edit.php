@@ -46,6 +46,7 @@ use backend\models\Shop;
         <?=$this->renderFile('@app/views/public/_image.php',[
             'data'=>$model->cover,
             'field'=>'ShopGroup[cover]',
+            'saveDB'=>1, //图片是否保存到picture表，默认不保存
             'title'=>'封面图片',
             'tishi'=>'单图图片尺寸为：300*300'
         ])?>
@@ -54,6 +55,7 @@ use backend\models\Shop;
         <?=$this->renderFile('@app/views/public/_images.php',[
             'data'=>$model->images,
             'field'=>'ShopGroup[images]',
+            'saveDB'=>1, //图片是否保存到picture表，默认不保存
             'title'=>'商品图集',
             'tishi'=>'图组图片尺寸为：300*300'
         ])?>

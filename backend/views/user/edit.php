@@ -73,6 +73,7 @@ use yii\helpers\Url;
         <?=$this->renderFile('@app/views/public/_image.php',[
             'data'=>$model->image,
             'field'=>'User[image]',
+            'saveDB'=>1, //图片是否保存到picture表，默认不保存
             'title'=>'头像',
             'tishi'=>'单图图片尺寸为：300*300'
         ])?>

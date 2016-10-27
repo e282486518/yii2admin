@@ -1,5 +1,7 @@
 <!-- image表图集 -->
 <?php
+/* 判断是否保存到数据库 */
+$saveDB = isset($saveDB)?$saveDB:0;
 /* 图集处理 */
 $albums = array();
 if (!empty($data)) {
@@ -27,10 +29,18 @@ if (!empty($data)) {
         <div class="fileupload-list">
             <?php if($albums && is_array($albums)): ?>
             <?php foreach($albums as $g): ?>
+                <?php
+                if ($saveDB) {
+                    $picture = \backend\models\Picture::getPic($g);
+                } else {
+                    $picture['id']   = $g;
+                    $picture['path'] = $g;
+                }
+                ?>
                 <div class="fileupload-item thumbnail">
-                    <img src="<?=\common\helpers\Html::src($g)?>" />
+                    <img src="<?=\common\helpers\Html::src($picture['path'])?>" />
                     <span class="fileupload-del">删除</span>
-                    <input type="hidden" name="<?=$field?>[]" value="<?=$g?>" />
+                    <input type="hidden" name="<?=$field?>[]" value="<?=$picture['id']?>" />
                 </div>
             <?php endforeach ?>
             <?php endif ?>
@@ -69,7 +79,7 @@ $(function() {
                 $.ajax({
                     type: 'post',
                     url: '<?=\yii\helpers\Url::to(["upload/image"])?>',
-                    data: {imgbase64:this.result},
+                    data: {imgbase64:this.result,saveDB:<?=$saveDB?>},
                     dataType: 'json',
                     beforeSend: function(){
                         $('.fileupload-text').html('上传中...');
@@ -78,9 +88,9 @@ $(function() {
                         if(json.boo){
                             var html  = '';
                                 html += '<div class="fileupload-item thumbnail">';
-                                html += '    <img src="<?=Yii::$app->params['upload']['url']?>'+ json.data +'" />';
+                                html += '    <img src="<?=Yii::$app->params['upload']['url']?>'+ json.data.url +'" />';
                                 html += '    <span class="fileupload-del">删除</span>';
-                                html += '    <input type="hidden" name="<?=$field?>[]" value="'+json.data+'" />';
+                                html += '    <input type="hidden" name="<?=$field?>[]" value="'+<?=$saveDB?'json.data.id':'json.data.url'?>+'" />';
                                 html += '</div>';
                             $('.fileupload-list').append(html);
                             $('.fileupload-text').html('上传成功');

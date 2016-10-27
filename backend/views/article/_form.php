@@ -28,6 +28,7 @@ use yii\helpers\Url;
 <?=$this->renderFile('@app/views/public/_image.php',[
     'data'=>$model->cover,
     'field'=>'Article[cover]',
+    'saveDB'=>1, //图片是否保存到picture表，默认不保存
     'title'=>'封面图片',
     'tishi'=>'单图图片尺寸为：300*300'
 ])?>

@@ -31,7 +31,7 @@ $columns = [
     [
         'header' => '手机',
         'attribute' => 'mobile',
-        'options' => ['width' => '150px;']
+        'options' => ['width' => '100px;']
     ],
     [
         'header' => '最后登录时间',
@@ -42,7 +42,7 @@ $columns = [
     [
         'header' => '最后登录IP',
         'attribute' => 'last_login_ip',
-        'options' => ['width' => '150px;'],
+        'options' => ['width' => '120px;'],
         'content' => function($model){
             return long2ip($model['last_login_ip']);
         }

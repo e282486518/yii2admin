@@ -45,6 +45,7 @@ use yii\helpers\Url;
         <?=$this->renderFile('@app/views/public/_image.php',[
             'data' =>$model->cover,
             'field'=>'TrainCertificate[cover]',
+            'saveDB'=>1, //图片是否保存到picture表，默认不保存
             'title'=>'证书图片',
             'tishi'=>'描述信息'
         ])?>
