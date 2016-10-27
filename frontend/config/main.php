@@ -14,7 +14,12 @@ return [
     'defaultRoute' => 'index',
     /* 控制器默认命名空间 */
     'controllerNamespace' => 'frontend\controllers',
-
+    /* 模块 */
+    'modules' => [
+        'user' => [
+            'class' => 'frontend\modules\user\Module',
+        ],
+    ],
     'components' => [
         'user' => [
             'identityClass' => 'frontend\models\User',
