@@ -9,13 +9,13 @@ use Yii;
  */
 class FuncHelper
 {
-    /*
+    /**
      * ---------------------------------------
      * ajax标准返回格式
-     * @param  int    $code  错误码
-     * @param  int    $msg  提示信息
-     * @param  int    $obj  返回数据
-     * @return json
+     * @param $code integer  错误码
+     * @param $msg string  提示信息
+     * @param $obj mixed  返回数据
+     * @return void
      * ---------------------------------------
      */
     public static function ajaxReturn($code = 0, $msg = 'success', $obj = ''){
@@ -29,11 +29,11 @@ class FuncHelper
         exit(json_encode($json));
     }
     
-    /*
+    /**
      * ---------------------------------------
      * 分析枚举类型字段值 格式 a:名称1,b:名称2
-     * @param  string $string  字符串
-     * @return mix
+     * @param $string string  字符串
+     * @return mixed
      * ---------------------------------------
      */
     public static function parse_field_attr($string) {
@@ -54,11 +54,12 @@ class FuncHelper
         return $value;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 读出数据库后，经常将状态等数字转化为字符串
-     * @param  int    $id  参数信息
-     * @return json   返回信息
+     * @param mixed $data  参数信息
+     * @param array $map 要转化的数组信息
+     * @return string
      * ---------------------------------------
      */
     public static function int_to_string($data, $map=array(1=>'正常',-1=>'删除',0=>'禁用',2=>'未审核',3=>'草稿')) {
@@ -72,11 +73,11 @@ class FuncHelper
         return '';
     }
     
-    /*
+    /**
      * ---------------------------------------
      * 上传base64格式的图片
-     * @param  int    $id  参数信息
-     * @return json   返回信息
+     * @param string $imgbase64 图片的base64编码
+     * @return mixed
      * ---------------------------------------
      */
     public static function uploadImage($imgbase64){
@@ -97,9 +98,12 @@ class FuncHelper
         return false;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 发送短信验证码
+     * @param string $mobile 手机号码
+     * @param string $content 内容
+     * @return bool
      * ---------------------------------------
      */
     public static function sendSMS($mobile, $content = '' ){
@@ -141,10 +145,13 @@ class FuncHelper
         //echo $result;  //输出result内容，查看返回值，成功为success，错误为error，（错误内容在上面有显示）
     }
 
-    /*
-     * ---------------------------------------
-     * curl post
-     * ---------------------------------------
+    /**
+     *---------------------------------------
+     * post curl
+     * @param string $url
+     * @param array $post_fields
+     * @return mixed
+     *---------------------------------------
      */
     public static function curlSMS($url,$post_fields=array())
     {
@@ -162,10 +169,12 @@ class FuncHelper
     }
 
     /**
+     *---------------------------------------
      * 导出数据为excel表格
-     * $data    一个二维数组,结构如同从数据库查出来的数组
-     * $title   excel的第一行标题,一个数组,如果为空则没有标题
-     * $filename 文件名
+     * @param array $data 一个二维数组,结构如同从数据库查出来的数组
+     * @param array $title excel的第一行标题,一个数组,如果为空则没有标题
+     * @param string $filename 文件名
+     *---------------------------------------
      */
     public static function exportexcel($data=array(),$title=array(),$filename='report'){
         header("Content-type:application/octet-stream");

@@ -8,11 +8,11 @@ use Yii;
 class Category extends \common\models\Category
 {
     
-    /*
+    /**
      * ---------------------------------------
      * 递归获取其所有父栏目
-     * @param  int    $id  菜单ID
-     * @return json   返回信息
+     * @param $id int 菜单ID
+     * @return array
      * ---------------------------------------
      */
     public static function getParents($id){
@@ -25,11 +25,11 @@ class Category extends \common\models\Category
         return $path;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 获取一条数据
-     * @param  int    $id  参数信息
-     * @return json   返回信息
+     * @param $id int
+     * @return array
      * ---------------------------------------
      */
     public static function getOne($id){

@@ -51,12 +51,12 @@ class BaseController extends Controller
         Yii::$app->params['web'] = Config::lists();
 
     }
-    
-    /*
+
+    /**
      * ---------------------------------------
      * 在执行所有动作之前，先执行这个方法。用于权限验证
-     * @param  int    $id  参数信息 
-     * @return bool   true-继续执行/false-终止执行
+     * @param \yii\base\Action $action
+     * @return bool true-继续执行/false-终止执行
      * ---------------------------------------
      */
     public function beforeAction($action){
@@ -76,7 +76,7 @@ class BaseController extends Controller
         return true;
     }
     
-    /*
+    /**
      * ---------------------------------------
      * 权限检测
      * @param string  $rule    检测的规则
@@ -98,7 +98,7 @@ class BaseController extends Controller
 
     }
     
-    /*
+    /**
      * ---------------------------------------
      * 标记当前位置到cookie供后续跳转调用
      * ---------------------------------------
@@ -110,11 +110,11 @@ class BaseController extends Controller
         ]));
     }
 
-    /*
+    /**
      * ---------------------------------------
-     * 函数功能信息 public private protected static
-     * @param  int    $id  参数信息
-     * @return json   返回信息
+     * 获取之前标记的cookie位置
+     * @param string $default
+     * @return mixed
      * ---------------------------------------
      */
     public function getForward($default=''){
@@ -122,11 +122,11 @@ class BaseController extends Controller
         return Yii::$app->request->cookies->getValue('__forward__', $default);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 传统分页列表数据集获取方法
-     * @param sting|Model  $model   模型名或模型实例
-     * @param array        $where   where查询条件
+     * @param string $model   模型名或模型实例
+     * @param array $where   where查询条件
      * @param array|string $order   排序条件
      * @return array|false
      * ---------------------------------------
@@ -137,7 +137,6 @@ class BaseController extends Controller
         $pages = new Pagination([
             'totalCount' => $countQuery->count(),
             'defaultPageSize' => 10,
-
         ]);
         $data  = $query->orderBy($order)->offset($pages->offset)
             ->limit($pages->limit)
@@ -146,10 +145,10 @@ class BaseController extends Controller
         return [$data, $pages];
     }
 
-    /*
+    /**
      * ---------------------------------------
      * dataProvider列表数据集获取方法
-     * @param sting|Model  $model   模型名或模型实例
+     * @param string $model   模型名或模型实例
      * @param array        $where   where查询条件
      * @param array|string $order   排序条件
      * @return array|false
@@ -167,7 +166,7 @@ class BaseController extends Controller
         return $dataProvider;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 修改数据表一条记录的一条值
      * @param string $model 模型名称
@@ -192,7 +191,7 @@ class BaseController extends Controller
         }
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 修改数据表一条记录的一条值
      * @param string $model 模型名称
@@ -224,7 +223,7 @@ class BaseController extends Controller
         }
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 由表主键删除数据表中的多条记录
      * @param string $model 模型名称,供M函数使用的参数
@@ -248,7 +247,7 @@ class BaseController extends Controller
         }
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 获取控制器菜单数组,二级菜单元素位于一级菜单的'_child'元素中
      * @param  int   $id  参数信息
@@ -330,11 +329,11 @@ class BaseController extends Controller
         return $menus;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 根据menu库，返回权限节点，或后台菜单
-     * @param boolean $tree    是否返回多维数组结构(生成菜单时用到),为false返回一维数组(生成权限节点时用到)
-     * @retrun array
+     * @param boolean $tree 是否返回多维数组结构(生成菜单时用到),为false返回一维数组(生成权限节点时用到)
+     * @return array
      * ---------------------------------------
      */
     public function returnNodes($tree = true){
@@ -402,7 +401,7 @@ class BaseController extends Controller
      * 调用模板显示 默认为public目录下面的success页面
      * 提示页面为可配置 支持模板标签
      * @param string $message 提示信息
-     * @param Boolean $status 状态
+     * @param int $status 状态
      * @param string $jumpUrl 页面跳转地址
      * @param mixed $ajax 是否为Ajax方式 当数字时指定跳转时间
      * @access private

@@ -20,7 +20,7 @@ class Menu extends \common\models\Menu
         ];
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 递归获取其所有父栏目
      * @param  int    $id  菜单ID

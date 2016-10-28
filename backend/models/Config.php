@@ -7,7 +7,7 @@ use Yii;
 
 class Config extends \common\models\Config
 {
-    /*
+    /**
      * ---------------------------------------
      * 获取 数据库中的 配置列表
      * @return array
@@ -28,12 +28,12 @@ class Config extends \common\models\Config
         return $config;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 根据配置类型解析配置
      * @param  integer $type  配置类型
      * @param  string  $value 配置值
-     * @return mix
+     * @return mixed
      * ---------------------------------------
      */
     public static function parse($type, $value){

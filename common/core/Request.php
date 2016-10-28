@@ -8,7 +8,7 @@ use Yii;
 class Request extends \yii\web\Request
 {
 
-    /*
+    /**
      * ---------------------------------------
      * 获取页面GET/POST数据
      * @param string $name 参数名
@@ -24,7 +24,7 @@ class Request extends \yii\web\Request
         return $value;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 获取页面GET/POST的int数据
      * @param string $name 参数名

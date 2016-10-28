@@ -27,9 +27,11 @@ class ActiveField extends \yii\widgets\ActiveField
 
     public $enableClientValidation = true;
 
-    /*
+    /**
      * ---------------------------------------
      * 带前置/后置图标的input
+     * @param array $options
+     * @return $this
      * ---------------------------------------
      */
     public function iconTextInput($options = []){
@@ -48,10 +50,14 @@ class ActiveField extends \yii\widgets\ActiveField
 
         return $this;
     }
-    
-    /*
+
+    /**
      * ---------------------------------------
      * radio单选
+     * @param array $items
+     * @param array $options
+     * @param string $class
+     * @return $this
      * ---------------------------------------
      */
     public function radioList($items, $options = [], $class='mt-radio mt-radio-outline'){
@@ -73,9 +79,13 @@ class ActiveField extends \yii\widgets\ActiveField
         return $this;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * checkbox多选
+     * @param array $items
+     * @param array $options
+     * @param string $class
+     * @return $this
      * ---------------------------------------
      */
     public function checkboxList($items, $options = [], $class='mt-checkbox mt-checkbox-outline'){
@@ -95,9 +105,12 @@ class ActiveField extends \yii\widgets\ActiveField
         return $this;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * select下拉框
+     * @param array $items
+     * @param array $options
+     * @return $this
      * ---------------------------------------
      */
     public function selectList($items, $options = []){
@@ -106,9 +119,14 @@ class ActiveField extends \yii\widgets\ActiveField
         return parent::dropDownList($items, $options);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * widget
+     * @param string $class
+     * @param array $config
+     * @param array $options 主要设置$options['class']
+     * @return $this
+     * @throws \Exception
      * ---------------------------------------
      */
     public function widget($class, $config = [], $options = [])
@@ -123,9 +141,12 @@ class ActiveField extends \yii\widgets\ActiveField
         return $this;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 提示信息 处理
+     * @param string $content
+     * @param array $options
+     * @return $this
      * ---------------------------------------
      */
     public function hint($content, $options = [])
@@ -137,9 +158,11 @@ class ActiveField extends \yii\widgets\ActiveField
         return $this;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 错误处理
+     * @param array $options
+     * @return $this
      * ---------------------------------------
      */
     public function error($options = []){

@@ -16,9 +16,13 @@ use Yii;
  */
 class Html extends \yii\helpers\Html
 {
-    /*
+    /**
      * ---------------------------------------
      * 生成 图片路径
+     * @param string $url 图片相对路径，一般为“201605/1235654.jpg”
+     * @param string $params 生成链接时的附加测试，例如长宽等
+     * @param bool $isUrl 是否生成php文档形式的url
+     * @return string
      * ---------------------------------------
      */
     public static function src($url,$params = '',$isUrl = false){
@@ -36,6 +40,15 @@ class Html extends \yii\helpers\Html
         return Yii::getAlias('@storageUrl').'/index.php?'.$query;
     }
 
+    /**
+     * ---------------------------------------
+     * 重写生成html input radio标签，为了适应metronic_v4.5.6主题，加了个<span></span>
+     * @param string $name
+     * @param bool $checked
+     * @param array $options
+     * @return string
+     * ---------------------------------------
+     */
     public static function radio($name, $checked = false, $options = [])
     {
         $options['checked'] = (bool) $checked;
@@ -58,6 +71,15 @@ class Html extends \yii\helpers\Html
         }
     }
 
+    /**
+     * ---------------------------------------
+     * 重写生成html input checkbox标签，为了适应metronic_v4.5.6主题，加了个<span></span>
+     * @param string $name
+     * @param bool $checked
+     * @param array $options
+     * @return string
+     * ---------------------------------------
+     */
     public static function checkbox($name, $checked = false, $options = [])
     {
         $options['checked'] = (bool) $checked;

@@ -12,7 +12,7 @@ use Yii;
  */
 class Train extends \common\models\Train
 {
-    /*
+    /**
      * ---------------------------------------
      * 获取一条商品信息
      * ---------------------------------------
@@ -21,7 +21,7 @@ class Train extends \common\models\Train
         return static::find()->where(['id'=>$id])->asArray()->one();
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 商品列表 按类型分组
      * ---------------------------------------
@@ -39,7 +39,7 @@ class Train extends \common\models\Train
         return $type == 0 ? $arr : $arr[$type];
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 商品列表 按类型分组 key-value
      * ---------------------------------------

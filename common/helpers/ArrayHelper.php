@@ -110,13 +110,13 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
         return false;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 递归方式将tree结构转化为 表单中select可使用的格式
      * @param  int    $tree  树型结构的数组
      * @param  string $title 将格式化的字段
      * @param  int    $level 当前循环的层次,从0开始
-     * @return json   返回信息
+     * @return string   返回信息
      * ---------------------------------------
      */
     public static function format_tree($tree, $title = 'title', $level = 0){
