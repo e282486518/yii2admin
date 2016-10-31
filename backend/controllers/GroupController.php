@@ -70,6 +70,7 @@ class GroupController extends BaseController
 
             /* 将图组转化为字符串 */
             if (isset($data['images']) && is_array($data['images'])) {
+                $data['images'] = array_values(array_flip(array_flip($data['images'])));
                 $data['images'] = trim(implode ( ",", $data['images']),',');
             }
 
@@ -125,6 +126,7 @@ class GroupController extends BaseController
 
             /* 将图组转化为字符串 */
             if (isset($data['images']) && is_array($data['images'])) {
+                $data['images'] = array_values(array_flip(array_flip($data['images'])));
                 $data['images'] = trim(implode ( ",", $data['images']),',');
             }//var_dump($data);exit();
 
