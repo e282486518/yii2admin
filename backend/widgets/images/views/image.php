@@ -1,6 +1,9 @@
 <?php
+use yii\helpers\Html;
+
 /* 判断是否保存到数据库 */
 $saveDB = isset($saveDB)?$saveDB:0;
+$data   = $model->{$attribute};
 if ($saveDB) {
     $picture = \backend\models\Picture::getPic($data);
 } else {
@@ -11,25 +14,16 @@ if ($saveDB) {
 ?>
 
 <!-- image表图集 -->
-<div class="form-group">
-    <div>
-        <label><?=isset($title)?$title:'上传图片'?></label>
-        <span class="help-inline">（<?=isset($tishi)?$tishi:''?>）</span>
+<div class="fileinput fileinput-new" data-provides="fileinput">
+    <div style="margin-bottom:5px;">
+        <span class="btn red btn-outline btn-file">
+            <span class="fileinput-new"> 上传图片 </span>
+            <?=Html::activeInput('hidden', $model, $attribute, ['value'=>$picture['id']])?>
+            <input type="file" name="..." class="file_buttom<?=$saveDB?>">
+        </span>
     </div>
-    <div class="fileinput fileinput-new" data-provides="fileinput">
-        <div style="margin-bottom:5px;">
-            <span class="btn red btn-outline btn-file">
-                <span class="fileinput-new"> 选择图片 </span>
-                <span class="fileinput-exists"> 修改 </span>
-                <input type="hidden" name="<?=$field?>" id="file_ipt" value="<?=$picture['id']?>">
-                <input type="file" name="..." id="file_but"> 
-            </span>
-            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> 移除 </a>
-        </div>
-        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-            <img id="file_img" src="<?= !empty($picture['path']) ? \common\helpers\Html::src($picture['path']) : \yii\helpers\Url::to('@web/images/no.png'); ?>">
-        </div>
-        
+    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+        <img class="file_img" src="<?= !empty($picture['path']) ? \common\helpers\Html::src($picture['path']) : \yii\helpers\Url::to('@web/images/no.png'); ?>">
     </div>
 </div>
 
@@ -43,7 +37,10 @@ $this->registerCssFile('@web/metronic/global/plugins/bootstrap-fileinput/bootstr
 
 $(function() {
     /* ===================上传单图======================= */
-    $("#file_but").on("change", function(){
+    $(".file_buttom<?=$saveDB?>").on("change", function(){
+        var file_ipt = $(this).siblings('input');
+        var file_img = $(this).parents('.fileinput').find('.file_img');
+
         var files = !!this.files ? this.files : [];
         if (!files.length || !window.FileReader) return;
         if (/^image/.test( files[0].type)){
@@ -59,9 +56,9 @@ $(function() {
                         
                     },
                     success: function(json){
-                        if(json.boo){
-                            $('#file_img').attr('src','<?=Yii::$app->params['upload']['url']?>'+json.data.url);
-                            $('#file_ipt').val(<?=$saveDB?'json.data.id':'json.data.url'?>);
+                        if(json.boo){console.log(file_ipt);console.log(file_img);
+                            file_img.attr('src','<?=Yii::$app->params['upload']['url']?>'+json.data.url);
+                            file_ipt.val(<?=$saveDB?'json.data.id':'json.data.url'?>);
                         } else {
                             alert(json.msg);
                         }
@@ -73,7 +70,6 @@ $(function() {
             }
         }
     });
-    
 });
 
 <?php $this->endBlock() ?>

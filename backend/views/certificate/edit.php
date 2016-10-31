@@ -42,13 +42,10 @@ use yii\helpers\Url;
         <?=$form->field($model, 'description')->textarea(['rows'=>3])->label('证书描述'); ?>
         
         <!-- 单图 -->
-        <?=$this->renderFile('@app/views/public/_image.php',[
-            'data' =>$model->cover,
-            'field'=>'TrainCertificate[cover]',
+        <?=$form->field($model, 'cover')->widget('\backend\widgets\images\Images',[
+            //'type' => \backend\widgets\images\Images::TYPE_IMAGE, // 单图
             'saveDB'=>1, //图片是否保存到picture表，默认不保存
-            'title'=>'证书图片',
-            'tishi'=>'描述信息'
-        ])?>
+        ],['class'=>'c-md-12'])->label('证书图片')->hint('单图描述信息');?>
         
         <div class="form-actions">
             <?= Html::submitButton('<i class="icon-ok"></i> 确定', ['class' => 'btn blue ajax-post','target-form'=>'form-aaa']) ?>

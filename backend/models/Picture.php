@@ -22,6 +22,7 @@ class Picture extends \common\models\Picture
         $file_md5  = md5_file($file_path);
         $image = static::find()->where(['md5'=>$file_md5])->asArray()->one();
         if ($image) {
+            unlink($file_path); // 图片已存在，删除该图片
             return $image;
         }
         $model = new Picture();

@@ -21,7 +21,10 @@ class UploadAction extends Action
         $json = [
             'boo'  => false,
             'msg'  => '上传失败',
-            'data' => ''
+            'data' => [
+                'id' => 0,
+                'url' => '',
+            ]
         ];
         $imgbase64 = Yii::$app->request->post('imgbase64');
         $saveDB = Yii::$app->request->post('saveDB',0);
@@ -30,21 +33,18 @@ class UploadAction extends Action
         }
         $url = FuncHelper::uploadImage($imgbase64);
         if ($url) {
-            $data = [
-                'id' => 0,
-                'url' => $url,
-            ];
+            $json['data']['url'] = $url;
             /* 保存图片到picture表 */
             if ($saveDB) {
                 $pic = Picture::savePic($url);
                 if (!$pic) {
                     $this->ajaxReturn($json);
                 }
-                $data['id'] = $pic['id'];
+                $json['data']['id']  = $pic['id'];
+                $json['data']['url'] = $pic['path'];
             }
             $json['boo']  = true;
             $json['msg']  = '上传成功';
-            $json['data'] = $data;
         }
         $this->ajaxReturn($json);
     }

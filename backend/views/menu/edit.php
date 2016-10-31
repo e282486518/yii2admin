@@ -48,19 +48,6 @@ use common\helpers\ArrayHelper;
 
         <?=$form->field($model, 'group')->textInput(['class'=>'form-control c-md-3'])->label('分组')->hint('格式为：分组名称|图标样式 ，例如：系统|icon-comment')?>
 
-        <?=$form->field($model, 'group')->widget('\backend\widgets\image\Image',[
-            'data'=>$model->group,
-            'field'=>'Train[cover]',
-            'saveDB'=>1, //图片是否保存到picture表，默认不保存
-            'title'=>'封面图片',
-            'tishi'=>'单图图片尺寸为：300*300'
-        ])->label('测试widget')->hint('ce shi widgets');?>
-        <?=$form->field($model, 'group')->widget('\backend\widgets\image\Image',[
-            'data'=>$model->group,
-            'field'=>'Train[cover]',
-            'title'=>'封面图片',
-            'tishi'=>'单图图片尺寸为：300*300'
-        ])->label('测试widget')->hint('ce shi widgets');?>
         <?= $form->field($model, 'hide')->radioList(['0'=>'显示','1'=>'隐藏'])->label('是否隐藏') ?>
 
         <div class="form-actions">

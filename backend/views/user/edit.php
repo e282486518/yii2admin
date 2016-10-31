@@ -70,13 +70,10 @@ use yii\helpers\Url;
         ])->label('电话') ?>
         
         <!-- 单图 -->
-        <?=$this->renderFile('@app/views/public/_image.php',[
-            'data'=>$model->image,
-            'field'=>'User[image]',
+        <?=$form->field($model, 'image')->widget('\backend\widgets\images\Images',[
+            //'type' => \backend\widgets\images\Images::TYPE_IMAGE, // 单图
             'saveDB'=>1, //图片是否保存到picture表，默认不保存
-            'title'=>'头像',
-            'tishi'=>'单图图片尺寸为：300*300'
-        ])?>
+        ],['class'=>'c-md-12'])->label('头像')->hint('单图图片尺寸为：300*300');?>
         
         <?=$form->field($model, 'score')->textInput(['class'=>'form-control c-md-1'])->label('当前积分')->hint('可用于积分消费')?>
         

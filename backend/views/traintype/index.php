@@ -27,7 +27,8 @@ $columns = [
         'header' => '封面',
         'options' => ['width' => '100px;'],
         'content' => function($model){
-            return '<img src="'.$model['cover'].'" width="100" />';
+            $pic = \backend\models\Picture::getPic($model['cover']);
+            return '<img src="'.\common\helpers\Html::src($pic['path']).'" width="100" />';
         }
     ],
     [

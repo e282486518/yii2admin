@@ -33,7 +33,8 @@ $columns = [
         'header' => '封面',
         'options' => ['width' => '100px;'],
         'content' => function($model){
-            return '<img src="'.$model['cover'].'" height="50"/>';
+            $pic = \backend\models\Picture::getPic($model['cover']);
+            return '<img src="'.\common\helpers\Html::src($pic['path']).'" height="50"/>';
         }
     ],
     [
