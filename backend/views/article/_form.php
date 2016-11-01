@@ -38,6 +38,19 @@ use yii\helpers\Url;
         'lang' =>'zh-cn', //中文为 zh-cn
         'initialFrameWidth' => '100%',
         'initialFrameHeight' => '400',
+        //定制菜单，参考http://fex.baidu.com/ueditor/#start-toolbar
+        'toolbars' => [
+            [
+                'fullscreen', 'source', 'undo', 'redo', '|',
+                'fontsize',
+                'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'removeformat',
+                'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|',
+                'forecolor', 'backcolor', '|',
+                'lineheight', '|',
+                'indent', '|',
+            ],
+            ['preview','simpleupload','insertimage','link','emotion','map','insertvideo','insertcode',]
+        ]
     ]
 ],['class'=>'c-md-7'])->label('文章内容');?>
 
