@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace console\models;
 
 use Yii;
 
@@ -10,43 +10,6 @@ use Yii;
  */
 class Picture extends \common\models\Picture
 {
-    /**
-     * ----------------------------------
-     * 保存一张图片到数据库
-     * @param $url string 图片路径
-     * @return array
-     * ----------------------------------
-     */
-    public static function savePic($url){
-        $file_path = Yii::$app->params['upload']['path'].$url;
-        $file_md5  = md5_file($file_path);
-        $image = static::find()->where(['md5'=>$file_md5])->asArray()->one();
-        if ($image) {
-            unlink($file_path); // 图片已存在，删除该图片
-            return $image;
-        }
-        $model = new Picture();
-        $data['path'] = $url;
-        $data['md5']  = $file_md5;
-        $data['create_time'] = time();
-        $data['status'] = 1;
-        $model->setAttributes($data);
-        if ($model->save()) {
-            return $model->getAttributes();
-        }
-        return false;
-    }
-
-    /**
-     * ---------------------------------------
-     * 获取一张图片信息
-     * @param $id int 图片ID
-     * @return array
-     * ---------------------------------------
-     */
-    public static function getPic($id){
-        return static::find()->where(['id'=>$id])->asArray()->one();
-    }
 
     /**
      * ---------------------------------------
@@ -84,9 +47,7 @@ class Picture extends \common\models\Picture
 
     /**
      * ---------------------------------------
-     * 函数功能信息 public private protected static
-     * @param $id int 参数信息
-     * @return array 返回信息
+     * 清除数据库中不存在的图片
      * ---------------------------------------
      */
     public static function clearPic1(){
