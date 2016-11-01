@@ -57,9 +57,14 @@ class ShopController extends BaseController
                 }
             }
             /* 将图组转化为字符串 */
-            if ($data['images'] && is_array($data['images'])) {
+            if (isset($data['images']) && is_array($data['images'])) {
                 $data['images'] = array_values(array_flip(array_flip($data['images'])));
                 $data['images'] = trim(implode ( ",", $data['images']),',');
+            }
+            /* 将图组转化为字符串 */
+            if (isset($data['imagess']) && is_array($data['imagess'])) {
+                $data['imagess'] = array_values(array_flip(array_flip($data['imagess'])));
+                $data['imagess'] = trim(implode ( ",", $data['imagess']),',');
             }
             /* 表单数据加载、验证、数据库操作 */
             if ($this->addRow('\backend\models\Shop', $data)) {
@@ -102,9 +107,14 @@ class ShopController extends BaseController
                 }
             }
             /* 将图组转化为字符串 */
-            if ($data['images'] && is_array($data['images'])) {
+            if (isset($data['images']) && is_array($data['images'])) {
                 $data['images'] = array_values(array_flip(array_flip($data['images'])));
                 $data['images'] = trim(implode ( ",", $data['images']),',');
+            }
+            /* 将图组转化为字符串 */
+            if (isset($data['imagess']) && is_array($data['imagess'])) {
+                $data['imagess'] = array_values(array_flip(array_flip($data['imagess'])));
+                $data['imagess'] = trim(implode ( ",", $data['imagess']),',');
             }
             /* 表单数据加载、验证、数据库操作 */
             if ($this->editRow('\backend\models\Shop', 'id', $data)) {

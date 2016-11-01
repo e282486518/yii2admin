@@ -7,18 +7,19 @@ use Yii;
 /**
  * This is the model class for table "{{%shop}}".
  *
- * @property string $id
+ * @property integer $id
  * @property integer $type
  * @property string $title
  * @property string $description
  * @property string $cover
  * @property string $images
+ * @property string $imagess
  * @property integer $num
  * @property string $price
  * @property string $extend
  * @property integer $sort
- * @property string $create_time
- * @property string $update_time
+ * @property integer $create_time
+ * @property integer $update_time
  * @property integer $status
  */
 class Shop extends \common\core\BaseActiveRecord
@@ -39,10 +40,10 @@ class Shop extends \common\core\BaseActiveRecord
         return [
             [['type', 'title', 'images', 'num', 'price'], 'required'],
             [['type', 'num', 'sort', 'create_time', 'update_time', 'status'], 'integer'],
-            [['images', 'extend'], 'string'],
             [['price'], 'number'],
+            [['extend'], 'string'],
             [['title'], 'string', 'max' => 100],
-            [['description', 'cover'], 'string', 'max' => 255]
+            [['description', 'cover', 'images', 'imagess'], 'string', 'max' => 255]
         ];
     }
 
@@ -58,6 +59,7 @@ class Shop extends \common\core\BaseActiveRecord
             'description' => 'Description',
             'cover' => 'Cover',
             'images' => 'Images',
+            'imagess' => 'Imagess',
             'num' => 'Num',
             'price' => 'Price',
             'extend' => 'Extend',

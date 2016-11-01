@@ -52,10 +52,8 @@ $this->registerCssFile('@web/metronic/global/plugins/bootstrap-fileinput/bootstr
 ?>
 
 <!-- 定义数据块 -->
-<?php $this->beginBlock('images'); ?>
-
+<?php $this->beginBlock('upload_images_event'); ?>
 $(function() {
-    /* ======================图集js========================= */
     $('.fileupload-list').delegate('.fileupload-item','mouseover mouseout',function(e){
         if (e.type == 'mouseover') {
             $(this).find('span').css('display','block');
@@ -66,7 +64,17 @@ $(function() {
     $('.fileupload-list').delegate('.fileupload-del','click',function(e){
         $(this).parent().remove();
     });
-    $(".uploadImages<?=$saveDB?>").on("change", function(){
+});
+<?php $this->endBlock() ?>
+<!-- 将数据块 注入到视图中的某个位置 -->
+<?php $this->registerJs($this->blocks['upload_images_event'], \yii\web\View::POS_END); ?>
+
+<!-- 定义数据块 -->
+<?php $this->beginBlock('images'); ?>
+
+$(function() {
+    /* ======================图集js========================= */
+    $(".field-<?=Html::getInputId($model, $attribute)?> .uploadImages<?=$saveDB?>").on("change", function(){
         var fileinput = $(this).parents('.fileinput');
 
         var files = !!this.files ? this.files : [];
