@@ -34,8 +34,8 @@ use yii\helpers\Url;
         </div>
     </div>
     <div class="portlet-body">
-        <div class="table-container">
-            <form class="ids">
+        <div class="table-container table-scrollable">
+            <!--<form class="ids">-->
 
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
@@ -71,7 +71,7 @@ use yii\helpers\Url;
                     </tbody>
                 </table>
                 
-            </form>
+            <!--</form>-->
         </div>
     </div>
 </div>

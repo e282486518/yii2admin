@@ -31,7 +31,7 @@ use yii\grid\GridView;
     </div>
     <div class="portlet-body">
         <div class="table-container">
-            <form class="ids">
+            <form class="ids table-scrollable">
 
             <table class="table table-striped table-bordered table-hover">
                 <thead>

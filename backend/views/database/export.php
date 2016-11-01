@@ -33,7 +33,7 @@ use yii\grid\GridView;
     </div>
     <div class="portlet-body">
         <div class="table-container">
-            <form id="export-form" method="post" action="<?=Url::toRoute(['export'])?>">
+            <form id="export-form" method="post" action="<?=Url::toRoute(['export'])?>" class="table-scrollable">
             <table class="table table-striped table-bordered table-hover" id="sample_11">
                 <thead>
                     <tr>

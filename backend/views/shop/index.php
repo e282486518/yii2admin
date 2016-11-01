@@ -120,10 +120,11 @@ $columns = [
             <?= GridView::widget([
                 'dataProvider' => $dataProvider, // 列表数据
                 //'filterModel' => $searchModel, // 搜索模型
+                'options' => ['class' => 'grid-view table-scrollable'],
                 /* 表格配置 */
                 'tableOptions' => ['class' => 'table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer'],
                 /* 重新排版 摘要、表格、分页 */
-                'layout' => '{items}<div class="row"><div class="col-md-5 col-sm-5">{summary}</div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" style="text-align:right;">{pager}</div></div></div>',
+                'layout' => '{items}<div class=""><div class="col-md-5 col-sm-5">{summary}</div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" style="text-align:right;">{pager}</div></div></div>',
                 /* 配置摘要 */
                 'summaryOptions' => ['class' => 'pagination'],
                 /* 配置分页样式 */
