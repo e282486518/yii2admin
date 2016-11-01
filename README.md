@@ -1,3 +1,5 @@
+特别说明，项目刚刚做不久，而且对yii2有些功能不是很熟，难免有缺陷。有什么建议可以联系我phphome@qq.com  
+
 ##一、开发基础说明
 1、gii生成的模型统一放在 common\models下，模型统一继承 common\core\BaseActiveRecord  方便扩展yii核心。  
 
@@ -30,4 +32,5 @@ Yii::$app->params['web'] = Config::lists();
 
 ##三、服务器配置
 
-[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/htaccess.txt)
+apache:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/htaccess.txt)  
+nginx:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/nginx.conf)  
