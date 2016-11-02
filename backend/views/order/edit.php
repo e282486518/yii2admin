@@ -2,6 +2,7 @@
 
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use common\core\ActiveForm;
 use common\helpers\ArrayHelper;
 use backend\models\Train;
@@ -54,7 +55,7 @@ use backend\models\Shop;
             ],
         ],['class' => 'c-md-3'])->label('商品名称')->hint('商品的名称');?>
 
-        <?=$form->field($model, 'start_time')->Widget(\kartik\widgets\DateTimePicker::classname(),[
+        <?=$form->field($model, 'start_time')->widget(\kartik\widgets\DateTimePicker::classname(),[
             'language' => 'zh-CN',
             'type' => \kartik\widgets\DateTimePicker::TYPE_INPUT,
             'value' => '2016-07-15',
@@ -65,7 +66,7 @@ use backend\models\Shop;
             ]
         ],['class' => 'c-md-2'])->label('开始时间')->hint('租赁开始时间，或订购时间')?>
         
-        <?=$form->field($model, 'end_time')->Widget(\kartik\widgets\DateTimePicker::classname(),[
+        <?=$form->field($model, 'end_time')->widget(\kartik\widgets\DateTimePicker::classname(),[
             'language' => 'zh-CN',
             'type' => \kartik\widgets\DateTimePicker::TYPE_INPUT,
             //'convertFormat' => 'yyyy-mm-dd',
@@ -76,6 +77,53 @@ use backend\models\Shop;
                 'format' => 'yyyy-mm-dd hh:ii'
             ]
         ],['class' => 'c-md-2'])->label('结束时间')->hint('租赁结束时间')?>
+
+        <div class="form-group">
+            <div>
+                <label>省 市 区</label>
+                <span class="help-inline"></span>
+            </div>
+            <div class="col-md-2" style="padding-left:0px;">
+                <?=\kartik\widgets\Select2::widget([
+                    'model' => $model,
+                    'attribute' => 'province',
+                    //'data' => '',
+                    'data' => ArrayHelper::map(\common\models\Region::find()->where(['parent_id'=>1])->asArray()->all(), 'region_id', 'region_name')
+                ]);?>
+            </div>
+            <div class="col-md-2">
+                <?=\kartik\widgets\DepDrop::widget([
+                    'model' => $model,
+                    'attribute' => 'city',
+                    'options' => ['placeholder' => '选择'],
+                    'type' => \kartik\widgets\DepDrop::TYPE_SELECT2,
+                    'select2Options'=>['pluginOptions'=>['allowClear'=>true]],
+                    'pluginOptions'=>[
+                        'depends'=>['order-province'],
+                        'url' => Url::to(['/public/region']),
+                        'loadingText' => '加载中',
+                    ]
+                ]);?>
+            </div>
+            <div class="col-md-2">
+                <?=\kartik\widgets\DepDrop::widget([
+                    'model' => $model,
+                    'attribute' => 'area',
+                    'options' => ['placeholder' => '选择'],
+                    'type' => \kartik\widgets\DepDrop::TYPE_SELECT2,
+                    'select2Options'=>['pluginOptions'=>['allowClear'=>true]],
+                    'pluginOptions'=>[
+                        'initialize' => true,
+                        'initDepends'=>['order-province'],
+                        'depends'=>['order-city'],
+                        'url' => Url::to(['/public/region']),
+                        'loadingText' => '加载中',
+                    ]
+                ]);?>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+
         
         <?=$form->field($model, 'num')->textInput(['class' => 'form-control c-md-1'])->label('数量')->hint('订购数量')?>
         
