@@ -207,7 +207,7 @@ $this->registerCssFile('@web/metronic/global/plugins/datatables/plugins/bootstra
 $this->registerJsFile('@web/metronic/global/scripts/datatable.js');
 $this->registerJsFile('@web/metronic/global/plugins/datatables/datatables.min.js');
 $this->registerJsFile('@web/metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js');
-$this->registerJsFile('@web/metronic/pages/scripts/table-datatables-managed.min.js');
+//$this->registerJsFile('@web/metronic/pages/scripts/table-datatables-managed.min.js');
 ?>
 
 <!-- 定义数据块 -->
