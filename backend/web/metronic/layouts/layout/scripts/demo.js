@@ -276,7 +276,7 @@ var Demo = function() {
             });
 
             // set layout style from cookie
-            if (typeof Cookies !== "undefined" && Cookies.get('layout-style-option') === 'rounded') {
+            if (typeof Cookies !== "undefined" && Cookies.get('layout-style-option') === 'square') {
                 setThemeStyle(Cookies.get('layout-style-option'));
                 $('.theme-panel .layout-style-option').val(Cookies.get('layout-style-option'));
             }            

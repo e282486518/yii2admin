@@ -37,7 +37,7 @@ AppAsset::register($this);
         <?php $this->head() ?>
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="<?=Yii::getAlias('@web')?>/metronic/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="<?=Yii::getAlias('@web')?>/metronic/global/css/components-rounded.min.css" rel="stylesheet" id="style_components" type="text/css" />
         <link href="<?=Yii::getAlias('@web')?>/metronic/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
