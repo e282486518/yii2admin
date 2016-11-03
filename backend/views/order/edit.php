@@ -99,8 +99,10 @@ use backend\models\Shop;
                     'type' => \kartik\widgets\DepDrop::TYPE_SELECT2,
                     'select2Options'=>['pluginOptions'=>['allowClear'=>true]],
                     'pluginOptions'=>[
+                        //'initialize' => true,
+                        //'initDepends'=>['order-province'],
                         'depends'=>['order-province'],
-                        'url' => Url::to(['/public/region']),
+                        'url' => Url::to(['/public/region','sid'=>$model['city']]),
                         'loadingText' => '加载中',
                     ]
                 ]);?>
@@ -116,7 +118,7 @@ use backend\models\Shop;
                         'initialize' => true,
                         'initDepends'=>['order-province'],
                         'depends'=>['order-city'],
-                        'url' => Url::to(['/public/region']),
+                        'url' => Url::to(['/public/region','sid'=>$model['area']]),
                         'loadingText' => '加载中',
                     ]
                 ]);?>
