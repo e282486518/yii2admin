@@ -34,3 +34,15 @@ Yii::$app->params['web'] = Config::lists();
 
 apache:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/htaccess.txt)  
 nginx:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/nginx.conf)  
+
+##四、预览
+![登录](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/login.png)
+![首页](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/index.png)
+![管理员](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/admin.png)
+![权限](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/auth.png)
+![配置](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/config.png)
+![数据库](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/database.png)
+![列表](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/order.png)
+![编辑](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/order_edit.png)
+![配置皮肤](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/shop.png)
+![手机版](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/order_edit1.png)
