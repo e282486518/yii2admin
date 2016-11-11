@@ -41,18 +41,18 @@ use yii\helpers\Url;
         
         <?=$form->field($model, 'description')->textarea(['rows'=>3])->label('商品描述'); ?>
 
-        <?=$form->field($model, 'cover')->widget('\backend\widgets\images\Images',[
+        <?=$form->field($model, 'cover')->widget('\common\widgets\images\Images',[
             //'type' => \backend\widgets\images\Images::TYPE_IMAGE, // 单图
             'saveDB'=>1, //图片是否保存到picture表，默认不保存
         ],['class'=>'c-md-12'])->label('封面图片')->hint('图组图片尺寸为：300*300');?>
 
-        <?=$form->field($model, 'images')->widget('\backend\widgets\images\Images',[
-            'type' => \backend\widgets\images\Images::TYPE_IMAGES, // 多图
+        <?=$form->field($model, 'images')->widget('\common\widgets\images\Images',[
+            'type' => \common\widgets\images\Images::TYPE_IMAGES, // 多图
             'saveDB'=>1, //图片是否保存到picture表，默认不保存
         ],['class'=>'c-md-12'])->label('商品图集')->hint('图组图片尺寸为：300*300');?>
 
-        <?=$form->field($model, 'imagess')->widget('\backend\widgets\images\Images',[
-            'type' => \backend\widgets\images\Images::TYPE_IMAGES, // 多图
+        <?=$form->field($model, 'imagess')->widget('\common\widgets\images\Images',[
+            'type' => \common\widgets\images\Images::TYPE_IMAGES, // 多图
             'saveDB'=>1, //图片是否保存到picture表，默认不保存
         ],['class'=>'c-md-12'])->label('商品图集2测试双图集')->hint('图组图片尺寸为：300*300');?>
         

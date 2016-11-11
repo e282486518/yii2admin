@@ -1,9 +1,9 @@
 <?php
 
-namespace backend\widgets\images;
+namespace common\widgets\images;
 
 use Yii;
-use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\InputWidget;
 use yii\base\InvalidConfigException;
 
@@ -17,6 +17,7 @@ class Images extends InputWidget
 
     public $type   = self::TYPE_IMAGE; //默认为单图
     public $saveDB = 1; // 是否保存到picture数据表
+    public $url    = ''; // 上传地址
 
     public function init()
     {
@@ -28,6 +29,10 @@ class Images extends InputWidget
         if (!in_array($this->saveDB ,[0,1])) {
             throw new InvalidConfigException("Images 'saveDB' = 0 or 1");
         }
+        /* 默认上传地址 */
+        if ($this->url == '') {
+            $this->url = Url::to(["public/uploadimage"]);
+        }
         parent::init();
     }
 
@@ -36,6 +41,7 @@ class Images extends InputWidget
             'model'     => $this->model,
             'attribute' => $this->attribute,
             'saveDB'    => $this->saveDB,
+            'url'       => $this->url,
         ];
         return $this->render($this->type,$opt);
     }

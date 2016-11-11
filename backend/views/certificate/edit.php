@@ -42,7 +42,7 @@ use yii\helpers\Url;
         <?=$form->field($model, 'description')->textarea(['rows'=>3])->label('证书描述'); ?>
         
         <!-- 单图 -->
-        <?=$form->field($model, 'cover')->widget('\backend\widgets\images\Images',[
+        <?=$form->field($model, 'cover')->widget('\common\widgets\images\Images',[
             //'type' => \backend\widgets\images\Images::TYPE_IMAGE, // 单图
             'saveDB'=>1, //图片是否保存到picture表，默认不保存
         ],['class'=>'c-md-12'])->label('证书图片')->hint('单图描述信息');?>

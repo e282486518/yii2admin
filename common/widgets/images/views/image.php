@@ -1,11 +1,21 @@
 <?php
 use yii\helpers\Html;
 
+/* @var $this yii\web\View */
+/* @var $model yii\db\ActiveRecord */
+/* @var $saveDB integer */
+/* @var $attribute string */
+/* @var $url string */
+
 /* 判断是否保存到数据库 */
-$saveDB = isset($saveDB)?$saveDB:0;
+$saveDB = isset($saveDB)?$saveDB:1;
 $data   = $model->{$attribute};
 if ($saveDB) {
-    $picture = \backend\models\Picture::getPic($data);
+    $picture = \common\models\Picture::find()->where(['id'=>$data])->asArray()->one();
+    if (!$picture) {
+        $picture['id']   = '';
+        $picture['path'] = '';
+    }
 } else {
     $picture['id']   = $data;
     $picture['path'] = $data;
@@ -49,7 +59,7 @@ $(function() {
             reader.onloadend = function(){
                 $.ajax({
                     type: 'post',
-                    url: '<?=\yii\helpers\Url::to(["upload/image"])?>',
+                    url: '<?=$url?>',
                     data: {imgbase64:this.result,saveDB:<?=$saveDB?>},
                     dataType: 'json',
                     beforeSend: function(){

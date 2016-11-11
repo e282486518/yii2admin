@@ -1,7 +1,7 @@
 <?php
-namespace common\actions;
+namespace common\widgets\images;
 
-use backend\models\Picture;
+use common\models\Picture;
 use Yii;
 use yii\base\Action;
 use common\helpers\FuncHelper;
@@ -36,7 +36,7 @@ class UploadAction extends Action
             $json['data']['url'] = $url;
             /* 保存图片到picture表 */
             if ($saveDB) {
-                $pic = Picture::savePic($url);
+                $pic = $this->savePic($url);
                 if (!$pic) {
                     $this->ajaxReturn($json);
                 }
@@ -47,6 +47,33 @@ class UploadAction extends Action
             $json['msg']  = '上传成功';
         }
         $this->ajaxReturn($json);
+    }
+
+    /**
+     * ----------------------------------
+     * 保存一张图片到数据库
+     * @param $url string 图片路径
+     * @return array
+     * ----------------------------------
+     */
+    public function savePic($url){
+        $file_path = Yii::$app->params['upload']['path'].$url;
+        $file_md5  = md5_file($file_path);
+        $image = Picture::find()->where(['md5'=>$file_md5])->asArray()->one();
+        if ($image) {
+            unlink($file_path); // 图片已存在，删除该图片
+            return $image;
+        }
+        $model = new Picture();
+        $data['path'] = $url;
+        $data['md5']  = $file_md5;
+        $data['create_time'] = time();
+        $data['status'] = 1;
+        $model->setAttributes($data);
+        if ($model->save()) {
+            return $model->getAttributes();
+        }
+        return false;
     }
     
     public function ajaxReturn($data) {

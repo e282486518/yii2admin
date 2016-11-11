@@ -21,6 +21,7 @@ return [
     'components' => [
         /* 身份认证类 默认yii\web\user */
         'user' => [
+            'class' => 'yii\web\user',
             'identityClass' => 'backend\models\Admin',
             'enableAutoLogin' => true,
             'loginUrl' => ['login/login'], //默认登录url

@@ -23,7 +23,7 @@ use yii\helpers\Url;
 <?=$form->field($model, 'title')->textInput()->label('文章标题');?>
 
 <!-- 单图 -->
-<?=$form->field($model, 'image')->widget('\backend\widgets\images\Images',[
+<?=$form->field($model, 'image')->widget('\common\widgets\images\Images',[
     //'type' => \backend\widgets\images\Images::TYPE_IMAGE, // 单图
     'saveDB'=>1, //图片是否保存到picture表，默认不保存
 ],['class'=>'c-md-12'])->label('封面图片')->hint('图组图片尺寸为：300*300');?>

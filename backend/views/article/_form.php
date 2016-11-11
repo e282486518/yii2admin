@@ -25,7 +25,7 @@ use yii\helpers\Url;
 <?=$form->field($model, 'title')->textInput(['class'=>'form-control c-md-5'])->label('文章标题')->hint('111111');?>
 
 <!-- 单图 -->
-<?=$form->field($model, 'cover')->widget('\backend\widgets\images\Images',[
+<?=$form->field($model, 'cover')->widget('\common\widgets\images\Images',[
     //'type' => \backend\widgets\images\Images::TYPE_IMAGE, // 单图
     'saveDB'=>1, //图片是否保存到picture表，默认不保存
 ],['class'=>'c-md-12'])->label('封面图片')->hint('单图图片尺寸为：300*300');?>
@@ -34,7 +34,7 @@ use yii\helpers\Url;
 
 <?=$form->field($model, 'content')->widget('\kucha\ueditor\UEditor',[
     'clientOptions' => [
-        'serverUrl' => Url::to(['/ueditor/upload']),//确保serverUrl正确指向后端地址
+        'serverUrl' => Url::to(['/public/ueditor']),//确保serverUrl正确指向后端地址
         'lang' =>'zh-cn', //中文为 zh-cn
         'initialFrameWidth' => '100%',
         'initialFrameHeight' => '400',
