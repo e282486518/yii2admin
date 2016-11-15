@@ -2,11 +2,13 @@
 
 namespace backend\controllers;
 
+use Yii;
 use backend\models\Shop;
 use common\helpers\ArrayHelper;
 use common\helpers\FuncHelper;
-use Yii;
+use common\models\ShopGroup;
 use backend\models\search\ShopSearch;
+use yii\web\NotFoundHttpException;
 
 
 /**
@@ -40,7 +42,7 @@ class ShopController extends BaseController
      * ---------------------------------------
      */
     public function actionAdd(){
-        $model = new Shop();
+        $model = $this->findModel(0);
 
         if (Yii::$app->request->isPost) {
             
@@ -67,7 +69,7 @@ class ShopController extends BaseController
                 $data['imagess'] = trim(implode ( ",", $data['imagess']),',');
             }
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->addRow('\backend\models\Shop', $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
@@ -76,8 +78,6 @@ class ShopController extends BaseController
 
         /* 获取模型默认数据 */
         $model->loadDefaultValues();
-
-
         /* 渲染模板 */
         return $this->render('edit', [
             'model' => $model,
@@ -91,11 +91,11 @@ class ShopController extends BaseController
      */
     public function actionEdit(){
         $id = Yii::$app->request->get('id',0);
+        $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Shop');
             $data['update_time'] = time();
-            $data['id'] = $id;
             $data['type'] = Yii::$app->request->get('type',1);
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {
@@ -117,13 +117,12 @@ class ShopController extends BaseController
                 $data['imagess'] = trim(implode ( ",", $data['imagess']),',');
             }
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->editRow('\backend\models\Shop', 'id', $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
             }
         }
-        $model = Shop::findOne($id);
         /* 还原extend的数据 */
         if ($model->extend) {
             $_tmp = unserialize($model->extend);
@@ -148,7 +147,8 @@ class ShopController extends BaseController
      * ---------------------------------------
      */
     public function actionDelete(){
-        if($this->delRow('\backend\models\Shop', 'id')){
+        $model = $this->findModel(0);
+        if($this->delRow($model, 'id')){
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
@@ -167,9 +167,28 @@ class ShopController extends BaseController
         $this->setForward();
 
         return $this->render('group',[
-            'dataProvider' => $this->lists1('\common\models\ShopGroup', '', 'sort ASC'),
+            'dataProvider' => $this->lists1(new ShopGroup(), '', 'sort ASC'),
         ]);
 
+    }
+
+    /**
+     * Finds the Article model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Shop the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if ($id == 0) {
+            return new Shop();
+        }
+        if (($model = Shop::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
 }

@@ -2,16 +2,17 @@
 
 namespace backend\controllers;
 
+use Yii;
 use backend\models\Order;
 use backend\models\search\OrderSearch;
 use backend\models\Shop;
 use backend\models\Train;
 use common\helpers\ArrayHelper;
 use common\helpers\FuncHelper;
-use Yii;
+use yii\web\NotFoundHttpException;
 
 
-/*
+/**
  * 订单控制器
  * 作者 ：longfei
  * Email ：phphome@qq.com
@@ -51,7 +52,7 @@ class OrderController extends BaseController
      * ---------------------------------------
      */
     public function actionAdd(){
-        $model = new Order();
+        $model = $this->findModel(0);
         $type = Yii::$app->request->get('type','shop');
         if (Yii::$app->request->isPost) {
             
@@ -78,7 +79,7 @@ class OrderController extends BaseController
                 }
             }
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->addRow('\backend\models\Order', $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
@@ -103,11 +104,11 @@ class OrderController extends BaseController
      */
     public function actionEdit(){
         $id = Yii::$app->request->get('id',0);
+        $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Order');//var_dump($data);exit();
             $data['update_time'] = time();
-            $data['id'] = $id;
             $data['start_time'] = strtotime($data['start_time']);
             $data['end_time']  = strtotime($data['end_time']);
             $data['pay_time']  = strtotime($data['pay_time']);
@@ -121,13 +122,12 @@ class OrderController extends BaseController
                 }
             }
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->editRow('\backend\models\Order', 'id', $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
             }
         }
-        $model = Order::findOne($id);
         $model->start_time = date('Y-m-d H:i',$model->start_time);
         $model->end_time   = date('Y-m-d H:i',$model->end_time);
         /* 渲染模板 */
@@ -142,7 +142,8 @@ class OrderController extends BaseController
      * ---------------------------------------
      */
     public function actionDelete(){
-        if($this->delRow('\backend\models\Order', 'id')){
+        $model = $this->findModel(0);
+        if($this->delRow($model, 'id')){
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
@@ -177,6 +178,25 @@ class OrderController extends BaseController
         }
 
         FuncHelper::exportexcel($arr,$title);
+    }
+
+    /**
+     * Finds the Article model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Order the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if ($id == 0) {
+            return new Order();
+        }
+        if (($model = Order::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
 }

@@ -2,15 +2,15 @@
 
 namespace backend\controllers;
 
+use Yii;
 use backend\models\Article;
 use common\helpers\ArrayHelper;
 use common\helpers\FuncHelper;
 use common\models\Category;
-use Yii;
 use backend\models\search\ArticleSearch;
+use yii\web\NotFoundHttpException;
 
-
-/*
+/**
  * 文章控制器
  * 作者 ：longfei
  * Email ：phphome@qq.com
@@ -41,10 +41,9 @@ class ArticleController extends BaseController
      * ---------------------------------------
      */
     public function actionAdd(){
-        $model = new Article();
+        $model = $this->findModel(0);
 
         if (Yii::$app->request->isPost) {
-            
             $data = Yii::$app->request->post('Article');
             $data['create_time'] = time();
             /* 格式化extend值，为空或数组序列化 */
@@ -57,7 +56,7 @@ class ArticleController extends BaseController
                 }
             }
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->addRow($model, $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
@@ -79,11 +78,11 @@ class ArticleController extends BaseController
      */
     public function actionEdit(){
         $id = Yii::$app->request->get('id',0);
+        $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Article');
             $data['update_time'] = time();
-            $data['id'] = $id;
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {
                 $tmp = FuncHelper::parse_field_attr($data['extend']);
@@ -94,13 +93,12 @@ class ArticleController extends BaseController
                 }
             }
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->editRow('\backend\models\Article', 'id', $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
             }
         }
-        $model = Article::findOne($id);
         /* 还原extend的数据 */
         if ($model->extend) {
             $_tmp = unserialize($model->extend);
@@ -124,10 +122,30 @@ class ArticleController extends BaseController
      * ---------------------------------------
      */
     public function actionDelete(){
-        if($this->delRow('\backend\models\Article', 'id')){
+        $model = $this->findModel(0);
+        if($this->delRow($model, 'id')){
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
+        }
+    }
+
+    /**
+     * Finds the Article model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Article the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if ($id == 0) {
+            return new Article();
+        }
+        if (($model = Article::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 

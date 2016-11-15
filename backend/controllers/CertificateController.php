@@ -5,8 +5,9 @@ namespace backend\controllers;
 use Yii;
 use common\models\TrainCertificate;
 use backend\models\search\CertificateSearch;
+use yii\web\NotFoundHttpException;
 
-/*
+/**
  * 栏目控制器
  * 作者 ：longfei
  * Email ：phphome@qq.com
@@ -30,9 +31,6 @@ class CertificateController extends BaseController
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-        /*return $this->render('index', [
-            'dataProvider' => $this->lists1('\common\models\TrainCertificate', '', 'ctime ASC'),
-        ]);*/
     }
 
     /**
@@ -43,28 +41,22 @@ class CertificateController extends BaseController
      */
     public function actionEdit() {
         $id = Yii::$app->request->get('id',0);
+        $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('TrainCertificate');
             if($id) {
                 $data['id'] = $id;
-                $succ = $this->editRow('\common\models\TrainCertificate', 'id', $data);
             }else{
                 $data['ctime'] = time();
-                $succ = $this->addRow('\common\models\TrainCertificate', $data);
             }
-
-            /* 表单数据加载、验证、数据库操作 */
-            if ($succ) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
             }
         }
-        if($id) {
-            $model = TrainCertificate::findOne($id);
-        }else{
-            $model = new TrainCertificate();
+        if(!$id) {
             /* 获取模型默认数据 */
             $model->loadDefaultValues();
         }
@@ -81,10 +73,30 @@ class CertificateController extends BaseController
      * ---------------------------------------
      */
     public function actionDelete(){
-        if($this->delRow('\common\models\TrainCertificate', 'id')){
+        $model = $this->findModel(0);
+        if($this->delRow($model, 'id')){
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
+        }
+    }
+
+    /**
+     * Finds the Article model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return TrainCertificate the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if ($id == 0) {
+            return new TrainCertificate();
+        }
+        if (($model = TrainCertificate::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 

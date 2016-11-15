@@ -2,14 +2,15 @@
 
 namespace backend\controllers;
 
+use Yii;
 use backend\models\Shop;
 use backend\models\ShopGroup;
 use common\helpers\ArrayHelper;
 use common\helpers\FuncHelper;
-use Yii;
 use backend\models\search\GroupSearch;
+use yii\web\NotFoundHttpException;
 
-/*
+/**
  * 商品套餐
  * 作者 ：longfei
  * Email ：phphome@qq.com
@@ -40,7 +41,7 @@ class GroupController extends BaseController
      * ---------------------------------------
      */
     public function actionAdd(){
-        $model = new ShopGroup();
+        $model = $this->findModel(0);
 
         if (Yii::$app->request->isPost) {
             
@@ -75,7 +76,7 @@ class GroupController extends BaseController
             }
 
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->addRow('\backend\models\ShopGroup', $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
@@ -98,10 +99,11 @@ class GroupController extends BaseController
      */
     public function actionEdit(){
         $id = Yii::$app->request->get('id',0);
+        $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('ShopGroup');
-            $data['id'] = $id;
+
             /* 处理掉空白的groups数据 */
             $total = 0;
             if ($data['groups'] && is_array($data['groups'])) {
@@ -131,13 +133,12 @@ class GroupController extends BaseController
             }//var_dump($data);exit();
 
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->editRow('\backend\models\ShopGroup', 'id', $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
             }
         }
-        $model = ShopGroup::findOne($id);
         /* 还原groups的数据 */
         $groups = unserialize($model->groups);
 
@@ -154,10 +155,30 @@ class GroupController extends BaseController
      * ---------------------------------------
      */
     public function actionDelete(){
-        if($this->delRow('\backend\models\ShopGroup', 'id')){
+        $model = $this->findModel(0);
+        if($this->delRow($model, 'id')){
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
+        }
+    }
+
+    /**
+     * Finds the Article model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return ShopGroup the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if ($id == 0) {
+            return new ShopGroup();
+        }
+        if (($model = ShopGroup::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 

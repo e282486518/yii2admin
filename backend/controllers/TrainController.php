@@ -2,11 +2,10 @@
 
 namespace backend\controllers;
 
-use backend\models\Train;
-use common\helpers\ArrayHelper;
-use common\helpers\FuncHelper;
 use Yii;
+use backend\models\Train;
 use backend\models\search\TrainSearch;
+use yii\web\NotFoundHttpException;
 
 /**
  * 订单控制器
@@ -39,14 +38,14 @@ class TrainController extends BaseController
      * ---------------------------------------
      */
     public function actionAdd(){
-        $model = new Train();
+        $model = $this->findModel(0);
 
         if (Yii::$app->request->isPost) {
             
             $data = Yii::$app->request->post('Train');
             $data['create_time'] = time();
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->addRow('\backend\models\Train', $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
@@ -68,20 +67,18 @@ class TrainController extends BaseController
      */
     public function actionEdit(){
         $id = Yii::$app->request->get('id',0);
+        $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Train');
             $data['update_time'] = time();
-            $data['id'] = $id;
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->editRow('\backend\models\Train', 'id', $data)) {
+            if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');
             }
         }
-        $model = Train::findOne($id);
-        
         /* 渲染模板 */
         return $this->render('edit', [
             'model' => $model,
@@ -94,10 +91,30 @@ class TrainController extends BaseController
      * ---------------------------------------
      */
     public function actionDelete(){
-        if($this->delRow('\backend\models\Train', 'id')){
+        $model = $this->findModel(0);
+        if($this->delRow($model, 'id')){
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
+        }
+    }
+
+    /**
+     * Finds the Article model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Train the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if ($id == 0) {
+            return new Train();
+        }
+        if (($model = Train::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 

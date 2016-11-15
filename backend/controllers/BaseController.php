@@ -172,50 +172,17 @@ class BaseController extends Controller
      * 修改数据表一条记录的一条值
      * @param \yii\db\ActiveRecord $model 模型名称
      * @param array  $data 数据
-     * @return boolean
+     * @return \yii\db\ActiveRecord|boolean
      * ---------------------------------------
      */
-    public function addRow( $model, $data){
+    public function saveRow($model, $data){
         if (empty($data)) {
             return false;
         }
-        $m = new $model;
-        if ($m->load($data, '') && $m->validate()) {
+        if ($model->load($data, '') && $model->validate()) {
             /* 添加到数据库中,save()会自动验证rule */
-            if ($m->save()) {
-                return $m;
-            }else{
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * ---------------------------------------
-     * 修改数据表一条记录的一条值
-     * @param \yii\db\ActiveRecord $model 模型名称
-     * @param string $pk  主键名称
-     * @param array  $data 数据
-     * @return Model|boolean
-     * ---------------------------------------
-     */
-    public function editRow( $model, $pk = 'id', $data){
-        if (empty($data)) {
-            return false;
-        }
-        if (!isset($data[$pk]) || !$data[$pk]) {
-            return false;
-        }
-        $m = $model::findOne($data[$pk]);
-        if (empty($m)) {
-            return false;
-        }
-        if ($m->load($data, '') && $m->validate()) {
-            /* 添加到数据库中,save()会自动验证rule */
-            if ($m->save()) {
-                return $m;
+            if ($model->save()) {
+                return $model;
             }else{
                 return false;
             }
@@ -232,7 +199,7 @@ class BaseController extends Controller
      * @return boolean
      * ---------------------------------------
      */
-    public function delRow( $model, $pk='id' ){
+    public function delRow($model, $pk='id' ){
         $ids = Yii::$app->request->param($pk, 0);
         $ids = implode(',', array_unique((array)$ids));
 

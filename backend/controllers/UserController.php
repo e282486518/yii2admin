@@ -2,9 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\User;
-use yii\helpers\Url;
 use Yii;
+use backend\models\User;
 use backend\models\search\UserSearch;
 
 class UserController extends BaseController

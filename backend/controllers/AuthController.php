@@ -2,9 +2,9 @@
 
 namespace backend\controllers;
 
-use backend\models\User;
-use common\models\AuthAssignment;
 use Yii;
+use backend\models\Admin;
+use common\models\AuthAssignment;
 
 class AuthController extends BaseController
 {
@@ -32,8 +32,6 @@ class AuthController extends BaseController
 
         /* 获取角色列表 */
         $roles = Yii::$app->authManager->getRoles();
-
-        //var_dump($roles);exit;
 
         return $this->render('index', [
             'roles' => $roles,
@@ -162,7 +160,7 @@ class AuthController extends BaseController
         $_where = 'uid in('.$uids.')';
 
         return $this->render('user',[
-            'dataProvider' => $this->lists1('\common\models\Admin', $_where),
+            'dataProvider' => $this->lists1(new Admin(), $_where),
         ]);
     }
 
