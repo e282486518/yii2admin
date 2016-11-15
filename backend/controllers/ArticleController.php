@@ -57,7 +57,7 @@ class ArticleController extends BaseController
                 }
             }
             /* 表单数据加载、验证、数据库操作 */
-            if ($this->addRow('\backend\models\Article', $data)) {
+            if ($this->addRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
             }else{
                 $this->error('操作错误');

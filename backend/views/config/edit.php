@@ -7,6 +7,7 @@ use common\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Menu */
 /* @var $form ActiveForm */
+
 ?>
 
 <div class="portlet light bordered">

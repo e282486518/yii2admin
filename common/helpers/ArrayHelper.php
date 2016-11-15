@@ -20,8 +20,10 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
      * ------------------------------------------
      * 把返回的数据集转换成Tree
      * @param array $list 要转换的数据集
+     * @param string $pk 主键
      * @param string $pid parent标记字段
-     * @param string $level level标记字段
+     * @param string $child
+     * @param int $root
      * @return array
      * ------------------------------------------
      */
@@ -82,12 +84,11 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
      * @access public
      * @param array $list 查询结果
      * @param string $field 排序的字段名
-     * @param array $sortby 排序类型
-     * asc正向排序 desc逆向排序 nat自然排序
-     * @return array
+     * @param string $sortby 排序类型 asc正向排序 desc逆向排序 nat自然排序
+     * @return array|boolean
      * --------------------------------------------------
      */
-    public static function list_sort_by($list,$field, $sortby='asc') {
+    public static function list_sort_by($list, $field, $sortby = 'asc') {
         if(is_array($list)){
             $refer = $resultSet = array();
             foreach ($list as $i => $data)

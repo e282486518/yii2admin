@@ -6,6 +6,7 @@ use common\helpers\ArrayHelper;
 use common\core\Controller;
 use backend\models\Menu;
 use backend\models\Config;
+use yii\base\Model;
 use yii\helpers\Url;
 use yii\data\Pagination;
 use yii\data\ActiveDataProvider;
@@ -125,7 +126,7 @@ class BaseController extends Controller
     /**
      * ---------------------------------------
      * 传统分页列表数据集获取方法
-     * @param string $model   模型名或模型实例
+     * @param \yii\db\ActiveRecord $model   模型名或模型实例
      * @param array $where   where查询条件
      * @param array|string $order   排序条件
      * @return array|false
@@ -148,10 +149,10 @@ class BaseController extends Controller
     /**
      * ---------------------------------------
      * dataProvider列表数据集获取方法
-     * @param string $model   模型名或模型实例
+     * @param \yii\db\ActiveRecord $model   模型名或模型实例
      * @param array        $where   where查询条件
      * @param array|string $order   排序条件
-     * @return array|false
+     * @return \yii\data\ActiveDataProvider
      * ---------------------------------------
      */
     public function lists1($model, $where=[], $order=''){
@@ -169,7 +170,7 @@ class BaseController extends Controller
     /**
      * ---------------------------------------
      * 修改数据表一条记录的一条值
-     * @param string $model 模型名称
+     * @param \yii\db\ActiveRecord $model 模型名称
      * @param array  $data 数据
      * @return boolean
      * ---------------------------------------
@@ -194,10 +195,10 @@ class BaseController extends Controller
     /**
      * ---------------------------------------
      * 修改数据表一条记录的一条值
-     * @param string $model 模型名称
+     * @param \yii\db\ActiveRecord $model 模型名称
      * @param string $pk  主键名称
      * @param array  $data 数据
-     * @return boolean
+     * @return Model|boolean
      * ---------------------------------------
      */
     public function editRow( $model, $pk = 'id', $data){
@@ -226,8 +227,8 @@ class BaseController extends Controller
     /**
      * ---------------------------------------
      * 由表主键删除数据表中的多条记录
-     * @param string $model 模型名称,供M函数使用的参数
-     * @param array  $pk  修改的数据
+     * @param \yii\db\ActiveRecord $model 模型名称,供M函数使用的参数
+     * @param string  $pk  修改的数据
      * @return boolean
      * ---------------------------------------
      */
@@ -250,7 +251,6 @@ class BaseController extends Controller
     /**
      * ---------------------------------------
      * 获取控制器菜单数组,二级菜单元素位于一级菜单的'_child'元素中
-     * @param  int   $id  参数信息
      * @return array $menus
      * ---------------------------------------
      */

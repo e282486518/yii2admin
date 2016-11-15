@@ -53,7 +53,7 @@ class UploadAction extends Action
      * ----------------------------------
      * 保存一张图片到数据库
      * @param $url string 图片路径
-     * @return array
+     * @return array|boolean
      * ----------------------------------
      */
     public function savePic($url){

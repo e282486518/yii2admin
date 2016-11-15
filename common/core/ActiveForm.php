@@ -17,5 +17,18 @@ class ActiveForm extends \yii\widgets\ActiveForm
 
     public $successCssClass = 'has-success';
 
+    /**
+     * 这个是为了使IED能自动识别 $form->field($model, 'name') 的返回值。
+     *
+     * @param \yii\base\Model $model
+     * @param string $attribute
+     * @param array $options
+     * @return \common\core\ActiveField
+     */
+    public function field($model, $attribute, $options = [])
+    {
+        return parent::field($model, $attribute, $options);
+    }
+
 
 }

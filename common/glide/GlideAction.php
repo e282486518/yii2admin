@@ -13,9 +13,11 @@ class GlideAction extends \trntv\glide\actions\GlideAction
 {
 
     /**
-     * ---------------------------------------
-     *
-     * ---------------------------------------
+     * ------------------------------------------
+     * @param $path
+     * @throws NotFoundHttpException
+     * @throws NotSupportedException
+     * ------------------------------------------
      */
     public function run($path)
     {
