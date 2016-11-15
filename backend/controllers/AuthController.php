@@ -9,7 +9,8 @@ use Yii;
 class AuthController extends BaseController
 {
     public $authManager;
-    /*
+
+    /**
      * ---------------------------------------
      * 构造方法
      * ---------------------------------------
@@ -19,7 +20,7 @@ class AuthController extends BaseController
         $this->authManager = Yii::$app->authManager;
     }
 
-    /*
+    /**
      * ---------------------------------------
      * “角色”列表
      * ---------------------------------------
@@ -39,7 +40,7 @@ class AuthController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加“角色”
      * 注意：角色表的“rule_name”字段必须为“NULL”，不然会出错。
@@ -63,7 +64,7 @@ class AuthController extends BaseController
         return $this->render('add');
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑“角色”
      * 注意：角色表的“rule_name”字段必须为“NULL”，不然会出错。
@@ -91,7 +92,7 @@ class AuthController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除“角色”
      * 同时会删除auth_assignment、auth_item_child、auth_item中关于$role的内容
@@ -106,7 +107,7 @@ class AuthController extends BaseController
         $this->error('删除失败');
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 角色授权
      * ---------------------------------------
@@ -146,7 +147,7 @@ class AuthController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 授权用户列表
      * ---------------------------------------

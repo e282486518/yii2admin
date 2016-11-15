@@ -80,7 +80,7 @@ use common\helpers\ArrayHelper;
 
             <div class="form-actions">
                 <?= Html::submitButton('<i class="icon-ok"></i> 确定', ['class' => 'btn blue ajax-post','target-form'=>'form-aaa']) ?>
-                <?= Html::Button('取消', ['class' => 'btn']) ?>
+                <?= Html::button('取消', ['class' => 'btn']) ?>
             </div>
         </form>
         <!-- END FORM-->

@@ -10,7 +10,7 @@ use backend\models\search\AdminSearch;
 
 class AdminController extends BaseController
 {
-    /*
+    /**
      * ---------------------------------------
      * 构造方法
      * ---------------------------------------
@@ -19,7 +19,7 @@ class AdminController extends BaseController
         parent::init();
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 用户列表
      * ---------------------------------------
@@ -37,7 +37,7 @@ class AdminController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加
      * ---------------------------------------
@@ -71,7 +71,7 @@ class AdminController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑
      * ---------------------------------------
@@ -105,7 +105,7 @@ class AdminController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除
      * ---------------------------------------
@@ -131,7 +131,7 @@ class AdminController extends BaseController
         }
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 用户授权
      * ---------------------------------------

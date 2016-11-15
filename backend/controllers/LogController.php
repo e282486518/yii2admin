@@ -11,7 +11,7 @@ use backend\models\search\LogSearch;
  */
 class LogController extends BaseController {
 
-    /*
+    /**
      * ---------------------------------------
      * 行为日志列表 
      * @param string string  参数说明 
@@ -30,7 +30,7 @@ class LogController extends BaseController {
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 查看行为日志 
      * @param string string  参数说明 
@@ -43,7 +43,7 @@ class LogController extends BaseController {
         return $this->render('view',['model'=>$model]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除日志
      * @param mixed $ids
@@ -58,7 +58,7 @@ class LogController extends BaseController {
         }
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 清空日志
      * @return string 返回信息 

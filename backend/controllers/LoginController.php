@@ -17,7 +17,7 @@ class LoginController extends Controller
 
     public $enableCsrfValidation=false;
 
-    /*
+    /**
      * ---------------------------------------
      * 行为控制
      * ---------------------------------------
@@ -49,7 +49,7 @@ class LoginController extends Controller
         ];
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 登录页
      * ---------------------------------------
@@ -74,7 +74,7 @@ class LoginController extends Controller
         }
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 注销页
      * ---------------------------------------

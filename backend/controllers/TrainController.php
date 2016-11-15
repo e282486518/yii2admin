@@ -8,14 +8,14 @@ use common\helpers\FuncHelper;
 use Yii;
 use backend\models\search\TrainSearch;
 
-/*
+/**
  * 订单控制器
  * 作者 ：longfei
  * Email ：phphome@qq.com
  */
 class TrainController extends BaseController
 {
-    /*
+    /**
      * ---------------------------------------
      * 列表页
      * ---------------------------------------
@@ -33,7 +33,7 @@ class TrainController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加
      * ---------------------------------------
@@ -61,7 +61,7 @@ class TrainController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑
      * ---------------------------------------
@@ -88,7 +88,7 @@ class TrainController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除或批量删除
      * ---------------------------------------

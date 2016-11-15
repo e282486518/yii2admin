@@ -17,7 +17,7 @@ use yii\helpers\Url;
     ]
 ]); ?>
 <?=$form->field($model, 'category_id')->selectList(
-    ArrayHelper::map( ArrayHelper::format_tree($cate_tree), 'id', 'title'),
+    ArrayHelper::listDataLevel(\backend\models\Category::find()->asArray()->all(), 'id', 'title','id','pid'),
     ['class'=>'form-control c-md-2'])->label('栏目')->hint('英文标识'); ?>
 
 <?=$form->field($model, 'name')->textInput(['class'=>'form-control c-md-2'])->label('文章标识')->hint('英文标识，只允许含有:英文、数字和中划线');?>
@@ -66,7 +66,7 @@ use yii\helpers\Url;
 
 <div class="form-actions">
     <?= Html::submitButton('<i class="icon-ok"></i> 确定', ['class' => 'btn blue ajax-post','target-form'=>'form-aaa']) ?>
-    <?= Html::Button('取消', ['class' => 'btn']) ?>
+    <?= Html::button('取消', ['class' => 'btn']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

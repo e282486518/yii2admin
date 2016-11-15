@@ -43,7 +43,7 @@ use common\helpers\ArrayHelper;
         <?=$form->field($model, 'url')->textInput()->label('链接')->hint('格式：index/index&id=2&type=1')?>
 
         <?=$form->field($model, 'pid')->selectList(
-            ArrayHelper::merge(['0'=>'一级栏目'],ArrayHelper::map( ArrayHelper::format_tree($menu_tree), 'id', 'title')),
+            ArrayHelper::merge(['0'=>'一级栏目'],ArrayHelper::listDataLevel( \backend\models\Menu::find()->asArray()->all(), 'id', 'title','id','pid')),
             ['class'=>'form-control select2','widthclass'=>'c-md-2'])->label('上级菜单')->hint('上级菜单描述') ?>
 
         <?=$form->field($model, 'group')->textInput(['class'=>'form-control c-md-3'])->label('分组')->hint('格式为：分组名称|图标样式 ，例如：系统|icon-comment')?>
@@ -52,7 +52,7 @@ use common\helpers\ArrayHelper;
 
         <div class="form-actions">
             <?= Html::submitButton('<i class="icon-ok"></i> 确定', ['class' => 'btn blue ajax-post','target-form'=>'form-aaa']) ?>
-            <?= Html::Button('取消', ['class' => 'btn']) ?>
+            <?= Html::button('取消', ['class' => 'btn']) ?>
         </div>
         <?php ActiveForm::end(); ?>
 

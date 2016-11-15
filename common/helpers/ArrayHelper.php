@@ -113,27 +113,54 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
     /**
      * ---------------------------------------
      * 递归方式将tree结构转化为 表单中select可使用的格式
-     * @param  int    $tree  树型结构的数组
+     * @param  array    $tree  树型结构的数组
      * @param  string $title 将格式化的字段
      * @param  int    $level 当前循环的层次,从0开始
-     * @return string   返回信息
+     * @return array
      * ---------------------------------------
      */
     public static function format_tree($tree, $title = 'title', $level = 0){
         static $list;
         /* 按层级格式的字符串 */
         $tmp_str=str_repeat("　",$level)."└";
-        $level == 0 ? $tmp_str = '' : $tmp_str;
+        $level == 0 && $tmp_str = '';
 
         foreach ($tree as $key => $value) {
             $value[$title] = $tmp_str.$value[$title];
-            $list[] = $value;
+            $arr = $value;
+            if (isset($arr['_child'])) unset($arr['_child']);
+            $list[] = $arr;
             if (array_key_exists('_child', $value)) {
                 static::format_tree($value['_child'], $title, $level+1);
-            } else {
-                continue;
             }
         }
         return $list;
+    }
+    
+    /**
+     * ---------------------------------------
+     * 获取dropDownList的data数据，主要是二级栏目及以上数据，一级栏目可以用ArrayHelper::map()生成
+     * 示例：ArrayHelper::listDataLevel(\backend\models\Menu::find()->asArray()->all(), 'id', 'title', 'id', 'pid')
+     * @param $list array 由findAll或->all()生成的数据
+     * @param $key string dropDownList的data数据的key
+     * @param $value string dropDownList的data数据的value
+     * @param string $pk 主键字段名
+     * @param string $pid 父id字段名
+     * @param int $root 根ID
+     * @return array
+     * ---------------------------------------
+     */
+    public static function listDataLevel($list, $key, $value, $pk = 'id', $pid = 'pid', $root = 0){
+        if (!is_array($list)) {
+            return [];
+        }
+        $_tmp = $list;
+        /* 判断$list是否由findAll生成的数据 */
+        if (array_shift($_tmp) instanceof \yii\base\Model) {
+            $list = array_map(function($record) {return $record->attributes;},$list);
+        }
+        unset($_tmp);
+        $tree = static::list_to_tree($list,$pk,$pid,'_child',$root);
+        return static::map( static::format_tree($tree, $value), $key, $value);
     }
 }

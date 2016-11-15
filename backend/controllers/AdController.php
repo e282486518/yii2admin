@@ -7,14 +7,14 @@ use backend\models\Ad;
 use backend\models\search\AdSearch;
 
 
-/*
+/**
  * 栏目控制器
  * 作者 ：longfei
  * Email ：phphome@qq.com
  */
 class AdController extends BaseController
 {
-    /*
+    /**
      * ---------------------------------------
      * 列表页
      * ---------------------------------------
@@ -33,7 +33,7 @@ class AdController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加
      * ---------------------------------------
@@ -62,7 +62,7 @@ class AdController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑
      * ---------------------------------------

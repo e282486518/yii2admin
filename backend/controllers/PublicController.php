@@ -17,6 +17,7 @@ class PublicController extends \common\core\Controller{
     public function actions()
     {
         return \yii\helpers\ArrayHelper::merge(parent::actions(), [
+            /* 省市区联动 */
             'region' => [
                 'class' => \kartik\depdrop\DepDropAction::className(),
                 'outputCallback' => function ($id, $params) {

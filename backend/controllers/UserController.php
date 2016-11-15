@@ -9,7 +9,7 @@ use backend\models\search\UserSearch;
 
 class UserController extends BaseController
 {
-    /*
+    /**
      * ---------------------------------------
      * 构造方法
      * ---------------------------------------
@@ -18,7 +18,7 @@ class UserController extends BaseController
         parent::init();
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 用户列表
      * ---------------------------------------
@@ -36,7 +36,7 @@ class UserController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加
      * ---------------------------------------
@@ -70,7 +70,7 @@ class UserController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑
      * ---------------------------------------
@@ -103,7 +103,7 @@ class UserController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除
      * ---------------------------------------

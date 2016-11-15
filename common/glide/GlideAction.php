@@ -12,7 +12,7 @@ use yii\base\NotSupportedException;
 class GlideAction extends \trntv\glide\actions\GlideAction
 {
 
-    /*
+    /**
      * ---------------------------------------
      *
      * ---------------------------------------

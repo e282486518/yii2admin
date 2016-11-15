@@ -12,7 +12,7 @@ class DatabaseController extends BaseController{
 
     protected $dbpath;
 
-    /*
+    /**
      * ---------------------------------------
      * 构造函数
      * ---------------------------------------

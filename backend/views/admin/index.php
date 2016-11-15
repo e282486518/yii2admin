@@ -4,6 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\grid\GridView;
 
+/* @var $model common\models\Admin */
+/* @var $dataProvider yii\data\ActiveDataProvider  */
+/* @var $searchModel backend\models\search\AdminSearch */
+
 $columns = [
     [
         'class' => \common\core\CheckboxColumn::className(),

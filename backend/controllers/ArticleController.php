@@ -17,7 +17,7 @@ use backend\models\search\ArticleSearch;
  */
 class ArticleController extends BaseController
 {
-    /*
+    /**
      * ---------------------------------------
      * 列表页
      * ---------------------------------------
@@ -35,7 +35,7 @@ class ArticleController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加
      * ---------------------------------------
@@ -66,17 +66,13 @@ class ArticleController extends BaseController
 
         /* 获取模型默认数据 */
         $model->loadDefaultValues();
-        /* 获取栏目树形结构 */
-        $cate_list = Category::find()->asArray()->all();
-        $cate_tree = ArrayHelper::list_to_tree($cate_list,'id','pid','_child');
         /* 渲染模板 */
         return $this->render('edit', [
             'model' => $model,
-            'cate_tree' => $cate_tree,
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑
      * ---------------------------------------
@@ -116,17 +112,13 @@ class ArticleController extends BaseController
             }
             $model->extend = $_str;
         }
-        /* 获取栏目树形结构 */
-        $cate_list = Category::find()->asArray()->all();
-        $cate_tree = ArrayHelper::list_to_tree($cate_list,'id','pid','_child');
         /* 渲染模板 */
         return $this->render('edit', [
             'model' => $model,
-            'cate_tree' => $cate_tree,
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除或批量删除
      * ---------------------------------------

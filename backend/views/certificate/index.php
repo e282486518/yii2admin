@@ -4,6 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use backend\models\Category;
 
+/* @var $model common\models\TrainCertificate */
+/* @var $dataProvider yii\data\ActiveDataProvider  */
+/* @var $searchModel backend\models\search\CertificateSearch */
+
 $columns = [
     [
         'class' => \common\core\CheckboxColumn::className(),

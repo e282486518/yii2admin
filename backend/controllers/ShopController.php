@@ -9,14 +9,14 @@ use Yii;
 use backend\models\search\ShopSearch;
 
 
-/*
+/**
  * 商品控制器
  * 作者 ：longfei
  * Email ：phphome@qq.com
  */
 class ShopController extends BaseController
 {
-    /*
+    /**
      * ---------------------------------------
      * 列表页
      * ---------------------------------------
@@ -34,7 +34,7 @@ class ShopController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加
      * ---------------------------------------
@@ -84,7 +84,7 @@ class ShopController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑
      * ---------------------------------------
@@ -142,7 +142,7 @@ class ShopController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除或批量删除
      * ---------------------------------------
@@ -155,11 +155,11 @@ class ShopController extends BaseController
         }
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 商城套餐
      * @param int $id 参数信息
-     * @return json 返回信息
+     * @return string
      * ---------------------------------------
      */
     public function actionGroup(){

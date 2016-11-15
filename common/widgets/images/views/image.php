@@ -66,7 +66,7 @@ $(function() {
                         
                     },
                     success: function(json){
-                        if(json.boo){console.log(file_ipt);console.log(file_img);
+                        if(json.boo){//console.log(file_ipt);console.log(file_img);
                             file_img.attr('src','<?=Yii::$app->params['upload']['url']?>'+json.data.url);
                             file_ipt.val(<?=$saveDB?'json.data.id':'json.data.url'?>);
                         } else {

@@ -16,7 +16,7 @@ use backend\models\search\GroupSearch;
  */
 class GroupController extends BaseController
 {
-    /*
+    /**
      * ---------------------------------------
      * 列表页
      * ---------------------------------------
@@ -34,7 +34,7 @@ class GroupController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加
      * ---------------------------------------
@@ -91,7 +91,7 @@ class GroupController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑
      * ---------------------------------------
@@ -148,7 +148,7 @@ class GroupController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除或批量删除
      * ---------------------------------------

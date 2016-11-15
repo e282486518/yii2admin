@@ -32,7 +32,6 @@ use common\helpers\ArrayHelper;
         <!-- BEGIN FORM-->
         <?= $this->render('_form', [
             'model' => $model,
-            'cate_tree' => $cate_tree,
         ]) ?>
         <!-- END FORM-->
     </div>

@@ -32,7 +32,7 @@ class BaseController extends Controller
     public $admins = [];       // 当前登录的管理员信息
     public $title_sub = '';    // 页面子标题或提示
 
-    /*
+    /**
      * ---------------------------------------
      * 后台构造函数
      * ---------------------------------------

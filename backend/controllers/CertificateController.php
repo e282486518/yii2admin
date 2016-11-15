@@ -14,6 +14,12 @@ use backend\models\search\CertificateSearch;
 class CertificateController extends BaseController
 {
 
+    /**
+     * ---------------------------------------
+     * 列表
+     * @return string
+     * ---------------------------------------
+     */
     public function actionIndex(){
         /* 添加当前位置到cookie供后续跳转调用 */
         $this->setForward();
@@ -29,6 +35,12 @@ class CertificateController extends BaseController
         ]);*/
     }
 
+    /**
+     * ---------------------------------------
+     * 编辑
+     * @return string
+     * ---------------------------------------
+     */
     public function actionEdit() {
         $id = Yii::$app->request->get('id',0);
 
@@ -63,6 +75,11 @@ class CertificateController extends BaseController
         ]);
     }
 
+    /**
+     * ---------------------------------------
+     * 删除
+     * ---------------------------------------
+     */
     public function actionDelete(){
         if($this->delRow('\common\models\TrainCertificate', 'id')){
             $this->success('删除成功', $this->getForward());

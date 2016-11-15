@@ -5,7 +5,7 @@ namespace backend\models;
 use common\models\TrainType;
 use Yii;
 
-/*
+/**
  * ---------------------------------------
  * 文章模型
  * ---------------------------------------

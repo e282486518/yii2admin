@@ -141,7 +141,7 @@ use backend\models\Shop;
         
         <div class="form-actions">
             <?= Html::submitButton('<i class="icon-ok"></i> 确定', ['class' => 'btn blue ajax-post','target-form'=>'form-aaa']) ?>
-            <?= Html::Button('取消', ['class' => 'btn','onclick'=>'JavaScript:history.go(-1)']) ?>
+            <?= Html::button('取消', ['class' => 'btn','onclick'=>'JavaScript:history.go(-1)']) ?>
         </div>
         
         <?php ActiveForm::end(); ?>

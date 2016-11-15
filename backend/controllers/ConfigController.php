@@ -15,9 +15,10 @@ use backend\models\search\ConfigSearch;
 class ConfigController extends BaseController
 {
 
-    /*
+    /**
      * ---------------------------------------
      * 以列表的形式展现配置项
+     * @return string
      * ---------------------------------------
      */
     public function actionIndex()
@@ -33,7 +34,7 @@ class ConfigController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加配置项
      * ---------------------------------------
@@ -61,7 +62,7 @@ class ConfigController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑配置项
      * ---------------------------------------
@@ -89,7 +90,7 @@ class ConfigController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除配置项
      * ---------------------------------------
@@ -102,7 +103,7 @@ class ConfigController extends BaseController
         }
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 以表单的形式展现配置项
      * ---------------------------------------

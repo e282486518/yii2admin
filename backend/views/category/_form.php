@@ -17,7 +17,7 @@ use yii\helpers\Url;
 ]); ?>
 
 <?=$form->field($model, 'pid')->selectList(
-    ArrayHelper::merge(['0'=>'一级栏目'],ArrayHelper::map( ArrayHelper::format_tree($cate_tree), 'id', 'title')),
+    ArrayHelper::merge(['0'=>'一级栏目'],ArrayHelper::listDataLevel(\backend\models\Category::find()->asArray()->all(), 'id', 'title','id','pid')),
     ['class'=>'form-control c-md-1'])->label('上级菜单') ?>
 
 <?=$form->field($model, 'title')->textInput(['class'=>'form-control c-md-2'])->label('栏目名称')->hint('栏目中文名称')?>
@@ -34,7 +34,7 @@ use yii\helpers\Url;
 
 <div class="form-actions">
     <?= Html::submitButton('<i class="icon-ok"></i> 确定', ['class' => 'btn blue ajax-post','target-form'=>'form-aaa']) ?>
-    <?= Html::Button('取消', ['class' => 'btn']) ?>
+    <?= Html::button('取消', ['class' => 'btn']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

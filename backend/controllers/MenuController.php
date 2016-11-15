@@ -14,7 +14,7 @@ use backend\models\search\MenuSearch;
  */
 class MenuController extends BaseController
 {
-    /*
+    /**
      * ---------------------------------------
      * 列表页
      * ---------------------------------------
@@ -33,7 +33,7 @@ class MenuController extends BaseController
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 添加
      * ---------------------------------------
@@ -54,21 +54,16 @@ class MenuController extends BaseController
         }
 
         $model = new Menu();
-        /* 获取菜单树的 [id=>title] */
-        $menu_list = Menu::find()->asArray()->all();
-        $menu_tree = ArrayHelper::list_to_tree($menu_list,'id','pid','_child');
-
         /* 设置默认值 */
         $model->loadDefaultValues();
         $model->pid = $pid;
         /* 渲染模板 */
         return $this->render('edit', [
             'model' => $model,
-            'menu_tree' => $menu_tree,
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 编辑
      * ---------------------------------------
@@ -89,18 +84,13 @@ class MenuController extends BaseController
         }
 
         $model = Menu::findOne($id);
-        /* 获取菜单树的 [id=>title] */
-        $menu_list = Menu::find()->asArray()->all();
-        $menu_tree = ArrayHelper::list_to_tree($menu_list,'id','pid','_child');
-
         /* 渲染模板 */
         return $this->render('edit', [
             'model' => $model,
-            'menu_tree' => $menu_tree,
         ]);
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 删除或批量删除
      * ---------------------------------------
