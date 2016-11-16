@@ -105,10 +105,11 @@ class BaseController extends Controller
      * ---------------------------------------
      */
     public function setForward(){
-        Yii::$app->response->cookies->add(new \yii\web\Cookie([
+        \Yii::$app->getSession()->setFlash('__forward__', $_SERVER['REQUEST_URI']);
+        /*Yii::$app->response->cookies->add(new \yii\web\Cookie([
             'name'  => '__forward__',
             'value' => $_SERVER['REQUEST_URI'],
-        ]));
+        ]));*/
     }
 
     /**
@@ -120,7 +121,12 @@ class BaseController extends Controller
      */
     public function getForward($default=''){
         $default = $default ? $default : Url::toRoute([Yii::$app->controller->id.'/index']);
-        return Yii::$app->request->cookies->getValue('__forward__', $default);
+        if( Yii::$app->getSession()->hasFlash('__forward__') ) {
+            return Yii::$app->getSession()->getFlash('__forward__');
+        } else {
+            return $default;
+        }
+        //return Yii::$app->request->cookies->getValue('__forward__', $default);
     }
 
     /**
