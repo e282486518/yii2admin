@@ -32,10 +32,14 @@ Yii::$app->params['web'] = Config::lists();
 
 ##三、服务器配置
 
-apache:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/htaccess.txt)  
-nginx:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/nginx.conf)  
+* apache:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/htaccess.txt)
+* nginx:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/nginx.conf)
 
-##四、预览
+##四、安装
+安装文件正在开发中（打算用console、migrate）。。。
+目前安装方法是：1）下载或clone项目；2）执行composer install；3）导入数据库(doc/yii2admin.sql)到本地；4）配置服务器（doc目录有配置文件）
+
+##五、预览
 ![登录](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/login.png)
 ![首页](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/index.png)
 ![管理员](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/admin.png)
