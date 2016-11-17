@@ -5,6 +5,8 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\grid\GridView;
 
+/* @var $list array */
+
 ?>
 <div class="portlet light portlet-fit portlet-datatable bordered">
     <div class="portlet-title">

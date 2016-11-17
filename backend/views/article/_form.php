@@ -7,7 +7,7 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Article */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $form common\core\ActiveForm */
 ?>
 
 <?php $form = ActiveForm::begin([
