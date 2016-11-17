@@ -4,8 +4,9 @@ namespace backend\models\search;
 
 use Yii;
 use yii\base\Model;
-use yii\data\ActiveDataProvider;
+use yii\data\ArrayDataProvider;
 use backend\models\Category;
+use common\helpers\ArrayHelper;
 
 /**
  * CategorySearch represents the model behind the search form about `backend\models\Category`.
@@ -37,32 +38,29 @@ class CategorySearch extends Category
      *
      * @param array $params
      *
-     * @return ActiveDataProvider
+     * @return ArrayDataProvider
      */
     public function search($params)
     {
         $query = Category::find();
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
+        /* 分类查询 */
+        //$pid = Yii::$app->request->get('pid',0);
+        //$query->andFilterWhere(['pid' => $pid]);
+
+        $lists = $query->orderBy('sort asc')->asArray()->all();
+
+        $lists = ArrayHelper::list_to_tree($lists, 'id', 'pid');
+        $lists = ArrayHelper::format_tree($lists, 'title');
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $lists,
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => 30,
             ],
         ]);
-
-        $this->load($params);
-
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
         
-        /* 分类查询 */
-        $pid = Yii::$app->request->get('pid',0);
-        $query->andFilterWhere(['pid' => $pid]);
-        
-        $query->andFilterWhere([
+        /*$query->andFilterWhere([
             'id' => $this->id,
             'pid' => $this->pid,
             'create_time' => $this->create_time,
@@ -77,7 +75,7 @@ class CategorySearch extends Category
             ->andFilterWhere(['like', 'extend', $this->extend])
             ->andFilterWhere(['like', 'meta_title', $this->meta_title])
             ->andFilterWhere(['like', 'keywords', $this->keywords])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'description', $this->description]);*/
 
         return $dataProvider;
     }

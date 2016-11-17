@@ -23,15 +23,15 @@ $columns = [
         'options' => ['width' => '50px;']
     ],
     [
-        'header' => '标识',
-        'options' => ['width' => '150px;'],
-        'attribute' => 'name'
-    ],
-    [
         'header' => '名称',
         'attribute' => 'title'
     ],
     [
+        'header' => '标识',
+        'options' => ['width' => '150px;'],
+        'attribute' => 'name'
+    ],
+    /*[
         'header' => '上级分类',
         'content' => function($model){
             $str = '';
@@ -46,7 +46,7 @@ $columns = [
             }
             return $str;
         }
-    ],
+    ],*/
     [
         'label' => '排序',
         'value' => 'sort',
@@ -65,26 +65,26 @@ $columns = [
         'template' => '{view} {edit} {addsub} {delete}',
         'options' => ['width' => '200px;'],
         'buttons' => [
-            'view' => function ($url, $model, $key) {
-                return Html::a('<i class="icon-eye"></i>', ['index', 'pid'=>$key], [
+            /*'view' => function ($url, $model, $key) {
+                return Html::a('<i class="icon-eye"></i>', ['index', 'pid'=>$model['id']], [
                     'title' => Yii::t('app', '下级菜单'),
                     'class' => 'btn btn-xs blue'
                 ]);
-            },
+            },*/
             'edit' => function ($url, $model, $key) {
-                return Html::a('<i class="fa fa-edit"></i>', $url, [
+                return Html::a('<i class="fa fa-edit"></i>', ['edit', 'id'=>$model['id']], [
                     'title' => Yii::t('app', '编辑'),
                     'class' => 'btn btn-xs purple'
                 ]);
             },
             'addsub' => function ($url, $model, $key) {
-                return Html::a('<i class="fa fa-plus"></i>', ['add', 'pid'=>$key], [
+                return Html::a('<i class="fa fa-plus"></i>', ['add', 'pid'=>$model['id']], [
                     'title' => Yii::t('app', '添加子菜单'),
                     'class' => 'btn btn-xs red'
                 ]);
             },
             'delete' => function ($url, $model, $key) {
-                return Html::a('<i class="fa fa-times"></i>', $url, [
+                return Html::a('<i class="fa fa-times"></i>', ['delete', 'id'=>$model['id']], [
                     'title' => Yii::t('app', '删除'),
                     'class' => 'btn btn-xs red ajax-get confirm'
                 ]);

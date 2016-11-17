@@ -28,6 +28,7 @@ class CategoryController extends BaseController
         //var_dump(Category::getParents(2));
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //\yii\helpers\VarDumper::dump($dataProvider->allModels);exit;
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

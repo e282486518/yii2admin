@@ -18,7 +18,7 @@ use yii\helpers\Url;
 
 <?=$form->field($model, 'pid')->selectList(
     ArrayHelper::merge(['0'=>'一级栏目'],ArrayHelper::listDataLevel(\backend\models\Category::find()->asArray()->all(), 'id', 'title','id','pid')),
-    ['class'=>'form-control c-md-1'])->label('上级菜单') ?>
+    ['class'=>'form-control c-md-2'])->label('上级菜单') ?>
 
 <?=$form->field($model, 'title')->textInput(['class'=>'form-control c-md-2'])->label('栏目名称')->hint('栏目中文名称')?>
 <?=$form->field($model, 'name')->textInput(['class'=>'form-control c-md-2'])->label('栏目标识')->hint('英文标识，只允许含有:英文、数字和中划线')?>
