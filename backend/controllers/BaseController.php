@@ -28,7 +28,13 @@ class BaseController extends Controller
     public $layout = 'main';
 
     /* 定义变量,在layout中用$this->context访问 */
+    /**
+     * @var array $menu
+     */
     public $menu   = [];       // 当前用户允许访问的栏目
+    /**
+     * @var array $breadcrumbs
+     */
     public $breadcrumbs = [];  // 面包屑导航
     public $admins = [];       // 当前登录的管理员信息
     public $title_sub = '';    // 页面子标题或提示

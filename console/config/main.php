@@ -21,5 +21,10 @@ return [
             ],
         ],
     ],
+    'controllerMap' => [
+        'migrates' => [
+            'class' => 'e282486518\migration\ConsoleController',
+        ],
+    ],
     'params' => $params,
 ];

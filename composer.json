@@ -24,7 +24,8 @@
         "trntv/yii2-glide": "*",
         "kartik-v/yii2-field-range": "*",
         "kucha/ueditor": "*",
-        "yiisoft/yii2-httpclient": "^2.0"
+        "yiisoft/yii2-httpclient": "^2.0",
+        "e282486518/yii2-console-migration": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
