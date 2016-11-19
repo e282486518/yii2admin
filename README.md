@@ -35,9 +35,17 @@ Yii::$app->params['web'] = Config::lists();
 * apache:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/htaccess.txt)
 * nginx:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/nginx.conf)
 
-##四、安装
-安装文件正在开发中（打算用console、migrate）。。。
-目前安装方法是：1）下载或clone项目；2）执行composer install；3）导入数据库(doc/yii2admin.sql)到本地；4）配置服务器（doc目录有配置文件）
+##四、安装 
+一键 安装文件正在开发中，目前只能手动配置，配置 方法如下：
+```
+1、下载源文件或git clone https://github.com/trntv/yii2-starter-kit.git
+2、composer install 安装依赖扩展
+2、php init 初始化环境
+4、配置common\config\main-local.php中的数据库
+5、php ./yii migrates/up #恢复全部表
+6、参照 doc 目录下的Nginx和Apache配置文件，配置服务器，并设置hosts文件。
+```
+
 
 ##五、预览
 ![登录](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/login.png)
