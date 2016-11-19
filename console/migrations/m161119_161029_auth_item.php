@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161118_000000_auth_item extends Migration
+class m161119_161029_auth_item extends Migration
 {
     public function up()
     {
@@ -43,7 +43,7 @@ class m161118_000000_auth_item extends Migration
         $this->insert('{{%auth_item}}',['name'=>'admin/auth','type'=>'2','description'=>NULL,'rule_name'=>'admin/auth','data'=>NULL,'created_at'=>'1472528089','updated_at'=>'1472528089']);
         $this->insert('{{%auth_item}}',['name'=>'admin/edit','type'=>'2','description'=>NULL,'rule_name'=>'admin/edit','data'=>NULL,'created_at'=>'1472528089','updated_at'=>'1472528089']);
         $this->insert('{{%auth_item}}',['name'=>'admin/index','type'=>'2','description'=>NULL,'rule_name'=>'admin/index','data'=>NULL,'created_at'=>'1472528089','updated_at'=>'1472528089']);
-        $this->insert('{{%auth_item}}',['name'=>'administrator','type'=>'1','description'=>'administrator角色12','rule_name'=>NULL,'data'=>NULL,'created_at'=>'1465352150','updated_at'=>'1476446363']);
+        $this->insert('{{%auth_item}}',['name'=>'administrator','type'=>'1','description'=>'administrator角色','rule_name'=>NULL,'data'=>NULL,'created_at'=>'1465352150','updated_at'=>'1479233625']);
         $this->insert('{{%auth_item}}',['name'=>'article/add','type'=>'2','description'=>'','rule_name'=>'article/add','data'=>'','created_at'=>'1460027926','updated_at'=>'1460027926']);
         $this->insert('{{%auth_item}}',['name'=>'article/autoSave','type'=>'2','description'=>'','rule_name'=>'article/autoSave','data'=>'','created_at'=>'1460027926','updated_at'=>'1460027926']);
         $this->insert('{{%auth_item}}',['name'=>'article/batchOperate','type'=>'2','description'=>'','rule_name'=>'article/batchOperate','data'=>'','created_at'=>'1460027926','updated_at'=>'1460027926']);
@@ -139,6 +139,7 @@ class m161118_000000_auth_item extends Migration
         $this->insert('{{%auth_item}}',['name'=>'shop/delete','type'=>'2','description'=>NULL,'rule_name'=>'shop/delete','data'=>NULL,'created_at'=>'1476437985','updated_at'=>'1476437985']);
         $this->insert('{{%auth_item}}',['name'=>'shop/edit','type'=>'2','description'=>NULL,'rule_name'=>'shop/edit','data'=>NULL,'created_at'=>'1476437985','updated_at'=>'1476437985']);
         $this->insert('{{%auth_item}}',['name'=>'shop/group','type'=>'2','description'=>NULL,'rule_name'=>'shop/group','data'=>NULL,'created_at'=>'1472528088','updated_at'=>'1472528088']);
+        $this->insert('{{%auth_item}}',['name'=>'shop/index','type'=>'2','description'=>NULL,'rule_name'=>'shop/index','data'=>NULL,'created_at'=>'1479233606','updated_at'=>'1479233606']);
         $this->insert('{{%auth_item}}',['name'=>'shop/index&type=1','type'=>'2','description'=>NULL,'rule_name'=>'shop/index&type=1','data'=>NULL,'created_at'=>'1472528087','updated_at'=>'1472528087']);
         $this->insert('{{%auth_item}}',['name'=>'shop/index&type=2','type'=>'2','description'=>NULL,'rule_name'=>'shop/index&type=2','data'=>NULL,'created_at'=>'1472528087','updated_at'=>'1472528087']);
         $this->insert('{{%auth_item}}',['name'=>'shop/index&type=3','type'=>'2','description'=>NULL,'rule_name'=>'shop/index&type=3','data'=>NULL,'created_at'=>'1472528087','updated_at'=>'1472528087']);

@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161118_000000_train_type extends Migration
+class m161119_161029_train_type extends Migration
 {
     public function up()
     {
@@ -24,7 +24,7 @@ class m161118_000000_train_type extends Migration
         
         
         /* 表数据 */
-        $this->insert('{{%train_type}}',['id'=>'1','name'=>'帆船','cover'=>'1','ctime'=>'0','certif_ids'=>'1,2,3','description'=>'阿迪法师打发多少阿斯顿发生的发生的发达asd']);
+        $this->insert('{{%train_type}}',['id'=>'1','name'=>'帆船11','cover'=>'1','ctime'=>'0','certif_ids'=>'1,2,3','description'=>'阿迪法师打发多少阿斯顿发生的发生的发达asd']);
         $this->insert('{{%train_type}}',['id'=>'2','name'=>'海钓','cover'=>'4','ctime'=>'0','certif_ids'=>'1,2,3','description'=>'阿斯顿法师打发规划法国恢复电话打工行']);
         
         /* 设置外键约束 */

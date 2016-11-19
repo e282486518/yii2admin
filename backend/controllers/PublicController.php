@@ -43,6 +43,12 @@ class PublicController extends \common\core\Controller{
             'uploadimage' => [
                 'class' => 'common\widgets\images\UploadAction',
             ],
+            /* migration备份数据 */
+            'backup' => [
+                'class' => 'e282486518\migration\WebAction',
+                'returnFormat' => 'json',
+                'migrationPath' => '@console/migrations'
+            ]
         ]);
     }
 

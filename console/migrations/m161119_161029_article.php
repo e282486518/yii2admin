@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161118_000000_article extends Migration
+class m161119_161029_article extends Migration
 {
     public function up()
     {
@@ -43,7 +43,7 @@ class m161118_000000_article extends Migration
         $this->insert('{{%article}}',['id'=>'7','category_id'=>'1','name'=>'hezuo','title'=>'合作伙伴','cover'=>'','description'=>'合作伙伴','content'=>'<p>合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴</p>','extend'=>'','type'=>'2','position'=>'0','link'=>'','sort'=>'0','create_time'=>'1473606940','update_time'=>'0','status'=>'1']);
         $this->insert('{{%article}}',['id'=>'8','category_id'=>'3','name'=>'','title'=>'活动内容1111111','cover'=>'','description'=>'活动内容1111111','content'=>'<p>活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111</p>','extend'=>'','type'=>'2','position'=>'0','link'=>'','sort'=>'0','create_time'=>'1473607011','update_time'=>'1473608688','status'=>'1']);
         $this->insert('{{%article}}',['id'=>'9','category_id'=>'3','name'=>'','title'=>'活动内容222222','cover'=>'','description'=>'活动内容222222','content'=>'<p>活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222</p>','extend'=>'','type'=>'2','position'=>'0','link'=>'','sort'=>'0','create_time'=>'1473607032','update_time'=>'1473608697','status'=>'1']);
-        $this->insert('{{%article}}',['id'=>'10','category_id'=>'3','name'=>'','title'=>'活动内容333333','cover'=>'11','description'=>'活动内容333333','content'=>'<p><img src=\"http://www.yii2.cn/storage/web/image/201610/editor1477901835457115.png\" title=\"editor1477901835457115.png\" alt=\"icon_nav_dialog.png\"/>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>','extend'=>'','type'=>'2','position'=>'0','link'=>'','sort'=>'0','create_time'=>'1473607048','update_time'=>'1479272762','status'=>'1']);
+        $this->insert('{{%article}}',['id'=>'10','category_id'=>'3','name'=>'','title'=>'活动内容333333','cover'=>'11','description'=>'活动内容333333','content'=>'<p><img src=\"http://www.yii2.cn/storage/web/image/201610/editor1477901835457115.png\" title=\"editor1477901835457115.png\" alt=\"icon_nav_dialog.png\"/>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>','extend'=>'','type'=>'2','position'=>'0','link'=>'','sort'=>'0','create_time'=>'1473607048','update_time'=>'1478854005','status'=>'1']);
         
         /* 设置外键约束 */
         $this->execute('SET foreign_key_checks = 1;');

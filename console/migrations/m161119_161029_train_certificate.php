@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161118_000000_train_certificate extends Migration
+class m161119_161029_train_certificate extends Migration
 {
     public function up()
     {
@@ -23,7 +23,7 @@ class m161118_000000_train_certificate extends Migration
         
         
         /* 表数据 */
-        $this->insert('{{%train_certificate}}',['id'=>'1','title'=>'AAA认证证书','cover'=>'1','description'=>'证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明','ctime'=>'0']);
+        $this->insert('{{%train_certificate}}',['id'=>'1','title'=>'AAA认证证书11','cover'=>'1','description'=>'证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明','ctime'=>'0']);
         $this->insert('{{%train_certificate}}',['id'=>'2','title'=>'BBB认证证书','cover'=>'4','description'=>'证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明','ctime'=>'0']);
         $this->insert('{{%train_certificate}}',['id'=>'3','title'=>'CCC认证证书','cover'=>'5','description'=>'证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明 ','ctime'=>'0']);
         
