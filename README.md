@@ -38,7 +38,7 @@ Yii::$app->params['web'] = Config::lists();
 ##四、安装 
 一键 安装文件正在开发中，目前只能手动配置，配置 方法如下：
 ```
-1、下载源文件或git clone https://github.com/trntv/yii2-starter-kit.git
+1、下载源文件或git clone https://github.com/e282486518/yii2admin.git
 2、composer install 安装依赖扩展
 2、php init 初始化环境
 4、配置common\config\main-local.php中的数据库
