@@ -26,7 +26,8 @@
         "kartik-v/yii2-field-range": "*",
         "kucha/ueditor": "*",
         "yiisoft/yii2-httpclient": "^2.0",
-        "e282486518/yii2-console-migration": "*"
+        "e282486518/yii2-console-migration": "*",
+        "vlucas/phpdotenv": "^2.0",
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
