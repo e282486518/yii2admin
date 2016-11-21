@@ -50,7 +50,7 @@ var Login = function() {
                 $(form).ajaxSubmit({
                     success: function(data){
                         if (data == 1) {
-                            window.location.href="/admin/";
+                            window.location.href=BaseUrl;
                         } else {
                             $('.alert-danger').show();
                         }
