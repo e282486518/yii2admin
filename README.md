@@ -42,6 +42,9 @@ Yii::$app->params['web'] = Config::lists();
 2、composer install #安装依赖扩展
 3、php ./yii install/install #配置环境、配置数据库并安装数据库
 4、参照 doc 目录下的Nginx和Apache配置文件，配置服务器，并设置hosts文件。
+超级管理员账号： admin 123456
+普通管理员： guanli 123456
+编辑人员： feifei 123456
 ```
 
 
