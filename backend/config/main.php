@@ -52,7 +52,7 @@ return [
         /* 链接管理 */
         'urlManager' => [
             'class' => 'common\core\UrlManager',
-            'enablePrettyUrl' => true, //开启url规则
+            'enablePrettyUrl' => env('BACKEND_PRETTY_URL', true), //开启url规则
             'showScriptName' => false,  //是否显示链接中的index.php
             //'suffix' => '.html', //后缀
             'rules' => [

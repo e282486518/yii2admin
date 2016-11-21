@@ -44,7 +44,7 @@ return [
         ],
 
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl' => env('FRONTEND_PRETTY_URL', true),
             'showScriptName' => false,
             'rules' => [
             ],

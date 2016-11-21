@@ -9,6 +9,6 @@ Yii::setAlias('@console', dirname(dirname(__DIR__)) . '/console');
 Yii::setAlias('@storage', dirname(dirname(__DIR__)) . '/storage');
 
 /* 设置 url 别名 */
-Yii::setAlias('@backendUrl', '/admin');
-Yii::setAlias('@frontendUrl', '');
-Yii::setAlias('@storageUrl', 'http://www.yii2.cn/storage/web');
+Yii::setAlias('@backendUrl', env('BACKEND_URL'));
+Yii::setAlias('@frontendUrl', env('FRONTEND_URL'));
+Yii::setAlias('@storageUrl', env('STORAGE_URL'));

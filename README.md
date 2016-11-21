@@ -36,14 +36,12 @@ Yii::$app->params['web'] = Config::lists();
 * nginx:[点击查看](https://github.com/e282486518/yii2admin/blob/master/doc/nginx.conf)
 
 ##四、安装 
-一键 安装文件正在开发中，目前只能手动配置，配置 方法如下：
+一键安装方法如下：
 ```
 1、下载源文件或git clone https://github.com/e282486518/yii2admin.git
-2、composer install 安装依赖扩展
-2、php init 初始化环境
-4、配置common\config\main-local.php中的数据库
-5、php ./yii migrates/up #恢复全部表
-6、参照 doc 目录下的Nginx和Apache配置文件，配置服务器，并设置hosts文件。
+2、composer install #安装依赖扩展
+3、php ./yii install/install #配置环境、配置数据库并安装数据库
+4、参照 doc 目录下的Nginx和Apache配置文件，配置服务器，并设置hosts文件。
 ```
 
 

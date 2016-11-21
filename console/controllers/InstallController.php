@@ -21,10 +21,13 @@ class InstallController extends Controller
      * @var array $writablePaths 需要有可写权限的目录
      */
     public $writablePaths = [
-        '@base/runtime',
-        '@base/web/assets',
-        '@base/web/admin/assets',
-        '@base/web/storage'
+        '@backend/runtime',
+        '@backend/web/assets',
+        '@frontend/runtime',
+        '@frontend/web/assets',
+        '@console/runtime',
+        '@storage/cache',
+        '@storage/web'
     ];
 
     /**
@@ -42,7 +45,7 @@ class InstallController extends Controller
     /**
      * @var string $installFile 安装文件，用来标记是否安装过
      */
-    public $installFile = '@base/web/storage/install.txt';
+    public $installFile = '@storage/web/install.txt';
 
     /**
      * ------------------------------------------
@@ -66,7 +69,7 @@ class InstallController extends Controller
 
 STR;
         $this->stdout($start, Console::FG_GREEN);
-        copy(Yii::getAlias('@root/.env.example'), Yii::getAlias($this->envPath));
+        copy(Yii::getAlias('@base/.env.example'), Yii::getAlias($this->envPath));
         $this->runAction('set-writable', ['interactive' => $this->interactive]);
         $this->runAction('set-executable', ['interactive' => $this->interactive]);
         $this->runAction('set-keys', ['interactive' => $this->interactive]);
@@ -204,7 +207,7 @@ STR;
         do {
             $dbHost     = $this->prompt('dbhost(默认为中括号内的值)' . PHP_EOL, ['default' => '127.0.0.1']);
             $dbPort     = $this->prompt('dbport(默认为中括号内的值)' . PHP_EOL, ['default' => '3306']);
-            $dbDbname   = $this->prompt('dbname(不存在则自动创建)' . PHP_EOL, ['default' => 'yii']);
+            $dbDbname   = $this->prompt('dbname(不存在则自动创建)' . PHP_EOL, ['default' => 'yii2admin']);
             $dbUsername = $this->prompt('dbusername(默认为中括号内的值)' . PHP_EOL, ['default' => 'root']);
             $dbPassword = $this->prompt('dbpassword' . PHP_EOL);
             $dbDsn = "mysql:host={$dbHost};port={$dbPort}";
@@ -262,7 +265,7 @@ STR;
     public function setEnv($name, $value)
     {
         $file = Yii::getAlias($this->envPath);
-        $content = preg_replace("/({$name}\s*=)\s*(.*)/", "\\1$value", file_get_contents($file));
+        $content = preg_replace("/({$name}\s*=)\s*(.*)/", "\\1 $value", file_get_contents($file));
         file_put_contents($file, $content);
     }
 

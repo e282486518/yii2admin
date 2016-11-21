@@ -1,11 +1,8 @@
 <?php
 
 /**
- * Load application environment from .env file
+ * 全局公共函数
  */
-if (is_file(dirname(__DIR__) . '/.env')) {
-    (new \Dotenv\Dotenv(dirname(__DIR__)))->load();
-}
 
 if (! function_exists('env')) {
     /**
@@ -41,3 +38,18 @@ if (! function_exists('env')) {
         return $value;
     }
 }
+
+/**
+ * 从根目录的 .env 文件中 加载应用环境变量
+ * Load application environment from .env file
+ */
+if (is_file(dirname(__DIR__) . '/.env')) {
+    (new \Dotenv\Dotenv(dirname(__DIR__)))->load();
+}
+
+/**
+ * 初始化全局常量
+ * Init application constants
+ */
+defined('YII_DEBUG') or define('YII_DEBUG', env('YII_DEBUG'));
+defined('YII_ENV') or define('YII_ENV', env('YII_ENV', 'prod'));
