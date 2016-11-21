@@ -62,7 +62,7 @@ $columns = [
     [
         'class' => 'yii\grid\ActionColumn',
         'header' => '操作',
-        'template' => '{view} {edit} {addsub} {delete}',
+        'template' => '{edit} {addsub} {delete}',
         'options' => ['width' => '200px;'],
         'buttons' => [
             /*'view' => function ($url, $model, $key) {

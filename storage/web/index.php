@@ -1,9 +1,10 @@
 <?php
-defined('YII_DEBUG') or define('YII_DEBUG', true);
-defined('YII_ENV') or define('YII_ENV', 'prod');
 
 // Composer
 require(__DIR__ . '/../../vendor/autoload.php');
+
+// Environment
+require(__DIR__ . '/../../common/env.php');
 
 // Yii
 require(__DIR__ . '/../../vendor/yiisoft/yii2/Yii.php');

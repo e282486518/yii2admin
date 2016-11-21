@@ -17,6 +17,8 @@ class LoginController extends Controller
 
     public $enableCsrfValidation=false;
 
+    public $defaultAction = 'login';
+
     /**
      * ---------------------------------------
      * 行为控制
