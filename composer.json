@@ -27,7 +27,7 @@
         "kucha/ueditor": "*",
         "yiisoft/yii2-httpclient": "^2.0",
         "e282486518/yii2-console-migration": "*",
-        "vlucas/phpdotenv": "^2.0",
+        "vlucas/phpdotenv": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
