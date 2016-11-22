@@ -43,6 +43,11 @@ class ConfigSearch extends Config
     {
         $query = Config::find();
 
+        /**
+         * 在PHP5中 对象的复制是通过引用来实现的，
+         * 运行到return处的$query对象和这里的$query在内存中的地址是一样的，
+         * 所以不需要将这个语句写在return前
+         */
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
