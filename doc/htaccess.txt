@@ -1,43 +1,87 @@
 
 # ======================= Apache Yii2通用后台  二级域名配置 =================================
+.env 配置：
+# Urls
+# ---------
+FRONTEND_URL     = /
+BACKEND_URL      = /
+STORAGE_URL      = /
 
-#    <VirtualHost *:80>
-#        ServerAdmin webmaster@dummy-host2.example.com
-#        DocumentRoot "E:\yii2admin\backend\web"
-#        ServerName admin.yii2.cn
-#        ErrorLog "logs/yii2.cn-error.log"
-#        CustomLog "logs/yii2.cn-access.log" common
-#    </VirtualHost>
-#    <Directory "E:\yii2admin\backend\web">
-#        AllowOverride all
-#        Require all granted
-#    </Directory>
+    <VirtualHost *:80>
+        ServerAdmin webmaster@dummy-host2.example.com
+        DocumentRoot "E:\yii2admin\backend\web"
+        ServerName admin.yii2.cn
+        ErrorLog "logs/yii2.cn-error.log"
+        CustomLog "logs/yii2.cn-access.log" common
+    </VirtualHost>
+    <Directory "E:\yii2admin\backend\web">
+        AllowOverride all
+        Require all granted
+    </Directory>
 
-#    <VirtualHost *:80>
-#        ServerAdmin webmaster@dummy-host2.example.com
-#        DocumentRoot "E:\yii2admin\frontend\web"
-#        ServerName  www.yii2.cn
-#        ErrorLog "logs/yii2.cn-error.log"
-#        CustomLog "logs/yii2.cn-access.log" common
-#    </VirtualHost>
-#    <Directory "E:\yii2admin\frontend\web">
-#        AllowOverride all
-#        Require all granted
-#    </Directory>
+    <VirtualHost *:80>
+        ServerAdmin webmaster@dummy-host2.example.com
+        DocumentRoot "E:\yii2admin\frontend\web"
+        ServerName  www.yii2.cn
+        ErrorLog "logs/yii2.cn-error.log"
+        CustomLog "logs/yii2.cn-access.log" common
+    </VirtualHost>
+    <Directory "E:\yii2admin\frontend\web">
+        AllowOverride all
+        Require all granted
+    </Directory>
 
-#    <VirtualHost *:80>
-#        ServerAdmin webmaster@dummy-host2.example.com
-#        DocumentRoot "E:\yii2admin\storage\web"
-#        ServerName  storage.yii2.cn
-#        ErrorLog "logs/yii2.cn-error.log"
-#        CustomLog "logs/yii2.cn-access.log" common
-#    </VirtualHost>
-#    <Directory "E:\yii2admin\storage\web">
-#        AllowOverride all
-#        Require all granted
-#    </Directory>
+    <VirtualHost *:80>
+        ServerAdmin webmaster@dummy-host2.example.com
+        DocumentRoot "E:\yii2admin\storage\web"
+        ServerName  storage.yii2.cn
+        ErrorLog "logs/yii2.cn-error.log"
+        CustomLog "logs/yii2.cn-access.log" common
+    </VirtualHost>
+    <Directory "E:\yii2admin\storage\web">
+        AllowOverride all
+        Require all granted
+    </Directory>
+    
+    <Directory "E:\yii2admin/frontend/web">
+        RewriteEngine on
+        # 如果一个目录或一个文件存在，请直接使用请求
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        # 否则去请求 index.php
+        RewriteRule . index.php
+
+        Require all granted
+    </Directory>
+    <Directory "E:\yii2admin/backend/web">
+        RewriteEngine on
+        # 如果一个目录或一个文件存在，请直接使用请求
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        # 否则去请求 index.php
+        RewriteRule . index.php
+
+        Require all granted
+    </Directory>
+    <Directory "E:\yii2admin/storage/web">
+        RewriteEngine on
+        # 如果一个目录或一个文件存在，请直接使用请求
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        # 否则去请求 index.php
+        RewriteRule . index.php
+
+        Require all granted
+    </Directory>
 
 # ======================= Apache Yii2通用后台 单域名配置=================================
+.env 配置：
+# Urls
+# ---------
+FRONTEND_URL     = /
+BACKEND_URL      = /admin
+STORAGE_URL      = /storage/web
+
 <VirtualHost *:80>
     ServerName www.yii2.cn
 
@@ -94,9 +138,42 @@
 
         Require all granted
     </Directory>
-    <FilesMatch \.(htaccess|htpasswd|svn|git)>
+    <FilesMatch \.(env|htaccess|htpasswd|svn|git)>
         Require all denied
     </FilesMatch>
 </VirtualHost>
 
+# ======================= Apache Yii2通用后台 二级目录配置=================================
+yii2admin目录：E:\www\yii2admin
 
+    <VirtualHost *:80>
+        ServerAdmin webmaster@dummy-host2.example.com
+        DocumentRoot "E:\www"
+        ServerName  www.yii.cn
+        ErrorLog "logs/yii.cn-error.log"
+        CustomLog "logs/yii.cn-access.log" common
+    </VirtualHost>
+    <Directory "E:\www">
+        AllowOverride all
+        Require all granted
+    </Directory>
+    <Directory "E:\www/yii2admin/backend/web">
+        RewriteEngine on
+        # 如果一个目录或一个文件存在，请直接使用请求
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        # 否则去请求 index.php
+        RewriteRule . index.php
+
+        Require all granted
+    </Directory>
+
+后台：www.yii.cn/yii2admin/backend/web/
+前台：www.yii.cn/yii2admin/frontend/web/
+
+.env 配置：
+# Urls
+# ---------
+FRONTEND_URL     = /yii2admin/frontend/web
+BACKEND_URL      = /yii2admin/backend/web
+STORAGE_URL      = /yii2admin/storage/web
