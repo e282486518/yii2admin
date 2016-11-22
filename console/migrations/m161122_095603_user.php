@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161119_161029_user extends Migration
+class m161122_095603_user extends Migration
 {
     public function up()
     {
@@ -38,7 +38,7 @@ class m161119_161029_user extends Migration
         
         
         /* 表数据 */
-        $this->insert('{{%user}}',['uid'=>'6','username'=>'e282486518','password'=>'$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG','salt'=>'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN','email'=>'phphome@qq.com','mobile'=>'13656568989','reg_time'=>'1456568652','reg_ip'=>'13654444444','last_login_time'=>'1456568652','last_login_ip'=>'13556464888','update_time'=>'1479233640','tuid'=>'7','image'=>'1','score'=>'10','score_all'=>'0','status'=>'1']);
+        $this->insert('{{%user}}',['uid'=>'6','username'=>'e282486518','password'=>'$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG','salt'=>'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN','email'=>'phphome@qq.com','mobile'=>'13656568989','reg_time'=>'1456568652','reg_ip'=>'13654444444','last_login_time'=>'1456568652','last_login_ip'=>'13556464888','update_time'=>'1477564915','tuid'=>'7','image'=>'1','score'=>'10','score_all'=>'0','status'=>'1']);
         $this->insert('{{%user}}',['uid'=>'7','username'=>'282486518','password'=>'$2y$13$KIAenVWuR2Tgi1VCKiPegeVsQAHXyDcp9rUmzhqK6TNjL4Cqc3YPa','salt'=>'n9uguceYCqn_jQNd8F6-JRHOj21yltUo','email'=>'phphome@qq.coms','mobile'=>'13645685421','reg_time'=>'1472626509','reg_ip'=>'2130706433','last_login_time'=>'0','last_login_ip'=>'2130706433','update_time'=>'1472626719','tuid'=>'0','image'=>'3','score'=>'1','score_all'=>'1','status'=>'0']);
         $this->insert('{{%user}}',['uid'=>'8','username'=>'135232323232','password'=>'$2y$13$UVA5264Qic4g8BDl940x1e0ZefVI3QqpH8tH6bttL/cF8GcU1C7Rm','salt'=>'Dg36PS0QshZ-Y2zhQJa559RSKJULGO_8','email'=>NULL,'mobile'=>'','reg_time'=>'1474112224','reg_ip'=>'2130706433','last_login_time'=>'0','last_login_ip'=>'2130706433','update_time'=>'0','tuid'=>'0','image'=>'','score'=>'0','score_all'=>'0','status'=>'0']);
         $this->insert('{{%user}}',['uid'=>'13','username'=>'aabbcc','password'=>'$2y$13$46n16kagedYUXx6WXZ2QkuSGJKm3FDr6iI.KPNzAkHYRHmplqgAiC','salt'=>'OblZ1QuXGGGiXZWTPqfDrCoF_qXVIN3b','email'=>'','mobile'=>'13421839870','reg_time'=>'1474114459','reg_ip'=>'2130706433','last_login_time'=>'0','last_login_ip'=>'2130706433','update_time'=>'1477904302','tuid'=>'0','image'=>'1','score'=>'0','score_all'=>'0','status'=>'1']);

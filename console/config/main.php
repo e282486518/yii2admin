@@ -22,7 +22,7 @@ return [
         ],
     ],
     'controllerMap' => [
-        'migrates' => [
+        'migrate' => [
             'class' => 'e282486518\migration\ConsoleController',
         ],
     ],

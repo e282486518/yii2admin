@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161119_161029_train extends Migration
+class m161122_095603_train extends Migration
 {
     public function up()
     {
@@ -29,7 +29,7 @@ class m161119_161029_train extends Migration
         
         
         /* 表数据 */
-        $this->insert('{{%train}}',['id'=>'1','type'=>'1','title'=>'测试培训标题111','description'=>'测试培训标题1：
+        $this->insert('{{%train}}',['id'=>'1','type'=>'1','title'=>'测试培训标题1','description'=>'测试培训标题1：
 
 帆海汇码头里停泊着单体竞赛帆船TEN，龙骨帆船DC22，丁级帆船DC15，
 双体帆船JE28，三体帆船JE27。无论您是出海游玩钓鱼，海上派对，
@@ -37,7 +37,7 @@ class m161119_161029_train extends Migration
 还是商务洽谈等都可以满足您的需要。
 帆海汇培训中心室内拥有设施齐全的超大会议室，可以满足不同公司组织的业内会议
 或不同领域的年度盛会。帆海汇培训中心为美国ASA权威帆船培训体系授权分校，
-将为帆船运动爱好者提供专业的帆船培训，并颁发美国ASA帆船驾驶证书。 ','price'=>'523.23','num'=>'127','cover'=>'1','sort'=>'0','create_time'=>'1472643081','update_time'=>'1479233501','status'=>'1']);
+将为帆船运动爱好者提供专业的帆船培训，并颁发美国ASA帆船驾驶证书。 ','price'=>'523.23','num'=>'127','cover'=>'1','sort'=>'0','create_time'=>'1472643081','update_time'=>'1477903793','status'=>'1']);
         $this->insert('{{%train}}',['id'=>'2','type'=>'2','title'=>'测试培训标题','description'=>'帆海汇码头里停泊着单体竞赛帆船TEN，龙骨帆船DC22，丁级帆船DC15，
 双体帆船JE28，三体帆船JE27。无论您是出海游玩钓鱼，海上派对，
 

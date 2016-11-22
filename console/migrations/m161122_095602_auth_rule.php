@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161119_161029_auth_rule extends Migration
+class m161122_095602_auth_rule extends Migration
 {
     public function up()
     {
@@ -132,7 +132,6 @@ class m161119_161029_auth_rule extends Migration
         $this->insert('{{%auth_rule}}',['name'=>'shop/delete','data'=>'O:21:\"common\\core\\rbac\\Rule\":3:{s:4:\"name\";s:11:\"shop/delete\";s:9:\"createdAt\";i:1476437985;s:9:\"updatedAt\";i:1476437985;}','created_at'=>'1476437985','updated_at'=>'1476437985']);
         $this->insert('{{%auth_rule}}',['name'=>'shop/edit','data'=>'O:21:\"common\\core\\rbac\\Rule\":3:{s:4:\"name\";s:9:\"shop/edit\";s:9:\"createdAt\";i:1476437985;s:9:\"updatedAt\";i:1476437985;}','created_at'=>'1476437985','updated_at'=>'1476437985']);
         $this->insert('{{%auth_rule}}',['name'=>'shop/group','data'=>'O:21:\"common\\core\\rbac\\Rule\":3:{s:4:\"name\";s:10:\"shop/group\";s:9:\"createdAt\";i:1472528088;s:9:\"updatedAt\";i:1472528088;}','created_at'=>'1472528088','updated_at'=>'1472528088']);
-        $this->insert('{{%auth_rule}}',['name'=>'shop/index','data'=>'O:21:\"common\\core\\rbac\\Rule\":3:{s:4:\"name\";s:10:\"shop/index\";s:9:\"createdAt\";i:1479233606;s:9:\"updatedAt\";i:1479233606;}','created_at'=>'1479233606','updated_at'=>'1479233606']);
         $this->insert('{{%auth_rule}}',['name'=>'shop/index&type=1','data'=>'O:21:\"common\\core\\rbac\\Rule\":3:{s:4:\"name\";s:17:\"shop/index&type=1\";s:9:\"createdAt\";i:1472528087;s:9:\"updatedAt\";i:1472528087;}','created_at'=>'1472528087','updated_at'=>'1472528087']);
         $this->insert('{{%auth_rule}}',['name'=>'shop/index&type=2','data'=>'O:21:\"common\\core\\rbac\\Rule\":3:{s:4:\"name\";s:17:\"shop/index&type=2\";s:9:\"createdAt\";i:1472528087;s:9:\"updatedAt\";i:1472528087;}','created_at'=>'1472528087','updated_at'=>'1472528087']);
         $this->insert('{{%auth_rule}}',['name'=>'shop/index&type=3','data'=>'O:21:\"common\\core\\rbac\\Rule\":3:{s:4:\"name\";s:17:\"shop/index&type=3\";s:9:\"createdAt\";i:1472528087;s:9:\"updatedAt\";i:1472528087;}','created_at'=>'1472528087','updated_at'=>'1472528087']);

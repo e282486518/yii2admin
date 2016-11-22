@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161119_161029_auth_item_child extends Migration
+class m161122_095602_auth_item_child extends Migration
 {
     public function up()
     {
@@ -20,8 +20,8 @@ class m161119_161029_auth_item_child extends Migration
         $this->createIndex('child','{{%auth_item_child}}','child',0);
         
         /* 外键约束设置 */
-        $this->addForeignKey('fk_{{%auth_item}}_1787_00','{{%auth_item_child}}', 'parent', '{{%auth_item}}', 'name', 'CASCADE', 'CASCADE' );
-        $this->addForeignKey('fk_{{%auth_item}}_1787_01','{{%auth_item_child}}', 'child', '{{%auth_item}}', 'name', 'CASCADE', 'CASCADE' );
+        $this->addForeignKey('fk_auth_item_9788_00','{{%auth_item_child}}', 'parent', '{{%auth_item}}', 'name', 'CASCADE', 'CASCADE' );
+        $this->addForeignKey('fk_auth_item_9788_01','{{%auth_item_child}}', 'child', '{{%auth_item}}', 'name', 'CASCADE', 'CASCADE' );
         
         /* 表数据 */
         $this->insert('{{%auth_item_child}}',['parent'=>'administrator','child'=>'ad/add']);
@@ -118,7 +118,6 @@ class m161119_161029_auth_item_child extends Migration
         $this->insert('{{%auth_item_child}}',['parent'=>'editor','child'=>'shop/delete']);
         $this->insert('{{%auth_item_child}}',['parent'=>'administrator','child'=>'shop/edit']);
         $this->insert('{{%auth_item_child}}',['parent'=>'editor','child'=>'shop/edit']);
-        $this->insert('{{%auth_item_child}}',['parent'=>'administrator','child'=>'shop/index']);
         $this->insert('{{%auth_item_child}}',['parent'=>'administrator','child'=>'shop/index?type=1']);
         $this->insert('{{%auth_item_child}}',['parent'=>'editor','child'=>'shop/index?type=1']);
         $this->insert('{{%auth_item_child}}',['parent'=>'administrator','child'=>'shop/index?type=2']);
