@@ -1,4 +1,4 @@
-特别说明，项目刚刚做不久，而且对yii2有些功能不是很熟，难免有缺陷。有什么建议可以联系我phphome@qq.com  
+特别说明，项目刚刚做不久，而且对yii2有些功能不是很熟，难免有缺陷。有什么建议可以联系我phphome@qq.com
 
 ##一、开发基础说明
 1、gii生成的模型统一放在 common\models下，模型统一继承 common\core\BaseActiveRecord  方便扩展yii核心。  
@@ -40,6 +40,7 @@ Yii::$app->params['web'] = Config::lists();
 ```
 1、下载源文件或git clone https://github.com/e282486518/yii2admin.git
 2、composer install #安装依赖扩展
+（如果安装失败可以下载链接：https://share.weiyun.com/10026ab454bef3366a31665709cb8ca8 （password：TgO5））
 3、php ./yii install/install #配置环境、配置数据库并安装数据库
 4、参照 doc 目录下的Nginx和Apache配置文件，配置服务器，并设置hosts文件。
 超级管理员账号： admin 123456
