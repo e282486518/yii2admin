@@ -53,12 +53,3 @@ if (is_file(dirname(__DIR__) . '/.env')) {
  */
 defined('YII_DEBUG') or define('YII_DEBUG', env('YII_DEBUG'));
 defined('YII_ENV')   or define('YII_ENV', env('YII_ENV', 'prod'));
-defined('BASE_PATH') or define('BASE_PATH', dirname(__DIR__));
-
-/**
- * 扩展的Yii类映射，这种方法对扩展YII核心类比较好用
- * 具体可参考：yiisoft/yii2/classes.php
- * Yii2 classMap 【这个还有待验证。。。】
- */
-//Yii::$classMap['yii\helpers\Html'] = BASE_PATH.'/common/helpers/Html.php';
-//var_dump(Yii::$classMap['yii\helpers\ArrayHelper']);

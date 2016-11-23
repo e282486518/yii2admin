@@ -14,7 +14,7 @@ use Yii;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class Html extends \yii\helpers\Html
+class Html extends \yii\helpers\BaseHtml
 {
     /**
      * ---------------------------------------
