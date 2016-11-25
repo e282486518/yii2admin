@@ -47,7 +47,10 @@ class User extends \common\models\User implements IdentityInterface,RateLimitInt
     }
 
     /**
-     * @inheritdoc
+     * ---------------------------------------
+     * 获取主键
+     * @return mixed
+     * ---------------------------------------
      */
     public function getId()
     {
@@ -55,7 +58,10 @@ class User extends \common\models\User implements IdentityInterface,RateLimitInt
     }
 
     /**
-     * @inheritdoc
+     * ---------------------------------------
+     * 获取密码干扰字符串
+     * @return string
+     * ---------------------------------------
      */
     public function getAuthKey()
     {
@@ -63,7 +69,11 @@ class User extends \common\models\User implements IdentityInterface,RateLimitInt
     }
 
     /**
-     * @inheritdoc
+     * ---------------------------------------
+     * 验证
+     * @param string $authKey
+     * @return bool
+     * ---------------------------------------
      */
     public function validateAuthKey($authKey)
     {
@@ -74,21 +84,44 @@ class User extends \common\models\User implements IdentityInterface,RateLimitInt
      * --------------------------------------------------------------
      * 实现RateLimitInterface
      * 以下是接口调用速率限制信息，记得在数据库中添加两个字段allowance,allowance_updated_at
+     * 这两个字段也可以存储到缓存中，这里方便就存储到数据库中了
      * 资料参考：http://www.yiichina.com/doc/guide/2.0/rest-rate-limiting
      * --------------------------------------------------------------
      */
 
-    // 返回某一时间允许请求的最大数量，比如设置10秒内最多5次请求（小数量方便我们模拟测试）
+    /**
+     * ---------------------------------------
+     * 返回某一时间允许请求的最大数量，比如设置10秒内最多5次请求（小数量方便我们模拟测试）
+     * @param \yii\web\Request $request
+     * @param \yii\base\Action $action
+     * @return array
+     * ---------------------------------------
+     */
     public  function getRateLimit($request, $action){
         return [5, 10];
     }
 
-    // 回剩余的允许的请求和相应的UNIX时间戳数 当最后一次速率限制检查时
+    /**
+     * ---------------------------------------
+     * 回剩余的允许的请求和相应的UNIX时间戳数 当最后一次速率限制检查时
+     * @param \yii\web\Request $request
+     * @param \yii\base\Action $action
+     * @return array
+     * ---------------------------------------
+     */
     public  function loadAllowance($request, $action){
         return [$this->allowance, $this->allowance_updated_at];
     }
 
-    // 保存允许剩余的请求数和当前的UNIX时间戳
+    /**
+     * ---------------------------------------
+     * 保存允许剩余的请求数和当前的UNIX时间戳
+     * @param \yii\web\Request $request
+     * @param \yii\base\Action $action
+     * @param int $allowance
+     * @param int $timestamp
+     * ---------------------------------------
+     */
     public  function saveAllowance($request, $action, $allowance, $timestamp){
         $this->allowance = $allowance;
         $this->allowance_updated_at = $timestamp;
