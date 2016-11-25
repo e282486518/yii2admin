@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-11-11 17:03:31
+-- Generation Time: 2016-11-25 19:34:41
 -- 服务器版本： 5.5.48-log
 -- PHP Version: 5.6.22
 
@@ -110,7 +110,7 @@ INSERT INTO `yii2_article` (`id`, `category_id`, `name`, `title`, `cover`, `desc
 (7, 1, 'hezuo', '合作伙伴', '', '合作伙伴', '<p>合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴</p>', '', 2, 0, '', 0, 1473606940, 0, 1),
 (8, 3, '', '活动内容1111111', '', '活动内容1111111', '<p>活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111</p>', '', 2, 0, '', 0, 1473607011, 1473608688, 1),
 (9, 3, '', '活动内容222222', '', '活动内容222222', '<p>活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222</p>', '', 2, 0, '', 0, 1473607032, 1473608697, 1),
-(10, 3, '', '活动内容333333', '11', '活动内容333333', '<p><img src="http://www.yii2.cn/storage/web/image/201610/editor1477901835457115.png" title="editor1477901835457115.png" alt="icon_nav_dialog.png"/>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>', '', 2, 0, '', 0, 1473607048, 1478854005, 1);
+(10, 3, '', '活动内容333333', '11', '活动内容333333', '<p><img src="http://www.yii2.cn/storage/web/image/201610/editor1477901835457115.png" title="editor1477901835457115.png" alt="icon_nav_dialog.png"/>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>', '', 2, 0, '', 0, 1473607048, 1479272762, 1);
 
 -- --------------------------------------------------------
 
@@ -665,15 +665,19 @@ CREATE TABLE IF NOT EXISTS `yii2_category` (
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '数据状态'
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='分类表';
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='分类表';
 
 --
 -- 转存表中的数据 `yii2_category`
 --
 
 INSERT INTO `yii2_category` (`id`, `pid`, `name`, `title`, `link`, `extend`, `meta_title`, `keywords`, `description`, `create_time`, `update_time`, `sort`, `status`) VALUES
-(1, 0, 'about', '关于我们', '', '', '', '', '', 1379474947, 1476341718, 2, 1),
-(3, 0, 'event', '活动', '', 'a:2:{s:2:"sd";s:2:"11";s:4:"sdfs";s:3:"222";}', '测试标题', '测试seo关键词', '测试描述', 1471947194, 1473604631, 1, 1);
+(1, 0, 'about', '关于我们', '', '', '', '', '', 1379474947, 1479373724, 10, 1),
+(3, 0, 'event', '活动', '', 'a:2:{s:2:"sd";s:2:"11";s:4:"sdfs";s:3:"222";}', '测试标题', '测试seo关键词', '测试描述', 1471947194, 1473604631, 1, 1),
+(4, 1, 'lianxi', '联系我们', '', '', '', '', '', 1479368832, 0, 0, 1),
+(5, 3, 'xin', '最新活动', '', '', '', '', '', 1479368867, 1479373985, 10, 1),
+(6, 3, 'hot', '热门活动', '', '', '', '', '', 1479373707, 0, 9, 1),
+(7, 4, 'lianxi3', '联系我们3', '', '', '', '', '', 1479374778, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -4569,6 +4573,8 @@ CREATE TABLE IF NOT EXISTS `yii2_user` (
   `image` varchar(255) NOT NULL DEFAULT '' COMMENT '头像路径',
   `score` int(8) unsigned NOT NULL DEFAULT '0' COMMENT '当前积分',
   `score_all` int(8) unsigned NOT NULL DEFAULT '0' COMMENT '总积分',
+  `allowance` int(5) NOT NULL COMMENT 'api接口调用速率限制',
+  `allowance_updated_at` int(10) NOT NULL COMMENT 'api接口调用速率限制',
   `status` tinyint(4) DEFAULT '0' COMMENT '用户状态 1正常 0禁用'
 ) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
@@ -4576,17 +4582,17 @@ CREATE TABLE IF NOT EXISTS `yii2_user` (
 -- 转存表中的数据 `yii2_user`
 --
 
-INSERT INTO `yii2_user` (`uid`, `username`, `password`, `salt`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `tuid`, `image`, `score`, `score_all`, `status`) VALUES
-(6, 'e282486518', '$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG', 'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN', 'phphome@qq.com', '13656568989', 1456568652, 13654444444, 1456568652, 13556464888, 1477564915, 7, '1', 10, 0, 1),
-(7, '282486518', '$2y$13$KIAenVWuR2Tgi1VCKiPegeVsQAHXyDcp9rUmzhqK6TNjL4Cqc3YPa', 'n9uguceYCqn_jQNd8F6-JRHOj21yltUo', 'phphome@qq.coms', '13645685421', 1472626509, 2130706433, 0, 2130706433, 1472626719, 0, '3', 1, 1, 0),
-(8, '135232323232', '$2y$13$UVA5264Qic4g8BDl940x1e0ZefVI3QqpH8tH6bttL/cF8GcU1C7Rm', 'Dg36PS0QshZ-Y2zhQJa559RSKJULGO_8', NULL, '', 1474112224, 2130706433, 0, 2130706433, 0, 0, '', 0, 0, 0),
-(13, 'aabbcc', '$2y$13$46n16kagedYUXx6WXZ2QkuSGJKm3FDr6iI.KPNzAkHYRHmplqgAiC', 'OblZ1QuXGGGiXZWTPqfDrCoF_qXVIN3b', '', '13421839870', 1474114459, 2130706433, 0, 2130706433, 1477904302, 0, '1', 0, 0, 1),
-(14, 'bvbvbv', '$2y$13$Jm2bfhSnqcSMTaPxRRWiReqrclkApB1Dc20kLTxVNHAzl7J8DH60K', 'jrYKEga9jbp2H6bsdLjvnEd5mqsRgMMD', NULL, '13013013330', 1474115843, 2130706433, 0, 2130706433, 0, 0, '', 0, 0, 1),
-(15, 'hahaha', '$2y$13$NsuZra9Z/DBaRk3R7tzvnuYrbmV5mIAKTKoksFcYHu3wUyJDaLPz.', 'BsDuGjz20Uexw6Kq_iw-s8AiqNmtec2u', NULL, '13636363636', 1474192435, 2130706433, 0, 2130706433, 0, 13, '', 0, 0, 1),
-(16, 'huanglala', '$2y$13$FJGFsH1fls8m3DWuxUrN9eJcDQZScQLyYaQIXVeSPK0WMlpT1C.Ze', '7EpKjeEwVqYQS7oV0QW7-JNy-UFchvY1', NULL, '13631639420', 1474197294, 2130706433, 0, 2130706433, 0, 13, '', 0, 0, 1),
-(17, 'binbin', '$2y$13$fbFtBRQgoH2PZ3wfCG1KIu8qdXeah.4KFZWI7kAE.4fDxM4lMuJ4q', 'tjCK1O9VaCtnvlNzRobRlnNHmbADlXPM', NULL, '18665354960', 1474334566, 1946572948, 0, 1946572948, 0, 6, '', 0, 0, 1),
-(18, 'lasek001', '$2y$13$qMb7n1rslyltgaCDNvy/mOcBuTfOmidi8.zXvnURHMqKkVydCj3h2', 'Fx-LBkD34aXdGkYt8a2S_6Vq991TrW6S', NULL, '13316922246', 1474380169, 1902700390, 0, 1902700390, 0, 0, '', 0, 0, 1),
-(19, 'feifeifei', '$2y$13$MRvZElUImZ.8gMsNV5ZEKuIkdkEamyc1tw/FHoPgQdp5x.WIPOroi', 'KWzNd8A57uVSMeLpDUB_ol1egfLPJ58C', NULL, '13631539420', 1474444147, 3070991720, 0, 3070991720, 0, 0, '', 0, 0, 1);
+INSERT INTO `yii2_user` (`uid`, `username`, `password`, `salt`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `tuid`, `image`, `score`, `score_all`, `allowance`, `allowance_updated_at`, `status`) VALUES
+(6, 'e282486518', '$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG', 'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN', 'phphome@qq.com', '13656568989', 1456568652, 13654444444, 1456568652, 13556464888, 1477564915, 7, '1', 10, 0, 4, 1480073150, 1),
+(7, '282486518', '$2y$13$KIAenVWuR2Tgi1VCKiPegeVsQAHXyDcp9rUmzhqK6TNjL4Cqc3YPa', 'n9uguceYCqn_jQNd8F6-JRHOj21yltUo', 'phphome@qq.coms', '13645685421', 1472626509, 2130706433, 0, 2130706433, 1472626719, 0, '3', 1, 1, 0, 0, 0),
+(8, '135232323232', '$2y$13$UVA5264Qic4g8BDl940x1e0ZefVI3QqpH8tH6bttL/cF8GcU1C7Rm', 'Dg36PS0QshZ-Y2zhQJa559RSKJULGO_8', NULL, '', 1474112224, 2130706433, 0, 2130706433, 0, 0, '', 0, 0, 0, 0, 0),
+(13, 'aabbcc', '$2y$13$46n16kagedYUXx6WXZ2QkuSGJKm3FDr6iI.KPNzAkHYRHmplqgAiC', 'OblZ1QuXGGGiXZWTPqfDrCoF_qXVIN3b', '', '13421839870', 1474114459, 2130706433, 0, 2130706433, 1477904302, 0, '1', 0, 0, 0, 0, 1),
+(14, 'bvbvbv', '$2y$13$Jm2bfhSnqcSMTaPxRRWiReqrclkApB1Dc20kLTxVNHAzl7J8DH60K', 'jrYKEga9jbp2H6bsdLjvnEd5mqsRgMMD', NULL, '13013013330', 1474115843, 2130706433, 0, 2130706433, 0, 0, '', 0, 0, 0, 0, 1),
+(15, 'hahaha', '$2y$13$NsuZra9Z/DBaRk3R7tzvnuYrbmV5mIAKTKoksFcYHu3wUyJDaLPz.', 'BsDuGjz20Uexw6Kq_iw-s8AiqNmtec2u', NULL, '13636363636', 1474192435, 2130706433, 0, 2130706433, 0, 13, '', 0, 0, 0, 0, 1),
+(16, 'huanglala', '$2y$13$FJGFsH1fls8m3DWuxUrN9eJcDQZScQLyYaQIXVeSPK0WMlpT1C.Ze', '7EpKjeEwVqYQS7oV0QW7-JNy-UFchvY1', NULL, '13631639420', 1474197294, 2130706433, 0, 2130706433, 0, 13, '', 0, 0, 0, 0, 1),
+(17, 'binbin', '$2y$13$fbFtBRQgoH2PZ3wfCG1KIu8qdXeah.4KFZWI7kAE.4fDxM4lMuJ4q', 'tjCK1O9VaCtnvlNzRobRlnNHmbADlXPM', NULL, '18665354960', 1474334566, 1946572948, 0, 1946572948, 0, 6, '', 0, 0, 0, 0, 1),
+(18, 'lasek001', '$2y$13$qMb7n1rslyltgaCDNvy/mOcBuTfOmidi8.zXvnURHMqKkVydCj3h2', 'Fx-LBkD34aXdGkYt8a2S_6Vq991TrW6S', NULL, '13316922246', 1474380169, 1902700390, 0, 1902700390, 0, 0, '', 0, 0, 0, 0, 1),
+(19, 'feifeifei', '$2y$13$MRvZElUImZ.8gMsNV5ZEKuIkdkEamyc1tw/FHoPgQdp5x.WIPOroi', 'KWzNd8A57uVSMeLpDUB_ol1egfLPJ58C', NULL, '13631539420', 1474444147, 3070991720, 0, 3070991720, 0, 0, '', 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -4840,7 +4846,7 @@ ALTER TABLE `yii2_captcha`
 -- AUTO_INCREMENT for table `yii2_category`
 --
 ALTER TABLE `yii2_category`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',AUTO_INCREMENT=4;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `yii2_config`
 --
