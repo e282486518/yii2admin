@@ -39,7 +39,7 @@ if ($saveDB) {
 
 <?php
 /* 加载页面级别资源 */
-\backend\assets\FileinputAsset::register($this);
+\common\widgets\images\FileinputAsset::register($this);
 ?>
 
 <!-- 定义数据块 -->

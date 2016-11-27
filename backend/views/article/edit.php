@@ -14,9 +14,6 @@ use yii\helpers\Url;
 $this->title = ($this->context->action->id == 'add' ? '添加' : '编辑') . '文章栏目';
 $this->context->title_sub = '';
 
-/* 加载页面级别资源 */
-\backend\assets\FileinputAsset::register($this);
-
 ?>
 
 <div class="portlet light bordered">
