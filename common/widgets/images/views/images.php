@@ -56,8 +56,8 @@ if (!empty($data)) {
 </div>
 
 <?php
-/* 上传框CSS */
-$this->registerCssFile('@web/metronic/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css');
+/* 加载页面级别资源 */
+\backend\assets\FileinputAsset::register($this);
 ?>
 
 <!-- 定义数据块 -->

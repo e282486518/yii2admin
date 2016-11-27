@@ -33,13 +33,13 @@ if ($saveDB) {
         </span>
     </div>
     <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-        <img class="file_img" src="<?= !empty($picture['path']) ? \common\helpers\Html::src($picture['path']) : \yii\helpers\Url::to('@web/images/no.png'); ?>">
+        <img class="file_img" src="<?= !empty($picture['path']) ? \common\helpers\Html::src($picture['path']) : \yii\helpers\Url::to('@web/static/images/no.png'); ?>">
     </div>
 </div>
 
 <?php
-/* 上传框CSS */
-$this->registerCssFile('@web/metronic/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css');
+/* 加载页面级别资源 */
+\backend\assets\FileinputAsset::register($this);
 ?>
 
 <!-- 定义数据块 -->

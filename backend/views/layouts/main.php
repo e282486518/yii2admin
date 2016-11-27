@@ -26,7 +26,7 @@ AppAsset::register($this);
         <meta content="" name="description" />
         <meta content="" name="author" />
         <?php $this->head() ?>
-        <link rel="shortcut icon" href="<?=Yii::getAlias('@web/images/favicon.ico')?>" />
+        <link rel="shortcut icon" href="<?=Yii::getAlias('@web/favicon.ico')?>" />
         <script language="JavaScript">
             var BaseUrl = '<?=Yii::getAlias('@web')?>';
         </script>
