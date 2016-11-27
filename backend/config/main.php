@@ -59,6 +59,17 @@ return [
                 //
             ],
         ],
+        /* 多语言管理 */
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath'=>'@common/messages',
+                    'fileMap' => ['app' => 'backend.php'],
+                    'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
+                ],
+            ],
+        ],
 
         /**
          * 这里要注意了，由于我使用的是模板自带的jQuery和bootstrap，所以这里就先清空系统的jQuery和bootstrap

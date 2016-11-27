@@ -51,5 +51,5 @@ if (is_file(dirname(__DIR__) . '/.env')) {
  * 初始化全局常量
  * Init application constants
  */
-defined('YII_DEBUG') or define('YII_DEBUG', env('YII_DEBUG'));
-defined('YII_ENV')   or define('YII_ENV', env('YII_ENV', 'prod'));
+defined('YII_DEBUG') or define('YII_DEBUG', env('YII_DEBUG', 'true'));
+defined('YII_ENV')   or define('YII_ENV', env('YII_ENV', 'dev'));
