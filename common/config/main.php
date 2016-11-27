@@ -7,5 +7,16 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+
+        /* 多语言管理 */
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath'=>'@common/messages',
+                    'fileMap' => ['app' => 'backend.php'],
+                ],
+            ],
+        ],
     ],
 ];
