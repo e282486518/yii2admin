@@ -25,26 +25,7 @@ AppAsset::register($this);
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
-        <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="<?=Yii::getAlias('@web/metronic/global/plugins/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" type="text/css" />
-        <link href="<?=Yii::getAlias('@web/metronic/global/plugins/simple-line-icons/simple-line-icons.min.css')?>" rel="stylesheet" type="text/css" />
-        <link href="<?=Yii::getAlias('@web/metronic/global/plugins/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
-        <link href="<?=Yii::getAlias('@web/css/style.css')?>" rel="stylesheet" type="text/css" />
-        <link href="<?=Yii::getAlias('@web/metronic/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css')?>" rel="stylesheet" type="text/css" />
-        <!-- END GLOBAL MANDATORY STYLES -->
-        <!-- BEGIN PAGE LEVEL STYLES -->
         <?php $this->head() ?>
-        <!-- END PAGE LEVEL STYLES -->
-        <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="<?=Yii::getAlias('@web/metronic/global/css/components-rounded.min.css')?>" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="<?=Yii::getAlias('@web/metronic/global/css/plugins.min.css')?>" rel="stylesheet" type="text/css" />
-        <!-- END THEME GLOBAL STYLES -->
-        <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="<?=Yii::getAlias('@web/metronic/layouts/layout/css/layout.min.css')?>" rel="stylesheet" type="text/css" />
-        <link href="<?=Yii::getAlias('@web/metronic/layouts/layout/css/themes/darkblue.min.css')?>" rel="stylesheet" type="text/css" id="style_color" />
-        <link href="<?=Yii::getAlias('@web/metronic/layouts/layout/css/custom.min.css')?>" rel="stylesheet" type="text/css" />
-        <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="<?=Yii::getAlias('@web/images/favicon.ico')?>" />
         <script language="JavaScript">
             var BaseUrl = '<?=Yii::getAlias('@web')?>';
@@ -61,7 +42,7 @@ AppAsset::register($this);
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
                     <a href="<?=Yii::getAlias('@web')?>">
-                        <img src="<?=Yii::getAlias('@web/metronic/layouts/layout/img/logo.png')?>" alt="logo" class="logo-default" /> </a>
+                        <img src="<?=Yii::getAlias('@web/static/images/logo.png')?>" alt="logo" class="logo-default" /> </a>
                     <div class="menu-toggler sidebar-toggler">
                         <span></span>
                     </div>
@@ -108,7 +89,7 @@ AppAsset::register($this);
                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img alt="" class="img-circle" src="<?=Yii::getAlias('@web/metronic/layouts/layout/img/avatar3_small.jpg')?>" />
+                                <img alt="" class="img-circle" src="<?=Yii::getAlias('@web/static/images/avatar2.jpg')?>" />
                                 <span class="username username-hide-on-mobile"> <?=$this->context->admins['username']?> </span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
@@ -234,40 +215,7 @@ AppAsset::register($this);
                 <i class="icon-arrow-up"></i>
             </div>
         </div>
-        <!-- END FOOTER -->
-        <!--[if lt IE 9]>
-        <script src="<?=Yii::getAlias('@web/metronic/global/plugins/respond.min.js')?>"></script>
-        <script src="<?=Yii::getAlias('@web/metronic/global/plugins/excanvas.min.js')?>"></script>
-        <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
-        <script src="<?=Yii::getAlias('@web/metronic/global/plugins/jquery.min.js')?>" type="text/javascript"></script>
-        <script src="<?=Yii::getAlias('@web/metronic/global/plugins/bootstrap/js/bootstrap.min.js')?>" type="text/javascript"></script>
-        <script src="<?=Yii::getAlias('@web/metronic/global/plugins/js.cookie.min.js')?>" type="text/javascript"></script>
-        <script src="<?=Yii::getAlias('@web/metronic/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js')?>" type="text/javascript"></script>
-        <script src="<?=Yii::getAlias('@web/metronic/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js')?>" type="text/javascript"></script>
-        <script src="<?=Yii::getAlias('@web/metronic/global/plugins/jquery.blockui.min.js')?>" type="text/javascript"></script>
-        <script src="<?=Yii::getAlias('@web/metronic/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js')?>" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="<?=Yii::getAlias('@web/metronic/global/scripts/app.min.js')?>" type="text/javascript"></script>
-        <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN THEME LAYOUT SCRIPTS -->
-        <script src="<?=Yii::getAlias('@web/metronic/layouts/layout/scripts/layout.min.js')?>" type="text/javascript"></script>
-        <script src="<?=Yii::getAlias('@web/metronic/layouts/layout/scripts/demo.min.js')?>" type="text/javascript"></script>
-        <script src="<?=Yii::getAlias('@web/metronic/layouts/global/scripts/quick-sidebar.min.js')?>" type="text/javascript"></script>
-        <!-- END THEME LAYOUT SCRIPTS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS 页面级别插件JS文件 -->
-        <script src="<?=Yii::getAlias('@web/js/common.js')?>" type="text/javascript"></script>
-        <script language="JavaScript">
-        //导航高亮
-        function highlight_subnav(url){
-            var ele =  $('.page-sidebar-menu').find('a[nav="'+url+'"]');
-            ele.closest('li').addClass('active open');
-            ele.parent().parent().parent().addClass('active open');
-            ele.parent().parent().parent().find('.arrow').addClass('open');
-            ele.parent().parent().parent().find('.arrow').before('<span class="selected "></span>');
-        }
-        </script>
+        <?php \backend\assets\LayoutAsset::register($this); ?>
         <?php $this->endBody() ?>
         <!-- END PAGE LEVEL PLUGINS -->
     </body>

@@ -8,6 +8,15 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Menu */
 /* @var $form ActiveForm */
+
+/* ===========================以下为本页配置信息================================= */
+/* 页面基本属性 */
+$this->title = ($this->context->action->id == 'add' ? '添加' : '编辑') . '文章栏目';
+$this->context->title_sub = '';
+
+/* 加载页面级别资源 */
+\backend\assets\FileinputAsset::register($this);
+
 ?>
 
 <div class="portlet light bordered">
@@ -37,25 +46,6 @@ use yii\helpers\Url;
         <!-- END FORM-->
     </div>
 </div>
-
-
-
-<?php
-/* ===========================以下为本页配置信息================================= */
-/* 页面基本属性 */
-$this->title = ($this->context->action->id == 'add' ? '添加' : '编辑') . '文章栏目';
-$this->context->title_sub = '';
-
-/* 渲染其他文件 */
-//echo $this->renderFile('@app/views/public/login.php');
-
-/* 加载页面级别CSS */
-$this->registerCssFile('@web/metronic/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css');
-
-/* 加载页面级别JS */
-//$this->registerJsFile('@web/metronic/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js');
-
-?>
 
 <!-- 定义数据块 -->
 <?php $this->beginBlock('test'); ?>

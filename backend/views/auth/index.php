@@ -8,6 +8,15 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\AuthAssignment */
 /* @var $form ActiveForm */
+
+/* ===========================以下为本页配置信息============================ */
+/* 页面基本属性 */
+$this->title = '角色管理';
+$this->context->title_sub = '管理用户角色信息';
+
+/* 加载页面级别资源 */
+\backend\assets\TablesAsset::register($this);
+
 ?>
 <div class="portlet light portlet-fit portlet-datatable bordered">
     <div class="portlet-title">
@@ -75,31 +84,6 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
-
-
-
-
-
-<?php
-/* ===========================以下为本页配置信息================================= */
-/* 页面基本属性 */
-$this->title = '角色管理';
-$this->context->title_sub = '管理用户角色信息';
-
-/* 渲染其他文件 */
-//echo $this->renderFile('@app/views/public/login.php');
-
-/* 加载页面级别CSS */
-$this->registerCssFile('@web/metronic/global/plugins/datatables/datatables.min.css');
-$this->registerCssFile('@web/metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css');
-
-/* 加载页面级别JS */
-$this->registerJsFile('@web/metronic/global/scripts/datatable.js');
-$this->registerJsFile('@web/metronic/global/plugins/datatables/datatables.min.js');
-$this->registerJsFile('@web/metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js');
-$this->registerJsFile('@web/metronic/pages/scripts/table-datatables-managed.min.js');
-
-?>
 
 <!-- 定义数据块 -->
 <?php $this->beginBlock('test'); ?>

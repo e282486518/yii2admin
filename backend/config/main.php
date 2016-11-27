@@ -60,15 +60,22 @@ return [
             ],
         ],
 
-        /* 覆盖布局文件layout默认的jQuery/bootstrap/js/css解决其不兼容问题 */
+        /**
+         * 这里要注意了，由于我使用的是模板自带的jQuery和bootstrap，所以这里就先清空系统的jQuery和bootstrap
+         * 基本上所有的插件都是使用了yii\web\JqueryAsset，
+         * 为了模板全局的js/css放在其他插件的前面，这里我设置了yii\web\JqueryAsset依赖backend\assets\AppAsset
+         */
         'assetManager'=>[
             'bundles'=>[
-                'yii\bootstrap\BootstrapAsset' => [
-                    'css' => []
-                ],
                 'yii\web\JqueryAsset' => [
                     'sourcePath' => null,
-                    'js' => []
+                    'js' => [],
+                    'depends' => [
+                        'backend\assets\AppAsset'
+                    ]
+                ],
+                'yii\bootstrap\BootstrapAsset' => [
+                    'css' => []
                 ],
             ],
 

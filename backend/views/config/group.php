@@ -4,10 +4,18 @@ use yii\helpers\Html;
 use common\core\ActiveForm;
 use common\helpers\ArrayHelper;
 
-$id = Yii::$app->request->get('id',1);
 /* @var $this yii\web\View */
 /* @var $model backend\models\Menu */
 /* @var $form ActiveForm */
+/* @var $groups array $id */
+
+/* ===========================以下为本页配置信息================================= */
+/* 页面基本属性 */
+$this->title = '网站设置';
+$this->context->title_sub = '';
+
+$id = Yii::$app->request->get('id',1);
+
 ?>
 <div class="tabbable tabbable-custom boxless">
     <ul class="nav nav-tabs">
@@ -67,20 +75,6 @@ $id = Yii::$app->request->get('id',1);
     </div>
     
 </div>
-
-
-
-<?php
-/* ===========================以下为本页配置信息================================= */
-/* 页面基本属性 */
-$this->title = '网站设置';
-$this->context->title_sub = '';
-
-/* 渲染其他文件 */
-//echo $this->renderFile('@app/views/public/login.php');
-
-
-?>
 
 <!-- 定义数据块 -->
 <?php $this->beginBlock('test'); ?>

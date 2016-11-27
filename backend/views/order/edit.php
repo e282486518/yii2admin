@@ -11,6 +11,12 @@ use backend\models\Shop;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Menu */
 /* @var $form ActiveForm */
+
+/* ===========================以下为本页配置信息================================= */
+/* 页面基本属性 */
+$this->title = ($this->context->action->id == 'add' ? '添加' : '编辑') . '订单';
+$this->context->title_sub = '';
+
 ?>
 
 <div class="portlet light bordered">
@@ -149,25 +155,6 @@ use backend\models\Shop;
         <!-- END FORM-->
     </div>
 </div>
-
-
-
-<?php
-/* ===========================以下为本页配置信息================================= */
-/* 页面基本属性 */
-$this->title = ($this->context->action->id == 'add' ? '添加' : '编辑') . '订单';
-$this->context->title_sub = '';
-
-/* 渲染其他文件 */
-//echo $this->renderFile('@app/views/public/login.php');
-
-/* 加载页面级别CSS */
-//$this->registerCssFile('@web/static/common/css/bootstrap-fileupload.css');
-
-/* 加载页面级别JS */
-//$this->registerJsFile('@web/static/common/js/ckeditor.js');
-
-?>
 
 <!-- 定义数据块 -->
 <?php $this->beginBlock('test'); ?>

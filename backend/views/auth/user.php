@@ -7,6 +7,14 @@ use yii\grid\GridView;
 /* @var $model common\models\User */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
 
+/* ===========================以下为本页配置信息================================= */
+/* 页面基本属性 */
+$this->title = '用户管理';
+$this->context->title_sub = '管理用户信息';
+
+/* 加载页面级别资源 */
+\backend\assets\TablesAsset::register($this);
+
 $columns = [
     [
         'class' => \common\core\CheckboxColumn::className(),
@@ -141,28 +149,6 @@ $columns = [
     </div>
 </div>
 
-
-
-
-<?php
-/* ===========================以下为本页配置信息================================= */
-/* 页面基本属性 */
-$this->title = '用户管理';
-$this->context->title_sub = '管理用户信息';
-
-/* 渲染其他文件 */
-//echo $this->renderFile('@app/views/public/login.php');
-
-/* 加载页面级别CSS */
-$this->registerCssFile('@web/metronic/global/plugins/datatables/datatables.min.css');
-$this->registerCssFile('@web/metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css');
-
-/* 加载页面级别JS */
-$this->registerJsFile('@web/metronic/global/scripts/datatable.js');
-$this->registerJsFile('@web/metronic/global/plugins/datatables/datatables.min.js');
-$this->registerJsFile('@web/metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js');
-$this->registerJsFile('@web/metronic/pages/scripts/table-datatables-managed.min.js');
-?>
 
 <!-- 定义数据块 -->
 <?php $this->beginBlock('test'); ?>

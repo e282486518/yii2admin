@@ -8,6 +8,9 @@ use backend\models\Category;
 /* @var $dataProvider yii\data\ActiveDataProvider  */
 /* @var $searchModel backend\models\search\OrderSearch */
 
+/* 先要注册表格所须的资源 */
+\backend\assets\TablesAsset::register($this);
+
 $columns = [
     [
         'class' => \common\core\CheckboxColumn::className(),
@@ -203,15 +206,6 @@ $this->context->title_sub = '';
 /* 渲染其他文件 */
 //echo $this->renderFile('@app/views/public/login.php');
 
-/* 加载页面级别CSS */
-$this->registerCssFile('@web/metronic/global/plugins/datatables/datatables.min.css');
-$this->registerCssFile('@web/metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css');
-
-/* 加载页面级别JS */
-$this->registerJsFile('@web/metronic/global/scripts/datatable.js');
-$this->registerJsFile('@web/metronic/global/plugins/datatables/datatables.min.js');
-$this->registerJsFile('@web/metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js');
-//$this->registerJsFile('@web/metronic/pages/scripts/table-datatables-managed.min.js');
 ?>
 
 <!-- 定义数据块 -->

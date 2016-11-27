@@ -155,3 +155,12 @@
     };
 
 });
+
+//导航高亮
+function highlight_subnav(url){
+    var ele =  $('.page-sidebar-menu').find('a[nav="'+url+'"]');
+    ele.closest('li').addClass('active open');
+    ele.parent().parent().parent().addClass('active open');
+    ele.parent().parent().parent().find('.arrow').addClass('open');
+    ele.parent().parent().parent().find('.arrow').before('<span class="selected "></span>');
+}
