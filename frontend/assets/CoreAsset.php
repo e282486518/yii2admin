@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace backend\assets;
+namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
@@ -22,7 +22,6 @@ class CoreAsset extends AssetBundle
         'global/plugins/font-awesome/css/font-awesome.min.css',
         'global/plugins/simple-line-icons/simple-line-icons.min.css',
         'global/plugins/bootstrap/css/bootstrap.min.css',
-        'other/css/style.css',
         'global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
     ];
     /* 全局JS文件 */
@@ -34,11 +33,7 @@ class CoreAsset extends AssetBundle
         'global/plugins/jquery-slimscroll/jquery.slimscroll.min.js',
         'global/plugins/jquery.blockui.min.js',
         'global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
-
-        'global/scripts/app.min.js',
     ];
-    /* 选项 */
-    //public $jsOptions = ['condition' => 'lt IE9'];
     /* 依赖关系 */
     public $depends = [
         //'yii\web\YiiAsset',

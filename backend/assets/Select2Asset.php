@@ -15,7 +15,7 @@ use yii\web\AssetBundle;
  */
 class Select2Asset extends AssetBundle
 {
-    public $sourcePath = '@backend/metronic';
+    public $sourcePath = '@common/metronic';
     /* 全局CSS文件 */
     public $css = [
         'global/plugins/select2/css/select2.min.css',

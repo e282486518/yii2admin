@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace home\assets;
+namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
@@ -15,15 +15,14 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $sourcePath = '@common/metronic';
     public $css = [
-        'static/css/site.css',
+
     ];
     public $js = [
+        'global/scripts/app.min.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'frontend\assets\CoreAsset',
     ];
 }

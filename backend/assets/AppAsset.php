@@ -15,7 +15,7 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $sourcePath = '@backend/metronic';
+    public $sourcePath = '@common/metronic';
     /* 全局CSS文件 */
     public $css = [];
     /* 全局JS文件 */

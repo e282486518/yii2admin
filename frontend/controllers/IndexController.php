@@ -8,12 +8,8 @@ class IndexController extends Controller
 {
     public function actionIndex()
     {
-        phpinfo();
+        //phpinfo();
         return $this->render('index');
     }
-    public function actionView()
-    {
-
-        return $this->render('index');
-    }
+    
 }
