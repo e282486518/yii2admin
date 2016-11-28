@@ -86,3 +86,4 @@ Yii::$app->params['web'] = Config::lists();
 ![配置皮肤](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/shop.png)
 ![手机版](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/order_edit1.png)
 ![接口调用](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/api.png)
+![前台](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/frontend.png)
