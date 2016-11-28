@@ -54,6 +54,11 @@ return [
         'scrawlPathFormat'     => '/image/{yyyy}{mm}/editor{time}{rand:6}',
     ],
 
+    /* 多语言配置 */
+    'language' => [
+        'zn-CN','zh-TW','en-US'
+    ],
+
     /* 支付状态 */
     'pay_status' => [
         0 => '未支付',
