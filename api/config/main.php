@@ -27,7 +27,7 @@ return [
     ],
     'components' => [
         'user' => [
-            'class' => 'yii\web\user',
+            'class' => 'yii\web\User',
             'identityClass' => 'api\models\User',
             'enableAutoLogin' => true, //开启自动登录
             'enableSession' => false, //关闭session
