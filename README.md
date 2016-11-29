@@ -65,9 +65,10 @@ Yii::$app->params['web'] = Config::lists();
 ```
 1、下载源文件或git clone https://github.com/e282486518/yii2admin.git
 2、composer install #安装依赖扩展
-（如果安装失败可以下载链接：https://share.weiyun.com/10026ab454bef3366a31665709cb8ca8 （password：TgO5））
+   （如果安装失败可以下载链接：https://share.weiyun.com/43fba6e5d21dbcdffe32920f78665f18）
 3、php ./yii install/install #配置环境、配置数据库并安装数据库
 4、参照 doc 目录下的Nginx和Apache配置文件，配置服务器，并设置hosts文件。
+
 超级管理员账号： admin 123456
 普通管理员： guanli 123456
 编辑人员： feifei 123456
