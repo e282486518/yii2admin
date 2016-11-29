@@ -33,7 +33,7 @@ AppAsset::register($this);
     </head>
     <!-- END HEAD -->
 
-    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
     <?php $this->beginBody() ?>
         <!-- BEGIN HEADER -->
         <div class="page-header navbar navbar-fixed-top">
