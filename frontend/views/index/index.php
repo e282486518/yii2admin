@@ -3,7 +3,7 @@
 <div id="slider" style="margin-top: 10px;margin-bottom: 10px;">
     <img src="/static/images/assassins1.jpg" alt="第一张幻灯片" data-transition='{"effect": "cubeUp", "slices": 9, "animSpeed": 1200, "delay": 100, "delayDir": "fromCentre", "easing": "easeInOutBack", "depthOffset": 300, "sliceGap": 30}' />
     <img src="/static/images/assassins2.jpg" alt="第二张幻灯片" data-transition='{"effect": "cubeRight", "slices": 5, "delay": 200}' />
-    <img src="/static/images/assassins1.jpg" alt="第三张幻灯片" data-href="https://google.com" data-transition='{"effect": "cubeDown", "slices": 15, "animSpeed": 3000, "delay": 30, "easing": "easeInOutElastic", "depthOffset": 200, "sliceGap": 20}' />
+    <img src="/static/images/assassins1.jpg" alt="第三张幻灯片" data-transition='{"effect": "cubeDown", "slices": 15, "animSpeed": 3000, "delay": 30, "easing": "easeInOutElastic", "depthOffset": 200, "sliceGap": 20}' />
     <img src="/static/images/assassins2.jpg" alt="第四张幻灯片" data-transition='{"effect": "cubeLeft", "slices": 5, "delay": 200, "delayDir": "toCentre"}' />
     <img src="/static/images/assassins1.jpg" alt="第五张幻灯片" data-transition='{"effect": "cubeUp", "slices": 5, "animSpeed": 1300, "delay": 100, "easing": "easeInOutCubic", "depthOffset": 500, "sliceGap": 50}' />
     <img src="/static/images/assassins2.jpg" alt="第六张幻灯片" data-transition='{"effect": "cubeRight", "slices": 5, "delay": 200, "delayDir": "last-first"}' />
