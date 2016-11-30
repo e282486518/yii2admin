@@ -1,0 +1,41 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>CCSlider</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/ccslider.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+
+    <div id="slider">
+        <img src="batman.jpg" alt="This is an" data-transition='{"effect": "cubeUp", "slices": 9, "animSpeed": 1200, "delay": 100, "delayDir": "fromCentre", "easing": "easeInOutBack", "depthOffset": 300, "sliceGap": 30}' />
+        <img src="batman.jpg" alt="" data-transition='{"effect": "cubeRight", "slices": 5, "delay": 200}' />
+        <img src="batman.jpg" alt="Images can" data-href="https://google.com" data-transition='{"effect": "cubeDown", "slices": 15, "animSpeed": 3000, "delay": 30, "easing": "easeInOutElastic", "depthOffset": 200, "sliceGap": 20}' />
+        <img src="batman.jpg" alt="" data-transition='{"effect": "cubeLeft", "slices": 5, "delay": 200, "delayDir": "toCentre"}' />
+        <img src="batman.jpg" alt="" data-transition='{"effect": "cubeUp", "slices": 5, "animSpeed": 1300, "delay": 100, "easing": "easeInOutCubic", "depthOffset": 500, "sliceGap": 50}' />
+        <img src="batman.jpg" alt="This is an example" data-transition='{"effect": "cubeRight", "slices": 5, "delay": 200, "delayDir": "last-first"}' />
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery-migrate-1.1.1.min.js"></script>
+    <script src="js/jquery.ccslider-3.0.2.min.js"></script>
+    <script>
+        $(window).load(function(){
+            
+            $('#slider').ccslider({
+                _3dOptions: {
+                    imageWidth: 1150,
+                    imageHeight: 400
+                }
+            });
+            
+        });
+    </script>
+</body>
+</html>

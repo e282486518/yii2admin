@@ -1,0 +1,73 @@
+
+#slider {
+    position: relative;
+    z-index: 10;
+    width: 1150px;
+    height: 400px;
+}
+
+#slider .control-links {
+    margin-top: -30px;
+}
+
+#slider.fallback {
+    margin: 60px auto 82px auto;
+    top: -20px;
+}
+
+#slider img {
+    visibility: hidden;
+}
+
+a.slider-nav {
+    width: 35px;
+    height: 34px;
+    top: 50%;
+    margin-top: -17px;
+}
+
+.slider-nav.prev {
+    background: url(../images/left-arrow.png) no-repeat;
+    left: 5px;
+}
+
+.slider-nav.next {
+    background: url(../images/right-arrow.png) no-repeat;
+    right: 5px;
+}
+
+.slider-timer {
+    width: 20px;
+    height: 30px;
+}
+
+.slider-timer.play {
+    background: url(../images/slider-play.png) center center no-repeat;
+}
+
+.slider-timer.pause {
+    background: url(../images/slider-pause.png) center center no-repeat;
+}
+
+.control-links li {    
+    margin-left: 5px;
+    cursor: pointer;    
+    background: url(../images/link-bg.png) no-repeat;
+    width: 15px;
+    height: 15px;
+    text-indent: -99999px;
+}
+
+.control-links li.active {
+    background: url(../images/link-active.png) no-repeat;
+}
+
+.slider-caption {
+    background: #fff;
+    background: rgba(255, 255, 255, 0.7);
+    color: #000;
+}
+
+.slider-caption a {
+    color: #2D6294;
+}
