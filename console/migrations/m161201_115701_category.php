@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161122_095602_category extends Migration
+class m161201_115701_category extends Migration
 {
     public function up()
     {
@@ -34,7 +34,7 @@ class m161122_095602_category extends Migration
         
         /* 表数据 */
         $this->insert('{{%category}}',['id'=>'1','pid'=>'0','name'=>'about','title'=>'关于我们','link'=>'','extend'=>'','meta_title'=>'','keywords'=>'','description'=>'','create_time'=>'1379474947','update_time'=>'1479373724','sort'=>'10','status'=>'1']);
-        $this->insert('{{%category}}',['id'=>'3','pid'=>'0','name'=>'event','title'=>'活动','link'=>'','extend'=>'a:2:{s:2:\"sd\";s:2:\"11\";s:4:\"sdfs\";s:3:\"222\";}','meta_title'=>'测试标题','keywords'=>'测试seo关键词','description'=>'测试描述','create_time'=>'1471947194','update_time'=>'1473604631','sort'=>'1','status'=>'1']);
+        $this->insert('{{%category}}',['id'=>'3','pid'=>'0','name'=>'event','title'=>'活动','link'=>'','extend'=>'a:2:{s:2:"sd";s:2:"11";s:4:"sdfs";s:3:"222";}','meta_title'=>'测试标题','keywords'=>'测试seo关键词','description'=>'测试描述','create_time'=>'1471947194','update_time'=>'1473604631','sort'=>'1','status'=>'1']);
         $this->insert('{{%category}}',['id'=>'4','pid'=>'1','name'=>'lianxi','title'=>'联系我们','link'=>'','extend'=>'','meta_title'=>'','keywords'=>'','description'=>'','create_time'=>'1479368832','update_time'=>'0','sort'=>'0','status'=>'1']);
         $this->insert('{{%category}}',['id'=>'5','pid'=>'3','name'=>'xin','title'=>'最新活动','link'=>'','extend'=>'','meta_title'=>'','keywords'=>'','description'=>'','create_time'=>'1479368867','update_time'=>'1479373985','sort'=>'10','status'=>'1']);
         $this->insert('{{%category}}',['id'=>'6','pid'=>'3','name'=>'hot','title'=>'热门活动','link'=>'','extend'=>'','meta_title'=>'','keywords'=>'','description'=>'','create_time'=>'1479373707','update_time'=>'0','sort'=>'9','status'=>'1']);

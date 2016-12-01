@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161122_095603_train_certificate extends Migration
+class m161201_115701_train_certificate extends Migration
 {
     public function up()
     {

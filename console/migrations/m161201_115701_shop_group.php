@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161122_095603_shop_group extends Migration
+class m161201_115701_shop_group extends Migration
 {
     public function up()
     {
@@ -28,8 +28,8 @@ class m161122_095603_shop_group extends Migration
         
         
         /* 表数据 */
-        $this->insert('{{%shop_group}}',['id'=>'2','title'=>'阿斯顿发顺丰','description'=>'沙发沙发啊 沙发阿斯顿发是放大师傅','groups'=>'a:1:{i:1;a:1:{i:3;a:3:{s:4:\"days\";s:1:\"6\";s:3:\"num\";s:1:\"6\";s:2:\"id\";s:1:\"3\";}}}','cover'=>'1','images'=>'1,2','total'=>'15128.28','price'=>'600.00','sort'=>'0','status'=>'1']);
-        $this->insert('{{%shop_group}}',['id'=>'4','title'=>'房1天2人潜水1天2人','description'=>'房1天2人潜水1天2人','groups'=>'a:2:{i:1;a:1:{i:1;a:3:{s:4:\"days\";s:1:\"1\";s:3:\"num\";s:1:\"2\";s:2:\"id\";s:1:\"1\";}}i:3;a:1:{i:5;a:3:{s:4:\"days\";s:1:\"1\";s:3:\"num\";s:1:\"2\";s:2:\"id\";s:1:\"5\";}}}','cover'=>'1','images'=>'1,2','total'=>'2840.24','price'=>'998.00','sort'=>'0','status'=>'1']);
+        $this->insert('{{%shop_group}}',['id'=>'2','title'=>'阿斯顿发顺丰','description'=>'沙发沙发啊 沙发阿斯顿发是放大师傅','groups'=>'a:1:{i:1;a:1:{i:3;a:3:{s:4:"days";s:1:"6";s:3:"num";s:1:"6";s:2:"id";s:1:"3";}}}','cover'=>'1','images'=>'1,2','total'=>'15128.28','price'=>'600.00','sort'=>'0','status'=>'1']);
+        $this->insert('{{%shop_group}}',['id'=>'4','title'=>'房1天2人潜水1天2人','description'=>'房1天2人潜水1天2人','groups'=>'a:2:{i:1;a:1:{i:1;a:3:{s:4:"days";s:1:"1";s:3:"num";s:1:"2";s:2:"id";s:1:"1";}}i:3;a:1:{i:5;a:3:{s:4:"days";s:1:"1";s:3:"num";s:1:"2";s:2:"id";s:1:"5";}}}','cover'=>'1','images'=>'1,2','total'=>'2840.24','price'=>'998.00','sort'=>'0','status'=>'1']);
         
         /* 设置外键约束 */
         $this->execute('SET foreign_key_checks = 1;');

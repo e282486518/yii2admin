@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161122_095602_auth_assignment extends Migration
+class m161201_115701_auth_assignment extends Migration
 {
     public function up()
     {
@@ -20,7 +20,7 @@ class m161122_095602_auth_assignment extends Migration
         /* 索引设置 */
         
         /* 外键约束设置 */
-        $this->addForeignKey('fk_auth_item_964_00','{{%auth_assignment}}', 'item_name', '{{%auth_item}}', 'name', 'CASCADE', 'CASCADE' );
+        $this->addForeignKey('fk_auth_item_5217_00','{{%auth_assignment}}', 'item_name', '{{%auth_item}}', 'name', 'CASCADE', 'CASCADE' );
         
         /* 表数据 */
         $this->insert('{{%auth_assignment}}',['item_name'=>'administrator','user_id'=>'1','created_at'=>'1476437918']);
