@@ -1,5 +1,16 @@
 特别说明，项目刚刚做不久，而且对yii2有些功能不是很熟，难免有缺陷。有什么建议可以联系我：phphome@qq.com
 
+如遇bug请告诉作者哦，花你一分钟时间就可以让项目更易使用.^_^.
+
+github : https://github.com/e282486518/yii2admin 
+
+oschina : http://git.oschina.net/ccdream/yii2admin （国内可以下载这个）
+
+交流：http://www.yiichina.com/code/1052 （遇到bug不愿发邮件的可以贴到这里）
+
+全站打包：https://share.weiyun.com/43fba6e5d21dbcdffe32920f78665f18 （不定期更新，安装出错的朋友可以试试这个）
+
+
 ##一、开发基础说明
 * 系统配置文件为.env文件。
 
@@ -67,7 +78,6 @@ Yii::$app->params['web'] = Config::lists();
 ```
 1、下载源文件或git clone https://github.com/e282486518/yii2admin.git
 2、composer install #安装依赖扩展
-   （如果安装失败可以下载链接：https://share.weiyun.com/43fba6e5d21dbcdffe32920f78665f18）
 3、php ./yii install/install #配置环境、配置数据库并安装数据库
 4、参照 doc 目录下的Nginx和Apache配置文件，配置服务器，并设置hosts文件。
 
