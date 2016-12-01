@@ -1,3 +1,7 @@
+<?php
+use yii\helpers\Url;
+
+?>
 <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
 <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
 <ul class="nav navbar-nav">
@@ -7,18 +11,18 @@
         </a>
         <ul class="dropdown-menu pull-left">
             <li class=" active">
-                <a href="#" class="nav-link  active">
-                    <i class="icon-bar-chart"></i> 面板1
+                <a href="<?=Url::to('/')?>" class="nav-link  active">
+                    <i class="icon-bar-chart"></i> 首页
                     <span class="badge badge-success">1</span>
                 </a>
             </li>
             <li class=" ">
-                <a href="#" class="nav-link ">
-                    <i class="icon-bulb"></i> 面板 2 </a>
+                <a href="<?=Url::to('/article')?>" class="nav-link ">
+                    <i class="icon-bulb"></i> 文章内容 </a>
             </li>
             <li class=" ">
-                <a href="#" class="nav-link ">
-                    <i class="icon-graph"></i> 面板 3
+                <a href="<?=Url::to('/about/contact')?>" class="nav-link ">
+                    <i class="icon-graph"></i> 联系我们
                     <span class="badge badge-danger">3</span>
                 </a>
             </li>

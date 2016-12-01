@@ -31,7 +31,7 @@ $this->beginPage();
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <?php $this->head() ?>
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <script language="JavaScript">
             var BaseUrl = "<?=Yii::getAlias('@web')?>";
         </script>
@@ -137,8 +137,10 @@ $this->beginPage();
             <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
-                <div class="container">
-                    <?=$content?>
+                <div class="page-content">
+                    <div class="container">
+                        <?=$content?>
+                    </div>
                 </div>
                 <!-- END CONTENT BODY -->
             </div>

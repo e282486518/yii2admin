@@ -1,6 +1,6 @@
 {
     "name": "e282486518/yii2admin",
-    "description": "通用的yii2后台，采用metronic4.5.6",
+    "description": "通用的yii2后台，基于Yii2的advanced应用程序模板，采用metronic4.5.6作为前后台模板，整合RBAC、Menu、Config、Migration多语言、RESTfull等等",
     "keywords": ["yii2", "metronic", "yii2后台", "admin"],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
@@ -46,6 +46,12 @@
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
         }
     }
 }

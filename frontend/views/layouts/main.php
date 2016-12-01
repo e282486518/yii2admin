@@ -31,7 +31,7 @@ $this->beginPage();
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <?php $this->head() ?>
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <script language="JavaScript">
             var BaseUrl = "<?=Yii::getAlias('@web')?>";
         </script>
@@ -142,7 +142,7 @@ $this->beginPage();
                     <div class="container">
                         <!-- BEGIN PAGE TITLE -->
                         <div class="page-title">
-                            <h1>这里是页面的标题 </h1>
+                            <h1>这里是页面的标题 <small>页面子标题...</small></h1>
                         </div>
                         <!-- END PAGE TITLE -->
                         <!-- BEGIN PAGE TOOLBAR 设置工具栏 -->
