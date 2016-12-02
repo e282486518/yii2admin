@@ -39,6 +39,7 @@ $this->context->title_sub = '';
         </div>
     </div>
     <div class="portlet-body form">
+        <!-- 这里注意了，不能使用pjax，因为第三方库中有行内js，会导致js加载失败 -->
         <!-- BEGIN FORM-->
         <?php $form = ActiveForm::begin([
             'options'=>[
@@ -151,7 +152,7 @@ $this->context->title_sub = '';
         </div>
         
         <?php ActiveForm::end(); ?>
-        
+
         <!-- END FORM-->
     </div>
 </div>

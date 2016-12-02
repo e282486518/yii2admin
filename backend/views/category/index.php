@@ -127,6 +127,7 @@ $columns = [
         </div>
     </div>
     <div class="portlet-body">
+        <?php \yii\widgets\Pjax::begin(['options'=>['id'=>'pjax-container']]); ?>
         <div>
             <?= $this->render('_search', ['model' => $searchModel]); ?>
         </div>
@@ -155,6 +156,7 @@ $columns = [
             ]); ?>
             </form>
         </div>
+        <?php \yii\widgets\Pjax::end(); ?>
     </div>
 </div>
 

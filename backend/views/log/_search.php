@@ -13,6 +13,7 @@ use yii\widgets\ActiveForm;
     'method' => 'get',
     'options'=>[
         //'class'=>"form-inline",
+        'data-pjax' => true, //开启pjax搜索
     ]
 ]); ?>
 <div class="row">
