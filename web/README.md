@@ -8,6 +8,13 @@
     Yii::$app->params['ueditorConfig']['fileRoot']   = ......(同上)
     Yii::$app->params['ueditorConfig']['videoRoot']  = ......(同上)
     Yii::$app->params['ueditorConfig']['scrawlRoot'] = ......(同上)
+3、将.env文件中的配置修改为：
+    # Urls
+    # ---------
+    FRONTEND_URL     = /
+    BACKEND_URL      = /
+    API_URL          = /
+    STORAGE_URL      = /
 ```
 
 ##二、安装 
