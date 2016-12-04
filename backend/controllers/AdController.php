@@ -6,6 +6,7 @@ use Yii;
 use backend\models\Ad;
 use backend\models\search\AdSearch;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 
 /**
@@ -15,6 +16,22 @@ use yii\web\NotFoundHttpException;
  */
 class AdController extends BaseController
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            /* 访问控制 */
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                ],
+            ],
+        ];
+    }
+
     /**
      * ---------------------------------------
      * 列表页
