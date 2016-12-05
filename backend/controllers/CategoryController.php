@@ -46,7 +46,7 @@ class CategoryController extends BaseController
         if (Yii::$app->request->isPost) {
             
             $data = Yii::$app->request->post('Category');
-            $data['create_time'] = time();
+            //$data['create_time'] = time();
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {
                 $tmp = FuncHelper::parse_field_attr($data['extend']);
@@ -84,7 +84,7 @@ class CategoryController extends BaseController
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Category');
-            $data['update_time'] = time();
+            //$data['update_time'] = time();
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {
                 $tmp = FuncHelper::parse_field_attr($data['extend']);

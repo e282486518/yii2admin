@@ -57,7 +57,7 @@ class OrderController extends BaseController
         if (Yii::$app->request->isPost) {
             
             $data = Yii::$app->request->post('Order');
-            $data['create_time'] = time();
+            //$data['create_time'] = time();
             $data['type'] = $type;
             $data['start_time'] = strtotime($data['start_time']);
             $data['end_time'] = strtotime($data['end_time']);
@@ -108,7 +108,7 @@ class OrderController extends BaseController
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Order');//var_dump($data);exit();
-            $data['update_time'] = time();
+            //$data['update_time'] = time();
             $data['start_time'] = strtotime($data['start_time']);
             $data['end_time']  = strtotime($data['end_time']);
             $data['pay_time']  = strtotime($data['pay_time']);

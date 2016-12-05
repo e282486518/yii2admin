@@ -47,7 +47,7 @@ class ShopController extends BaseController
         if (Yii::$app->request->isPost) {
             
             $data = Yii::$app->request->post('Shop');
-            $data['create_time'] = time();
+            //$data['create_time'] = time();
             $data['type'] = Yii::$app->request->get('type',1);
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {
@@ -95,7 +95,7 @@ class ShopController extends BaseController
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Shop');
-            $data['update_time'] = time();
+            //$data['update_time'] = time();
             $data['type'] = Yii::$app->request->get('type',1);
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {

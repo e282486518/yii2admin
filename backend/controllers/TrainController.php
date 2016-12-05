@@ -43,7 +43,7 @@ class TrainController extends BaseController
         if (Yii::$app->request->isPost) {
             
             $data = Yii::$app->request->post('Train');
-            $data['create_time'] = time();
+            //$data['create_time'] = time();
             /* 表单数据加载、验证、数据库操作 */
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
@@ -71,7 +71,7 @@ class TrainController extends BaseController
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Train');
-            $data['update_time'] = time();
+            //$data['update_time'] = time();
             /* 表单数据加载、验证、数据库操作 */
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
