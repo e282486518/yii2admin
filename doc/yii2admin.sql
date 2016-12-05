@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-11-25 19:34:41
+-- Generation Time: 2016-12-05 14:13:37
 -- 服务器版本： 5.5.48-log
 -- PHP Version: 5.6.22
 
@@ -33,6 +33,8 @@ CREATE TABLE IF NOT EXISTS `yii2_ad` (
   `image` varchar(255) NOT NULL COMMENT '图片路径',
   `url` varchar(255) NOT NULL DEFAULT '' COMMENT '跳转地址',
   `sort` int(5) NOT NULL DEFAULT '0' COMMENT '排序',
+  `create_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态'
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='图片广告';
 
@@ -40,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `yii2_ad` (
 -- 转存表中的数据 `yii2_ad`
 --
 
-INSERT INTO `yii2_ad` (`id`, `type`, `title`, `image`, `url`, `sort`, `status`) VALUES
-(1, 1, '测试广告1', '1', 'http://www.imhaigui.com', 1, 1);
+INSERT INTO `yii2_ad` (`id`, `type`, `title`, `image`, `url`, `sort`, `create_time`, `update_time`, `status`) VALUES
+(1, 1, '测试广告1', '1', 'http://www.imhaigui.com', 1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -95,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `yii2_article` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '数据状态'
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='文章表';
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='文章表';
 
 --
 -- 转存表中的数据 `yii2_article`
@@ -110,7 +112,8 @@ INSERT INTO `yii2_article` (`id`, `category_id`, `name`, `title`, `cover`, `desc
 (7, 1, 'hezuo', '合作伙伴', '', '合作伙伴', '<p>合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴</p>', '', 2, 0, '', 0, 1473606940, 0, 1),
 (8, 3, '', '活动内容1111111', '', '活动内容1111111', '<p>活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111</p>', '', 2, 0, '', 0, 1473607011, 1473608688, 1),
 (9, 3, '', '活动内容222222', '', '活动内容222222', '<p>活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222</p>', '', 2, 0, '', 0, 1473607032, 1473608697, 1),
-(10, 3, '', '活动内容333333', '11', '活动内容333333', '<p><img src="http://www.yii2.cn/storage/web/image/201610/editor1477901835457115.png" title="editor1477901835457115.png" alt="icon_nav_dialog.png"/>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>', '', 2, 0, '', 0, 1473607048, 1479272762, 1);
+(10, 3, '', '活动内容333333', '11', '活动内容333333', '<p><img src="http://www.yii2.cn/storage/image/201610/editor1477901835457115.png" title="editor1477901835457115.png" alt="icon_nav_dialog.png"/>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>', '', 2, 0, '', 0, 1473607048, 1480907210, 1),
+(11, 1, 'testabout', '测试关于我们', '13', '文章描述', '<p>文章内容</p>', '', 2, 0, '', 0, 1480907480, 1480907853, 1);
 
 -- --------------------------------------------------------
 
@@ -863,6 +866,25 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `yii2_migration`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_migration` (
+  `version` varchar(180) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `yii2_migration`
+--
+
+INSERT INTO `yii2_migration` (`version`, `apply_time`) VALUES
+('m000000_000000_base', 1480593333),
+('m161201_115249_auth_rule', 1480593337);
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `yii2_order`
 --
 
@@ -888,7 +910,7 @@ CREATE TABLE IF NOT EXISTS `yii2_order` (
   `pay_source` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '支付途径 1网站 2微信 3后台',
   `create_time` int(10) NOT NULL COMMENT '订单创建时间',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态'
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='订单表';
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 --
 -- 转存表中的数据 `yii2_order`
@@ -899,7 +921,8 @@ INSERT INTO `yii2_order` (`order_id`, `order_sn`, `uid`, `name`, `tel`, `sfz`, `
 (2, '135555111', 7, '', '', '', 'shop', 1, '商品名称1111', 0, 0, 0, 1345678940, 1345688940, 1, 1, 1365668940, 2, 2, 1365678940, 1),
 (3, '1473787901', 0, '', '', '', 'shop', 1, '大床双人房特价', 0, 0, 0, 1473811200, 1474416000, 1, 1, 1473787901, 1, 1, 1473787924, 1),
 (4, '1473788097', 0, '龙凤', '15956985698', '', 'train', 3, '帆船培训2', 5, 65, 629, 1473811200, 1474416000, 1, 0, 1478145300, 1, 1, 1473788126, 1),
-(5, '1474094023', 0, '111', '222', '', 'shop', 3, '大床双人房特价', 6, 80, 748, 1474529400, 1344600, 1, 1, 1478163420, 2, 1, 1474094061, 1);
+(5, '1474094023', 0, '111', '222', '', 'shop', 3, '大床双人房特价', 6, 80, 748, 1474529400, 1344600, 1, 1, 1480910460, 2, 1, 1474094061, 1),
+(6, '1480917844', 0, '啥打法是否', '13632565266', '', 'shop', 3, '测试酒店1', 2, 52, 502, 1481165400, 1480575000, 1, 0, 1480917865, 4, 3, 1480917865, 1);
 
 -- --------------------------------------------------------
 
@@ -913,7 +936,7 @@ CREATE TABLE IF NOT EXISTS `yii2_picture` (
   `md5` char(32) NOT NULL DEFAULT '' COMMENT '文件md5',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态'
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `yii2_picture`
@@ -929,7 +952,8 @@ INSERT INTO `yii2_picture` (`id`, `path`, `md5`, `create_time`, `status`) VALUES
 (8, '201611/1477986537333.png', '8a7102fa0ed5cdea5a359f5d068e3838', 1477986537, 1),
 (9, '201611/1478850859946.jpg', 'b80a764cc220b8044e933df30774b218', 1478850859, 1),
 (11, '201611/1478854002500.jpg', '04e145672b976fb47164dd96e0090fd1', 1478854002, 1),
-(12, '201611/1478854666137.jpg', '1f611a254f541830ab3a3490e32368c2', 1478854666, 1);
+(12, '201611/1478854666137.jpg', '1f611a254f541830ab3a3490e32368c2', 1478854666, 1),
+(13, '201612/1480907348789.png', '6d83a00e11eb16e95fa9200fd7ddc2e2', 1480907348, 1);
 
 -- --------------------------------------------------------
 
@@ -4583,7 +4607,7 @@ CREATE TABLE IF NOT EXISTS `yii2_user` (
 --
 
 INSERT INTO `yii2_user` (`uid`, `username`, `password`, `salt`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `tuid`, `image`, `score`, `score_all`, `allowance`, `allowance_updated_at`, `status`) VALUES
-(6, 'e282486518', '$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG', 'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN', 'phphome@qq.com', '13656568989', 1456568652, 13654444444, 1456568652, 13556464888, 1477564915, 7, '1', 10, 0, 4, 1480073150, 1),
+(6, 'e282486518', '$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG', 'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN', 'phphome@qq.com', '13656568989', 1456568652, 13654444444, 1456568652, 13556464888, 1477564915, 7, '1', 10, 0, 4, 1480328877, 1),
 (7, '282486518', '$2y$13$KIAenVWuR2Tgi1VCKiPegeVsQAHXyDcp9rUmzhqK6TNjL4Cqc3YPa', 'n9uguceYCqn_jQNd8F6-JRHOj21yltUo', 'phphome@qq.coms', '13645685421', 1472626509, 2130706433, 0, 2130706433, 1472626719, 0, '3', 1, 1, 0, 0, 0),
 (8, '135232323232', '$2y$13$UVA5264Qic4g8BDl940x1e0ZefVI3QqpH8tH6bttL/cF8GcU1C7Rm', 'Dg36PS0QshZ-Y2zhQJa559RSKJULGO_8', NULL, '', 1474112224, 2130706433, 0, 2130706433, 0, 0, '', 0, 0, 0, 0, 0),
 (13, 'aabbcc', '$2y$13$46n16kagedYUXx6WXZ2QkuSGJKm3FDr6iI.KPNzAkHYRHmplqgAiC', 'OblZ1QuXGGGiXZWTPqfDrCoF_qXVIN3b', '', '13421839870', 1474114459, 2130706433, 0, 2130706433, 1477904302, 0, '1', 0, 0, 0, 0, 1),
@@ -4724,6 +4748,12 @@ ALTER TABLE `yii2_menu`
   ADD KEY `status` (`status`);
 
 --
+-- Indexes for table `yii2_migration`
+--
+ALTER TABLE `yii2_migration`
+  ADD PRIMARY KEY (`version`);
+
+--
 -- Indexes for table `yii2_order`
 --
 ALTER TABLE `yii2_order`
@@ -4836,7 +4866,7 @@ ALTER TABLE `yii2_admin`
 -- AUTO_INCREMENT for table `yii2_article`
 --
 ALTER TABLE `yii2_article`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=11;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `yii2_captcha`
 --
@@ -4866,12 +4896,12 @@ ALTER TABLE `yii2_menu`
 -- AUTO_INCREMENT for table `yii2_order`
 --
 ALTER TABLE `yii2_order`
-  MODIFY `order_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `order_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `yii2_picture`
 --
 ALTER TABLE `yii2_picture`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id自增',AUTO_INCREMENT=13;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id自增',AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `yii2_region`
 --
