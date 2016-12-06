@@ -11,13 +11,25 @@ return [
     'basePath' => dirname(__DIR__),
     /* 控制器默认命名空间 */
     'controllerNamespace' => 'backend\controllers',
+    /**
+     * 比较重要的属性，系统启动阶段(一般new application()最后)加载的组件或模块。
+     * 如果该组件或模块实现BootstrapInterface接口，那么就会执行bootstrap()方法，yii/base/application类315行左右。
+     * 应用案例：yii-debug扩展，或者设想我有个需求：在数据库中配置某些组件和模块的开启或关闭。这样可以不将这些组件或模块
+     *         配置在config.php中，而写在数据库中，通过bootstrap()方法将这些组件模块动态加载到系统中。
+     * 参考：http://www.yiichina.com/doc/guide/2.0/structure-applications#bootstrap
+     */
     'bootstrap' => ['log'],
+    /**
+     * 模块
+     */
     'modules' => [],
     /* 默认路由 */
     'defaultRoute' => 'index',
     /* 默认布局文件 优先级 控制器>配置文件>系统默认 */
     'layout' => 'abc',
-
+    /**
+     * 组件
+     */
     'components' => [
         /* 身份认证类 默认yii\web\user */
         'user' => [
