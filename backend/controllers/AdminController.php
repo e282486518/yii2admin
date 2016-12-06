@@ -55,6 +55,10 @@ class AdminController extends BaseController
             $data['last_login_ip']   = ip2long('127.0.0.1');
             $data['update_time']     = 0;
             /* 表单数据加载和验证，具体验证规则在模型rule中配置 */
+            /* 密码单独验证，否则setPassword后密码肯定符合rule */
+            if (empty($data['password']) || strlen($data['password']) < 6) {
+                $this->error('密码为空或小于6字符');
+            }
             $model->setAttributes($data);
             $model->generateAuthKey();
             $model->setPassword($data['password']);
