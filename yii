@@ -8,6 +8,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
+/* 由于程序中要用到env中的某些数据，所以第一次运行时要先创建.env文件，不然会出错 */
+if (!is_file(__DIR__.'/.env')) {
+    copy(__DIR__.'/.env.example', __DIR__.'/.env');
+}
+
 require(__DIR__ . '/vendor/autoload.php');
 
 require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
