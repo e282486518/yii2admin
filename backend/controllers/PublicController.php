@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\core\Controller;
 use Yii;
 use yii\helpers\Json;
 use common\models\Region;
@@ -14,6 +15,11 @@ class PublicController extends \common\core\Controller{
     public $layout = false;
     public $enableCsrfValidation=false;
 
+    /**
+     * ---------------------------------------
+     * @inheritdoc
+     * ---------------------------------------
+     */
     public function actions()
     {
         return \yii\helpers\ArrayHelper::merge(parent::actions(), [

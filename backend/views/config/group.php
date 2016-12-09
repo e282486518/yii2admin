@@ -12,7 +12,7 @@ use common\helpers\ArrayHelper;
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
 $this->title = '网站设置';
-$this->context->title_sub = '';
+$this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 $id = Yii::$app->request->get('id',1);
 
@@ -37,6 +37,7 @@ $id = Yii::$app->request->get('id',1);
                 </div>
                 <div class="portlet-body form">
                     <form action="<?=\yii\helpers\Url::toRoute(['group'])?>" method="post" class="form-aaa ">
+                        <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
                         
                         <?php foreach ($groups as $group): ?>
                         <div class="form-group">

@@ -12,7 +12,7 @@ use yii\helpers\Url;
 /* ===========================以下为本页配置信息============================ */
 /* 页面基本属性 */
 $this->title = '角色管理';
-$this->context->title_sub = '管理用户角色信息';
+$this->params['title_sub'] = '管理用户角色信息';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 /* 加载页面级别资源 */
 \backend\assets\TablesAsset::register($this);

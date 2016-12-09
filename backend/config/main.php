@@ -26,7 +26,7 @@ return [
     /* 默认路由 */
     'defaultRoute' => 'index',
     /* 默认布局文件 优先级 控制器>配置文件>系统默认 */
-    'layout' => 'abc',
+    'layout' => 'main',
     /**
      * 组件
      */
@@ -93,7 +93,19 @@ return [
 
         ],
     ],
-
+    /**
+     * 该属性允许你用一个数组定义多个 别名 代替 Yii::setAlias()
+     */
+    'aliases' => [],
+    /**
+     * 通过配置文件附加行为，全局
+     */
+    'as rbac' => [
+        'class' => 'backend\behaviors\RbacBehavior',
+        'allowActions' => [
+            'login/login','login/logout','public*','debug/*','gii/*', // 不需要权限检测
+        ]
+    ],
 
     'params' => $params,
 ];

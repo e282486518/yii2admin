@@ -1,15 +1,24 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $content string */
+/** @var $this \yii\web\View */
+/** @var $content string */
+/** @var $context \yii\web\Controller */
 
 use yii\helpers\Html;
 use yii\helpers\Url;
 use backend\assets\AppAsset;
+use backend\models\Menu;
 
-AppAsset::register($this);
+AppAsset::register($this); // 注册前端资源
+
+$context = $this->context;
+$route = $context->action->getUniqueId()?:$context->getUniqueId().'/'.$context->defaultAction;
+$allMenu = Menu::getMenus($route); // 获取后台栏目
+$breadcrumbs = Menu::getBreadcrumbs($route); // 面包屑导航
+//dump($this);exit;
+
+$this->beginPage();
 ?>
-<?php $this->beginPage() ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -53,8 +62,7 @@ AppAsset::register($this);
                 <!-- DOC: This is desktop version of the horizontal menu. The mobile version is defined(duplicated) in the responsive menu below along with sidebar menu. So the horizontal menu has 2 seperate versions -->
                 
                 <!-- BEGIN HORIZANTAL MENU 一级栏目 -->
-                <?php $this->beginContent('@app/views/layouts/public/menu.php') ?>
-                <?php $this->endContent() ?>
+                <?php echo $this->render('@app/views/layouts/public/menu.php', ['allMenu'=>$allMenu]); ?>
                 <!-- END HORIZANTAL MENU -->
                 
                 <!-- END MEGA MENU -->
@@ -90,7 +98,7 @@ AppAsset::register($this);
                         <li class="dropdown dropdown-user">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <img alt="" class="img-circle" src="<?=Yii::getAlias('@web/static/images/avatar2.jpg')?>" />
-                                <span class="username username-hide-on-mobile"> <?=$this->context->admins['username']?> </span>
+                                <span class="username username-hide-on-mobile"> <?=Yii::$app->user->identity->username?> </span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
@@ -132,13 +140,11 @@ AppAsset::register($this);
                 <div class="page-sidebar navbar-collapse collapse">
                     <!-- BEGIN SIDEBAR MENU -->
                     <!-- 二级子栏目 -->
-                    <?php $this->beginContent('@app/views/layouts/public/menu-sub.php') ?>
-                    <?php $this->endContent() ?>
+                    <?php echo $this->render('@app/views/layouts/public/menu-sub.php', ['allMenu'=>$allMenu]); ?>
                     <!-- END SIDEBAR MENU -->
                     
                     <!--  窄屏幕（手机版）下显示的栏目-->
-                    <?php $this->beginContent('@app/views/layouts/public/menu-mobile.php') ?>
-                    <?php $this->endContent() ?>
+                    <?php echo $this->render('@app/views/layouts/public/menu-mobile.php', ['allMenu'=>$allMenu]) ?>
                     
                 </div>
                 <!-- END SIDEBAR -->
@@ -176,9 +182,9 @@ AppAsset::register($this);
                                 <a href="<?=Url::to('index/index')?>">主页</a>
                                 <i class="fa fa-circle"></i>
                             </li>
-                            <?php foreach($this->context->breadcrumbs as $breadcrumbs): ?>
+                            <?php foreach($breadcrumbs as $breadcrumb): ?>
                             <li>
-                                <a href="#"><?=$breadcrumbs['title']?></a>
+                                <a href="#"><?=$breadcrumb['title']?></a>
                                 <i class="fa fa-circle"></i>
                             </li>
                             <?php endforeach ?>
@@ -189,7 +195,7 @@ AppAsset::register($this);
                     <!-- BEGIN PAGE TITLE 正副标题 -->
                     <h3 class="page-title"> 
                         <?= Html::encode($this->title) ?>
-                        <small><?= Html::encode($this->context->title_sub) ?></small>
+                        <small><?= Html::encode(isset($this->params['title_sub'])?$this->params['title_sub']:'') ?></small>
                     </h3>
                     <!-- END PAGE TITLE-->
                     <!-- BEGIN PAGE CONTENT 正文内容 -->

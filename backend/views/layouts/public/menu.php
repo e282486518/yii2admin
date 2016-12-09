@@ -2,8 +2,8 @@
     <ul class="nav navbar-nav">
         <!-- DOC: Remove data-hover="megamenu-dropdown" and data-close-others="true" attributes below to disable the horizontal opening on mouse hover -->
         
-        <?php if(!empty($this->context->menu['main']) && is_array($this->context->menu['main'])):?>
-        <?php foreach ($this->context->menu['main'] as $menu): ?>
+        <?php if(!empty($allMenu['main']) && is_array($allMenu['main'])):?>
+        <?php foreach ($allMenu['main'] as $menu): ?>
         <li class="classic-menu-dropdown <?php if (isset($menu['class'])) {echo 'active';} ?>">
             <a href="<?=\yii\helpers\Url::toRoute($menu['url'])?>">
                 <?=$menu['title']?>

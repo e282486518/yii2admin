@@ -23,8 +23,8 @@
             <!-- END RESPONSIVE QUICK SEARCH FORM -->
         </li>
         
-        <?php if(!empty($this->context->menu['main']) && is_array($this->context->menu['main'])):?>
-        <?php foreach ($this->context->menu['main'] as $menu): ?>
+        <?php if(!empty($allMenu['main']) && is_array($allMenu['main'])):?>
+        <?php foreach ($allMenu['main'] as $menu): ?>
         <li class="nav-item <?php if (isset($menu['class'])) {echo 'active open';} ?>">
             <a href="<?=\yii\helpers\Url::toRoute($menu['url'])?>" class="nav-link nav-toggle">
                 <?=$menu['title']?>
@@ -34,8 +34,8 @@
             <?php if (!isset($menu['class'])) { continue;} ?>
             <ul class="sub-menu">
                 
-                <?php if(!empty($this->context->menu['child']) && is_array($this->context->menu['child'])):?>
-                <?php foreach ($this->context->menu['child'] as $menu): ?>
+                <?php if(!empty($allMenu['child']) && is_array($allMenu['child'])):?>
+                <?php foreach ($allMenu['child'] as $menu): ?>
                 <li class="nav-item <?php if (isset($menu['class'])) {echo 'active open';} ?>">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="<?=$menu['icon']?>"></i>

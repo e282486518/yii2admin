@@ -11,7 +11,7 @@ use common\helpers\ArrayHelper;
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
 $this->title = '添加用户';
-$this->context->title_sub = '添加后台用户';
+$this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 /* 渲染其他文件 */
 //echo $this->renderFile('@app/views/public/login.php');

@@ -12,6 +12,8 @@ class DatabaseController extends BaseController{
 
     protected $dbpath;
 
+    public $enableCsrfValidation = false;
+
     /**
      * ---------------------------------------
      * 构造函数

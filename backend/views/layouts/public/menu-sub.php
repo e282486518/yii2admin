@@ -32,8 +32,8 @@
         <!-- END RESPONSIVE QUICK SEARCH FORM -->
     </li>
     
-    <?php if(!empty($this->context->menu['child']) && is_array($this->context->menu['child'])):?>
-    <?php foreach ($this->context->menu['child'] as $menu): ?>
+    <?php if(!empty($allMenu['child']) && is_array($allMenu['child'])):?>
+    <?php foreach ($allMenu['child'] as $menu): ?>
     <li class="nav-item ">
         <a href="javascript:;" class="nav-link nav-toggle">
             <i class="<?=$menu['icon']?>"></i>

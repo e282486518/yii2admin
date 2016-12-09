@@ -11,7 +11,7 @@ use common\helpers\ArrayHelper;
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
 $this->title = ($this->context->action->id == 'add' ? '添加' : '编辑') . '文章栏目';
-$this->context->title_sub = '';
+$this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 ?>
 

@@ -1,9 +1,10 @@
 <?php
 
 /**
+ * ============================================================
  * 全局公共函数
+ * ============================================================
  */
-
 if (! function_exists('env')) {
     /**
      * Gets the value of an environment variable. Supports boolean, empty and null.
@@ -39,6 +40,23 @@ if (! function_exists('env')) {
     }
 }
 
+
+/**
+ * ---------------------------------------
+ * 简单的输出调试函数
+ * ---------------------------------------
+ */
+function dump($var, $depth = 10, $highlight = false){
+    \yii\helpers\VarDumper::dump($var, $depth, $highlight);
+}
+
+
+/**
+ * ============================================================
+ * 常量或环境配置
+ * ============================================================
+ */
+
 /**
  * 从根目录的 .env 文件中 加载应用环境变量
  * Load application environment from .env file
@@ -53,3 +71,5 @@ if (is_file(dirname(__DIR__) . '/.env')) {
  */
 defined('YII_DEBUG') or define('YII_DEBUG', env('YII_DEBUG', 'true'));
 defined('YII_ENV')   or define('YII_ENV', env('YII_ENV', 'dev'));
+
+

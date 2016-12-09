@@ -11,13 +11,12 @@ use yii\rbac\Item;
  */
 class DbManager extends \yii\rbac\DbManager
 {
-    /*
+    /**
      * ---------------------------------------
      * 当Rule不存在时添加
      * 同时将auth_item添加或更新
      * @param  string  $name  rule名称
      * @param  object  $rule  规则对象
-     * @return null
      * ---------------------------------------
      */
     public function saveRule($name){
@@ -46,12 +45,11 @@ class DbManager extends \yii\rbac\DbManager
         }
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 保存角色的权限分配
      * @param  string  $parent  角色name
      * @param  string  $child   权限name
-     * @return null
      * ---------------------------------------
      */
     public function saveChild($parent, $child){
@@ -64,7 +62,7 @@ class DbManager extends \yii\rbac\DbManager
 
     }
 
-    /*
+    /**
      * ---------------------------------------
      * 更新auth_item
      * ---------------------------------------

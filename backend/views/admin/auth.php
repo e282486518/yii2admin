@@ -7,11 +7,13 @@ use common\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Menu */
 /* @var $form ActiveForm */
+/** @var $roles array */
+/** @var $group array */
 
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
 $this->title = '用户组授权';
-$this->context->title_sub = '添加后台用户';
+$this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 /* 渲染其他文件 */
 //echo $this->renderFile('@app/views/public/login.php');
@@ -40,6 +42,7 @@ $this->context->title_sub = '添加后台用户';
     <div class="portlet-body form">
         <!-- BEGIN FORM-->
         <form action="<?=\yii\helpers\Url::toRoute(['auth','uid'=>$model->uid])?>" method="post" class="form-aaa ">
+            <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
 
             <div class="form-group">
                 <label>用户组</label>
