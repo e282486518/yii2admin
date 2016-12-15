@@ -154,13 +154,7 @@ class Menu extends \common\models\Menu
                 ->select(['id','pid','title','url','hide'])
                 ->from(Menu::tableName())
                 ->orderBy(['sort'=>SORT_ASC])->all();
-            $nodes = ArrayHelper::list_to_tree($list,$pk='id',$pid='pid',$child='operator',$root=0);
-            foreach ($nodes as $key => $value) {
-                if(!empty($value['operator'])){
-                    $nodes[$key]['child'] = $value['operator'];
-                    unset($nodes[$key]['operator']);
-                }
-            }
+            $nodes = ArrayHelper::list_to_tree($list,$pk='id',$pid='pid',$child='child',$root=0);
         }else{
             $nodes = (new \yii\db\Query())
                 ->select(['title','url','tip','pid'])
