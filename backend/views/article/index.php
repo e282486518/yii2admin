@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use backend\models\Category;
+use backend\models\ArticleCat;
 
 /* @var $model common\models\Article */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
@@ -43,7 +43,7 @@ $columns = [
         'header' => '上级分类',
         'content' => function($model){
             $str = '';
-            $paths = Category::getParents($model['category_id']);
+            $paths = ArticleCat::getParents($model['category_id']);
             foreach ($paths as $value) {
                 $str .= $value['title'] .' > ';
             }

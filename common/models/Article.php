@@ -7,20 +7,21 @@ use Yii;
 /**
  * This is the model class for table "{{%article}}".
  *
- * @property string $id
- * @property string $category_id
+ * @property integer $id
+ * @property integer $category_id
  * @property string $name
  * @property string $title
- * @property string $cover
+ * @property integer $cover
  * @property string $description
  * @property string $content
  * @property string $extend
- * @property integer $type
- * @property integer $position
  * @property string $link
+ * @property integer $up
+ * @property integer $down
+ * @property integer $view
  * @property integer $sort
- * @property string $create_time
- * @property string $update_time
+ * @property integer $create_time
+ * @property integer $update_time
  * @property integer $status
  */
 class Article extends \common\core\BaseActiveRecord
@@ -40,12 +41,12 @@ class Article extends \common\core\BaseActiveRecord
     {
         return [
             [['category_id', 'content'], 'required'],
-            [['category_id', 'type', 'position', 'sort', 'create_time', 'update_time', 'status'], 'integer'],
+            [['category_id', 'cover', 'up', 'down', 'view', 'sort', 'create_time', 'update_time', 'status'], 'integer'],
             [['content', 'extend'], 'string'],
             [['name'], 'string', 'max' => 40],
             [['title'], 'string', 'max' => 80],
-            [['cover', 'link'], 'string', 'max' => 255],
-            [['description'], 'string', 'max' => 140]
+            [['description'], 'string', 'max' => 140],
+            [['link'], 'string', 'max' => 255],
         ];
     }
 
@@ -63,9 +64,10 @@ class Article extends \common\core\BaseActiveRecord
             'description' => 'Description',
             'content' => 'Content',
             'extend' => 'Extend',
-            'type' => 'Type',
-            'position' => 'Position',
             'link' => 'Link',
+            'up' => 'Up',
+            'down' => 'Down',
+            'view' => 'View',
             'sort' => 'Sort',
             'create_time' => 'Create Time',
             'update_time' => 'Update Time',

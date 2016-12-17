@@ -2,15 +2,15 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use backend\models\Log;
+use backend\models\Category;
 
-/* @var $model common\models\Log */
+/* @var $model common\models\Category */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
-/* @var $searchModel backend\models\search\LogSearch */
+/* @var $searchModel backend\models\search\CategorySearch */
 
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
-$this->title = '日志管理';
+$this->title = '分类管理';
 $this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 /* 加载页面级别资源 */
@@ -26,7 +26,7 @@ $columns = [
         }
     ],
     [
-        'label' => 'ID',
+        'header' => 'ID',
         'attribute' => 'id',
         'options' => ['width' => '50px;']
     ],
@@ -35,52 +35,68 @@ $columns = [
         'attribute' => 'title'
     ],
     [
-        'header' => '用户',
-        'options' => ['width' => '100px;'],
-        'content' => function($model, $key){
-            //$user = Yii::$app->user->getUser($model['uid']);
-            return $model['uid'];
+        'header' => '标识',
+        'options' => ['width' => '150px;'],
+        'attribute' => 'name'
+    ],
+    /*[
+        'header' => '上级分类',
+        'content' => function($model){
+            $str = '';
+            if ($model['pid'] == 0) {
+                $str .= '<span style="color:#f00;">一级分类</span>';
+            } else {
+                $paths = Category::getParents($model['id']);
+                foreach ($paths as $value) {
+                    $str .= $value['title'] .' > ';
+                }
+                $str = rtrim($str, ' > ');
+            }
+            return $str;
         }
+    ],*/
+    [
+        'label' => '排序',
+        'value' => 'sort',
+        'options' => ['width' => '50px;'],
     ],
     [
-        'label' => '控制器',
-        'value' => 'controller'
-    ],
-    [
-        'label' => '操作',
-        'value' => 'action'
-    ],
-    [
-        'label' => '查询字符串',
-        'value' => 'querystring',
-    ],
-    [
-        'label' => 'IP',
-        'value' => 'ip',
-    ],
-    [
-        'label' => '时间',
-        'value' => 'create_time',
-        'format' => ['date', 'php:Y-m-d H:i'],
+        'label' => '状态',
+        'options' => ['width' => '50px;'],
+        'content' => function($model){
+            return '正常';
+        }
     ],
     [
         'class' => 'yii\grid\ActionColumn',
         'header' => '操作',
-        'template' => '{view} {delete}',
+        'template' => '{edit} {addsub} {delete}',
         'options' => ['width' => '200px;'],
         'buttons' => [
-            'view' => function ($url, $model, $key) {
-                return Html::a('<i class="fa fa-eye"></i>', ['view', 'id'=>$key], [
-                    'title' => Yii::t('app', '查看'),
+            /*'view' => function ($url, $model, $key) {
+                return Html::a('<i class="icon-eye"></i>', ['index', 'pid'=>$model['id']], [
+                    'title' => Yii::t('app', '下级菜单'),
                     'class' => 'btn btn-xs blue'
+                ]);
+            },*/
+            'edit' => function ($url, $model, $key) {
+                return Html::a('<i class="fa fa-edit"></i>', ['edit', 'id'=>$model['id']], [
+                    'title' => Yii::t('app', '编辑'),
+                    'class' => 'btn btn-xs purple'
+                ]);
+            },
+            'addsub' => function ($url, $model, $key) {
+                return Html::a('<i class="fa fa-plus"></i>', ['add', 'pid'=>$model['id']], [
+                    'title' => Yii::t('app', '添加子菜单'),
+                    'class' => 'btn btn-xs red'
                 ]);
             },
             'delete' => function ($url, $model, $key) {
-                return Html::a('<i class="fa fa-times"></i>', $url, [
+                return Html::a('<i class="fa fa-times"></i>', ['delete', 'id'=>$model['id']], [
                     'title' => Yii::t('app', '删除'),
                     'class' => 'btn btn-xs red ajax-get confirm'
                 ]);
-            }
+            },
         ],
     ],
 ];
@@ -94,7 +110,7 @@ $columns = [
         </div>
         <div class="actions">
             <div class="btn-group btn-group-devided">
-                <?=Html::a('清空 <i class="fa fa-plus"></i>',['clear'],['class'=>'btn green','style'=>'margin-right:10px;'])?>
+                <?=Html::a('添加 <i class="fa fa-plus"></i>',['add','pid'=>Yii::$app->request->get('pid',0)],['class'=>'btn green','style'=>'margin-right:10px;'])?>
                 <?=Html::a('删除 <i class="fa fa-times"></i>',['delete'],['class'=>'btn green ajax-post confirm','target-form'=>'ids','style'=>'margin-right:10px;'])?>
             </div>
             <div class="btn-group">
@@ -113,7 +129,7 @@ $columns = [
     <div class="portlet-body">
         <?php \yii\widgets\Pjax::begin(['options'=>['id'=>'pjax-container']]); ?>
         <div>
-            <?php echo $this->render('_search', ['model' => $searchModel]); ?> <!-- 条件搜索-->
+            <?= $this->render('_search', ['model' => $searchModel]); ?>
         </div>
         <div class="table-container">
             <form class="ids">
@@ -147,7 +163,7 @@ $columns = [
 <!-- 定义数据块 -->
 <?php $this->beginBlock('test'); ?>
 jQuery(document).ready(function() {
-    highlight_subnav('log/index'); //子导航高亮
+    highlight_subnav('article-cat/index'); //子导航高亮
 });
 <?php $this->endBlock() ?>
 <!-- 将数据块 注入到视图中的某个位置 -->

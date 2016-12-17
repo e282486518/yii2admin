@@ -5,12 +5,12 @@ namespace backend\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Log;
+use common\models\AdminLog;
 
 /**
- * LogSearch represents the model behind the search form about `common\models\Log`.
+ * AdminLogSearch represents the model behind the search form about `common\models\AdminLog`.
  */
-class LogSearch extends Log
+class AdminLogSearch extends AdminLog
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class LogSearch extends Log
      */
     public function search($params)
     {
-        $query = Log::find();
+        $query = AdminLog::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

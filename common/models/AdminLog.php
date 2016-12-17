@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%log}}".
+ * This is the model class for table "{{%admin_log}}".
  *
  * @property integer $id
  * @property integer $uid
@@ -18,14 +18,14 @@ use Yii;
  * @property integer $create_time
  * @property integer $status
  */
-class Log extends \common\core\BaseActiveRecord
+class AdminLog extends \common\core\BaseActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%log}}';
+        return '{{%admin_log}}';
     }
 
     /**
@@ -39,7 +39,7 @@ class Log extends \common\core\BaseActiveRecord
             [['title'], 'string', 'max' => 100],
             [['controller', 'action'], 'string', 'max' => 50],
             [['querystring', 'remark'], 'string', 'max' => 255],
-            [['ip'], 'string', 'max' => 15]
+            [['ip'], 'string', 'max' => 15],
         ];
     }
 
@@ -50,15 +50,15 @@ class Log extends \common\core\BaseActiveRecord
     {
         return [
             'id' => 'ID',
-            'uid' => 'Uid',
-            'title' => 'Title',
-            'controller' => 'Controller',
-            'action' => 'Action',
-            'querystring' => 'Querystring',
-            'remark' => 'Remark',
-            'ip' => 'Ip',
-            'create_time' => 'Create Time',
-            'status' => 'Status',
+            'uid' => '用户uid',
+            'title' => '标题',
+            'controller' => '控制器',
+            'action' => '动作',
+            'querystring' => '查询字符串',
+            'remark' => '备注',
+            'ip' => 'IP',
+            'create_time' => '创建时间',
+            'status' => '状态',
         ];
     }
 }

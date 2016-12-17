@@ -17,7 +17,7 @@ use yii\helpers\Url;
     ]
 ]); ?>
 <?=$form->field($model, 'category_id')->selectList(
-    ArrayHelper::listDataLevel(\backend\models\Category::find()->asArray()->all(), 'id', 'title','id','pid'),
+    ArrayHelper::listDataLevel(\backend\models\ArticleCat::find()->asArray()->all(), 'id', 'title','id','pid'),
     ['class'=>'form-control c-md-2'])->label('栏目')->hint('英文标识'); ?>
 
 <?=$form->field($model, 'name')->textInput(['class'=>'form-control c-md-2'])->label('文章标识')->hint('英文标识，只允许含有:英文、数字和中划线');?>

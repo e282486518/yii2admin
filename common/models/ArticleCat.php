@@ -5,10 +5,10 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%category}}".
+ * This is the model class for table "{{%article_cat}}".
  *
- * @property string $id
- * @property string $pid
+ * @property integer $id
+ * @property integer $pid
  * @property string $name
  * @property string $title
  * @property string $link
@@ -16,19 +16,19 @@ use Yii;
  * @property string $meta_title
  * @property string $keywords
  * @property string $description
- * @property string $create_time
- * @property string $update_time
+ * @property integer $create_time
+ * @property integer $update_time
  * @property integer $sort
  * @property integer $status
  */
-class Category extends \common\core\BaseActiveRecord
+class ArticleCat extends \common\core\BaseActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%category}}';
+        return '{{%article_cat}}';
     }
 
     /**
@@ -44,7 +44,7 @@ class Category extends \common\core\BaseActiveRecord
             [['title', 'meta_title'], 'string', 'max' => 50],
             [['link'], 'string', 'max' => 250],
             [['keywords', 'description'], 'string', 'max' => 255],
-            [['name'], 'unique']
+            [['name'], 'unique'],
         ];
     }
 

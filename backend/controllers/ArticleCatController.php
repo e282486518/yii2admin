@@ -3,10 +3,10 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Category;
+use backend\models\ArticleCat;
 use common\helpers\ArrayHelper;
 use common\helpers\FuncHelper;
-use backend\models\search\CategorySearch;
+use backend\models\search\ArticleCatSearch;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -14,7 +14,7 @@ use yii\web\NotFoundHttpException;
  * 作者 ：longfei
  * Email ：phphome@qq.com
  */
-class CategoryController extends BaseController
+class ArticleCatController extends BaseController
 {
     /**
      * ---------------------------------------
@@ -26,7 +26,7 @@ class CategoryController extends BaseController
         /* 添加当前位置到cookie供后续跳转调用 */
         $this->setForward();
         //var_dump(Category::getParents(2));
-        $searchModel = new CategorySearch();
+        $searchModel = new ArticleCatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         //\yii\helpers\VarDumper::dump($dataProvider->allModels);exit;
         return $this->render('index', [
@@ -44,7 +44,7 @@ class CategoryController extends BaseController
         $model = $this->findModel(0);
 
         if (Yii::$app->request->isPost) {
-            
+
             $data = Yii::$app->request->post('Category');
             //$data['create_time'] = time();
             /* 格式化extend值，为空或数组序列化 */
@@ -136,15 +136,15 @@ class CategoryController extends BaseController
      * Finds the Article model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Category the loaded model
+     * @return ArticleCat the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
         if ($id == 0) {
-            return new Category();
+            return new ArticleCat();
         }
-        if (($model = Category::findOne($id)) !== null) {
+        if (($model = ArticleCat::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -128,12 +128,13 @@ $columns = [
         </div>
     </div>
     <div class="portlet-body">
-        <?php \yii\widgets\Pjax::begin(['options'=>['id'=>'pjax-container']]); ?>
+        <?php //\yii\widgets\Pjax::begin(['options'=>['id'=>'pjax-container']]); ?>
         <div>
             <?php echo $this->render('_search', ['model' => $searchModel]); ?> <!-- 条件搜索-->
         </div>
         <div class="table-container">
             <form class="ids">
+            <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
             <?= GridView::widget([
                 'dataProvider' => $dataProvider, // 列表数据
                 //'filterModel' => $searchModel, // 搜索模型
@@ -157,7 +158,7 @@ $columns = [
             ]); ?>
             </form>
         </div>
-        <?php \yii\widgets\Pjax::end(); ?>
+        <?php //\yii\widgets\Pjax::end(); ?>
     </div>
 </div>
 

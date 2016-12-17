@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use backend\models\Category;
 
 /* @var $model common\models\Order */
 /* @var $dataProvider yii\data\ActiveDataProvider  */

@@ -1,8 +1,6 @@
 <?php
 
-use yii\helpers\Html;
 use common\core\ActiveForm;
-use common\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Menu */
@@ -48,7 +46,7 @@ $this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以�
 
 $(function() {
     /* 子导航高亮 */
-    highlight_subnav('category/index');
+    highlight_subnav('article-cat/index');
 });
 
 <?php $this->endBlock() ?>

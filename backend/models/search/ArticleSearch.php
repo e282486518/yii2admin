@@ -5,10 +5,10 @@ namespace backend\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Article;
+use common\models\Article;
 
 /**
- * ArticleSearch represents the model behind the search form about `backend\models\Article`.
+ * ArticleSearch represents the model behind the search form about `common\models\Article`.
  */
 class ArticleSearch extends Article
 {
@@ -18,8 +18,8 @@ class ArticleSearch extends Article
     public function rules()
     {
         return [
-            [['id', 'category_id', 'type', 'position', 'sort', 'create_time', 'update_time', 'status'], 'integer'],
-            [['name', 'title', 'cover', 'description', 'content', 'extend', 'link'], 'safe'],
+            [['id', 'category_id', 'cover', 'up', 'down', 'view', 'sort', 'create_time', 'update_time', 'status'], 'integer'],
+            [['name', 'title', 'description', 'content', 'extend', 'link'], 'safe'],
         ];
     }
 
@@ -43,11 +43,10 @@ class ArticleSearch extends Article
     {
         $query = Article::find();
 
+        // add conditions that should always apply here
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
         ]);
 
         $this->load($params);
@@ -58,11 +57,14 @@ class ArticleSearch extends Article
             return $dataProvider;
         }
 
+        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'category_id' => $this->category_id,
-            'type' => $this->type,
-            'position' => $this->position,
+            'cover' => $this->cover,
+            'up' => $this->up,
+            'down' => $this->down,
+            'view' => $this->view,
             'sort' => $this->sort,
             'create_time' => $this->create_time,
             'update_time' => $this->update_time,
@@ -71,18 +73,17 @@ class ArticleSearch extends Article
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'cover', $this->cover])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'extend', $this->extend])
             ->andFilterWhere(['like', 'link', $this->link]);
         
-        /* æŽ’åº */
-        $query->orderBy([
+        /* ÅÅÐò */ 
+        $query->orderBy([ 
             'sort' => SORT_ASC,
             'id' => SORT_DESC,
         ]);
-
+        
         return $dataProvider;
     }
 }

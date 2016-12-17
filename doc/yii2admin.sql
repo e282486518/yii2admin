@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-12-05 14:13:37
+-- Generation Time: 2016-12-17 01:02:27
 -- 服务器版本： 5.5.48-log
 -- PHP Version: 5.6.22
 
@@ -64,16 +64,43 @@ CREATE TABLE IF NOT EXISTS `yii2_admin` (
   `last_login_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '最后登录IP',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(4) DEFAULT '0' COMMENT '用户状态 1正常 0禁用'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 --
 -- 转存表中的数据 `yii2_admin`
 --
 
 INSERT INTO `yii2_admin` (`uid`, `username`, `password`, `salt`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', '$2y$13$0UVcG.mXF6Og0rnjfwJd2.wixT2gdn.wDO9rN44jGtIGc6JvBqR7i', 'SbSY36BLw3V2lU-GB7ZAzCVJKDFx82IJ', 'phphome111@qq.com', '13565231112', 1457922160, 2130706433, 1457922174, 2130706433, 1476437014, 1),
+(1, 'admin', '$2y$13$0UVcG.mXF6Og0rnjfwJd2.wixT2gdn.wDO9rN44jGtIGc6JvBqR7i', 'SbSY36BLw3V2lU-GB7ZAzCVJKDFx82IJ', 'phphome111@qq.com', '13565231112', 1457922160, 2130706433, 1457922174, 2130706433, 1481278788, 1),
 (2, 'feifei', '$2y$13$jqWGlVo8T3qtnWUX0kTX/ON5ctvokzkQ7RAvKuNRjN.WvxgBlFK4u', 'tzDsmCSLbtktnvbgn1YeEqslYOBo1Cn9', 'php11111@qq.com', '13631568985', 1458028401, 2130706433, 1458028401, 2130706433, 1468230085, 1),
-(6, 'guanli', '$2y$13$QK.CEi7HHuTSIMbq5RbzeOfTNgrX8mUTl/noBkHtD/zKEf7y.SQO6', '_4F9_ptxkohU247kgi7UB4rg3UMYqo14', 'phphome222@qq.com', '13565656565', 1476438209, 2130706433, 0, 2130706433, 0, 1);
+(6, 'guanli', '$2y$13$QK.CEi7HHuTSIMbq5RbzeOfTNgrX8mUTl/noBkHtD/zKEf7y.SQO6', '_4F9_ptxkohU247kgi7UB4rg3UMYqo14', 'phphome222@qq.com', '13565656565', 1476438209, 2130706433, 0, 2130706433, 0, 1),
+(7, 'huang', '$2y$13$SO1qMnykM3MJuNizsqzQH.QBjPPDZ7U556yUtmSU3optwZ1EdWm0W', 'nkqZMhWkbIsjZrF1J8laC1UxWoXPRobA', 'phphome@qqqqq.com', '13656589562', 1481000197, 3232243969, 0, 2130706433, 1481003421, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_admin_log`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_admin_log` (
+  `id` int(8) NOT NULL,
+  `uid` int(8) NOT NULL COMMENT '用户uid',
+  `title` varchar(100) NOT NULL COMMENT '标题',
+  `controller` varchar(50) NOT NULL COMMENT '控制器',
+  `action` varchar(50) NOT NULL COMMENT '动作',
+  `querystring` varchar(255) NOT NULL COMMENT '查询字符串',
+  `remark` varchar(255) NOT NULL COMMENT '备注',
+  `ip` varchar(15) NOT NULL DEFAULT '0.0.0.0' COMMENT 'IP',
+  `create_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态'
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='后台日志';
+
+--
+-- 转存表中的数据 `yii2_admin_log`
+--
+
+INSERT INTO `yii2_admin_log` (`id`, `uid`, `title`, `controller`, `action`, `querystring`, `remark`, `ip`, `create_time`, `status`) VALUES
+(1, 2, '修改菜单', 'menu', 'index', '/admin.php/menu/index?id=4', '用户修改了菜单', '192.168.0.101', 1435658950, 1);
 
 -- --------------------------------------------------------
 
@@ -86,34 +113,91 @@ CREATE TABLE IF NOT EXISTS `yii2_article` (
   `category_id` int(10) unsigned NOT NULL COMMENT '所属分类',
   `name` char(40) NOT NULL DEFAULT '' COMMENT '标识',
   `title` char(80) NOT NULL DEFAULT '' COMMENT '标题',
-  `cover` varchar(255) NOT NULL DEFAULT '' COMMENT '封面',
+  `cover` int(8) unsigned DEFAULT NULL COMMENT '封面ID',
   `description` char(140) NOT NULL DEFAULT '' COMMENT '描述',
   `content` text NOT NULL COMMENT '内容',
   `extend` text COMMENT '扩展内容array',
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '2' COMMENT '内容类型',
-  `position` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '推荐位',
   `link` varchar(255) NOT NULL DEFAULT '' COMMENT '外链',
+  `up` int(8) unsigned NOT NULL DEFAULT '0' COMMENT '支持数',
+  `down` int(8) unsigned NOT NULL DEFAULT '0' COMMENT '反对数',
+  `view` int(8) unsigned NOT NULL DEFAULT '0' COMMENT '浏览数',
   `sort` int(4) NOT NULL DEFAULT '0' COMMENT '排序值',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '数据状态'
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态0回收站 1正常'
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='文章表';
 
 --
 -- 转存表中的数据 `yii2_article`
 --
 
-INSERT INTO `yii2_article` (`id`, `category_id`, `name`, `title`, `cover`, `description`, `content`, `extend`, `type`, `position`, `link`, `sort`, `create_time`, `update_time`, `status`) VALUES
-(3, 1, 'jieshao', '帆海汇介绍', '4', '帆海汇介绍', '<p><img src="/storage/web/image/201610/1476271961130042.png" title="1476271961130042.png" alt="icon_nav_button.png"/></p>', '', 2, 0, '', 0, 1473606822, 1476272167, 1),
-(2, 1, 'aboutus', '关于我们', '7', '关于我们', '<p><img src="http://www.yii2.cn/storage/web/image/201611/editor1477984899430443.png" title="editor1477984899430443.png" alt="qrcode.png"/>这里是关于我们的内容</p>', 'a:4:{i:1;s:3:"222";i:3;s:4:"3434";i:6;s:5:"sdfsa";s:1:"s";s:4:"sdsf";}', 2, 0, '', 0, 1472611249, 1477984905, 1),
-(4, 1, 'julebu', '帆船俱乐部', '', '帆船俱乐部', '<p>帆船俱乐部帆船俱乐部帆船俱乐部帆船俱乐部帆船俱乐部帆船俱乐部帆船俱乐部</p>', '', 2, 0, '', 0, 1473606857, 0, 1),
-(5, 1, 'peixun', '培训中心', '', '培训中心', '<p>培训中心培训中心培训中心培训中心培训中心培训中心培训中心培训中心培训中心培训中心培训中心</p>', '', 2, 0, '', 0, 1473606890, 0, 1),
-(6, 1, 'lianxi', '联系我们', '', '联系我们', '<p>联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们</p>', '', 2, 0, '', 0, 1473606916, 0, 1),
-(7, 1, 'hezuo', '合作伙伴', '', '合作伙伴', '<p>合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴</p>', '', 2, 0, '', 0, 1473606940, 0, 1),
-(8, 3, '', '活动内容1111111', '', '活动内容1111111', '<p>活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111</p>', '', 2, 0, '', 0, 1473607011, 1473608688, 1),
-(9, 3, '', '活动内容222222', '', '活动内容222222', '<p>活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222</p>', '', 2, 0, '', 0, 1473607032, 1473608697, 1),
-(10, 3, '', '活动内容333333', '11', '活动内容333333', '<p><img src="http://www.yii2.cn/storage/image/201610/editor1477901835457115.png" title="editor1477901835457115.png" alt="icon_nav_dialog.png"/>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>', '', 2, 0, '', 0, 1473607048, 1480907210, 1),
-(11, 1, 'testabout', '测试关于我们', '13', '文章描述', '<p>文章内容</p>', '', 2, 0, '', 0, 1480907480, 1480907853, 1);
+INSERT INTO `yii2_article` (`id`, `category_id`, `name`, `title`, `cover`, `description`, `content`, `extend`, `link`, `up`, `down`, `view`, `sort`, `create_time`, `update_time`, `status`) VALUES
+(3, 1, 'jieshao', '帆海汇介绍', 4, '帆海汇介绍', '<p><img src="/storage/web/image/201610/1476271961130042.png" title="1476271961130042.png" alt="icon_nav_button.png"/></p>', '', '', 0, 0, 0, 0, 1473606822, 1476272167, 1),
+(2, 1, 'aboutus', '关于我们', 7, '关于我们', '<p><img src="http://www.yii2.cn/storage/web/image/201611/editor1477984899430443.png" title="editor1477984899430443.png" alt="qrcode.png"/>这里是关于我们的内容</p>', 'a:4:{i:1;s:3:"222";i:3;s:4:"3434";i:6;s:5:"sdfsa";s:1:"s";s:4:"sdsf";}', '', 0, 0, 0, 0, 1472611249, 1477984905, 1),
+(4, 1, 'julebu', '帆船俱乐部', 0, '帆船俱乐部', '<p>帆船俱乐部帆船俱乐部帆船俱乐部帆船俱乐部帆船俱乐部帆船俱乐部帆船俱乐部</p>', '', '', 0, 0, 0, 0, 1473606857, 0, 1),
+(5, 1, 'peixun', '培训中心', 0, '培训中心', '<p>培训中心培训中心培训中心培训中心培训中心培训中心培训中心培训中心培训中心培训中心培训中心</p>', '', '', 0, 0, 0, 0, 1473606890, 0, 1),
+(6, 1, 'lianxi', '联系我们', 0, '联系我们', '<p>联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们联系我们</p>', '', '', 0, 0, 0, 0, 1473606916, 0, 1),
+(7, 1, 'hezuo', '合作伙伴', 0, '合作伙伴', '<p>合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴合作伙伴</p>', '', '', 0, 0, 0, 0, 1473606940, 0, 1),
+(8, 3, '', '活动内容1111111', 0, '活动内容1111111', '<p>活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111活动内容1111111</p>', '', '', 0, 0, 0, 0, 1473607011, 1473608688, 1),
+(9, 3, '', '活动内容222222', 0, '活动内容222222', '<p>活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222活动内容222222</p>', '', '', 0, 0, 0, 0, 1473607032, 1473608697, 1),
+(10, 3, '', '活动内容333333', 11, '活动内容333333', '<p><img src="http://www.yii2.cn/storage/image/201610/editor1477901835457115.png" title="editor1477901835457115.png" alt="icon_nav_dialog.png"/>活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333活动内容333333</p>', '', '', 0, 0, 0, 0, 1473607048, 1480907210, 1),
+(11, 1, 'testabout', '测试关于我们', 13, '文章描述', '<p>文章内容<img src="/storage/image/201612/editor1481280050913260.png" title="editor1481280050913260.png" alt="ad.png"/></p>', '', '', 0, 0, 0, 0, 1480907480, 1481280055, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_article_cat`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_article_cat` (
+  `id` int(10) unsigned NOT NULL COMMENT '分类ID',
+  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
+  `name` varchar(30) NOT NULL COMMENT '标志',
+  `title` varchar(50) NOT NULL COMMENT '标题',
+  `link` varchar(250) DEFAULT '' COMMENT '外链',
+  `extend` text COMMENT '扩展设置',
+  `meta_title` varchar(50) DEFAULT '' COMMENT 'SEO的网页标题',
+  `keywords` varchar(255) DEFAULT '' COMMENT '关键字',
+  `description` varchar(255) DEFAULT '' COMMENT '描述',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '数据状态'
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='分类表';
+
+--
+-- 转存表中的数据 `yii2_article_cat`
+--
+
+INSERT INTO `yii2_article_cat` (`id`, `pid`, `name`, `title`, `link`, `extend`, `meta_title`, `keywords`, `description`, `create_time`, `update_time`, `sort`, `status`) VALUES
+(1, 0, 'about', '关于我们', '', '', '', '', '', 1379474947, 1479373724, 10, 1),
+(3, 0, 'event', '活动', '', 'a:2:{s:2:"sd";s:2:"11";s:4:"sdfs";s:3:"222";}', '测试标题', '测试seo关键词', '测试描述', 1471947194, 1473604631, 1, 1),
+(4, 1, 'lianxi', '联系我们', '', '', '', '', '', 1479368832, 0, 0, 1),
+(5, 3, 'xin', '最新活动', '', '', '', '', '', 1479368867, 1479373985, 10, 1),
+(6, 3, 'hot', '热门活动', '', '', '', '', '', 1479373707, 1481280086, 9, 1),
+(7, 4, 'lianxi3', '联系我们3', '', '', '', '', '', 1479374778, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_article_position`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_article_position` (
+  `article_id` int(8) unsigned NOT NULL COMMENT '文章ID',
+  `position_id` int(4) unsigned NOT NULL COMMENT '推荐位ID'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='文章推荐位映射表';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_article_tag`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_article_tag` (
+  `article_id` int(8) NOT NULL COMMENT '文章ID',
+  `tag_id` int(8) NOT NULL COMMENT '标签ID'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='文章标签映射表';
 
 -- --------------------------------------------------------
 
@@ -135,7 +219,8 @@ INSERT INTO `yii2_auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 ('administrator', '1', 1476437918),
 ('administrator', '4', 1460012730),
 ('administrator', '6', 1476438227),
-('editor', '2', 1476437926);
+('editor', '2', 1476437926),
+('editor', '7', 1481279497);
 
 -- --------------------------------------------------------
 
@@ -270,6 +355,7 @@ INSERT INTO `yii2_auth_item` (`name`, `type`, `description`, `rule_name`, `data`
 ('shop/delete', 2, NULL, 'shop/delete', NULL, 1476437985, 1476437985),
 ('shop/edit', 2, NULL, 'shop/edit', NULL, 1476437985, 1476437985),
 ('shop/group', 2, NULL, 'shop/group', NULL, 1472528088, 1472528088),
+('shop/index', 2, NULL, 'shop/index', NULL, 1481279433, 1481279433),
 ('shop/index&type=1', 2, NULL, 'shop/index&type=1', NULL, 1472528087, 1472528087),
 ('shop/index&type=2', 2, NULL, 'shop/index&type=2', NULL, 1472528087, 1472528087),
 ('shop/index&type=3', 2, NULL, 'shop/index&type=3', NULL, 1472528087, 1472528087),
@@ -414,6 +500,7 @@ INSERT INTO `yii2_auth_item_child` (`parent`, `child`) VALUES
 ('editor', 'shop/delete'),
 ('administrator', 'shop/edit'),
 ('editor', 'shop/edit'),
+('editor', 'shop/index'),
 ('administrator', 'shop/index?type=1'),
 ('editor', 'shop/index?type=1'),
 ('administrator', 'shop/index?type=2'),
@@ -571,6 +658,7 @@ INSERT INTO `yii2_auth_rule` (`name`, `data`, `created_at`, `updated_at`) VALUES
 ('shop/delete', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:11:"shop/delete";s:9:"createdAt";i:1476437985;s:9:"updatedAt";i:1476437985;}', 1476437985, 1476437985),
 ('shop/edit', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:9:"shop/edit";s:9:"createdAt";i:1476437985;s:9:"updatedAt";i:1476437985;}', 1476437985, 1476437985),
 ('shop/group', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:10:"shop/group";s:9:"createdAt";i:1472528088;s:9:"updatedAt";i:1472528088;}', 1472528088, 1472528088),
+('shop/index', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:10:"shop/index";s:9:"createdAt";i:1481279433;s:9:"updatedAt";i:1481279433;}', 1481279433, 1481279433),
 ('shop/index&type=1', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:17:"shop/index&type=1";s:9:"createdAt";i:1472528087;s:9:"updatedAt";i:1472528087;}', 1472528087, 1472528087),
 ('shop/index&type=2', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:17:"shop/index&type=2";s:9:"createdAt";i:1472528087;s:9:"updatedAt";i:1472528087;}', 1472528087, 1472528087),
 ('shop/index&type=3', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:17:"shop/index&type=3";s:9:"createdAt";i:1472528087;s:9:"updatedAt";i:1472528087;}', 1472528087, 1472528087),
@@ -651,36 +739,38 @@ INSERT INTO `yii2_captcha` (`id`, `ip`, `mobile`, `captcha`, `time`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `yii2_category`
+-- 表的结构 `yii2_cart`
 --
 
-CREATE TABLE IF NOT EXISTS `yii2_category` (
-  `id` int(10) unsigned NOT NULL COMMENT '分类ID',
-  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
-  `name` varchar(30) NOT NULL COMMENT '标志',
-  `title` varchar(50) NOT NULL COMMENT '标题',
-  `link` varchar(250) DEFAULT '' COMMENT '外链',
-  `extend` text COMMENT '扩展设置',
-  `meta_title` varchar(50) DEFAULT '' COMMENT 'SEO的网页标题',
-  `keywords` varchar(255) DEFAULT '' COMMENT '关键字',
-  `description` varchar(255) DEFAULT '' COMMENT '描述',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '数据状态'
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='分类表';
+CREATE TABLE IF NOT EXISTS `yii2_cart` (
+  `rec_id` mediumint(8) unsigned NOT NULL,
+  `uid` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户UID，来自goods表',
+  `goods_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '商品ID，来自goods表',
+  `goods_sn` varchar(60) NOT NULL DEFAULT '',
+  `goods_name` varchar(120) NOT NULL DEFAULT '' COMMENT '商品名称，来自goods表',
+  `market_price` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '市场售价，来自goods表',
+  `goods_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '本店售价，来自goods表',
+  `goods_number` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '购买数量',
+  `goods_attr` text NOT NULL COMMENT '选择商品的属性'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
--- 转存表中的数据 `yii2_category`
+-- 表的结构 `yii2_comment`
 --
 
-INSERT INTO `yii2_category` (`id`, `pid`, `name`, `title`, `link`, `extend`, `meta_title`, `keywords`, `description`, `create_time`, `update_time`, `sort`, `status`) VALUES
-(1, 0, 'about', '关于我们', '', '', '', '', '', 1379474947, 1479373724, 10, 1),
-(3, 0, 'event', '活动', '', 'a:2:{s:2:"sd";s:2:"11";s:4:"sdfs";s:3:"222";}', '测试标题', '测试seo关键词', '测试描述', 1471947194, 1473604631, 1, 1),
-(4, 1, 'lianxi', '联系我们', '', '', '', '', '', 1479368832, 0, 0, 1),
-(5, 3, 'xin', '最新活动', '', '', '', '', '', 1479368867, 1479373985, 10, 1),
-(6, 3, 'hot', '热门活动', '', '', '', '', '', 1479373707, 0, 9, 1),
-(7, 4, 'lianxi3', '联系我们3', '', '', '', '', '', 1479374778, 0, 0, 1);
+CREATE TABLE IF NOT EXISTS `yii2_comment` (
+  `id` int(8) NOT NULL,
+  `appid` char(30) NOT NULL COMMENT '应用ID，格式goods-123',
+  `uid` int(11) NOT NULL COMMENT '评论用户ID',
+  `content` int(11) NOT NULL COMMENT '评论内容',
+  `to_comment` int(8) NOT NULL COMMENT '回复评论ID',
+  `up` int(6) unsigned NOT NULL DEFAULT '0' COMMENT '支持数',
+  `down` int(6) unsigned NOT NULL DEFAULT '0' COMMENT '反对数',
+  `create_time` int(10) NOT NULL COMMENT '创建时间',
+  `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '状态'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='评论';
 
 -- --------------------------------------------------------
 
@@ -708,41 +798,133 @@ CREATE TABLE IF NOT EXISTS `yii2_config` (
 --
 
 INSERT INTO `yii2_config` (`id`, `name`, `title`, `group`, `type`, `value`, `extra`, `remark`, `create_time`, `update_time`, `sort`, `status`) VALUES
-(1, 'WEB_SITE_TITLE', '网站标题', 1, 1, '内容管理框架', '', '网站标题前台显示标题', 1378898976, 1476342120, 0, 1),
+(1, 'WEB_SITE_TITLE', '网站标题', 1, 1, '内容管理框架', '', '网站标题前台显示标题', 1378898976, 1481906498, 0, 1),
 (2, 'WEB_SITE_DESCRIPTION', '网站描述', 1, 2, '内容管理框架', '', '网站搜索引擎描述', 1378898976, 1472528403, 1, 1),
 (3, 'WEB_SITE_KEYWORD', '网站关键字', 1, 2, '黄龙飞11', '', '网站搜索引擎关键字', 1378898976, 1472528403, 8, 1),
 (4, 'WEB_SITE_CLOSE', '关闭站点', 4, 4, '1', '0:关闭,1:开启', '站点关闭后其他用户不能访问，管理员可以正常访问', 1378898976, 1463024280, 1, 0),
 (9, 'CONFIG_TYPE_LIST', '配置类型列表', 3, 3, '0:数字\r\n1:字符\r\n2:文本\r\n3:数组\r\n4:枚举', '', '主要用于数据解析和页面表单的生成', 1378898976, 1463024244, 2, 1),
 (10, 'WEB_SITE_ICP', '网站备案号', 1, 1, '沪ICP备12007941号-2', '', '设置在网站底部显示的备案号，如“沪ICP备12007941号-2', 1378900335, 1472528403, 9, 1),
 (11, 'DATA_BACKUP_PATH', '数据库备份路径', 4, 1, '/storage/web/database/', '', '路径必须以 / 结尾', 1379053380, 1476448404, 3, 1),
-(12, 'DOCUMENT_DISPLAY', '文档可见性', 2, 3, '0:所有人可见\r\n1:仅注册会员可见\r\n2:仅管理员可见', '', '文章可见性仅影响前台显示，后台不收影响', 1379056370, 1463041605, 4, 1),
+(12, 'DOCUMENT_DISPLAY', '文档可见性', 2, 3, '0:所有人可见\r\n1:仅注册会员可见\r\n2:仅管理员可见', '', '文章可见性仅影响前台显示，后台不收影响', 1379056370, 1481279789, 4, 1),
 (13, 'COLOR_STYLE', '后台色系', 1, 4, 'default_color', 'default_color:默认\r\nblue_color:紫罗兰', '后台颜色风格', 1379122533, 1472528403, 10, 1);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `yii2_log`
+-- 表的结构 `yii2_goods`
 --
 
-CREATE TABLE IF NOT EXISTS `yii2_log` (
-  `id` int(8) NOT NULL,
-  `uid` int(8) NOT NULL COMMENT '用户uid',
-  `title` varchar(100) NOT NULL COMMENT '标题',
-  `controller` varchar(50) NOT NULL COMMENT '控制器',
-  `action` varchar(50) NOT NULL COMMENT '动作',
-  `querystring` varchar(255) NOT NULL COMMENT '查询字符串',
-  `remark` varchar(255) NOT NULL COMMENT '备注',
-  `ip` varchar(15) NOT NULL DEFAULT '0.0.0.0' COMMENT 'IP',
-  `create_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='后台日志';
+CREATE TABLE IF NOT EXISTS `yii2_goods` (
+  `goods_id` mediumint(8) unsigned NOT NULL COMMENT '商品id',
+  `cat_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '商品所属商品分类id，取值category的cat_id',
+  `goods_sn` varchar(60) NOT NULL DEFAULT '' COMMENT '商品的唯一货号',
+  `goods_name` varchar(120) NOT NULL DEFAULT '' COMMENT '商品的名称',
+  `goods_number` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '商品库存数量',
+  `market_price` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '市场售价',
+  `shop_price` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '本店售价',
+  `goods_cover` int(8) NOT NULL COMMENT '封面单图，关联图片表',
+  `goods_album` varchar(255) NOT NULL DEFAULT '' COMMENT '商品相册图组，逗号相隔，关联图片表',
+  `keywords` varchar(255) NOT NULL DEFAULT '' COMMENT '商品关键字',
+  `description` varchar(255) NOT NULL DEFAULT '' COMMENT '网站描述',
+  `content` text NOT NULL COMMENT '商品详情',
+  `extend` varchar(30) NOT NULL DEFAULT '' COMMENT '商品自定义属性',
+  `warn_number` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '商品报警数量',
+  `is_promote` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否促销 1是 0否',
+  `promote_price` decimal(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '促销价格',
+  `promote_start_date` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '促销价格开始日期',
+  `promote_end_date` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '促销价格结束日期',
+  `is_real` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '是否是实物，1是 0否',
+  `integral` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '花费积分，暂供积分商城用',
+  `give_integral` int(8) NOT NULL DEFAULT '0' COMMENT '购买后赠送的积分数量',
+  `view` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '查看数',
+  `up` int(8) unsigned NOT NULL DEFAULT '0' COMMENT '喜欢数',
+  `down` int(8) unsigned NOT NULL DEFAULT '0' COMMENT '不喜欢数',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
+  `sort` smallint(4) NOT NULL DEFAULT '10' COMMENT '顺序排序值',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '状态0回收站 1正常'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
--- 转存表中的数据 `yii2_log`
+-- 表的结构 `yii2_goods_attr`
 --
 
-INSERT INTO `yii2_log` (`id`, `uid`, `title`, `controller`, `action`, `querystring`, `remark`, `ip`, `create_time`, `status`) VALUES
-(1, 2, '修改菜单', 'menu', 'index', '/admin.php/menu/index?id=4', '用户修改了菜单', '192.168.0.101', 1435658950, 1);
+CREATE TABLE IF NOT EXISTS `yii2_goods_attr` (
+  `goods_attr_id` int(10) unsigned NOT NULL,
+  `goods_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '商品ID',
+  `attr_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '属性ID',
+  `attr_value` text NOT NULL COMMENT '属性值',
+  `attr_price` varchar(255) NOT NULL DEFAULT '' COMMENT '属性价格'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_goods_attribute`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_goods_attribute` (
+  `attr_id` smallint(5) unsigned NOT NULL,
+  `attr_name` varchar(60) NOT NULL DEFAULT '' COMMENT '属性名',
+  `attr_type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '类型：0单选（颜色、尺码）1多选（配件）',
+  `attr_values` text NOT NULL COMMENT '可选属性值，多个逗号相隔',
+  `sort` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序，按顺序排'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_goods_cat`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_goods_cat` (
+  `id` int(10) unsigned NOT NULL COMMENT '分类ID',
+  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
+  `name` varchar(30) NOT NULL COMMENT '标志',
+  `title` varchar(50) NOT NULL COMMENT '标题',
+  `keywords` varchar(255) DEFAULT '' COMMENT '关键字',
+  `description` varchar(255) DEFAULT '' COMMENT '描述',
+  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '数据状态'
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='分类表';
+
+--
+-- 转存表中的数据 `yii2_goods_cat`
+--
+
+INSERT INTO `yii2_goods_cat` (`id`, `pid`, `name`, `title`, `keywords`, `description`, `create_time`, `update_time`, `sort`, `status`) VALUES
+(1, 0, 'about', '关于我们', '', '', 1379474947, 1479373724, 10, 1),
+(3, 0, 'event', '活动', '测试seo关键词', '测试描述', 1471947194, 1473604631, 1, 1),
+(4, 1, 'lianxi', '联系我们', '', '', 1479368832, 0, 0, 1),
+(5, 3, 'xin', '最新活动', '', '', 1479368867, 1479373985, 10, 1),
+(6, 3, 'hot', '热门活动', '', '', 1479373707, 1481280086, 9, 1),
+(7, 4, 'lianxi3', '联系我们3', '', '', 1479374778, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_goods_position`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_goods_position` (
+  `goods_id` int(8) unsigned NOT NULL COMMENT '商品ID',
+  `position_id` int(4) unsigned NOT NULL COMMENT '推荐位ID'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='文章推荐位映射表';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_goods_tag`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_goods_tag` (
+  `goods_id` int(8) NOT NULL COMMENT '商品ID',
+  `tag_id` int(8) NOT NULL COMMENT '标签ID'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='文章标签映射表';
 
 -- --------------------------------------------------------
 
@@ -775,7 +957,6 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (7, '保存', 3, 0, 'article/update', 0, '', 1),
 (8, '保存草稿', 3, 0, 'article/autoSave', 0, '', 1),
 (9, '移动', 3, 0, 'article/move', 0, '', 1),
-(139, '潜水管理', 2, 22, 'shop/index?type=3', 0, '商城管理|icon-basket', 1),
 (13, '回收站', 2, 99, 'article/recycle', 1, '内容', 1),
 (14, '还原', 13, 0, 'article/permit', 0, '', 1),
 (15, '清空', 13, 0, 'article/clear', 0, '', 1),
@@ -785,28 +966,21 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (137, '更新', 17, 0, 'admin/edit', 0, '', 1),
 (144, '商城套餐', 2, 29, 'group/index', 0, '商城管理|icon-basket', 1),
 (155, '删除', 144, 0, 'group/delete', 0, '', 1),
-(156, '添加培训', 2, 0, 'train/add', 1, '', 1),
-(157, '编辑培训', 2, 0, 'train/edit', 1, '', 1),
 (27, '权限管理', 16, 2, 'auth/index', 0, '后台用户|icon-user', 1),
 (28, '删除', 27, 0, 'auth/delete', 0, '', 1),
 (29, '编辑', 27, 0, 'auth/edit', 0, '', 1),
 (30, '恢复', 27, 0, 'auth/add', 0, '', 1),
 (154, '编辑', 144, 0, 'group/edit', 0, '', 1),
 (153, '添加', 144, 0, 'group/add', 0, '', 1),
-(152, '删除商品', 2, 0, 'shop/delete', 1, '', 1),
 (34, '授权', 27, 0, 'auth/auth', 0, '', 1),
 (35, '访问授权', 27, 0, 'auth/access', 0, '', 1),
 (36, '成员授权', 27, 0, 'auth/user', 0, '', 1),
 (145, '添加', 142, 0, 'user/add', 0, '', 1),
 (146, '编辑', 142, 0, 'user/edit', 0, '', 1),
 (147, '删除', 142, 0, 'user/delete', 0, '', 1),
-(150, '添加商品', 2, 0, 'shop/add', 1, '', 1),
-(151, '编辑商品', 2, 0, 'shop/edit', 1, '', 1),
 (43, '订单', 0, 3, 'order/index', 0, '', 1),
 (44, '订单列表', 43, 1, 'order/index', 0, '订单管理|fa fa-cny', 1),
-(143, '海钓管理', 2, 23, 'shop/index?type=4', 0, '商城管理|icon-basket', 1),
 (142, '前台用户', 16, 20, 'user/index', 0, '前台用户|icon-users', 1),
-(141, '帆船管理', 2, 21, 'shop/index?type=2', 0, '商城管理|icon-basket', 1),
 (55, '添加', 44, 0, 'order/add', 0, '', 1),
 (56, '编辑', 44, 0, 'order/edit', 0, '', 1),
 (148, '删除', 44, 0, 'order/delete', 0, '', 1),
@@ -823,12 +997,12 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (73, '新增', 70, 0, 'config/add', 0, '', 1),
 (74, '保存', 70, 0, 'config/save', 0, '', 1),
 (75, '菜单管理', 68, 5, 'menu/index', 0, '系统设置|icon-settings', 1),
-(80, '分类管理', 2, 2, 'category/index', 0, '文章管理|icon-note', 1),
-(81, '编辑', 80, 0, 'category/edit', 0, '', 1),
-(82, '新增', 80, 0, 'category/add', 0, '', 1),
-(83, '删除', 80, 0, 'category/remove', 0, '', 1),
-(84, '移动', 80, 0, 'category/operate/type/move', 0, '', 1),
-(85, '合并', 80, 0, 'category/operate/type/merge', 0, '', 1),
+(80, '分类管理', 2, 2, 'article-cat/index', 0, '文章管理|icon-note', 1),
+(81, '编辑', 80, 0, 'article-cat/edit', 0, '', 1),
+(82, '新增', 80, 0, 'article-cat/add', 0, '', 1),
+(83, '删除', 80, 0, 'article-cat/remove', 0, '', 1),
+(84, '移动', 80, 0, 'article-cat/operate/type/move', 0, '', 1),
+(85, '合并', 80, 0, 'article-cat/operate/type/merge', 0, '', 1),
 (86, '备份数据库', 68, 10, 'database/index?type=export', 0, '数据备份|fa fa-database', 1),
 (87, '备份', 86, 0, 'database/export', 0, '', 1),
 (88, '优化表', 86, 0, 'database/optimize', 0, '', 1),
@@ -839,48 +1013,54 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (93, '其他栏目', 0, 5, 'other', 1, '', 1),
 (96, '新增', 75, 0, 'menu/add', 0, '系统设置|icon-legal', 1),
 (98, '编辑', 75, 0, 'menu/edit', 0, '', 1),
-(106, '行为日志', 16, 30, 'log/index', 0, '用户日志|icon-check', 1),
+(106, '行为日志', 16, 30, 'admin-log/index', 0, '用户日志|icon-check', 1),
 (108, '修改密码', 16, 0, 'user/updatePassword', 1, '', 1),
 (109, '修改昵称', 16, 0, 'user/updateNickname', 1, '', 1),
-(110, '查看行为日志', 106, 0, 'log/view', 1, '', 1),
+(110, '查看行为日志', 106, 0, 'admin-log/view', 1, '', 1),
 (114, '导入', 75, 0, 'Menu/import', 0, '', 1),
-(149, '培训课程', 2, 51, 'train/index', 0, '培训管理|fa fa-certificate', 1),
-(138, '酒店管理', 2, 20, 'shop/index?type=1', 0, '商城管理|icon-basket', 1),
+(138, '商品管理', 2, 20, 'goods/index', 0, '商城管理|icon-basket', 1),
 (119, '排序', 70, 0, 'Config/sort', 1, '', 1),
 (120, '排序', 75, 0, 'Menu/sort', 1, '', 1),
 (129, '管理员授权', 17, 0, 'admin/auth', 0, '', 0),
 (131, '待完成任务', 1, 0, 'index/index', 0, '任务列表|icon-speech', 0),
-(158, '删除培训', 2, 0, 'train/delete', 1, '', 1),
 (159, '广告管理', 2, 0, 'ad/index', 0, '广告管理|icon-target', 1),
 (160, '添加', 159, 0, 'ad/add', 0, '', 1),
 (161, '编辑', 159, 0, 'ad/edit', 0, '', 1),
 (162, '删除', 159, 0, 'ad/delete', 0, '', 1),
-(163, '证书管理', 2, 0, 'certificate/index', 0, '培训管理|fa fa-certificate', 1),
-(164, '添加/修改证书', 163, 0, 'certificate/edit', 0, '', 1),
-(165, '删除证书', 163, 0, 'certificate/delete', 0, '', 1),
-(166, '培训类型', 2, 0, 'traintype/index', 0, '培训管理|fa fa-certificate', 1),
+(166, '商品属性管理', 2, 21, 'traintype/index', 0, '商城管理|icon-basket', 1),
 (167, '添加/修改类型', 166, 0, 'traintype/edit', 0, '', 1),
-(168, '删除类型', 166, 0, 'traintype/delete', 0, '', 1),
-(169, '商城管理', 2, 0, 'shop/index', 1, '', 1);
+(168, '删除类型', 166, 0, 'traintype/delete', 0, '', 1);
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `yii2_migration`
+-- 表的结构 `yii2_message`
 --
 
-CREATE TABLE IF NOT EXISTS `yii2_migration` (
-  `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `yii2_message` (
+  `message_id` int(8) NOT NULL COMMENT '消息ID',
+  `appid` varchar(30) NOT NULL COMMENT '应用ID，格式goods-123',
+  `from_uid` int(8) unsigned NOT NULL COMMENT '消息发送者uid，0系统',
+  `to_uid` int(8) unsigned NOT NULL COMMENT '消息接收者uid，0广播',
+  `content` varchar(255) NOT NULL COMMENT '消息内容',
+  `create_time` int(10) unsigned NOT NULL COMMENT '创建时间',
+  `is_read` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否阅读 0未读 1已读 广播消息始终已读红色文字'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='站内消息';
+
+-- --------------------------------------------------------
 
 --
--- 转存表中的数据 `yii2_migration`
+-- 表的结构 `yii2_nav`
 --
 
-INSERT INTO `yii2_migration` (`version`, `apply_time`) VALUES
-('m000000_000000_base', 1480593333),
-('m161201_115249_auth_rule', 1480593337);
+CREATE TABLE IF NOT EXISTS `yii2_nav` (
+  `id` int(10) unsigned NOT NULL COMMENT '文档ID',
+  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
+  `url` char(255) NOT NULL DEFAULT '' COMMENT '链接地址',
+  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
+  `sort` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态1正常0隐藏'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='前台栏目';
 
 -- --------------------------------------------------------
 
@@ -922,7 +1102,23 @@ INSERT INTO `yii2_order` (`order_id`, `order_sn`, `uid`, `name`, `tel`, `sfz`, `
 (3, '1473787901', 0, '', '', '', 'shop', 1, '大床双人房特价', 0, 0, 0, 1473811200, 1474416000, 1, 1, 1473787901, 1, 1, 1473787924, 1),
 (4, '1473788097', 0, '龙凤', '15956985698', '', 'train', 3, '帆船培训2', 5, 65, 629, 1473811200, 1474416000, 1, 0, 1478145300, 1, 1, 1473788126, 1),
 (5, '1474094023', 0, '111', '222', '', 'shop', 3, '大床双人房特价', 6, 80, 748, 1474529400, 1344600, 1, 1, 1480910460, 2, 1, 1474094061, 1),
-(6, '1480917844', 0, '啥打法是否', '13632565266', '', 'shop', 3, '测试酒店1', 2, 52, 502, 1481165400, 1480575000, 1, 0, 1480917865, 4, 3, 1480917865, 1);
+(6, '1480917844', 0, '啥打法是否', '13632565266', '', 'shop', 3, '测试酒店1', 2, 52, 502, 1481165400, 1480575000, 1, 0, 1481906400, 4, 3, 1481906455, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_page`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_page` (
+  `id` int(8) NOT NULL,
+  `name` varchar(30) NOT NULL COMMENT '英文标识',
+  `title` varchar(100) NOT NULL COMMENT '标题',
+  `content` text NOT NULL COMMENT '内容',
+  `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '状态'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='单页面';
 
 -- --------------------------------------------------------
 
@@ -954,6 +1150,17 @@ INSERT INTO `yii2_picture` (`id`, `path`, `md5`, `create_time`, `status`) VALUES
 (11, '201611/1478854002500.jpg', '04e145672b976fb47164dd96e0090fd1', 1478854002, 1),
 (12, '201611/1478854666137.jpg', '1f611a254f541830ab3a3490e32368c2', 1478854666, 1),
 (13, '201612/1480907348789.png', '6d83a00e11eb16e95fa9200fd7ddc2e2', 1480907348, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_position`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_position` (
+  `position_id` int(4) NOT NULL COMMENT '推荐位ID',
+  `name` char(30) NOT NULL COMMENT '推荐位名称'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='推荐位';
 
 -- --------------------------------------------------------
 
@@ -4391,189 +4598,14 @@ INSERT INTO `yii2_region` (`region_id`, `parent_id`, `region_name`, `region_type
 -- --------------------------------------------------------
 
 --
--- 表的结构 `yii2_shop`
+-- 表的结构 `yii2_tag`
 --
 
-CREATE TABLE IF NOT EXISTS `yii2_shop` (
-  `id` int(8) unsigned NOT NULL,
-  `type` int(4) NOT NULL COMMENT '房间类型',
-  `title` varchar(100) NOT NULL COMMENT '标题',
-  `description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
-  `cover` varchar(255) NOT NULL DEFAULT '' COMMENT '封面图',
-  `images` varchar(255) NOT NULL COMMENT '图组',
-  `imagess` varchar(255) DEFAULT NULL,
-  `num` int(3) NOT NULL COMMENT '房间总数量',
-  `price` decimal(8,2) NOT NULL COMMENT '通常价格，格式231.02',
-  `extend` text COMMENT '扩展数据',
-  `sort` int(4) NOT NULL DEFAULT '0' COMMENT '排序值',
-  `create_time` int(10) unsigned DEFAULT NULL COMMENT '创建时间',
-  `update_time` int(10) unsigned DEFAULT NULL COMMENT '更新时间',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='酒店表';
-
---
--- 转存表中的数据 `yii2_shop`
---
-
-INSERT INTO `yii2_shop` (`id`, `type`, `title`, `description`, `cover`, `images`, `imagess`, `num`, `price`, `extend`, `sort`, `create_time`, `update_time`, `status`) VALUES
-(1, 1, '大床双人房特价', '111111', '1', '2,1', '', 111, '520.12', 'a:3:{i:111;s:3:"111";i:222;s:3:"222";i:333;s:3:"333";}', 1, 1472638475, 1477967729, 1),
-(2, 4, '海钓管理测试测试测试', '测试测试测试', '', '1,2', '', 133, '421.00', 'a:3:{i:11;s:2:"11";i:22;s:2:"22";i:33;s:2:"33";}', 3, 1472639234, NULL, 1),
-(3, 1, '测试酒店1', '测试酒店1', '1', '1,2,12', '1,2,6,8,11', 4, '420.23', 'a:1:{s:3:"sss";s:5:"sadfa";}', 0, 1473835350, 1478854674, 1),
-(4, 2, '测试帆船标题', '测试商品描述测试商品描述测试商品描述测试商品描述测试商品描述', '5', '1,2', '', 111, '333.00', 'a:1:{i:0;s:0:"";}', 0, 1474176248, 1477984726, 1),
-(5, 3, '测试潜水标题', '商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述', '7', '1,2,4', '', 200, '900.00', 'a:1:{i:0;s:0:"";}', 0, 1474176308, 1477984761, 1),
-(6, 1, '666666', '666666666666', '1', '1', '', 6, '2288.00', 'a:1:{i:0;s:15:"dssdfsfsdfdsfsa";}', 1, 1474213219, 1477967739, 1);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `yii2_shop_group`
---
-
-CREATE TABLE IF NOT EXISTS `yii2_shop_group` (
+CREATE TABLE IF NOT EXISTS `yii2_tag` (
   `id` int(8) NOT NULL,
-  `title` varchar(50) NOT NULL COMMENT '套餐标题',
-  `description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
-  `groups` text NOT NULL COMMENT '商品组合，数字逗号分隔',
-  `cover` varchar(255) NOT NULL COMMENT '封面图',
-  `images` text NOT NULL COMMENT '图组',
-  `total` decimal(8,2) NOT NULL COMMENT '总价',
-  `price` decimal(8,2) NOT NULL COMMENT '套餐价格',
-  `sort` int(4) NOT NULL DEFAULT '0' COMMENT '排序值',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态'
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='套餐设置';
-
---
--- 转存表中的数据 `yii2_shop_group`
---
-
-INSERT INTO `yii2_shop_group` (`id`, `title`, `description`, `groups`, `cover`, `images`, `total`, `price`, `sort`, `status`) VALUES
-(2, '阿斯顿发顺丰', '沙发沙发啊 沙发阿斯顿发是放大师傅', 'a:1:{i:1;a:1:{i:3;a:3:{s:4:"days";s:1:"6";s:3:"num";s:1:"6";s:2:"id";s:1:"3";}}}', '1', '1,2', '15128.28', '600.00', 0, 1),
-(4, '房1天2人潜水1天2人', '房1天2人潜水1天2人', 'a:2:{i:1;a:1:{i:1;a:3:{s:4:"days";s:1:"1";s:3:"num";s:1:"2";s:2:"id";s:1:"1";}}i:3;a:1:{i:5;a:3:{s:4:"days";s:1:"1";s:3:"num";s:1:"2";s:2:"id";s:1:"5";}}}', '1', '1,2', '2840.24', '998.00', 0, 1);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `yii2_shop_price`
---
-
-CREATE TABLE IF NOT EXISTS `yii2_shop_price` (
-  `id` int(8) NOT NULL,
-  `shop_id` int(8) NOT NULL,
-  `day` int(10) NOT NULL,
-  `price` decimal(8,2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='每日价格列表';
-
--- --------------------------------------------------------
-
---
--- 表的结构 `yii2_shop_type`
---
-
-CREATE TABLE IF NOT EXISTS `yii2_shop_type` (
-  `id` int(4) NOT NULL,
-  `name` varchar(50) NOT NULL COMMENT '类型名称'
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='房间类型表';
-
---
--- 转存表中的数据 `yii2_shop_type`
---
-
-INSERT INTO `yii2_shop_type` (`id`, `name`) VALUES
-(1, '房间'),
-(2, '帆船'),
-(3, '潜水'),
-(4, '海钓');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `yii2_train`
---
-
-CREATE TABLE IF NOT EXISTS `yii2_train` (
-  `id` int(8) unsigned NOT NULL,
-  `type` int(11) NOT NULL COMMENT '培训类型',
-  `title` varchar(100) NOT NULL COMMENT '排序标题',
-  `description` varchar(255) NOT NULL COMMENT '描述',
-  `price` decimal(8,2) NOT NULL COMMENT '价格',
-  `num` tinyint(3) NOT NULL DEFAULT '1' COMMENT '最少人数',
-  `cover` varchar(255) NOT NULL COMMENT '封面',
-  `sort` int(4) NOT NULL DEFAULT '0' COMMENT '排序值',
-  `create_time` int(10) unsigned DEFAULT NULL COMMENT '创建时间',
-  `update_time` int(10) unsigned DEFAULT NULL COMMENT '更新时间',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='培训表';
-
---
--- 转存表中的数据 `yii2_train`
---
-
-INSERT INTO `yii2_train` (`id`, `type`, `title`, `description`, `price`, `num`, `cover`, `sort`, `create_time`, `update_time`, `status`) VALUES
-(1, 1, '测试培训标题1', '测试培训标题1：\r\n\r\n帆海汇码头里停泊着单体竞赛帆船TEN，龙骨帆船DC22，丁级帆船DC15，\r\n双体帆船JE28，三体帆船JE27。无论您是出海游玩钓鱼，海上派对，\r\n\r\n还是商务洽谈等都可以满足您的需要。\r\n帆海汇培训中心室内拥有设施齐全的超大会议室，可以满足不同公司组织的业内会议\r\n或不同领域的年度盛会。帆海汇培训中心为美国ASA权威帆船培训体系授权分校，\r\n将为帆船运动爱好者提供专业的帆船培训，并颁发美国ASA帆船驾驶证书。 ', '523.23', 127, '1', 0, 1472643081, 1477903793, 1),
-(2, 2, '测试培训标题', '帆海汇码头里停泊着单体竞赛帆船TEN，龙骨帆船DC22，丁级帆船DC15，\r\n双体帆船JE28，三体帆船JE27。无论您是出海游玩钓鱼，海上派对，\r\n\r\n还是商务洽谈等都可以满足您的需要。\r\n帆海汇培训中心室内拥有设施齐全的超大会议室，可以满足不同公司组织的业内会议\r\n或不同领域的年度盛会。帆海汇培训中心为美国ASA权威帆船培训体系授权分校，\r\n将为帆船运动爱好者提供专业的帆船培训，并颁发美国ASA帆船驾驶证书。 ', '231.12', 100, '2', 1, 1472643186, 1474529429, 1),
-(3, 1, '帆船培训2', '帆海汇码头里停泊着单体竞赛帆船TEN，龙骨帆船DC22，丁级帆船DC15，\r\n双体帆船JE28，三体帆船JE27。无论您是出海游玩钓鱼，海上派对，\r\n\r\n还是商务洽谈等都可以满足您的需要。\r\n帆海汇培训中心室内拥有设施齐全的超大会议室，可以满足不同公司组织的业内会议\r\n或不同领域的年度盛会。帆海汇培训中心为美国ASA权威帆船培训体系授权分校，\r\n将为帆船运动爱好者提供专业的帆船培训，并颁发美国ASA帆船驾驶证书。 ', '322.20', 1, '4', 0, 1473611927, 1474529318, 1),
-(4, 1, '帆船培训3', '帆海汇码头里停泊着单体竞赛帆船TEN，龙骨帆船DC22，丁级帆船DC15，\r\n双体帆船JE28，三体帆船JE27。无论您是出海游玩钓鱼，海上派对，\r\n\r\n还是商务洽谈等都可以满足您的需要。\r\n帆海汇培训中心室内拥有设施齐全的超大会议室，可以满足不同公司组织的业内会议\r\n或不同领域的年度盛会。帆海汇培训中心为美国ASA权威帆船培训体系授权分校，\r\n将为帆船运动爱好者提供专业的帆船培训，并颁发美国ASA帆船驾驶证书。 ', '222.22', 122, '4', 0, 1473611964, 1474529341, 1),
-(5, 2, '潜水培训2', '帆海汇码头里停泊着单体竞赛帆船TEN，龙骨帆船DC22，丁级帆船DC15，\r\n双体帆船JE28，三体帆船JE27。无论您是出海游玩钓鱼，海上派对，\r\n\r\n还是商务洽谈等都可以满足您的需要。\r\n帆海汇培训中心室内拥有设施齐全的超大会议室，可以满足不同公司组织的业内会议\r\n或不同领域的年度盛会。帆海汇培训中心为美国ASA权威帆船培训体系授权分校，\r\n将为帆船运动爱好者提供专业的帆船培训，并颁发美国ASA帆船驾驶证书。 ', '100.02', 100, '5', 0, 1473612010, 1474529378, 1),
-(6, 2, '潜水培训3', '帆海汇码头里停泊着单体竞赛帆船TEN，龙骨帆船DC22，丁级帆船DC15，\r\n双体帆船JE28，三体帆船JE27。无论您是出海游玩钓鱼，海上派对，\r\n\r\n还是商务洽谈等都可以满足您的需要。\r\n帆海汇培训中心室内拥有设施齐全的超大会议室，可以满足不同公司组织的业内会议\r\n或不同领域的年度盛会。帆海汇培训中心为美国ASA权威帆船培训体系授权分校，\r\n将为帆船运动爱好者提供专业的帆船培训，并颁发美国ASA帆船驾驶证书。 ', '123.23', 100, '6', 0, 1473612026, 1474529403, 1);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `yii2_train_certificate`
---
-
-CREATE TABLE IF NOT EXISTS `yii2_train_certificate` (
-  `id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL DEFAULT '' COMMENT '证书名',
-  `cover` varchar(255) NOT NULL DEFAULT '' COMMENT '证书图片',
-  `description` varchar(1000) NOT NULL DEFAULT '' COMMENT '证书简介',
-  `ctime` int(11) NOT NULL DEFAULT '0' COMMENT '添加时间'
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='培训证书表';
-
---
--- 转存表中的数据 `yii2_train_certificate`
---
-
-INSERT INTO `yii2_train_certificate` (`id`, `title`, `cover`, `description`, `ctime`) VALUES
-(1, 'AAA认证证书', '1', '证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明', 0),
-(2, 'BBB认证证书', '4', '证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明', 0),
-(3, 'CCC认证证书', '5', '证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明证书说明 ', 0);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `yii2_train_price`
---
-
-CREATE TABLE IF NOT EXISTS `yii2_train_price` (
-  `id` int(8) NOT NULL,
-  `train_id` int(8) NOT NULL,
-  `day` int(10) NOT NULL,
-  `price` decimal(8,2) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='每日价格列表';
-
--- --------------------------------------------------------
-
---
--- 表的结构 `yii2_train_type`
---
-
-CREATE TABLE IF NOT EXISTS `yii2_train_type` (
-  `id` int(4) NOT NULL,
-  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '类型名称',
-  `cover` varchar(255) NOT NULL DEFAULT '' COMMENT '封面',
-  `ctime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
-  `certif_ids` varchar(100) NOT NULL DEFAULT '' COMMENT '证书id',
-  `description` varchar(255) NOT NULL COMMENT '内容描述'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='房间类型表';
-
---
--- 转存表中的数据 `yii2_train_type`
---
-
-INSERT INTO `yii2_train_type` (`id`, `name`, `cover`, `ctime`, `certif_ids`, `description`) VALUES
-(1, '帆船', '1', 0, '1,2,3', '阿迪法师打发多少阿斯顿发生的发生的发达asd'),
-(2, '海钓', '4', 0, '1,2,3', '阿斯顿法师打发规划法国恢复电话打工行');
+  `name` char(30) NOT NULL COMMENT '标签名',
+  `num` int(8) NOT NULL DEFAULT '0' COMMENT '有该标签内容数量'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='评论';
 
 -- --------------------------------------------------------
 
@@ -4607,7 +4639,7 @@ CREATE TABLE IF NOT EXISTS `yii2_user` (
 --
 
 INSERT INTO `yii2_user` (`uid`, `username`, `password`, `salt`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `tuid`, `image`, `score`, `score_all`, `allowance`, `allowance_updated_at`, `status`) VALUES
-(6, 'e282486518', '$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG', 'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN', 'phphome@qq.com', '13656568989', 1456568652, 13654444444, 1456568652, 13556464888, 1477564915, 7, '1', 10, 0, 4, 1480328877, 1),
+(6, 'e282486518', '$2y$13$oO.xRlrKjMMF/bykb7476.zBIH2RkR6rtv8j5jrYgSxi71AvV3lFG', 'kXGkWeNSeoK7vakqRfUAviocq-5uy0cN', 'phphome@qq.com', '13656568989', 1456568652, 13654444444, 1456568652, 13556464888, 1481279978, 7, '1', 10, 0, 4, 1480328877, 1),
 (7, '282486518', '$2y$13$KIAenVWuR2Tgi1VCKiPegeVsQAHXyDcp9rUmzhqK6TNjL4Cqc3YPa', 'n9uguceYCqn_jQNd8F6-JRHOj21yltUo', 'phphome@qq.coms', '13645685421', 1472626509, 2130706433, 0, 2130706433, 1472626719, 0, '3', 1, 1, 0, 0, 0),
 (8, '135232323232', '$2y$13$UVA5264Qic4g8BDl940x1e0ZefVI3QqpH8tH6bttL/cF8GcU1C7Rm', 'Dg36PS0QshZ-Y2zhQJa559RSKJULGO_8', NULL, '', 1474112224, 2130706433, 0, 2130706433, 0, 0, '', 0, 0, 0, 0, 0),
 (13, 'aabbcc', '$2y$13$46n16kagedYUXx6WXZ2QkuSGJKm3FDr6iI.KPNzAkHYRHmplqgAiC', 'OblZ1QuXGGGiXZWTPqfDrCoF_qXVIN3b', '', '13421839870', 1474114459, 2130706433, 0, 2130706433, 1477904302, 0, '1', 0, 0, 0, 0, 1),
@@ -4675,12 +4707,41 @@ ALTER TABLE `yii2_admin`
   ADD KEY `status` (`status`);
 
 --
+-- Indexes for table `yii2_admin_log`
+--
+ALTER TABLE `yii2_admin_log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `status` (`status`);
+
+--
 -- Indexes for table `yii2_article`
 --
 ALTER TABLE `yii2_article`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_category_status` (`category_id`,`status`),
   ADD KEY `idx_status_type_pid` (`status`);
+
+--
+-- Indexes for table `yii2_article_cat`
+--
+ALTER TABLE `yii2_article_cat`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uk_name` (`name`),
+  ADD KEY `pid` (`pid`);
+
+--
+-- Indexes for table `yii2_article_position`
+--
+ALTER TABLE `yii2_article_position`
+  ADD KEY `article_id` (`article_id`),
+  ADD KEY `position_id` (`position_id`);
+
+--
+-- Indexes for table `yii2_article_tag`
+--
+ALTER TABLE `yii2_article_tag`
+  ADD KEY `article_id` (`article_id`),
+  ADD KEY `tag_id` (`tag_id`);
 
 --
 -- Indexes for table `yii2_auth_assignment`
@@ -4716,12 +4777,16 @@ ALTER TABLE `yii2_captcha`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `yii2_category`
+-- Indexes for table `yii2_cart`
 --
-ALTER TABLE `yii2_category`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uk_name` (`name`),
-  ADD KEY `pid` (`pid`);
+ALTER TABLE `yii2_cart`
+  ADD PRIMARY KEY (`rec_id`);
+
+--
+-- Indexes for table `yii2_comment`
+--
+ALTER TABLE `yii2_comment`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `yii2_config`
@@ -4733,11 +4798,53 @@ ALTER TABLE `yii2_config`
   ADD KEY `group` (`group`);
 
 --
--- Indexes for table `yii2_log`
+-- Indexes for table `yii2_goods`
 --
-ALTER TABLE `yii2_log`
+ALTER TABLE `yii2_goods`
+  ADD PRIMARY KEY (`goods_id`),
+  ADD KEY `goods_sn` (`goods_sn`),
+  ADD KEY `cat_id` (`cat_id`),
+  ADD KEY `last_update` (`update_time`),
+  ADD KEY `promote_end_date` (`promote_end_date`),
+  ADD KEY `promote_start_date` (`promote_start_date`),
+  ADD KEY `goods_number` (`goods_number`),
+  ADD KEY `sort_order` (`sort`);
+
+--
+-- Indexes for table `yii2_goods_attr`
+--
+ALTER TABLE `yii2_goods_attr`
+  ADD PRIMARY KEY (`goods_attr_id`),
+  ADD KEY `goods_id` (`goods_id`),
+  ADD KEY `attr_id` (`attr_id`);
+
+--
+-- Indexes for table `yii2_goods_attribute`
+--
+ALTER TABLE `yii2_goods_attribute`
+  ADD PRIMARY KEY (`attr_id`);
+
+--
+-- Indexes for table `yii2_goods_cat`
+--
+ALTER TABLE `yii2_goods_cat`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `status` (`status`);
+  ADD UNIQUE KEY `uk_name` (`name`),
+  ADD KEY `pid` (`pid`);
+
+--
+-- Indexes for table `yii2_goods_position`
+--
+ALTER TABLE `yii2_goods_position`
+  ADD KEY `goods_id` (`goods_id`),
+  ADD KEY `position_id` (`position_id`);
+
+--
+-- Indexes for table `yii2_goods_tag`
+--
+ALTER TABLE `yii2_goods_tag`
+  ADD KEY `goods_id` (`goods_id`),
+  ADD KEY `tag_id` (`tag_id`);
 
 --
 -- Indexes for table `yii2_menu`
@@ -4748,16 +4855,30 @@ ALTER TABLE `yii2_menu`
   ADD KEY `status` (`status`);
 
 --
--- Indexes for table `yii2_migration`
+-- Indexes for table `yii2_message`
 --
-ALTER TABLE `yii2_migration`
-  ADD PRIMARY KEY (`version`);
+ALTER TABLE `yii2_message`
+  ADD PRIMARY KEY (`message_id`);
+
+--
+-- Indexes for table `yii2_nav`
+--
+ALTER TABLE `yii2_nav`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pid` (`pid`),
+  ADD KEY `status` (`status`);
 
 --
 -- Indexes for table `yii2_order`
 --
 ALTER TABLE `yii2_order`
   ADD PRIMARY KEY (`order_id`);
+
+--
+-- Indexes for table `yii2_page`
+--
+ALTER TABLE `yii2_page`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `yii2_picture`
@@ -4776,54 +4897,9 @@ ALTER TABLE `yii2_region`
   ADD KEY `agency_id` (`initial`);
 
 --
--- Indexes for table `yii2_shop`
+-- Indexes for table `yii2_tag`
 --
-ALTER TABLE `yii2_shop`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `type` (`type`);
-
---
--- Indexes for table `yii2_shop_group`
---
-ALTER TABLE `yii2_shop_group`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `yii2_shop_price`
---
-ALTER TABLE `yii2_shop_price`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `hotel_id` (`shop_id`);
-
---
--- Indexes for table `yii2_shop_type`
---
-ALTER TABLE `yii2_shop_type`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `yii2_train`
---
-ALTER TABLE `yii2_train`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `yii2_train_certificate`
---
-ALTER TABLE `yii2_train_certificate`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `yii2_train_price`
---
-ALTER TABLE `yii2_train_price`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `hotel_id` (`train_id`);
-
---
--- Indexes for table `yii2_train_type`
---
-ALTER TABLE `yii2_train_type`
+ALTER TABLE `yii2_tag`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4861,42 +4937,87 @@ ALTER TABLE `yii2_ad`
 -- AUTO_INCREMENT for table `yii2_admin`
 --
 ALTER TABLE `yii2_admin`
-  MODIFY `uid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',AUTO_INCREMENT=7;
+  MODIFY `uid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `yii2_admin_log`
+--
+ALTER TABLE `yii2_admin_log`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `yii2_article`
 --
 ALTER TABLE `yii2_article`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=12;
 --
+-- AUTO_INCREMENT for table `yii2_article_cat`
+--
+ALTER TABLE `yii2_article_cat`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `yii2_captcha`
 --
 ALTER TABLE `yii2_captcha`
   MODIFY `id` int(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
--- AUTO_INCREMENT for table `yii2_category`
+-- AUTO_INCREMENT for table `yii2_cart`
 --
-ALTER TABLE `yii2_category`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',AUTO_INCREMENT=8;
+ALTER TABLE `yii2_cart`
+  MODIFY `rec_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `yii2_comment`
+--
+ALTER TABLE `yii2_comment`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `yii2_config`
 --
 ALTER TABLE `yii2_config`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',AUTO_INCREMENT=26;
 --
--- AUTO_INCREMENT for table `yii2_log`
+-- AUTO_INCREMENT for table `yii2_goods`
 --
-ALTER TABLE `yii2_log`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE `yii2_goods`
+  MODIFY `goods_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '商品id';
+--
+-- AUTO_INCREMENT for table `yii2_goods_attr`
+--
+ALTER TABLE `yii2_goods_attr`
+  MODIFY `goods_attr_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `yii2_goods_attribute`
+--
+ALTER TABLE `yii2_goods_attribute`
+  MODIFY `attr_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `yii2_goods_cat`
+--
+ALTER TABLE `yii2_goods_cat`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `yii2_menu`
 --
 ALTER TABLE `yii2_menu`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=170;
 --
+-- AUTO_INCREMENT for table `yii2_message`
+--
+ALTER TABLE `yii2_message`
+  MODIFY `message_id` int(8) NOT NULL AUTO_INCREMENT COMMENT '消息ID';
+--
+-- AUTO_INCREMENT for table `yii2_nav`
+--
+ALTER TABLE `yii2_nav`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID';
+--
 -- AUTO_INCREMENT for table `yii2_order`
 --
 ALTER TABLE `yii2_order`
   MODIFY `order_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `yii2_page`
+--
+ALTER TABLE `yii2_page`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `yii2_picture`
 --
@@ -4908,45 +5029,10 @@ ALTER TABLE `yii2_picture`
 ALTER TABLE `yii2_region`
   MODIFY `region_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3410;
 --
--- AUTO_INCREMENT for table `yii2_shop`
+-- AUTO_INCREMENT for table `yii2_tag`
 --
-ALTER TABLE `yii2_shop`
-  MODIFY `id` int(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `yii2_shop_group`
---
-ALTER TABLE `yii2_shop_group`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `yii2_shop_price`
---
-ALTER TABLE `yii2_shop_price`
+ALTER TABLE `yii2_tag`
   MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `yii2_shop_type`
---
-ALTER TABLE `yii2_shop_type`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `yii2_train`
---
-ALTER TABLE `yii2_train`
-  MODIFY `id` int(8) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `yii2_train_certificate`
---
-ALTER TABLE `yii2_train_certificate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `yii2_train_price`
---
-ALTER TABLE `yii2_train_price`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `yii2_train_type`
---
-ALTER TABLE `yii2_train_type`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `yii2_user`
 --

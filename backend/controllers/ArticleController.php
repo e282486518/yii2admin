@@ -4,9 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\Article;
-use common\helpers\ArrayHelper;
 use common\helpers\FuncHelper;
-use common\models\Category;
 use backend\models\search\ArticleSearch;
 use yii\web\NotFoundHttpException;
 

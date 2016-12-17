@@ -6,7 +6,7 @@ use common\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Category */
+/* @var $model backend\models\ArticleCat */
 /* @var $form ActiveForm */
 ?>
 
@@ -17,7 +17,7 @@ use yii\helpers\Url;
 ]); ?>
 
 <?=$form->field($model, 'pid')->selectList(
-    ArrayHelper::merge(['0'=>'一级栏目'],ArrayHelper::listDataLevel(\backend\models\Category::find()->asArray()->all(), 'id', 'title','id','pid')),
+    ArrayHelper::merge(['0'=>'一级栏目'],ArrayHelper::listDataLevel(\backend\models\ArticleCat::find()->asArray()->all(), 'id', 'title','id','pid')),
     ['class'=>'form-control c-md-2'])->label('上级菜单') ?>
 
 <?=$form->field($model, 'title')->textInput(['class'=>'form-control c-md-2'])->label('栏目名称')->hint('栏目中文名称')?>

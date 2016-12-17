@@ -5,19 +5,20 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%shop_type}}".
+ * This is the model class for table "{{%tag}}".
  *
  * @property integer $id
  * @property string $name
+ * @property integer $num
  */
-class ShopType extends \common\core\BaseActiveRecord
+class Tag extends \common\core\BaseActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%shop_type}}';
+        return '{{%tag}}';
     }
 
     /**
@@ -27,7 +28,8 @@ class ShopType extends \common\core\BaseActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'string', 'max' => 50]
+            [['num'], 'integer'],
+            [['name'], 'string', 'max' => 30],
         ];
     }
 
@@ -39,6 +41,7 @@ class ShopType extends \common\core\BaseActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'num' => 'Num',
         ];
     }
 }

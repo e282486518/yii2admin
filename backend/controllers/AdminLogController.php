@@ -3,14 +3,14 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Log;
-use backend\models\search\LogSearch;
+use common\models\AdminLog;
+use backend\models\search\AdminLogSearch;
 use yii\web\NotFoundHttpException;
 
 /**
  * 行为日志控制器
  */
-class LogController extends BaseController {
+class AdminLogController extends BaseController {
 
     /**
      * ---------------------------------------
@@ -23,7 +23,7 @@ class LogController extends BaseController {
         /* 添加当前位置到cookie供后续操作调用 */
         $this->setForward();
 
-        $searchModel = new LogSearch();
+        $searchModel = new AdminLogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -47,8 +47,6 @@ class LogController extends BaseController {
     /**
      * ---------------------------------------
      * 删除日志
-     * @param mixed $ids
-     * @return string 返回信息 
      * ---------------------------------------
      */
     public function actionDelete(){
@@ -63,11 +61,10 @@ class LogController extends BaseController {
     /**
      * ---------------------------------------
      * 清空日志
-     * @return string 返回信息 
      * ---------------------------------------
      */
     public function actionClear(){
-        $res = Log::deleteAll();
+        $res = AdminLog::deleteAll();
         if($res !== false){
             $this->success('日志清空成功！');
         }else {
@@ -79,15 +76,15 @@ class LogController extends BaseController {
      * Finds the Article model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Log the loaded model
+     * @return AdminLog the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
         if ($id == 0) {
-            return new Log();
+            return new AdminLog();
         }
-        if (($model = Log::findOne($id)) !== null) {
+        if (($model = AdminLog::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -116,7 +116,7 @@ $this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以�
 
 $(function() {
     /* 子导航高亮 */
-    highlight_subnav('log/index');
+    highlight_subnav('admin-log/index');
     
 });
 
