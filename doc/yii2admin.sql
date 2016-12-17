@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-12-17 01:02:27
+-- Generation Time: 2016-12-17 18:40:11
 -- 服务器版本： 5.5.48-log
 -- PHP Version: 5.6.22
 
@@ -941,7 +941,7 @@ CREATE TABLE IF NOT EXISTS `yii2_menu` (
   `hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏',
   `group` varchar(50) DEFAULT '' COMMENT '分组',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态'
-) ENGINE=MyISAM AUTO_INCREMENT=170 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=173 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `yii2_menu`
@@ -953,10 +953,8 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (3, '文章管理', 2, 1, 'article/index', 0, '文章管理|icon-note', 1),
 (4, '新增', 3, 0, 'article/add', 0, '', 1),
 (5, '编辑', 3, 0, 'article/edit', 0, '', 1),
-(6, '改变状态', 3, 0, 'article/setStatus', 0, '', 1),
-(7, '保存', 3, 0, 'article/update', 0, '', 1),
-(8, '保存草稿', 3, 0, 'article/autoSave', 0, '', 1),
-(9, '移动', 3, 0, 'article/move', 0, '', 1),
+(6, '删除', 3, 0, 'article/delete', 0, '', 1),
+(172, '删除', 138, 0, 'goods/delete', 0, '', 1),
 (13, '回收站', 2, 99, 'article/recycle', 1, '内容', 1),
 (14, '还原', 13, 0, 'article/permit', 0, '', 1),
 (15, '清空', 13, 0, 'article/clear', 0, '', 1),
@@ -1000,9 +998,9 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (80, '分类管理', 2, 2, 'article-cat/index', 0, '文章管理|icon-note', 1),
 (81, '编辑', 80, 0, 'article-cat/edit', 0, '', 1),
 (82, '新增', 80, 0, 'article-cat/add', 0, '', 1),
-(83, '删除', 80, 0, 'article-cat/remove', 0, '', 1),
-(84, '移动', 80, 0, 'article-cat/operate/type/move', 0, '', 1),
-(85, '合并', 80, 0, 'article-cat/operate/type/merge', 0, '', 1),
+(83, '删除', 80, 0, 'article-cat/delete', 0, '', 1),
+(171, '编辑', 138, 0, 'goods/edit', 0, '', 1),
+(170, '添加', 138, 0, 'goods/add', 0, '', 1),
 (86, '备份数据库', 68, 10, 'database/index?type=export', 0, '数据备份|fa fa-database', 1),
 (87, '备份', 86, 0, 'database/export', 0, '', 1),
 (88, '优化表', 86, 0, 'database/optimize', 0, '', 1),
@@ -1027,7 +1025,7 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (160, '添加', 159, 0, 'ad/add', 0, '', 1),
 (161, '编辑', 159, 0, 'ad/edit', 0, '', 1),
 (162, '删除', 159, 0, 'ad/delete', 0, '', 1),
-(166, '商品属性管理', 2, 21, 'traintype/index', 0, '商城管理|icon-basket', 1),
+(166, '商品属性', 2, 21, 'attributes/index', 0, '商城管理|icon-basket', 1),
 (167, '添加/修改类型', 166, 0, 'traintype/edit', 0, '', 1),
 (168, '删除类型', 166, 0, 'traintype/delete', 0, '', 1);
 
@@ -4997,7 +4995,7 @@ ALTER TABLE `yii2_goods_cat`
 -- AUTO_INCREMENT for table `yii2_menu`
 --
 ALTER TABLE `yii2_menu`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=170;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=173;
 --
 -- AUTO_INCREMENT for table `yii2_message`
 --
