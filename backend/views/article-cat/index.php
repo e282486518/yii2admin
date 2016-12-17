@@ -2,11 +2,11 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use backend\models\Category;
+use backend\models\ArticleCat;
 
-/* @var $model common\models\Category */
+/* @var $model common\models\ArticleCat */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
-/* @var $searchModel backend\models\search\CategorySearch */
+/* @var $searchModel backend\models\search\ArticleCatSearch */
 
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
@@ -46,7 +46,7 @@ $columns = [
             if ($model['pid'] == 0) {
                 $str .= '<span style="color:#f00;">一级分类</span>';
             } else {
-                $paths = Category::getParents($model['id']);
+                $paths = ArticleCat::getParents($model['id']);
                 foreach ($paths as $value) {
                     $str .= $value['title'] .' > ';
                 }

@@ -110,7 +110,7 @@ class ActiveField extends \yii\widgets\ActiveField
      * select下拉框
      * @param array $items
      * @param array $options
-     * @return $this
+     * @return \yii\widgets\ActiveField
      * ---------------------------------------
      */
     public function selectList($items, $options = []){
@@ -162,7 +162,7 @@ class ActiveField extends \yii\widgets\ActiveField
      * ---------------------------------------
      * 错误处理
      * @param array $options
-     * @return $this
+     * @return \yii\widgets\ActiveField
      * ---------------------------------------
      */
     public function error($options = []){

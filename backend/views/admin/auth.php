@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use common\core\ActiveForm;
-use common\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Menu */

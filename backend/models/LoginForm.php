@@ -13,6 +13,9 @@ class LoginForm extends BaseModel
     public $password;
     public $rememberMe = true;
 
+    /**
+     * @var Admin
+     */
     private $_user;
 
 
@@ -65,7 +68,7 @@ class LoginForm extends BaseModel
     /**
      * Finds user by [[username]]
      *
-     * @return User|null
+     * @return Admin|null
      */
     public function getUser()
     {

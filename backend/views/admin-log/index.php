@@ -2,11 +2,10 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use backend\models\Log;
 
-/* @var $model common\models\Log */
+/* @var $model common\models\AdminLog */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
-/* @var $searchModel backend\models\search\LogSearch */
+/* @var $searchModel backend\models\search\AdminLogSearch */
 
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */

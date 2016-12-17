@@ -78,7 +78,7 @@ class ArticleSearch extends Article
             ->andFilterWhere(['like', 'extend', $this->extend])
             ->andFilterWhere(['like', 'link', $this->link]);
         
-        /* ÅÅÐò */ 
+        /* æŽ’åº */ 
         $query->orderBy([ 
             'sort' => SORT_ASC,
             'id' => SORT_DESC,

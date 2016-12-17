@@ -47,7 +47,7 @@ class ArticleCat extends \common\models\ArticleCat
      * ---------------------------------------
      * 获取一条数据
      * @param $id int
-     * @return array
+     * @return array|boolean
      * ---------------------------------------
      */
     public static function getOne($id){
