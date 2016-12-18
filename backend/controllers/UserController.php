@@ -6,6 +6,10 @@ use Yii;
 use backend\models\User;
 use backend\models\search\UserSearch;
 
+/**
+ * 用户控制器
+ * @author longfei <phphome@qq.com>
+ */
 class UserController extends BaseController
 {
     /**

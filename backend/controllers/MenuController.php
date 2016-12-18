@@ -10,8 +10,7 @@ use yii\web\NotFoundHttpException;
 
 /**
  * 后台菜单控制器
- * 作者 ：longfei
- * Email ：phphome@qq.com
+ * @author longfei <phphome@qq.com>
  */
 class MenuController extends BaseController
 {

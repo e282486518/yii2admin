@@ -7,8 +7,10 @@ use common\models\AdminLog;
 use backend\models\search\AdminLogSearch;
 use yii\web\NotFoundHttpException;
 
+
 /**
  * 行为日志控制器
+ * @author longfei <phphome@qq.com>
  */
 class AdminLogController extends BaseController {
 

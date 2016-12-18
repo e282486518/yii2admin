@@ -9,6 +9,7 @@ use yii\helpers\Url;
 
 /**
  * 后台登录控制器
+ * @author longfei <phphome@qq.com>
  */
 class LoginController extends Controller
 {

@@ -10,8 +10,7 @@ use yii\web\NotFoundHttpException;
 
 /**
  * 文章控制器
- * 作者 ：longfei
- * Email ：phphome@qq.com
+ * @author longfei <phphome@qq.com>
  */
 class ArticleController extends BaseController
 {

@@ -8,11 +8,11 @@ use yii\helpers\Url;
 use yii\data\Pagination;
 use yii\data\ActiveDataProvider;
 
-/*
+/**
  * ---------------------------------------
  * 后台父类控制器 
  * 后台所有控制器都继承自该类
- * @author phphome@qq.com 
+ * @author longfei phphome@qq.com
  * ---------------------------------------
  */
 class BaseController extends Controller

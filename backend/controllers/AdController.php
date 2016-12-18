@@ -11,8 +11,7 @@ use yii\filters\VerbFilter;
 
 /**
  * 栏目控制器
- * 作者 ：longfei
- * Email ：phphome@qq.com
+ * @author longfei <phphome@qq.com>
  */
 class AdController extends BaseController
 {

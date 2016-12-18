@@ -2,17 +2,21 @@
 
 namespace backend\controllers;
 
-use common\core\Controller;
 use Yii;
-use yii\helpers\Json;
+use yii\helpers\ArrayHelper;
 use common\models\Region;
+use kartik\depdrop\DepDropAction;
 
 /**
  * 公共调用处理
+ * @author longfei <phphome@qq.com>
  */
 class PublicController extends \common\core\Controller{
 
+    /** @var bool  */
     public $layout = false;
+
+    /** @var bool */
     public $enableCsrfValidation=false;
 
     /**
@@ -22,10 +26,10 @@ class PublicController extends \common\core\Controller{
      */
     public function actions()
     {
-        return \yii\helpers\ArrayHelper::merge(parent::actions(), [
+        return ArrayHelper::merge(parent::actions(), [
             /* 省市区联动 */
             'region' => [
-                'class' => \kartik\depdrop\DepDropAction::className(),
+                'class' => DepDropAction::className(),
                 'outputCallback' => function ($id, $params) {
                     $region = Region::find()->where(['parent_id'=>$id])->orderBy('region_id ASC')->asArray()->all();
                     $_out = [];//var_dump($region);
@@ -65,7 +69,7 @@ class PublicController extends \common\core\Controller{
      * ---------------------------------------
      */
     public function action404(){
-        
+
         //渲染模板
         return $this->render('404');
     }

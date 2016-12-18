@@ -7,12 +7,11 @@ use backend\models\Config;
 use backend\models\search\ConfigSearch;
 use yii\web\NotFoundHttpException;
 
+
 /**
  * 系统配置控制器
- * 作者 ：longfei
- * Email ：phphome@qq.com
+ * @author longfei <phphome@qq.com>
  */
-
 class ConfigController extends BaseController
 {
 

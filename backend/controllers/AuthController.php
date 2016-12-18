@@ -7,6 +7,10 @@ use backend\models\Admin;
 use backend\models\Menu;
 use common\models\AuthAssignment;
 
+/**
+ * 身份授权控制器
+ * @author longfei <phphome@qq.com>
+ */
 class AuthController extends BaseController
 {
     /**

@@ -7,7 +7,10 @@ use Yii;
 use yii\helpers\Url;
 use backend\models\search\AdminSearch;
 
-
+/**
+ * 后台用户控制器
+ * @author longfei <phphome@qq.com>
+ */
 class AdminController extends BaseController
 {
     /**

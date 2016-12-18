@@ -84,9 +84,7 @@ class Picture extends \common\models\Picture
 
     /**
      * ---------------------------------------
-     * 函数功能信息 public private protected static
-     * @param $id int 参数信息
-     * @return array 返回信息
+     * 清除picture表中不存在的图片
      * ---------------------------------------
      */
     public static function clearPic1(){

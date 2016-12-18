@@ -71,6 +71,7 @@ class Menu extends \common\models\Menu
     /**
      * ---------------------------------------
      * 获取控制器菜单数组,二级菜单元素位于一级菜单的'_child'元素中
+     * @param string $rule
      * @return array $menus
      * ---------------------------------------
      */
