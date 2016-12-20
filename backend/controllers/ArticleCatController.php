@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\ArticleCat;
 use common\helpers\FuncHelper;
+use common\helpers\ArrayHelper;
 use backend\models\search\ArticleCatSearch;
 use yii\web\NotFoundHttpException;
 
@@ -128,6 +129,18 @@ class ArticleCatController extends BaseController
         } else {
             $this->error('删除失败！');
         }
+    }
+
+    /**
+     * ---------------------------------------
+     * 功能说明
+     * ---------------------------------------
+     */
+    public function actionTree(){
+        $lists = ArticleCat::find()->orderBy('sort asc')->asArray()->all();
+        $lists = ArrayHelper::list_to_tree($lists, 'id', 'pid');
+        $lists = ArrayHelper::jstree($lists);
+        echo json_encode($lists);
     }
 
     /**

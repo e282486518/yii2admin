@@ -23,7 +23,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * @param \yii\base\Model $model
      * @param string $attribute
      * @param array $options
-     * @return \yii\widgets\ActiveField
+     * @return \common\core\ActiveField
      */
     public function field($model, $attribute, $options = [])
     {

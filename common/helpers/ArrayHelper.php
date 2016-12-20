@@ -123,7 +123,7 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
     public static function format_tree($tree, $title = 'title', $level = 0){
         static $list;
         /* 按层级格式的字符串 */
-        $tmp_str=str_repeat("　",$level)."└";
+        $tmp_str=str_repeat("　　",$level)."└";
         $level == 0 && $tmp_str = '';
 
         foreach ($tree as $key => $value) {
@@ -164,4 +164,32 @@ class ArrayHelper extends \yii\helpers\ArrayHelper
         $tree = static::list_to_tree($list,$pk,$pid,'_child',$root);
         return static::map( static::format_tree($tree, $value), $key, $value);
     }
+
+    /**
+     * ---------------------------------------
+     * 生成jQuery tree所需的数据
+     * @param $list array 由self::list_to_tree生成的数据
+     * @return array
+     * ---------------------------------------
+     */
+    public static function jstree($list){
+        $node = [];
+        if ($list) {
+            foreach ($list as $value) {
+                $_tmp = [];
+                $_tmp['id'] = $value['id'];
+                $_tmp['text'] = $value['title'];
+                if (isset($value['_child'])) {
+                    $_tmp['icon'] = 'fa fa-folder icon-state-warning';
+                    $_tmp['state']['opened'] = true;
+                    $_tmp['children'] = self::jstree($value['_child']);
+                } else {
+                    $_tmp['icon'] = 'fa fa-file icon-state-warning';
+                }
+                $node[] = $_tmp;
+            }
+        }
+        return $node;
+    }
+
 }
