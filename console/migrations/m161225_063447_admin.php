@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161201_115701_admin extends Migration
+class m161225_063447_admin extends Migration
 {
     public function up()
     {
@@ -33,9 +33,10 @@ class m161201_115701_admin extends Migration
         
         
         /* 表数据 */
-        $this->insert('{{%admin}}',['uid'=>'1','username'=>'admin','password'=>'$2y$13$0UVcG.mXF6Og0rnjfwJd2.wixT2gdn.wDO9rN44jGtIGc6JvBqR7i','salt'=>'SbSY36BLw3V2lU-GB7ZAzCVJKDFx82IJ','email'=>'phphome111@qq.com','mobile'=>'13565231112','reg_time'=>'1457922160','reg_ip'=>'2130706433','last_login_time'=>'1457922174','last_login_ip'=>'2130706433','update_time'=>'1476437014','status'=>'1']);
+        $this->insert('{{%admin}}',['uid'=>'1','username'=>'admin','password'=>'$2y$13$0UVcG.mXF6Og0rnjfwJd2.wixT2gdn.wDO9rN44jGtIGc6JvBqR7i','salt'=>'SbSY36BLw3V2lU-GB7ZAzCVJKDFx82IJ','email'=>'phphome111@qq.com','mobile'=>'13565231112','reg_time'=>'1457922160','reg_ip'=>'2130706433','last_login_time'=>'1457922174','last_login_ip'=>'2130706433','update_time'=>'1481278788','status'=>'1']);
         $this->insert('{{%admin}}',['uid'=>'2','username'=>'feifei','password'=>'$2y$13$jqWGlVo8T3qtnWUX0kTX/ON5ctvokzkQ7RAvKuNRjN.WvxgBlFK4u','salt'=>'tzDsmCSLbtktnvbgn1YeEqslYOBo1Cn9','email'=>'php11111@qq.com','mobile'=>'13631568985','reg_time'=>'1458028401','reg_ip'=>'2130706433','last_login_time'=>'1458028401','last_login_ip'=>'2130706433','update_time'=>'1468230085','status'=>'1']);
         $this->insert('{{%admin}}',['uid'=>'6','username'=>'guanli','password'=>'$2y$13$QK.CEi7HHuTSIMbq5RbzeOfTNgrX8mUTl/noBkHtD/zKEf7y.SQO6','salt'=>'_4F9_ptxkohU247kgi7UB4rg3UMYqo14','email'=>'phphome222@qq.com','mobile'=>'13565656565','reg_time'=>'1476438209','reg_ip'=>'2130706433','last_login_time'=>'0','last_login_ip'=>'2130706433','update_time'=>'0','status'=>'1']);
+        $this->insert('{{%admin}}',['uid'=>'7','username'=>'huang','password'=>'$2y$13$SO1qMnykM3MJuNizsqzQH.QBjPPDZ7U556yUtmSU3optwZ1EdWm0W','salt'=>'nkqZMhWkbIsjZrF1J8laC1UxWoXPRobA','email'=>'phphome@qqqqq.com','mobile'=>'13656589562','reg_time'=>'1481000197','reg_ip'=>'3232243969','last_login_time'=>'0','last_login_ip'=>'2130706433','update_time'=>'1481003421','status'=>'1']);
         
         /* 设置外键约束 */
         $this->execute('SET foreign_key_checks = 1;');

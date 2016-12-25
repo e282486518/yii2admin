@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161201_115701_auth_assignment extends Migration
+class m161225_063447_auth_assignment extends Migration
 {
     public function up()
     {
@@ -20,13 +20,14 @@ class m161201_115701_auth_assignment extends Migration
         /* 索引设置 */
         
         /* 外键约束设置 */
-        $this->addForeignKey('fk_auth_item_5217_00','{{%auth_assignment}}', 'item_name', '{{%auth_item}}', 'name', 'CASCADE', 'CASCADE' );
+        $this->addForeignKey('fk_auth_item_4473_00','{{%auth_assignment}}', 'item_name', '{{%auth_item}}', 'name', 'CASCADE', 'CASCADE' );
         
         /* 表数据 */
         $this->insert('{{%auth_assignment}}',['item_name'=>'administrator','user_id'=>'1','created_at'=>'1476437918']);
         $this->insert('{{%auth_assignment}}',['item_name'=>'administrator','user_id'=>'4','created_at'=>'1460012730']);
         $this->insert('{{%auth_assignment}}',['item_name'=>'administrator','user_id'=>'6','created_at'=>'1476438227']);
         $this->insert('{{%auth_assignment}}',['item_name'=>'editor','user_id'=>'2','created_at'=>'1476437926']);
+        $this->insert('{{%auth_assignment}}',['item_name'=>'editor','user_id'=>'7','created_at'=>'1481279497']);
         
         /* 设置外键约束 */
         $this->execute('SET foreign_key_checks = 1;');
