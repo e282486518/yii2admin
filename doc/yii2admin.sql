@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2016-12-17 18:40:11
+-- Generation Time: 2016-12-27 18:59:05
 -- 服务器版本： 5.5.48-log
 -- PHP Version: 5.6.22
 
@@ -1039,9 +1039,22 @@ CREATE TABLE IF NOT EXISTS `yii2_message` (
   `message_id` int(8) NOT NULL COMMENT '消息ID',
   `appid` varchar(30) NOT NULL COMMENT '应用ID，格式goods-123',
   `from_uid` int(8) unsigned NOT NULL COMMENT '消息发送者uid，0系统',
-  `to_uid` int(8) unsigned NOT NULL COMMENT '消息接收者uid，0广播',
+  `to_uid` int(8) unsigned NOT NULL COMMENT '消息接收者uid，0广播须配合message_sys表',
   `content` varchar(255) NOT NULL COMMENT '消息内容',
   `create_time` int(10) unsigned NOT NULL COMMENT '创建时间',
+  `is_read` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否阅读 0未读 1已读 广播消息始终已读红色文字'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='站内消息';
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `yii2_message_sys`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_message_sys` (
+  `sys_id` int(10) unsigned NOT NULL COMMENT '自增',
+  `uid` int(8) unsigned NOT NULL COMMENT '用户uid',
+  `message_id` int(10) unsigned NOT NULL COMMENT '消息ID',
   `is_read` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否阅读 0未读 1已读 广播消息始终已读红色文字'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='站内消息';
 
@@ -4859,6 +4872,12 @@ ALTER TABLE `yii2_message`
   ADD PRIMARY KEY (`message_id`);
 
 --
+-- Indexes for table `yii2_message_sys`
+--
+ALTER TABLE `yii2_message_sys`
+  ADD PRIMARY KEY (`sys_id`);
+
+--
 -- Indexes for table `yii2_nav`
 --
 ALTER TABLE `yii2_nav`
@@ -5001,6 +5020,11 @@ ALTER TABLE `yii2_menu`
 --
 ALTER TABLE `yii2_message`
   MODIFY `message_id` int(8) NOT NULL AUTO_INCREMENT COMMENT '消息ID';
+--
+-- AUTO_INCREMENT for table `yii2_message_sys`
+--
+ALTER TABLE `yii2_message_sys`
+  MODIFY `sys_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增';
 --
 -- AUTO_INCREMENT for table `yii2_nav`
 --

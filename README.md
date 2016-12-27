@@ -1,4 +1,4 @@
-【最近在更新数据库，源码有很多BUG，如需要可下载下面的“全站打包”文件。。】。成型后的系统包括文章、商城、单页、广告、购物车、订单、标签、评论、推荐位、艾特@、消息、支付和回调、后台rbac、后台行为日志、数据可视化、配置管理等、前台用户中心、会员积分等功能。关注的朋友可以先给个Star。。
+【年前事情较多，更新会比较少】。成型后的系统包括文章、商城、单页、广告、购物车、订单、标签、评论、推荐位、艾特@、消息、支付和回调、后台rbac、后台行为日志、数据可视化、配置管理等、前台用户中心、会员积分等功能。关注的朋友可以先给个Star。。
 
 特别说明，这是一个学习型的项目（注释会尽量详细，尽量将yii2提供的大部分功能都用一遍），项目成型时间估计半年，刚刚做不久加上对yii2很多功能不熟，难免有缺陷。有什么建议可以联系我：phphome@qq.com
 
@@ -36,7 +36,7 @@ Yii::$app->params['web'] = Config::lists();
 
 * 多语言配置在/common/config/main.php中“i18n”项中，源语言设置的是中文，具体可自行查看；
 
-* 后台项目的js和css资源文件放在/backend/metronic中；
+* 后台项目的js和css资源文件放在/common/metronic中；
 
 * 由于我使用的是模板自带的jQuery和bootstrap，所以我再后台main.php的assetManager项中清空了系统自带的jQuery和bootstrap，为了模板全局的js/css放在其他插件的前面，这里我设置了yii\web\JqueryAsset依赖backend\assets\AppAsset，这里要注意循环依赖的问题；
 
@@ -80,7 +80,7 @@ Yii::$app->params['web'] = Config::lists();
 ```
 1、下载源文件或git clone https://github.com/e282486518/yii2admin.git
 2、composer install #安装依赖扩展
-3、php ./yii install/install #配置环境、配置数据库并安装数据库
+3、php ./yii install #配置环境、配置数据库并安装数据库
 4、参照 doc 目录下的Nginx和Apache配置文件，配置服务器，并设置hosts文件。
 
 超级管理员账号： admin 123456
