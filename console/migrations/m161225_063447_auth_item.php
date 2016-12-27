@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161201_115701_auth_item extends Migration
+class m161225_063447_auth_item extends Migration
 {
     public function up()
     {
@@ -139,6 +139,7 @@ class m161201_115701_auth_item extends Migration
         $this->insert('{{%auth_item}}',['name'=>'shop/delete','type'=>'2','description'=>NULL,'rule_name'=>'shop/delete','data'=>NULL,'created_at'=>'1476437985','updated_at'=>'1476437985']);
         $this->insert('{{%auth_item}}',['name'=>'shop/edit','type'=>'2','description'=>NULL,'rule_name'=>'shop/edit','data'=>NULL,'created_at'=>'1476437985','updated_at'=>'1476437985']);
         $this->insert('{{%auth_item}}',['name'=>'shop/group','type'=>'2','description'=>NULL,'rule_name'=>'shop/group','data'=>NULL,'created_at'=>'1472528088','updated_at'=>'1472528088']);
+        $this->insert('{{%auth_item}}',['name'=>'shop/index','type'=>'2','description'=>NULL,'rule_name'=>'shop/index','data'=>NULL,'created_at'=>'1481279433','updated_at'=>'1481279433']);
         $this->insert('{{%auth_item}}',['name'=>'shop/index&type=1','type'=>'2','description'=>NULL,'rule_name'=>'shop/index&type=1','data'=>NULL,'created_at'=>'1472528087','updated_at'=>'1472528087']);
         $this->insert('{{%auth_item}}',['name'=>'shop/index&type=2','type'=>'2','description'=>NULL,'rule_name'=>'shop/index&type=2','data'=>NULL,'created_at'=>'1472528087','updated_at'=>'1472528087']);
         $this->insert('{{%auth_item}}',['name'=>'shop/index&type=3','type'=>'2','description'=>NULL,'rule_name'=>'shop/index&type=3','data'=>NULL,'created_at'=>'1472528087','updated_at'=>'1472528087']);

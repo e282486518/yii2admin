@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161201_115701_order extends Migration
+class m161225_063447_order extends Migration
 {
     public function up()
     {
@@ -43,7 +43,8 @@ class m161201_115701_order extends Migration
         $this->insert('{{%order}}',['order_id'=>'2','order_sn'=>'135555111','uid'=>'7','name'=>'','tel'=>'','sfz'=>'','type'=>'shop','aid'=>'1','title'=>'商品名称1111','province'=>'0','city'=>'0','area'=>'0','start_time'=>'1345678940','end_time'=>'1345688940','num'=>'1','pay_status'=>'1','pay_time'=>'1365668940','pay_type'=>'2','pay_source'=>'2','create_time'=>'1365678940','status'=>'1']);
         $this->insert('{{%order}}',['order_id'=>'3','order_sn'=>'1473787901','uid'=>'0','name'=>'','tel'=>'','sfz'=>'','type'=>'shop','aid'=>'1','title'=>'大床双人房特价','province'=>'0','city'=>'0','area'=>'0','start_time'=>'1473811200','end_time'=>'1474416000','num'=>'1','pay_status'=>'1','pay_time'=>'1473787901','pay_type'=>'1','pay_source'=>'1','create_time'=>'1473787924','status'=>'1']);
         $this->insert('{{%order}}',['order_id'=>'4','order_sn'=>'1473788097','uid'=>'0','name'=>'龙凤','tel'=>'15956985698','sfz'=>'','type'=>'train','aid'=>'3','title'=>'帆船培训2','province'=>'5','city'=>'65','area'=>'629','start_time'=>'1473811200','end_time'=>'1474416000','num'=>'1','pay_status'=>'0','pay_time'=>'1478145300','pay_type'=>'1','pay_source'=>'1','create_time'=>'1473788126','status'=>'1']);
-        $this->insert('{{%order}}',['order_id'=>'5','order_sn'=>'1474094023','uid'=>'0','name'=>'111','tel'=>'222','sfz'=>'','type'=>'shop','aid'=>'3','title'=>'大床双人房特价','province'=>'6','city'=>'80','area'=>'748','start_time'=>'1474529400','end_time'=>'1344600','num'=>'1','pay_status'=>'1','pay_time'=>'1478163420','pay_type'=>'2','pay_source'=>'1','create_time'=>'1474094061','status'=>'1']);
+        $this->insert('{{%order}}',['order_id'=>'5','order_sn'=>'1474094023','uid'=>'0','name'=>'111','tel'=>'222','sfz'=>'','type'=>'shop','aid'=>'3','title'=>'大床双人房特价','province'=>'6','city'=>'80','area'=>'748','start_time'=>'1474529400','end_time'=>'1344600','num'=>'1','pay_status'=>'1','pay_time'=>'1480910460','pay_type'=>'2','pay_source'=>'1','create_time'=>'1474094061','status'=>'1']);
+        $this->insert('{{%order}}',['order_id'=>'6','order_sn'=>'1480917844','uid'=>'0','name'=>'啥打法是否','tel'=>'13632565266','sfz'=>'','type'=>'shop','aid'=>'3','title'=>'测试酒店1','province'=>'2','city'=>'52','area'=>'502','start_time'=>'1481165400','end_time'=>'1480575000','num'=>'1','pay_status'=>'0','pay_time'=>'1481906400','pay_type'=>'4','pay_source'=>'3','create_time'=>'1481906455','status'=>'1']);
         
         /* 设置外键约束 */
         $this->execute('SET foreign_key_checks = 1;');

@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161201_115701_log extends Migration
+class m161225_063447_admin_log extends Migration
 {
     public function up()
     {
@@ -10,7 +10,7 @@ class m161201_115701_log extends Migration
         $this->execute('SET foreign_key_checks = 0');
         
         /* 创建表 */
-        $this->createTable('{{%log}}', [
+        $this->createTable('{{%admin_log}}', [
             'id' => 'int(8) NOT NULL AUTO_INCREMENT',
             'uid' => 'int(8) NOT NULL COMMENT \'用户uid\'',
             'title' => 'varchar(100) NOT NULL COMMENT \'标题\'',
@@ -25,11 +25,11 @@ class m161201_115701_log extends Migration
         ], "ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='后台日志'");
         
         /* 索引设置 */
-        $this->createIndex('status','{{%log}}','status',0);
+        $this->createIndex('status','{{%admin_log}}','status',0);
         
         
         /* 表数据 */
-        $this->insert('{{%log}}',['id'=>'1','uid'=>'2','title'=>'修改菜单','controller'=>'menu','action'=>'index','querystring'=>'/admin.php/menu/index?id=4','remark'=>'用户修改了菜单','ip'=>'192.168.0.101','create_time'=>'1435658950','status'=>'1']);
+        $this->insert('{{%admin_log}}',['id'=>'1','uid'=>'2','title'=>'修改菜单','controller'=>'menu','action'=>'index','querystring'=>'/admin.php/menu/index?id=4','remark'=>'用户修改了菜单','ip'=>'192.168.0.101','create_time'=>'1435658950','status'=>'1']);
         
         /* 设置外键约束 */
         $this->execute('SET foreign_key_checks = 1;');
@@ -39,7 +39,7 @@ class m161201_115701_log extends Migration
     {
         $this->execute('SET foreign_key_checks = 0');
         /* 删除表 */
-        $this->dropTable('{{%log}}');
+        $this->dropTable('{{%admin_log}}');
         $this->execute('SET foreign_key_checks = 1;');
     }
 }

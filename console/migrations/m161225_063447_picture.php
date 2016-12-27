@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161201_115701_picture extends Migration
+class m161225_063447_picture extends Migration
 {
     public function up()
     {
@@ -34,6 +34,7 @@ class m161201_115701_picture extends Migration
         $this->insert('{{%picture}}',['id'=>'9','path'=>'201611/1478850859946.jpg','md5'=>'b80a764cc220b8044e933df30774b218','create_time'=>'1478850859','status'=>'1']);
         $this->insert('{{%picture}}',['id'=>'11','path'=>'201611/1478854002500.jpg','md5'=>'04e145672b976fb47164dd96e0090fd1','create_time'=>'1478854002','status'=>'1']);
         $this->insert('{{%picture}}',['id'=>'12','path'=>'201611/1478854666137.jpg','md5'=>'1f611a254f541830ab3a3490e32368c2','create_time'=>'1478854666','status'=>'1']);
+        $this->insert('{{%picture}}',['id'=>'13','path'=>'201612/1480907348789.png','md5'=>'6d83a00e11eb16e95fa9200fd7ddc2e2','create_time'=>'1480907348','status'=>'1']);
         
         /* 设置外键约束 */
         $this->execute('SET foreign_key_checks = 1;');
