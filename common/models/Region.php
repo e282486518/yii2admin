@@ -7,13 +7,11 @@ use Yii;
 /**
  * This is the model class for table "{{%region}}".
  *
- * @property integer $region_id
- * @property integer $parent_id
- * @property string $region_name
- * @property integer $region_type
- * @property string $initial
- * @property double $latitude
- * @property double $longitude
+ * @property integer $code
+ * @property integer $parent_code
+ * @property string $name
+ * @property string $fullname
+ * @property integer $level
  */
 class Region extends \common\core\BaseActiveRecord
 {
@@ -31,10 +29,10 @@ class Region extends \common\core\BaseActiveRecord
     public function rules()
     {
         return [
-            [['parent_id', 'region_type'], 'integer'],
-            [['latitude', 'longitude'], 'number'],
-            [['region_name'], 'string', 'max' => 120],
-            [['initial'], 'string', 'max' => 16]
+            [['code', 'parent_code', 'fullname', 'level'], 'required'],
+            [['code', 'parent_code', 'level'], 'integer'],
+            [['name'], 'string', 'max' => 30],
+            [['fullname'], 'string', 'max' => 100],
         ];
     }
 
@@ -44,13 +42,11 @@ class Region extends \common\core\BaseActiveRecord
     public function attributeLabels()
     {
         return [
-            'region_id' => 'Region ID',
-            'parent_id' => 'Parent ID',
-            'region_name' => 'Region Name',
-            'region_type' => 'Region Type',
-            'initial' => 'Initial',
-            'latitude' => 'Latitude',
-            'longitude' => 'Longitude',
+            'code' => 'Code',
+            'parent_code' => 'Parent Code',
+            'name' => 'Name',
+            'fullname' => 'Fullname',
+            'level' => 'Level',
         ];
     }
 }
