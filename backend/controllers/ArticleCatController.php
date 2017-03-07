@@ -133,7 +133,7 @@ class ArticleCatController extends BaseController
 
     /**
      * ---------------------------------------
-     * 功能说明
+     * 获取栏目数据tree结构
      * ---------------------------------------
      */
     public function actionTree(){
