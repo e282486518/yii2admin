@@ -113,7 +113,7 @@ class Menu extends \common\models\Menu
                 }//var_dump($second_menu);
 
                 /* 生成child树 */
-                $groups = static::find()->select(['group'])
+                $groups = static::find()->select(['group','min(sort) as sort'])
                     ->where(['pid'=>$item['id'], 'hide'=>0])
                     ->groupBy(['group'])->orderBy('sort ASC')->asArray()->column();
                 //var_dump($groups);exit;
