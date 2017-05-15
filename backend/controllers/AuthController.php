@@ -170,7 +170,12 @@ class AuthController extends BaseController
         $uids = Yii::$app->authManager->getUserIdsByRole($role);
         $uids = implode(',', array_unique($uids));
 
-        $_where = 'uid in('.$uids.')';
+        /*更新uids 为空的情况*/
+        if($uids){
+            $_where = 'user_id in('.$uids.')';
+        }else{
+            $_where = '1 != 1';
+        }
 
         return $this->render('user',[
             'dataProvider' => $this->lists1(new Admin(), $_where),
