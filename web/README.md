@@ -1,5 +1,5 @@
 如果你想使用单域名，但感觉高级版原版的单域名配置重写比较麻烦，那么可以使用这种方式。这种方式将每个应用的web目录单独提取出来构成前台、后台、api、存储应用入口。
-##一、基本配置
+## 一、基本配置
 ```
 1、将服务器解析到/www/yii2admin/web目录；
 2、修改/common/config/params.php的 upload、ueditorConfig 对应上传地址；
@@ -17,8 +17,8 @@
     STORAGE_URL      = /
 ```
 
-##二、安装 
-####Nginx配置
+## 二、安装 
+#### Nginx配置
 ```
 server {
     charset      utf-8;
@@ -56,7 +56,7 @@ server {
     }
 }
 ```
-####Apache配置
+#### Apache配置
 ```
     <VirtualHost *:80>
         ServerAdmin webmaster@dummy-host2.example.com
