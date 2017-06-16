@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2017-02-06 10:17:11
+-- Generation Time: 2017-06-16 17:29:06
 -- 服务器版本： 5.5.48-log
 -- PHP Version: 5.6.22
 
@@ -260,11 +260,16 @@ INSERT INTO `yii2_auth_item` (`name`, `type`, `description`, `rule_name`, `data`
 ('admin/edit', 2, NULL, 'admin/edit', NULL, 1472528089, 1472528089),
 ('admin/index', 2, NULL, 'admin/index', NULL, 1472528089, 1472528089),
 ('administrator', 1, 'administrator角色12', NULL, NULL, 1465352150, 1476446363),
+('article-cat/add', 2, NULL, 'article-cat/add', NULL, 1489471673, 1489471673),
+('article-cat/delete', 2, NULL, 'article-cat/delete', NULL, 1496652380, 1496652380),
+('article-cat/edit', 2, NULL, 'article-cat/edit', NULL, 1489471673, 1489471673),
+('article-cat/index', 2, NULL, 'article-cat/index', NULL, 1489471673, 1489471673),
 ('article/add', 2, '', 'article/add', '', 1460027926, 1460027926),
 ('article/autoSave', 2, '', 'article/autoSave', '', 1460027926, 1460027926),
 ('article/batchOperate', 2, '', 'article/batchOperate', '', 1460027926, 1460027926),
 ('article/clear', 2, '', 'article/clear', '', 1460027927, 1460027927),
 ('article/copy', 2, '', 'article/copy', '', 1460027926, 1460027926),
+('article/delete', 2, NULL, 'article/delete', NULL, 1496652380, 1496652380),
 ('article/edit', 2, '', 'article/edit', '', 1460027926, 1460027926),
 ('Article/examine', 2, '', 'Article/examine', '', 1460027927, 1460027927),
 ('article/index', 2, '', 'article/index', '', 1460027926, 1460027926),
@@ -280,6 +285,7 @@ INSERT INTO `yii2_auth_item` (`name`, `type`, `description`, `rule_name`, `data`
 ('attribute/index1', 2, '', 'attribute/index1', '', 1460031881, 1460031881),
 ('attribute/setStatus', 2, '', 'attribute/setStatus', '', 1460031881, 1460031881),
 ('attribute/update', 2, '', 'attribute/update', '', 1460031881, 1460031881),
+('attributes/index', 2, NULL, 'attributes/index', NULL, 1489471673, 1489471673),
 ('auth/access', 2, '', 'auth/access', '', 1460031879, 1460031879),
 ('auth/add', 2, NULL, 'auth/add', NULL, 1472528089, 1472528089),
 ('auth/addToCategory', 2, '', 'auth/addToCategory', '', 1460031880, 1460031880),
@@ -327,6 +333,10 @@ INSERT INTO `yii2_auth_item` (`name`, `type`, `description`, `rule_name`, `data`
 ('database/optimize', 2, '', 'database/optimize', '', 1460031881, 1460031881),
 ('database/repair', 2, '', 'database/repair', '', 1460031881, 1460031881),
 ('editor', 1, 'editor 网站编辑角色', NULL, '', 1356232000, 1400000000),
+('goods/add', 2, NULL, 'goods/add', NULL, 1496652380, 1496652380),
+('goods/delete', 2, NULL, 'goods/delete', NULL, 1496652380, 1496652380),
+('goods/edit', 2, NULL, 'goods/edit', NULL, 1489471673, 1489471673),
+('goods/index', 2, NULL, 'goods/index', NULL, 1489471673, 1489471673),
 ('group/add', 2, NULL, 'group/add', NULL, 1476437986, 1476437986),
 ('group/delete', 2, NULL, 'group/delete', NULL, 1476437986, 1476437986),
 ('group/edit', 2, NULL, 'group/edit', NULL, 1476437986, 1476437986),
@@ -409,55 +419,39 @@ INSERT INTO `yii2_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'ad/add'),
 ('editor', 'ad/add'),
 ('administrator', 'ad/delete'),
-('editor', 'ad/delete'),
 ('administrator', 'ad/edit'),
 ('editor', 'ad/edit'),
 ('administrator', 'ad/index'),
 ('editor', 'ad/index'),
 ('administrator', 'admin/index'),
+('administrator', 'article-cat/add'),
+('editor', 'article-cat/add'),
+('administrator', 'article-cat/delete'),
+('administrator', 'article-cat/edit'),
+('editor', 'article-cat/edit'),
+('administrator', 'article-cat/index'),
+('editor', 'article-cat/index'),
 ('administrator', 'article/add'),
 ('editor', 'article/add'),
-('administrator', 'article/autoSave'),
-('editor', 'article/autoSave'),
 ('administrator', 'article/clear'),
 ('editor', 'article/clear'),
+('administrator', 'article/delete'),
 ('administrator', 'article/edit'),
 ('editor', 'article/edit'),
 ('administrator', 'article/index'),
 ('editor', 'article/index'),
-('administrator', 'article/move'),
-('editor', 'article/move'),
 ('administrator', 'article/permit'),
 ('editor', 'article/permit'),
 ('administrator', 'article/recycle'),
 ('editor', 'article/recycle'),
-('administrator', 'article/setStatus'),
-('editor', 'article/setStatus'),
-('administrator', 'article/update'),
-('editor', 'article/update'),
 ('administrator', 'attribute/add'),
 ('administrator', 'attribute/edit'),
 ('administrator', 'attribute/index1'),
 ('administrator', 'attribute/setStatus'),
 ('administrator', 'attribute/update'),
+('administrator', 'attributes/index'),
+('editor', 'attributes/index'),
 ('administrator', 'auth/index'),
-('administrator', 'category/add'),
-('editor', 'category/add'),
-('administrator', 'category/edit'),
-('editor', 'category/edit'),
-('administrator', 'category/index'),
-('editor', 'category/index'),
-('administrator', 'category/operate/type/merge'),
-('editor', 'category/operate/type/merge'),
-('administrator', 'category/operate/type/move'),
-('administrator', 'category/remove'),
-('editor', 'category/remove'),
-('administrator', 'certificate/delete'),
-('editor', 'certificate/delete'),
-('administrator', 'certificate/edit'),
-('editor', 'certificate/edit'),
-('administrator', 'certificate/index'),
-('editor', 'certificate/index'),
 ('administrator', 'config/add'),
 ('administrator', 'config/del'),
 ('administrator', 'config/edit'),
@@ -472,6 +466,12 @@ INSERT INTO `yii2_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'database/index?type=import'),
 ('administrator', 'database/optimize'),
 ('administrator', 'database/repair'),
+('administrator', 'goods/add'),
+('administrator', 'goods/delete'),
+('administrator', 'goods/edit'),
+('editor', 'goods/edit'),
+('administrator', 'goods/index'),
+('editor', 'goods/index'),
 ('administrator', 'group/add'),
 ('editor', 'group/add'),
 ('administrator', 'group/delete'),
@@ -482,8 +482,6 @@ INSERT INTO `yii2_auth_item_child` (`parent`, `child`) VALUES
 ('editor', 'group/index'),
 ('administrator', 'index/index'),
 ('editor', 'index/index'),
-('administrator', 'log/index'),
-('administrator', 'log/view'),
 ('administrator', 'menu/add'),
 ('administrator', 'menu/edit'),
 ('administrator', 'Menu/import'),
@@ -494,35 +492,10 @@ INSERT INTO `yii2_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'order/edit'),
 ('administrator', 'order/index'),
 ('administrator', 'other'),
-('administrator', 'shop/add'),
-('editor', 'shop/add'),
-('administrator', 'shop/delete'),
-('editor', 'shop/delete'),
-('administrator', 'shop/edit'),
-('editor', 'shop/edit'),
-('editor', 'shop/index'),
-('administrator', 'shop/index?type=1'),
-('editor', 'shop/index?type=1'),
-('administrator', 'shop/index?type=2'),
-('editor', 'shop/index?type=2'),
-('administrator', 'shop/index?type=3'),
-('editor', 'shop/index?type=3'),
-('administrator', 'shop/index?type=4'),
-('editor', 'shop/index?type=4'),
-('administrator', 'train/add'),
-('editor', 'train/add'),
-('administrator', 'train/delete'),
-('editor', 'train/delete'),
-('administrator', 'train/edit'),
-('editor', 'train/edit'),
-('administrator', 'train/index'),
-('editor', 'train/index'),
 ('administrator', 'traintype/delete'),
 ('editor', 'traintype/delete'),
 ('administrator', 'traintype/edit'),
 ('editor', 'traintype/edit'),
-('administrator', 'traintype/index'),
-('editor', 'traintype/index'),
 ('administrator', 'user/add'),
 ('administrator', 'user/delete'),
 ('administrator', 'user/edit'),
@@ -564,11 +537,16 @@ INSERT INTO `yii2_auth_rule` (`name`, `data`, `created_at`, `updated_at`) VALUES
 ('admin/auth', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:10:"admin/auth";s:9:"createdAt";i:1472528089;s:9:"updatedAt";i:1472528089;}', 1472528089, 1472528089),
 ('admin/edit', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:10:"admin/edit";s:9:"createdAt";i:1472528089;s:9:"updatedAt";i:1472528089;}', 1472528089, 1472528089),
 ('admin/index', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:11:"admin/index";s:9:"createdAt";i:1472528089;s:9:"updatedAt";i:1472528089;}', 1472528089, 1472528089),
+('article-cat/add', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:15:"article-cat/add";s:9:"createdAt";i:1489471673;s:9:"updatedAt";i:1489471673;}', 1489471673, 1489471673),
+('article-cat/delete', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:18:"article-cat/delete";s:9:"createdAt";i:1496652380;s:9:"updatedAt";i:1496652380;}', 1496652380, 1496652380),
+('article-cat/edit', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:16:"article-cat/edit";s:9:"createdAt";i:1489471673;s:9:"updatedAt";i:1489471673;}', 1489471673, 1489471673),
+('article-cat/index', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:17:"article-cat/index";s:9:"createdAt";i:1489471673;s:9:"updatedAt";i:1489471673;}', 1489471673, 1489471673),
 ('article/add', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:11:"article/add";s:9:"createdAt";i:1460027926;s:9:"updatedAt";i:1460027926;}', 1460027926, 1460027926),
 ('article/autoSave', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:16:"article/autoSave";s:9:"createdAt";i:1460027926;s:9:"updatedAt";i:1460027926;}', 1460027926, 1460027926),
 ('article/batchOperate', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:20:"article/batchOperate";s:9:"createdAt";i:1460027926;s:9:"updatedAt";i:1460027926;}', 1460027926, 1460027926),
 ('article/clear', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:13:"article/clear";s:9:"createdAt";i:1460027927;s:9:"updatedAt";i:1460027927;}', 1460027927, 1460027927),
 ('article/copy', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:12:"article/copy";s:9:"createdAt";i:1460027926;s:9:"updatedAt";i:1460027926;}', 1460027926, 1460027926),
+('article/delete', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:14:"article/delete";s:9:"createdAt";i:1496652380;s:9:"updatedAt";i:1496652380;}', 1496652380, 1496652380),
 ('article/edit', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:12:"article/edit";s:9:"createdAt";i:1460027926;s:9:"updatedAt";i:1460027926;}', 1460027926, 1460027926),
 ('Article/examine', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:15:"Article/examine";s:9:"createdAt";i:1460027927;s:9:"updatedAt";i:1460027927;}', 1460027927, 1460027927),
 ('article/index', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:13:"article/index";s:9:"createdAt";i:1460027926;s:9:"updatedAt";i:1460027926;}', 1460027926, 1460027926),
@@ -584,6 +562,7 @@ INSERT INTO `yii2_auth_rule` (`name`, `data`, `created_at`, `updated_at`) VALUES
 ('attribute/index1', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:16:"attribute/index1";s:9:"createdAt";i:1460031881;s:9:"updatedAt";i:1460031881;}', 1460031881, 1460031881),
 ('attribute/setStatus', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:19:"attribute/setStatus";s:9:"createdAt";i:1460031881;s:9:"updatedAt";i:1460031881;}', 1460031881, 1460031881),
 ('attribute/update', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:16:"attribute/update";s:9:"createdAt";i:1460031881;s:9:"updatedAt";i:1460031881;}', 1460031881, 1460031881),
+('attributes/index', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:16:"attributes/index";s:9:"createdAt";i:1489471673;s:9:"updatedAt";i:1489471673;}', 1489471673, 1489471673),
 ('auth/access', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:11:"auth/access";s:9:"createdAt";i:1460031879;s:9:"updatedAt";i:1460031879;}', 1460031879, 1460031879),
 ('auth/add', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:8:"auth/add";s:9:"createdAt";i:1472528089;s:9:"updatedAt";i:1472528089;}', 1472528089, 1472528089),
 ('auth/addToCategory', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:18:"auth/addToCategory";s:9:"createdAt";i:1460031880;s:9:"updatedAt";i:1460031880;}', 1460031880, 1460031880),
@@ -630,6 +609,10 @@ INSERT INTO `yii2_auth_rule` (`name`, `data`, `created_at`, `updated_at`) VALUES
 ('database/index?type=import', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:26:"database/index?type=import";s:9:"createdAt";i:1459148617;s:9:"updatedAt";i:1459148627;}', 1456542110, 1456542120),
 ('database/optimize', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:17:"database/optimize";s:9:"createdAt";i:1460031881;s:9:"updatedAt";i:1460031881;}', 1460031881, 1460031881),
 ('database/repair', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:15:"database/repair";s:9:"createdAt";i:1460031881;s:9:"updatedAt";i:1460031881;}', 1460031881, 1460031881),
+('goods/add', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:9:"goods/add";s:9:"createdAt";i:1496652380;s:9:"updatedAt";i:1496652380;}', 1496652380, 1496652380),
+('goods/delete', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:12:"goods/delete";s:9:"createdAt";i:1496652380;s:9:"updatedAt";i:1496652380;}', 1496652380, 1496652380),
+('goods/edit', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:10:"goods/edit";s:9:"createdAt";i:1489471673;s:9:"updatedAt";i:1489471673;}', 1489471673, 1489471673),
+('goods/index', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:11:"goods/index";s:9:"createdAt";i:1489471673;s:9:"updatedAt";i:1489471673;}', 1489471673, 1489471673),
 ('group/add', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:9:"group/add";s:9:"createdAt";i:1476437986;s:9:"updatedAt";i:1476437986;}', 1476437986, 1476437986),
 ('group/delete', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:12:"group/delete";s:9:"createdAt";i:1476437986;s:9:"updatedAt";i:1476437986;}', 1476437986, 1476437986),
 ('group/edit', 'O:21:"common\\core\\rbac\\Rule":3:{s:4:"name";s:10:"group/edit";s:9:"createdAt";i:1476437986;s:9:"updatedAt";i:1476437986;}', 1476437986, 1476437986),
@@ -954,7 +937,7 @@ CREATE TABLE IF NOT EXISTS `yii2_menu` (
   `hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏',
   `group` varchar(50) DEFAULT '' COMMENT '分组',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态'
-) ENGINE=MyISAM AUTO_INCREMENT=173 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=177 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `yii2_menu`
@@ -963,10 +946,11 @@ CREATE TABLE IF NOT EXISTS `yii2_menu` (
 INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `status`) VALUES
 (1, '首页', 0, 1, 'index/index', 0, '', 1),
 (2, '内容', 0, 2, 'article/index', 0, '', 1),
-(3, '文章管理', 2, 1, 'article/index', 0, '文章管理|icon-note', 1),
+(3, '文章管理', 2, 2, 'article/index', 0, '文章管理|icon-note', 1),
 (4, '新增', 3, 0, 'article/add', 0, '', 1),
 (5, '编辑', 3, 0, 'article/edit', 0, '', 1),
 (6, '删除', 3, 0, 'article/delete', 0, '', 1),
+(173, '单页文章', 2, 1, 'page/index', 0, '单页文章|icon-docs', 1),
 (172, '删除', 138, 0, 'goods/delete', 0, '', 1),
 (13, '回收站', 2, 99, 'article/recycle', 1, '内容', 1),
 (14, '还原', 13, 0, 'article/permit', 0, '', 1),
@@ -1040,7 +1024,10 @@ INSERT INTO `yii2_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `group`, `
 (162, '删除', 159, 0, 'ad/delete', 0, '', 1),
 (166, '商品属性', 2, 21, 'attributes/index', 0, '商城管理|icon-basket', 1),
 (167, '添加/修改类型', 166, 0, 'traintype/edit', 0, '', 1),
-(168, '删除类型', 166, 0, 'traintype/delete', 0, '', 1);
+(168, '删除类型', 166, 0, 'traintype/delete', 0, '', 1),
+(174, '添加', 173, 0, 'page/add', 0, '', 1),
+(175, '编辑', 173, 0, 'page/edit', 0, '', 1),
+(176, '删除', 173, 0, 'page/delete', 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -1053,11 +1040,10 @@ CREATE TABLE IF NOT EXISTS `yii2_message` (
   `appid` varchar(30) NOT NULL COMMENT '应用ID，格式goods-123',
   `type` char(10) NOT NULL DEFAULT 'private' COMMENT '消息类型，private一对一，group一对多，system一对全部',
   `from_uid` int(8) unsigned NOT NULL COMMENT '消息发送者uid，0系统',
-  `to_uid` int(8) unsigned NOT NULL COMMENT '消息接收者uid，0广播/组消息须配合message_sys表',
+  `to_uid` int(8) unsigned NOT NULL COMMENT '消息接收者uid，0广播',
   `content` varchar(255) NOT NULL COMMENT '消息内容',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `end_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '广播消息结束时间，定期清理过期消息，0为不清理',
-  `is_read` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否阅读 0未读 1已读 -1删除'
+  `end_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '广播消息结束时间，定期清理过期消息，0为不清理'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='站内消息';
 
 -- --------------------------------------------------------
@@ -1067,11 +1053,10 @@ CREATE TABLE IF NOT EXISTS `yii2_message` (
 --
 
 CREATE TABLE IF NOT EXISTS `yii2_message_sys` (
-  `sys_id` int(10) unsigned NOT NULL COMMENT '自增',
-  `uid` int(8) unsigned NOT NULL COMMENT '用户uid',
   `message_id` int(10) unsigned NOT NULL COMMENT '消息ID',
+  `uid` int(8) unsigned NOT NULL COMMENT '消息接收者uid',
   `is_read` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否阅读 0未读 1已读 -1删除'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='站内广播/组消息已读状态';
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='消息已读状态，每次请求时都会拉取未读消息到这个表';
 
 -- --------------------------------------------------------
 
@@ -1144,7 +1129,14 @@ CREATE TABLE IF NOT EXISTS `yii2_page` (
   `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '状态'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='单页面';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='单页面';
+
+--
+-- 转存表中的数据 `yii2_page`
+--
+
+INSERT INTO `yii2_page` (`id`, `name`, `title`, `content`, `create_time`, `update_time`, `status`) VALUES
+(1, 'biaoshi', '测试单页文章标题', '<p>测试单页文章标题测试单页文章标题测试单页文章标题测试单页文章标题测试单页文章标题</p>', 1496656027, 1496656072, 0);
 
 -- --------------------------------------------------------
 
@@ -4999,8 +4991,7 @@ ALTER TABLE `yii2_message`
 -- Indexes for table `yii2_message_sys`
 --
 ALTER TABLE `yii2_message_sys`
-  ADD PRIMARY KEY (`sys_id`),
-  ADD KEY `uid` (`uid`,`message_id`);
+  ADD UNIQUE KEY `message_id` (`message_id`,`uid`);
 
 --
 -- Indexes for table `yii2_nav`
@@ -5142,17 +5133,12 @@ ALTER TABLE `yii2_goods_sku`
 -- AUTO_INCREMENT for table `yii2_menu`
 --
 ALTER TABLE `yii2_menu`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=173;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',AUTO_INCREMENT=177;
 --
 -- AUTO_INCREMENT for table `yii2_message`
 --
 ALTER TABLE `yii2_message`
   MODIFY `message_id` int(8) NOT NULL AUTO_INCREMENT COMMENT '消息ID';
---
--- AUTO_INCREMENT for table `yii2_message_sys`
---
-ALTER TABLE `yii2_message_sys`
-  MODIFY `sys_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增';
 --
 -- AUTO_INCREMENT for table `yii2_nav`
 --
@@ -5167,7 +5153,7 @@ ALTER TABLE `yii2_order`
 -- AUTO_INCREMENT for table `yii2_page`
 --
 ALTER TABLE `yii2_page`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `yii2_picture`
 --
