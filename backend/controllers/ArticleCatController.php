@@ -44,7 +44,7 @@ class ArticleCatController extends BaseController
 
         if (Yii::$app->request->isPost) {
 
-            $data = Yii::$app->request->post('Category');
+            $data = Yii::$app->request->post('ArticleCat');
             //$data['create_time'] = time();
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {
@@ -82,7 +82,7 @@ class ArticleCatController extends BaseController
         $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
-            $data = Yii::$app->request->post('Category');
+            $data = Yii::$app->request->post('ArticleCat');
             //$data['update_time'] = time();
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {
