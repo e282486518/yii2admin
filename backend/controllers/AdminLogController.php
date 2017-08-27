@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\AdminLog;
+use common\modelsgii\AdminLog;
 use backend\models\search\AdminLogSearch;
 use yii\web\NotFoundHttpException;
 

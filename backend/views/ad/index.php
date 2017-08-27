@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-/* @var $model common\models\Ad */
+/* @var $model common\modelsgii\Ad */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
 /* @var $searchModel backend\models\search\AdSearch */
 

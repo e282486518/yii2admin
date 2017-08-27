@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-/* @var $model common\models\AdminLog */
+/* @var $model common\modelsgii\AdminLog */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
 /* @var $searchModel backend\models\search\AdminLogSearch */
 

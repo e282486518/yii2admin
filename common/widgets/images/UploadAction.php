@@ -1,7 +1,7 @@
 <?php
 namespace common\widgets\images;
 
-use common\models\Picture;
+use common\modelsgii\Picture;
 use Yii;
 use yii\base\Action;
 use common\helpers\FuncHelper;

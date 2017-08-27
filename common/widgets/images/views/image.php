@@ -11,7 +11,7 @@ use yii\helpers\Html;
 $saveDB = isset($saveDB)?$saveDB:1;
 $data   = $model->{$attribute};
 if ($saveDB) {
-    $picture = \common\models\Picture::find()->where(['id'=>$data])->asArray()->one();
+    $picture = \common\modelsgii\Picture::find()->where(['id'=>$data])->asArray()->one();
     if (!$picture) {
         $picture['id']   = '';
         $picture['path'] = '';

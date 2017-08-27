@@ -6,7 +6,7 @@ use yii\grid\GridView;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\AuthAssignment */
+/* @var $model common\modelsgii\AuthAssignment */
 /* @var $form ActiveForm */
 
 /* ===========================以下为本页配置信息============================ */

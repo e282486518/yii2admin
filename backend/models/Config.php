@@ -5,7 +5,7 @@ namespace backend\models;
 use Yii;
 
 
-class Config extends \common\models\Config
+class Config extends \common\modelsgii\Config
 {
     /**
      * @inheritdoc

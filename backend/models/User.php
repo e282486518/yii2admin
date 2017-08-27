@@ -21,7 +21,7 @@ use yii\web\IdentityInterface;
  * @property string $update_time
  * @property integer $status
  */
-class User extends \common\models\User implements IdentityInterface
+class User extends \common\modelsgii\User implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE  = 1;

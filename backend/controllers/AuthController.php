@@ -5,7 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Admin;
 use backend\models\Menu;
-use common\models\AuthAssignment;
+use common\modelsgii\AuthAssignment;
 
 /**
  * 身份授权控制器

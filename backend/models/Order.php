@@ -9,7 +9,7 @@ use Yii;
  * 文章模型
  * ---------------------------------------
  */
-class Order extends \common\models\Order
+class Order extends \common\modelsgii\Order
 {
 
     public function rules()

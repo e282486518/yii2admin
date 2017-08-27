@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use common\models\Region;
+use common\modelsgii\Region;
 use kartik\depdrop\DepDropAction;
 
 /**

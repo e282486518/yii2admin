@@ -5,7 +5,7 @@ namespace backend\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ArrayDataProvider;
-use common\models\ArticleCat;
+use common\modelsgii\ArticleCat;
 use common\helpers\ArrayHelper;
 
 /**

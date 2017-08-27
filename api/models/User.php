@@ -11,7 +11,7 @@ use yii\filters\RateLimitInterface;
  * This is the model class for table "{{%user}}".
  *
  */
-class User extends \common\models\User implements IdentityInterface,RateLimitInterface
+class User extends \common\modelsgii\User implements IdentityInterface,RateLimitInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE  = 1;

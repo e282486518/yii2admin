@@ -9,7 +9,7 @@ use Yii;
  * 文章模型
  * ---------------------------------------
  */
-class Page extends \common\models\Page
+class Page extends \common\modelsgii\Page
 {
     /**
      * @inheritdoc

@@ -5,7 +5,7 @@ namespace backend\models;
 use Yii;
 
 
-class ArticleCat extends \common\models\ArticleCat
+class ArticleCat extends \common\modelsgii\ArticleCat
 {
     /**
      * @inheritdoc

@@ -36,7 +36,7 @@ if (!empty($data)) {
         <?php foreach($albums as $g): ?>
             <?php
             if ($saveDB) {
-                $picture = \common\models\Picture::find()->where(['id'=>$g])->asArray()->one();
+                $picture = \common\modelsgii\Picture::find()->where(['id'=>$g])->asArray()->one();
                 if (!$picture) {
                     continue;
                 }

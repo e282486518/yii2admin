@@ -5,7 +5,7 @@ namespace backend\models;
 use Yii;
 use common\helpers\ArrayHelper;
 
-class Menu extends \common\models\Menu
+class Menu extends \common\modelsgii\Menu
 {
     /**
      * 配置model规则

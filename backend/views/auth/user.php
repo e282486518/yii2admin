@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\grid\GridView;
 
-/* @var $model common\models\User */
+/* @var $model common\modelsgii\User */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
 
 /* ===========================以下为本页配置信息================================= */

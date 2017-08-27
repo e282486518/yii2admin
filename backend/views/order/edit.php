@@ -95,7 +95,7 @@ $this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以�
                     'model' => $model,
                     'attribute' => 'province',
                     //'data' => '',
-                    'data' => ArrayHelper::map(\common\models\Region::find()->where(['parent_code'=>0])->asArray()->all(), 'code', 'fullname')
+                    'data' => ArrayHelper::map(\common\modelsgii\Region::find()->where(['parent_code'=>0])->asArray()->all(), 'code', 'fullname')
                 ]);?>
             </div>
             <div class="col-md-2">

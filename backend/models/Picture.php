@@ -8,7 +8,7 @@ use Yii;
  * 图片处理模型
  *
  */
-class Picture extends \common\models\Picture
+class Picture extends \common\modelsgii\Picture
 {
     /**
      * ----------------------------------

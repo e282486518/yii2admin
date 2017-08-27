@@ -6,7 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\models\Admin;
-use common\models\AuthAssignment;
+use common\modelsgii\AuthAssignment;
 
 /**
  * AdminSearch represents the model behind the search form about `backend\models\Admin`.

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use backend\models\ArticleCat;
 
-/* @var $model common\models\Article */
+/* @var $model common\modelsgii\Article */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
 /* @var $searchModel backend\models\search\ArticleSearch */
 

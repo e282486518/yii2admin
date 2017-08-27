@@ -5,7 +5,7 @@ namespace tests\codeception\common\unit\models;
 use Yii;
 use tests\codeception\common\unit\DbTestCase;
 use Codeception\Specify;
-use common\models\LoginForm;
+use common\modelsgii\LoginForm;
 use tests\codeception\common\fixtures\UserFixture;
 
 /**
