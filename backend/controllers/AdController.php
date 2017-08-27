@@ -8,7 +8,6 @@ use backend\models\search\AdSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-
 /**
  * 栏目控制器
  * @author longfei <phphome@qq.com>

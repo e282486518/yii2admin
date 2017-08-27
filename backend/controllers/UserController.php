@@ -17,7 +17,8 @@ class UserController extends BaseController
      * 构造方法
      * ---------------------------------------
      */
-    public function init(){
+    public function init()
+    {
         parent::init();
     }
 
@@ -44,7 +45,8 @@ class UserController extends BaseController
      * 添加
      * ---------------------------------------
      */
-    public function actionAdd(){
+    public function actionAdd()
+    {
 
         $model = new User();
 
@@ -52,10 +54,10 @@ class UserController extends BaseController
             /* 表单验证 */
             $data = Yii::$app->request->post('User');
             $data['reg_time'] = time();
-            $data['reg_ip']   = ip2long(Yii::$app->request->getUserIP());
+            $data['reg_ip'] = ip2long(Yii::$app->request->getUserIP());
             $data['last_login_time'] = 0;
-            $data['last_login_ip']   = ip2long(Yii::$app->request->getUserIP());
-            $data['update_time']     = 0;
+            $data['last_login_ip'] = ip2long(Yii::$app->request->getUserIP());
+            $data['update_time'] = 0;
             /* 表单数据加载和验证，具体验证规则在模型rule中配置 */
             /* 密码单独验证，否则setPassword后密码肯定符合rule */
             if (empty($data['password']) || strlen($data['password']) < 6) {
@@ -67,12 +69,12 @@ class UserController extends BaseController
             /* 保存用户数据到数据库 */
             if ($model->save()) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
 
-        return $this->render('edit',[
+        return $this->render('edit', [
             'model' => $model,
         ]);
     }
@@ -82,7 +84,8 @@ class UserController extends BaseController
      * 编辑
      * ---------------------------------------
      */
-    public function actionEdit($uid){
+    public function actionEdit($uid)
+    {
         $model = User::findOne($uid);
 
         if (Yii::$app->request->isPost) {
@@ -100,12 +103,12 @@ class UserController extends BaseController
             /* 保存用户数据到数据库 */
             if ($model->save()) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
 
-        return $this->render('edit',[
+        return $this->render('edit', [
             'model' => $model,
         ]);
     }
@@ -115,16 +118,17 @@ class UserController extends BaseController
      * 删除
      * ---------------------------------------
      */
-    public function actionDelete(){
-        $ids = Yii::$app->request->param('id',0);
+    public function actionDelete()
+    {
+        $ids = Yii::$app->request->param('id', 0);
         $ids = implode(',', array_unique((array)$ids));
 
-        if ( empty($ids) ) {
+        if (empty($ids)) {
             $this->error('请选择要操作的数据!');
         }
 
-        $_where = 'uid in('.$ids.')';
-        if(User::deleteAll($_where)){
+        $_where = 'uid in(' . $ids . ')';
+        if (User::deleteAll($_where)) {
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');

@@ -62,7 +62,7 @@ class PageController extends BaseController
             /* 表单数据加载、验证、数据库操作 */
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
@@ -92,7 +92,7 @@ class PageController extends BaseController
             /* 表单数据加载、验证、数据库操作 */
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
@@ -111,7 +111,7 @@ class PageController extends BaseController
     public function actionDelete()
     {
         $model = $this->findModel(0);
-        if($this->delRow($model, 'id')){
+        if ($this->delRow($model, 'id')) {
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');

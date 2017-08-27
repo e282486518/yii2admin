@@ -28,7 +28,8 @@ class AuthController extends BaseController
      * 构造方法
      * ---------------------------------------
      */
-    public function init(){
+    public function init()
+    {
         parent::init();
         $this->authManager = Yii::$app->authManager;
     }
@@ -58,7 +59,8 @@ class AuthController extends BaseController
      *      详情见“yii\rbac\BaseManager”的203行if($item->ruleName === null){return true;}
      * ---------------------------------------
      */
-    public function actionAdd(){
+    public function actionAdd()
+    {
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('param');
@@ -82,7 +84,8 @@ class AuthController extends BaseController
      *      详情见“yii\rbac\BaseManager”的203行if($item->ruleName === null){return true;}
      * ---------------------------------------
      */
-    public function actionEdit(){
+    public function actionEdit()
+    {
 
         /* 获取角色信息 */
         $item_name = Yii::$app->request->get('role');
@@ -92,13 +95,13 @@ class AuthController extends BaseController
             $data = Yii::$app->request->post('param');
             $role->name = $data['name'];
             $role->description = $data['description'];
-            if (Yii::$app->authManager-> update($item_name, $role)) {
+            if (Yii::$app->authManager->update($item_name, $role)) {
                 $this->success('更新成功', $this->getForward());
             }
             $this->error('更新失败');
         }
 
-        return $this->render('edit',[
+        return $this->render('edit', [
             'role' => $role,
         ]);
     }
@@ -110,7 +113,8 @@ class AuthController extends BaseController
      * @param string $role 角色名称
      * ---------------------------------------
      */
-    public function actionDelete($role){
+    public function actionDelete($role)
+    {
         $role = Yii::$app->authManager->getRole($role);
         if (Yii::$app->authManager->remove($role)) {
             $this->success('删除成功', $this->getForward());
@@ -123,7 +127,8 @@ class AuthController extends BaseController
      * 角色授权
      * ---------------------------------------
      */
-    public function actionAuth($role){
+    public function actionAuth($role)
+    {
 
         /* 提交后 */
         if (Yii::$app->request->isPost) {
@@ -147,11 +152,11 @@ class AuthController extends BaseController
         }
 
         /* 获取栏目节点 */
-        $node_list  = Menu::returnNodes();
+        $node_list = Menu::returnNodes();
         $auth_rules = Yii::$app->authManager->getChildren($role);
         $auth_rules = array_keys($auth_rules);//var_dump($auth_rules);exit;
 
-        return $this->render('auth',[
+        return $this->render('auth', [
             'node_list' => $node_list,
             'auth_rules' => $auth_rules,
             'role' => $role,
@@ -163,7 +168,8 @@ class AuthController extends BaseController
      * 授权用户列表
      * ---------------------------------------
      */
-    public function actionUser($role){
+    public function actionUser($role)
+    {
         /* 添加当前位置到cookie供后续跳转调用 */
         $this->setForward();
 
@@ -171,13 +177,13 @@ class AuthController extends BaseController
         $uids = implode(',', array_unique($uids));
 
         /*更新uids 为空的情况*/
-        if($uids){
-            $_where = 'user_id in('.$uids.')';
-        }else{
+        if ($uids) {
+            $_where = 'user_id in(' . $uids . ')';
+        } else {
             $_where = '1 != 1';
         }
 
-        return $this->render('user',[
+        return $this->render('user', [
             'dataProvider' => $this->lists1(new Admin(), $_where),
         ]);
     }

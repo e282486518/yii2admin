@@ -38,8 +38,9 @@ class MenuController extends BaseController
      * 添加
      * ---------------------------------------
      */
-    public function actionAdd(){
-        $pid = Yii::$app->request->get('pid',0);
+    public function actionAdd()
+    {
+        $pid = Yii::$app->request->get('pid', 0);
         $model = $this->findModel(0);
 
         if (Yii::$app->request->isPost) {
@@ -68,8 +69,9 @@ class MenuController extends BaseController
      * 编辑
      * ---------------------------------------
      */
-    public function actionEdit(){
-        $id = Yii::$app->request->get('id',0);
+    public function actionEdit()
+    {
+        $id = Yii::$app->request->get('id', 0);
         $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
@@ -93,9 +95,10 @@ class MenuController extends BaseController
      * 删除或批量删除
      * ---------------------------------------
      */
-    public function actionDelete(){
+    public function actionDelete()
+    {
         $model = $this->findModel(0);
-        if($this->delRow($model, 'id')){
+        if ($this->delRow($model, 'id')) {
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');

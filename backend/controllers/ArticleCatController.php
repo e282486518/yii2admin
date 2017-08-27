@@ -39,7 +39,8 @@ class ArticleCatController extends BaseController
      * 添加
      * ---------------------------------------
      */
-    public function actionAdd(){
+    public function actionAdd()
+    {
         $model = $this->findModel(0);
 
         if (Yii::$app->request->isPost) {
@@ -51,21 +52,21 @@ class ArticleCatController extends BaseController
                 $tmp = FuncHelper::parse_field_attr($data['extend']);
                 if (is_array($tmp)) {
                     $data['extend'] = serialize($tmp);
-                }else{
+                } else {
                     $data['extend'] = '';
                 }
             }
             /* 表单数据加载、验证、数据库操作 */
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
 
         /* 获取模型默认数据 */
         $model->loadDefaultValues();
-        $model->pid = Yii::$app->request->get('pid',0);
+        $model->pid = Yii::$app->request->get('pid', 0);
         /* 渲染模板 */
         return $this->render('edit', [
             'model' => $model,
@@ -77,8 +78,9 @@ class ArticleCatController extends BaseController
      * 编辑
      * ---------------------------------------
      */
-    public function actionEdit(){
-        $id = Yii::$app->request->get('id',0);
+    public function actionEdit()
+    {
+        $id = Yii::$app->request->get('id', 0);
         $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
@@ -89,14 +91,14 @@ class ArticleCatController extends BaseController
                 $tmp = FuncHelper::parse_field_attr($data['extend']);
                 if (is_array($tmp)) {
                     $data['extend'] = serialize($tmp);
-                }else{
+                } else {
                     $data['extend'] = '';
                 }
             }
             /* 表单数据加载、验证、数据库操作 */
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
@@ -106,7 +108,7 @@ class ArticleCatController extends BaseController
             $_str = '';
             if ($_tmp && is_array($_tmp)) {
                 foreach ($_tmp as $key => $value) {
-                    $_str .= $key.':'.$value.',';
+                    $_str .= $key . ':' . $value . ',';
                 }
             }
             $model->extend = $_str;
@@ -122,9 +124,10 @@ class ArticleCatController extends BaseController
      * 删除或批量删除
      * ---------------------------------------
      */
-    public function actionDelete(){
+    public function actionDelete()
+    {
         $model = $this->findModel(0);
-        if($this->delRow($model, 'id')){
+        if ($this->delRow($model, 'id')) {
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
@@ -136,7 +139,8 @@ class ArticleCatController extends BaseController
      * 获取栏目数据tree结构
      * ---------------------------------------
      */
-    public function actionTree(){
+    public function actionTree()
+    {
         $lists = ArticleCat::find()->orderBy('sort asc')->asArray()->all();
         $lists = ArrayHelper::list_to_tree($lists, 'id', 'pid');
         $lists = ArrayHelper::jstree($lists);

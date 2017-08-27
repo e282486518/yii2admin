@@ -7,21 +7,22 @@ use common\modelsgii\AdminLog;
 use backend\models\search\AdminLogSearch;
 use yii\web\NotFoundHttpException;
 
-
 /**
  * 行为日志控制器
  * @author longfei <phphome@qq.com>
  */
-class AdminLogController extends BaseController {
+class AdminLogController extends BaseController
+{
 
     /**
      * ---------------------------------------
-     * 行为日志列表 
-     * @param string string  参数说明 
-     * @return string 返回信息 
+     * 行为日志列表
+     * @param string string  参数说明
+     * @return string 返回信息
      * ---------------------------------------
      */
-    public function actionIndex(){
+    public function actionIndex()
+    {
         /* 添加当前位置到cookie供后续操作调用 */
         $this->setForward();
 
@@ -35,15 +36,16 @@ class AdminLogController extends BaseController {
 
     /**
      * ---------------------------------------
-     * 查看行为日志 
-     * @param string string  参数说明 
-     * @return string 返回信息 
+     * 查看行为日志
+     * @param string string  参数说明
+     * @return string 返回信息
      * ---------------------------------------
      */
-    public function actionView(){
-        $id = Yii::$app->request->get('id',0);
+    public function actionView()
+    {
+        $id = Yii::$app->request->get('id', 0);
         $model = $this->findModel($id);
-        return $this->render('view',['model'=>$model]);
+        return $this->render('view', ['model' => $model]);
     }
 
     /**
@@ -51,9 +53,10 @@ class AdminLogController extends BaseController {
      * 删除日志
      * ---------------------------------------
      */
-    public function actionDelete(){
+    public function actionDelete()
+    {
         $model = $this->findModel(0);
-        if($this->delRow($model, 'id')){
+        if ($this->delRow($model, 'id')) {
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
@@ -65,11 +68,12 @@ class AdminLogController extends BaseController {
      * 清空日志
      * ---------------------------------------
      */
-    public function actionClear(){
+    public function actionClear()
+    {
         $res = AdminLog::deleteAll();
-        if($res !== false){
+        if ($res !== false) {
             $this->success('日志清空成功！');
-        }else {
+        } else {
             $this->error('日志清空失败！');
         }
     }

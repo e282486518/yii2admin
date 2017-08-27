@@ -36,7 +36,7 @@ class OrderController extends BaseController
             return false;
         }
 
-        return $this->render('index',[
+        return $this->render('index', [
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
         ]);
@@ -47,11 +47,12 @@ class OrderController extends BaseController
      * 添加
      * ---------------------------------------
      */
-    public function actionAdd(){
+    public function actionAdd()
+    {
         $model = $this->findModel(0);
-        $type = Yii::$app->request->get('type','shop');
+        $type = Yii::$app->request->get('type', 'shop');
         if (Yii::$app->request->isPost) {
-            
+
             $data = Yii::$app->request->post('Order');
             //$data['create_time'] = time();
             $data['type'] = $type;
@@ -64,20 +65,21 @@ class OrderController extends BaseController
             } else {
                 $shang = Train::info($data['aid']);
                 $data['title'] = $shang['title'];
-            }*/$data['title'] = 'test title';
+            }*/
+            $data['title'] = 'test title';
             /* 格式化extend值，为空或数组序列化 */
             if (isset($data['extend'])) {
                 $tmp = FuncHelper::parse_field_attr($data['extend']);
                 if (is_array($tmp)) {
                     $data['extend'] = serialize($tmp);
-                }else{
+                } else {
                     $data['extend'] = '';
                 }
             }
             /* 表单数据加载、验证、数据库操作 */
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
@@ -98,34 +100,35 @@ class OrderController extends BaseController
      * 编辑
      * ---------------------------------------
      */
-    public function actionEdit(){
-        $id = Yii::$app->request->get('id',0);
+    public function actionEdit()
+    {
+        $id = Yii::$app->request->get('id', 0);
         $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Order');//var_dump($data);exit();
             //$data['update_time'] = time();
             $data['start_time'] = strtotime($data['start_time']);
-            $data['end_time']  = strtotime($data['end_time']);
-            $data['pay_time']  = strtotime($data['pay_time']);
+            $data['end_time'] = strtotime($data['end_time']);
+            $data['pay_time'] = strtotime($data['pay_time']);
             /* 格式化extend值，为空或数组序列化 */
             if (isset($data['extend'])) {
                 $tmp = FuncHelper::parse_field_attr($data['extend']);
                 if (is_array($tmp)) {
                     $data['extend'] = serialize($tmp);
-                }else{
+                } else {
                     $data['extend'] = '';
                 }
             }
             /* 表单数据加载、验证、数据库操作 */
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
-        $model->start_time = date('Y-m-d H:i',$model->start_time);
-        $model->end_time   = date('Y-m-d H:i',$model->end_time);
+        $model->start_time = date('Y-m-d H:i', $model->start_time);
+        $model->end_time = date('Y-m-d H:i', $model->end_time);
         /* 渲染模板 */
         return $this->render('edit', [
             'model' => $model,
@@ -137,9 +140,10 @@ class OrderController extends BaseController
      * 删除或批量删除
      * ---------------------------------------
      */
-    public function actionDelete(){
+    public function actionDelete()
+    {
         $model = $this->findModel(0);
-        if($this->delRow($model, 'id')){
+        if ($this->delRow($model, 'id')) {
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
@@ -151,21 +155,22 @@ class OrderController extends BaseController
      * 导出excel
      * ---------------------------------------
      */
-    public function export($data){
+    public function export($data)
+    {
         /*$data = Order::find()->where(['pay_status' => 1])
             ->andWhere(['status'=>1])
             ->orderBy('order_id DESC')
             ->asArray()->all();*/
         $arr = [];
-        $title = ['order_id','订单号','用户ID','姓名','电话','身份证','商品类型','套餐ID','商品ID','商品名','起租时间','退租时间',
-            '数量','价格','支付状态','支付时间','支付类型','支付途径','下单时间','状态'];
+        $title = ['order_id', '订单号', '用户ID', '姓名', '电话', '身份证', '商品类型', '套餐ID', '商品ID', '商品名', '起租时间', '退租时间',
+            '数量', '价格', '支付状态', '支付时间', '支付类型', '支付途径', '下单时间', '状态'];
         if ($data) {
             foreach ($data as $key => $value) {
                 $arr[$key] = $value;
                 $arr[$key]['start_time'] = date('Y-m-d H:i', $value['start_time']);
                 $arr[$key]['end_time'] = date('Y-m-d H:i', $value['end_time']);
-                $arr[$key]['pay_time'] = $value['pay_time'] ? date('Y-m-d H:i', $value['end_time']):0;
-                $arr[$key]['create_time'] = $value['create_time'] ? date('Y-m-d H:i', $value['create_time']):0;
+                $arr[$key]['pay_time'] = $value['pay_time'] ? date('Y-m-d H:i', $value['end_time']) : 0;
+                $arr[$key]['create_time'] = $value['create_time'] ? date('Y-m-d H:i', $value['create_time']) : 0;
                 $arr[$key]['pay_status'] = Yii::$app->params['pay_status'][$value['pay_status']];
                 $arr[$key]['pay_type'] = Yii::$app->params['pay_type'][$value['pay_type']];
                 $arr[$key]['pay_source'] = Yii::$app->params['pay_source'][$value['pay_source']];
@@ -173,7 +178,7 @@ class OrderController extends BaseController
             }
         }
 
-        FuncHelper::exportexcel($arr,$title);
+        FuncHelper::exportexcel($arr, $title);
     }
 
     /**

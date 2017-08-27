@@ -2,9 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\Admin;
 use Yii;
-use yii\helpers\Url;
+use backend\models\Admin;
 use backend\models\search\AdminSearch;
 
 /**
@@ -18,7 +17,8 @@ class AdminController extends BaseController
      * 构造方法
      * ---------------------------------------
      */
-    public function init(){
+    public function init()
+    {
         parent::init();
     }
 
@@ -45,7 +45,8 @@ class AdminController extends BaseController
      * 添加
      * ---------------------------------------
      */
-    public function actionAdd(){
+    public function actionAdd()
+    {
 
         $model = new Admin();
 
@@ -53,10 +54,10 @@ class AdminController extends BaseController
             /* 表单验证 */
             $data = Yii::$app->request->post('Admin');
             $data['reg_time'] = time();
-            $data['reg_ip']   = ip2long(Yii::$app->request->getUserIP());
+            $data['reg_ip'] = ip2long(Yii::$app->request->getUserIP());
             $data['last_login_time'] = 0;
-            $data['last_login_ip']   = ip2long('127.0.0.1');
-            $data['update_time']     = 0;
+            $data['last_login_ip'] = ip2long('127.0.0.1');
+            $data['update_time'] = 0;
             /* 表单数据加载和验证，具体验证规则在模型rule中配置 */
             /* 密码单独验证，否则setPassword后密码肯定符合rule */
             if (empty($data['password']) || strlen($data['password']) < 6) {
@@ -68,12 +69,12 @@ class AdminController extends BaseController
             /* 保存用户数据到数据库 */
             if ($model->save()) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
 
-        return $this->render('add',[
+        return $this->render('add', [
             'model' => $model,
         ]);
     }
@@ -83,7 +84,8 @@ class AdminController extends BaseController
      * 编辑
      * ---------------------------------------
      */
-    public function actionEdit($uid){
+    public function actionEdit($uid)
+    {
         $model = Admin::findOne($uid);
 
         if (Yii::$app->request->isPost) {
@@ -101,13 +103,13 @@ class AdminController extends BaseController
             /* 保存用户数据到数据库 */
             if ($model->save()) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('操作错误');
             }
         }
 
         $model->password = '';
-        return $this->render('edit',[
+        return $this->render('edit', [
             'model' => $model,
         ]);
     }
@@ -117,11 +119,12 @@ class AdminController extends BaseController
      * 删除
      * ---------------------------------------
      */
-    public function actionDelete(){
-        $ids = Yii::$app->request->param('id',0);
+    public function actionDelete()
+    {
+        $ids = Yii::$app->request->param('id', 0);
         $ids = implode(',', array_unique((array)$ids));
 
-        if ( empty($ids) ) {
+        if (empty($ids)) {
             $this->error('请选择要操作的数据!');
         }
 
@@ -130,8 +133,8 @@ class AdminController extends BaseController
             $this->error('不能删除超级管理员！');
         }
 
-        $_where = 'uid in('.$ids.')';
-        if(Admin::deleteAll($_where)){
+        $_where = 'uid in(' . $ids . ')';
+        if (Admin::deleteAll($_where)) {
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
@@ -143,8 +146,9 @@ class AdminController extends BaseController
      * 用户授权
      * ---------------------------------------
      */
-    public function actionAuth($uid){
-        $auth  = Yii::$app->authManager;
+    public function actionAuth($uid)
+    {
+        $auth = Yii::$app->authManager;
         /* 获取用户信息 */
         $model = Admin::findOne($uid);
 

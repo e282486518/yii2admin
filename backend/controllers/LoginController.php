@@ -1,4 +1,5 @@
 <?php
+
 namespace backend\controllers;
 
 use Yii;
@@ -16,7 +17,7 @@ class LoginController extends Controller
 
     public $layout = false;
 
-    public $enableCsrfValidation=false;
+    public $enableCsrfValidation = false;
 
     public $defaultAction = 'login';
 
@@ -65,12 +66,12 @@ class LoginController extends Controller
 
         $model = new LoginForm();
         if (Yii::$app->request->isPost) {
-            if ($model->load(Yii::$app->request->post(),'info') && $model->login()) {
+            if ($model->load(Yii::$app->request->post(), 'info') && $model->login()) {
                 return 1;
             } else {
                 return 0;
             }
-        }else {
+        } else {
             return $this->render('login', [
                 'model' => $model,
             ]);

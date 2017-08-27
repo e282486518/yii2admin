@@ -11,13 +11,14 @@ use kartik\depdrop\DepDropAction;
  * 公共调用处理
  * @author longfei <phphome@qq.com>
  */
-class PublicController extends \common\core\Controller{
+class PublicController extends \common\core\Controller
+{
 
-    /** @var bool  */
+    /** @var bool */
     public $layout = false;
 
     /** @var bool */
-    public $enableCsrfValidation=false;
+    public $enableCsrfValidation = false;
 
     /**
      * ---------------------------------------
@@ -31,16 +32,16 @@ class PublicController extends \common\core\Controller{
             'region' => [
                 'class' => DepDropAction::className(),
                 'outputCallback' => function ($id, $params) {
-                    $region = Region::find()->where(['parent_code'=>$id])->orderBy('code ASC')->asArray()->all();
+                    $region = Region::find()->where(['parent_code' => $id])->orderBy('code ASC')->asArray()->all();
                     $_out = [];//var_dump($region);
                     foreach ($region as $value) {
-                        $_tmp['id']   = $value['code'];
+                        $_tmp['id'] = $value['code'];
                         $_tmp['name'] = $value['fullname'];
                         $_out[] = $_tmp;
                     }
                     return $_out;
                 },
-                'selectedCallback' => function($id, $params){
+                'selectedCallback' => function ($id, $params) {
                     return Yii::$app->getRequest()->get('sid');
                 }
             ],
@@ -68,7 +69,8 @@ class PublicController extends \common\core\Controller{
      * @return string
      * ---------------------------------------
      */
-    public function action404(){
+    public function action404()
+    {
 
         //渲染模板
         return $this->render('404');

@@ -39,7 +39,8 @@ class ConfigController extends BaseController
      * 添加配置项
      * ---------------------------------------
      */
-    public function actionAdd(){
+    public function actionAdd()
+    {
         $model = $this->findModel(0);
         if (Yii::$app->request->isPost) {
             /* 表单验证 */
@@ -65,8 +66,9 @@ class ConfigController extends BaseController
      * 编辑配置项
      * ---------------------------------------
      */
-    public function actionEdit(){
-        $id = Yii::$app->request->get('id',0);
+    public function actionEdit()
+    {
+        $id = Yii::$app->request->get('id', 0);
         $model = $this->findModel($id);
 
         if (Yii::$app->request->isPost) {
@@ -91,9 +93,10 @@ class ConfigController extends BaseController
      * 删除配置项
      * ---------------------------------------
      */
-    public function actionDelete(){
+    public function actionDelete()
+    {
         $model = $this->findModel(0);
-        if($this->delRow($model, 'id')){
+        if ($this->delRow($model, 'id')) {
             $this->success('删除成功', $this->getForward());
         } else {
             $this->error('删除失败！');
@@ -116,7 +119,7 @@ class ConfigController extends BaseController
             /* 更改配置值 */
             $isSuccess = true;
             foreach ($data as $name => $value) {
-                $model = Config::findOne(['name'=>$name]);
+                $model = Config::findOne(['name' => $name]);
                 $model->value = $value;
                 $model->update_time = time();
                 if (!$model->save()) {
@@ -126,7 +129,7 @@ class ConfigController extends BaseController
             }
             if ($isSuccess) {
                 $this->success('操作成功', $this->getForward());
-            }else{
+            } else {
                 $this->error('有配置值修改失败');
             }
         }
@@ -137,8 +140,8 @@ class ConfigController extends BaseController
         $id = Yii::$app->request->get('id', 1);
         /* 配置表 分组 */
         $groups = Config::find()
-                ->where(['and', ['group'=>$id], ['status'=>1]])
-                ->orderBy('sort ASC')->asArray()->all();
+            ->where(['and', ['group' => $id], ['status' => 1]])
+            ->orderBy('sort ASC')->asArray()->all();
         foreach ($groups as $key => $value) {
             if ($value['extra']) {
                 $groups[$key]['extra'] = Config::parse(3, $value['extra']);
