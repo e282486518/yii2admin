@@ -178,7 +178,7 @@ class AuthController extends BaseController
 
         /*更新uids 为空的情况*/
         if ($uids) {
-            $_where = 'uid in(' . $uids . ')';
+            $_where = 'user_id in(' . $uids . ')';
         } else {
             $_where = '1 != 1';
         }
