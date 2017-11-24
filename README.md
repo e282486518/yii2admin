@@ -10,7 +10,7 @@ oschina : http://git.oschina.net/ccdream/yii2admin （国内可以下载这个�
 
 交流：http://www.yiichina.com/code/1052 （遇到bug不愿发邮件的可以贴到这里）
 
-全站打包：https://share.weiyun.com/92c0d3e52e99d94255e001c76689b0a1 （不定期更新，安装出错的朋友可以试试这个）
+全站打包：https://share.weiyun.com/b0d11485e993bce1ee3398cbbf07e1e4 （不定期更新，安装出错的朋友可以试试这个）
 
 
 ## 一、开发基础说明
