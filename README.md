@@ -10,7 +10,7 @@ oschina : http://git.oschina.net/ccdream/yii2admin （国内可以下载这个�
 
 交流：http://www.yiichina.com/code/1052 （遇到bug不愿发邮件的可以贴到这里）
 
-全站打包：https://share.weiyun.com/b0d11485e993bce1ee3398cbbf07e1e4 （不定期更新，安装出错的朋友可以试试这个）
+全站打包：https://share.weiyun.com/92c0d3e52e99d94255e001c76689b0a1 （不定期更新，安装出错的朋友可以试试这个）
 
 
 ## 一、开发基础说明
@@ -89,9 +89,30 @@ Yii::$app->params['web'] = Config::lists();
 普通管理员： guanli 123456
 编辑人员： feifei 123456
 ```
+## 五、常见错误
+1、 `[Composer\Repository\InvalidRepositoryException]` 问题。
+执行
+```
+composer self-update
+composer global require "fxp/composer-asset-plugin"
+```
+
+2、`bower-asset/jquery` 等前端资源包无法找到的问题
+```
+composer global require "fxp/composer-asset-plugin"
+```
+并在composer.json文件中加入
+```
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+```
 
 
-## 五、预览
+## 六、预览
 ![登录](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/login.png)
 ![首页](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/index.png)
 ![管理员](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/admin.png)
