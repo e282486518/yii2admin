@@ -26,6 +26,7 @@ return [
         ],
     ],
     'components' => [
+        // 默认的用户组件
         'user' => [
             'class' => 'yii\web\User',
             'identityClass' => 'api\models\User',
@@ -33,11 +34,17 @@ return [
             'enableSession' => false, //关闭session
             'loginUrl' => null, //登录跳转地址为空
         ],
-        /* 修改默认的request组件 */
+        // 请求组件
         'request' => [
             'class' => 'common\core\Request',
             'baseUrl' => Yii::getAlias('@apiUrl'),
         ],
+        // 响应组件
+        'response' => [
+            'class' => 'yii\web\Response',
+            'format' => yii\web\Response::FORMAT_JSON,
+        ],
+        // 日志组件
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -47,7 +54,7 @@ return [
                 ],
             ],
         ],
-
+        // URL管理组件
         'urlManager' => [
             'enablePrettyUrl' => env('API_PRETTY_URL', true),
             'showScriptName' => false,
@@ -61,7 +68,10 @@ return [
 
             ],
         ],
-
+        // 错误处理组件
+        'errorHandler' => [
+            'class' => 'common\core\ErrorHandler',
+        ],
     ],
     'params' => $params,
 ];

@@ -36,7 +36,7 @@ class User extends \common\modelsgii\User implements IdentityInterface,RateLimit
      * 由token获取用户信息
      * @param mixed $token
      * @param null $type
-     * @return null|static
+     * @return null|static 注意，这里如果查询用户为空时需返回null，后面做权限验证是需要做判断
      * ---------------------------------------
      */
     public static function findIdentityByAccessToken($token, $type = null)
