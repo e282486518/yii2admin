@@ -31,23 +31,23 @@ return [
      * 组件
      */
     'components' => [
-        /* 身份认证类 默认yii\web\user */
+        // 身份认证类 默认yii\web\user
         'user' => [
             'class' => 'yii\web\User',
             'identityClass' => 'backend\models\Admin',
             'enableAutoLogin' => true,
             'loginUrl' => ['login/login'], //默认登录url
         ],
-        /* 修改默认的request组件 */
+        // 修改默认的request组件
         'request' => [
             'class' => 'common\core\Request',
             'baseUrl' => Yii::getAlias('@backendUrl'), //等于 Yii::getAlias('@web')
         ],
-        /* 数据库RBAC权限控制 */
+        // 数据库RBAC权限控制
         'authManager' => [
             'class' => 'common\core\rbac\DbManager',
         ],
-
+        // 日志
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -57,11 +57,12 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
-            //'errorAction' => 'public/404',
-        ],
+        // 错误处理器
+        /*'errorHandler' => [
+            'errorAction' => 'public/404',
+        ],*/
 
-        /* 链接管理 */
+        // 链接管理
         'urlManager' => [
             'class' => 'common\core\UrlManager',
             'enablePrettyUrl' => env('BACKEND_PRETTY_URL', true), //开启url规则

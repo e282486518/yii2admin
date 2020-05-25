@@ -24,7 +24,14 @@ class User extends \common\modelsgii\User implements IdentityInterface,RateLimit
      */
 
     /**
+     * ---------------------------------------
      * 根据UID获取账号信息
+     *
+     * @param int|string $uid
+     * @return null|IdentityInterface|static
+     *
+     * @author hlf <phphome@qq.com> 2020/5/21
+     * ---------------------------------------
      */
     public static function findIdentity($uid)
     {
@@ -41,8 +48,9 @@ class User extends \common\modelsgii\User implements IdentityInterface,RateLimit
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        /* 这里为了简便将数据库token字段设置成username */
-        /* 使用 /api/v1/user?access-token=e282486518 即可访问 */
+        // 由token从redis中获取用户的uid
+
+        // 这里为了简便将数据库token字段设置成username
         return static::findOne(['username' => $token, 'status' => self::STATUS_ACTIVE]);
     }
 
@@ -97,7 +105,7 @@ class User extends \common\modelsgii\User implements IdentityInterface,RateLimit
      * @return array
      * ---------------------------------------
      */
-    public  function getRateLimit($request, $action){
+    public function getRateLimit($request, $action){
         return [5, 10];
     }
 
@@ -109,7 +117,7 @@ class User extends \common\modelsgii\User implements IdentityInterface,RateLimit
      * @return array
      * ---------------------------------------
      */
-    public  function loadAllowance($request, $action){
+    public function loadAllowance($request, $action){
         return [$this->allowance, $this->allowance_updated_at];
     }
 
@@ -122,12 +130,22 @@ class User extends \common\modelsgii\User implements IdentityInterface,RateLimit
      * @param int $timestamp
      * ---------------------------------------
      */
-    public  function saveAllowance($request, $action, $allowance, $timestamp){
+    public function saveAllowance($request, $action, $allowance, $timestamp){
         $this->allowance = $allowance;
         $this->allowance_updated_at = $timestamp;
         $this->save();
     }
 
-
+    /**
+     * 可覆盖 fields() 方法来增加、删除、重命名、重定义字段
+     *
+     */
+    public function fields()
+    {
+        $fields = parent::fields();
+        // 删除一些包含敏感信息的字段
+        unset($fields['password'], $fields['salt']);
+        return $fields;
+    }
 
 }

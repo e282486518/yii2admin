@@ -5,6 +5,7 @@ namespace api\components;
 use Yii;
 use yii\rest\ActiveController;
 use common\core\TokenAuth;
+use yii\base\Controller;
 
 /**
  * 这里注意是继承 yii\rest\ActiveController 因为源码中已经帮我们实现了index/update等方法
@@ -19,10 +20,16 @@ use common\core\TokenAuth;
 class BaseController extends ActiveController
 {
 
+    // 不需进行token权限认证的方法
+    public $optional = [];
+
+    public $user;
+
     /**
      * ---------------------------------------
      * 构造方法
      *
+     * @throws \Throwable
      * @throws \yii\base\InvalidConfigException
      * @author hlf <phphome@qq.com> 2020/5/21
      * ---------------------------------------
@@ -48,10 +55,23 @@ class BaseController extends ActiveController
         // 设置认证方式
         $behaviors['authenticator'] = [
             'class' => TokenAuth::className(),
+            'optional' => $this->optional,
         ];
         return $behaviors;
     }
 
+    /**
+     * ---------------------------------------
+     * 获取当前登录用户信息
+     *
+     * @throws \Throwable
+     * @author hlf <phphome@qq.com> 2020/5/22
+     * ---------------------------------------
+     */
+    public function getIdentity() {
+        $identity = Yii::$app->user->getIdentity();
+        $this->user = $identity ? $identity->getAttributes() : null;
+    }
 
 
 }

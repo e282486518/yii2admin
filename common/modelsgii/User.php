@@ -3,6 +3,7 @@
 namespace common\modelsgii;
 
 use Yii;
+use common\core\BaseActiveRecord;
 
 /**
  * This is the model class for table "{{%user}}".
@@ -24,7 +25,7 @@ use Yii;
  * @property string $score_all
  * @property integer $status
  */
-class User extends \common\core\BaseActiveRecord
+class User extends BaseActiveRecord
 {
     /**
      * @inheritdoc

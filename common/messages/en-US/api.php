@@ -17,5 +17,5 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Authority authentication failed' => 'Token权限认证失败',
+    'Token权限认证失败' => 'Authority authentication failed',
 ];

@@ -31,6 +31,7 @@ class PublicController extends \common\core\Controller
             /* 省市区联动 */
             'region' => [
                 'class' => DepDropAction::className(),
+                'enableCsrfValidation' => false,
                 'outputCallback' => function ($id, $params) {
                     $region = Region::find()->where(['parent_code' => $id])->orderBy('code ASC')->asArray()->all();
                     $_out = [];//var_dump($region);

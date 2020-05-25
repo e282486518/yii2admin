@@ -11,6 +11,8 @@ use Yii;
 use yii\filters\auth\HttpBearerAuth;
 use yii\web\UnauthorizedHttpException;
 use yii\web\Response;
+use yii\web\Request;
+use yii\web\User;
 
 /**
  * HttpBearerAuth is an action filter that supports the authentication method based on HTTP Bearer token.
@@ -34,16 +36,85 @@ use yii\web\Response;
 class TokenAuth extends HttpBearerAuth
 {
 
+    //public $optional = ['*'];
+
     /**
+     * ---------------------------------------
+     * 功能说明
+     *
+     * @param \yii\base\Action $action
+     * @return bool
+     * @throws UnauthorizedHttpException
+     * @author hlf <phphome@qq.com> 2020/5/21
+     * ---------------------------------------
+     */
+    public function beforeAction($action)
+    {
+        $response = $this->response ?: Yii::$app->getResponse();
+
+        try {
+            $identity = $this->authenticate(
+                $this->user ?: Yii::$app->getUser(),
+                $this->request ?: Yii::$app->getRequest(),
+                $response
+            );
+        } catch (UnauthorizedHttpException $e) {
+            if ($this->isOptional($action)) {
+                return true;
+            }
+
+            throw $e;
+        }
+
+        if ($identity !== null || $this->isOptional($action)) {
+            return true;
+        }
+
+        $this->challenge($response);
+        $this->handleFailure($response);
+
+        return false;
+    }
+
+    /**
+     * ---------------------------------------
      * 验证当前用户
-     * {@inheritdoc}
+     *
+     * @param User $user
+     * @param Request $request
+     * @param Response $response
+     * @return null|\yii\web\IdentityInterface
+     * @throws UnauthorizedHttpException
+     * @author hlf <phphome@qq.com> 2020/5/21
+     * ---------------------------------------
      */
     public function authenticate($user, $request, $response)
     {
         // 当 $identity = null 时表示无法获取的认证信息或者认证失败
         // $identity = null 时为游客
-        $identity = parent::authenticate($user, $request, $response);
-        return $identity;
+        // $identity = parent::authenticate($user, $request, $response);
+        $authHeader = $request->getHeaders()->get($this->header);
+
+        if ($authHeader !== null) {
+            if ($this->pattern !== null) {
+                if (preg_match($this->pattern, $authHeader, $matches)) {
+                    $authHeader = $matches[1];
+                } else {
+                    return null;
+                }
+            }
+
+            $identity = $user->loginByAccessToken($authHeader, get_class($this));
+            if ($identity === null) {
+                $this->challenge($response);
+                $this->handleFailure($response);
+            }
+
+            return $identity;
+        }
+
+        return null;
+
     }
 
     /**
